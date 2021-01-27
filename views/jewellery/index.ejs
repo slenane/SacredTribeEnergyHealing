@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewellery</title>
+</head>
+
+<body>
+    <h1>All Jewellery</h1>
+     
+    <ul>
+        <% for (let jewellery of jewelleries) { %>
+            <li><a href="/jewellery/<% jewellery._id %>"><% jewellery.title %></a></li>
+        <% } %>
+    </ul>
+
+
+</body>
+
+</html>
