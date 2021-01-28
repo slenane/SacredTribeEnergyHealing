@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <% layout('layouts/boilerplate')%>
+    
+    <h1>All Blogs</h1>
+
+    <p>
+        <a href="/blogs/new">Add a new blog</a>
+    </p>
+     
+    <ul>
+        <% for (let blog of blogs) { %>
+            <li><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></li>
+        <% } %>
+    </ul>

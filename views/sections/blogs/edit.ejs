@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1>Edit Blog</h1>
+    <form action="/blogs/<%=blog._id%>?_method=PUT" method="POST">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="blog[title]" value="<%= blog.title %>">
+        </div>
+        <div>
+            <label for="text">Text</label>
+            <input type="text" id="text" name="blog[text]" value="<%= blog.text %>">
+        </div>
+        <button>Update Blog</button>
+    </form>
+    <a href="/blogs/<%= blog._id%>">Back To Blog</a>
+
