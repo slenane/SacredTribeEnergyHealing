@@ -1,27 +1,208 @@
-<% layout('layouts/boilerplate')%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=Sa, initial-scale=1.0">
+    <title>Sacred Tribe Energy Healing</title>
 
-    <h1>Welcome to Sacred Tribe Energy Healing</h1>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+<body>
 
-    <div>
-        <p><a href="/jewellery">Jewellery</a></p>
+
+    <!-- HERO SECTION  W/ NAVBAR INSIDE-->
+
+    <div id="hero_div">
+         
+        <!-- NAVBAR -->
+
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+            <div class="container container-fluid">
+                <a class="navbar-brand" href="/">Sacred Tribe Energy Healing</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/jewellery">Jewellery</a>
+                        <a class="nav-link" href="/treatments">Treatments</a>
+                        <a class="nav-link" href="/awareness">Awareness</a>
+                        <a class="nav-link" href="/blogs">Blogs</a>
+                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="/contact">Contact</a>
+                        <div class="navbar-nav ml-auto">
+                            <% if(currentUser) {%>
+                            <a class="nav-link" href="/logout">Logout</a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="hero_text">
+            <div class="hero_text--header">
+                <h1>Sacred Tribe Energy Healing</h1>
+            </div>
+            <div class="hero_text--links">
+                <div class="hero_text--link_1">
+                    <a href="#philosophy_div">Philosophy</a>
+                </div>
+                <div class="hero_text--link_1">
+                    <a href="#jewellery_div">Jewellery</a>
+                </div>
+                <div class="hero_text--link_2">
+                    <a href="#treatments_div">Treatments</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero_arrow"></div>
+
+    </div>
+
+    <!-- PHILOSOPHY -->
+
+    <div id="philosophy_div">
+
+        <div class="philosophy_image">
+            <img src="./images/jennifer-profile.png" alt="Jennifer profile photo">
+        </div>
+
+        <div class="philosophy_text">
+            <div class="philosophy_text--header">
+                <h2>My Truth</h2>
+            </div>
+            <div class="philosophy_text--body">
+                <p>Love is the universal language of all realms,</p>
+                <p>the source of all light,</p>
+                <p>the essence of who you are</p>
+            </div>
+            <div class="philosophy_text--name">
+                <p>Jennifer Wilson, Sacred Tribe Energy Healing</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JEWELLERY -->
+
+    <div id="jewellery_div">
+
+        <div class="jewellery_top_div">
+
+            <div class="jewellery_top_div--text">
+
+                <div class="jewellery_top_div--header">
+                    <h3>White Feather Jewellery</h3>
+                </div>
+                <div class="jewellery_top_div--body">
+                    <p>Energy Attuned Unique handmade jewellery</p>
+                </div>
+                <div class="jewellery_top_div--button">
+                    <form action="/jewellery">
+                        <button>Shop Now</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="jewellery_top_div--image"></div>
+
+        </div>
+
+        <div class="jewellery_bottom_div">
+
+            <h3>Collections</h3>
+
+            <div class="jewellery_bottom_div--collections container">
+
+                <div class="jewellery_bottom_div--collection collection_div--1">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top collection_div--image"" src="./images/jewellery-1.jpg" alt="Jewellery preview">
+                        <div class="card-body">
+                            <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                            <div class="collection_div--button">
+                                <form action="/jewellery">
+                                    <button>Shop Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jewellery_bottom_div--collection collection_div--2">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top collection_div--image"" src="./images/jewellery-2.jpg" alt="Jewellery preview">
+                        <div class="card-body">
+                            <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                            <div class="collection_div--button">
+                                <form action="/jewellery">
+                                    <button>Shop Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jewellery_bottom_div--collection collection_div--3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top collection_div--image"" src="./images/jewellery-3.jpg" alt="Jewellery preview">
+                        <div class="card-body">
+                          <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                            <div class="collection_div--button">
+                                <form action="/jewellery">
+                                    <button>Shop Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of jewellery_bottom_div--collections -->
+            </div>
+        <!--  End of jewellery_bottom_div  -->
+        </div>
+        <!-- End of jewellery_div -->
+    </div>
+
+    <!-- TREATMENTS -->
+
+    <div id="treatments_div">
+
+            <div class="treatments_text">
+                <div class="treatments_text--header">
+                    <h3>Energy Treatments</h3>
+                </div>
+                <div class="treatments_text--body">
+                    <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
+                </div>
+                <div class="treatments_text--button">
+                    <form action="/treatments">
+                        <button>Read More</button>
+                    </form>
+                </div>
+            </div>
+
+        
     </div>
     
-    <div>
-        <p><a href="/treatments">Treaments</a></p>
-    </div>
+    <!-- FOOTER -->
 
-    <div>
-        <p><a href="/awareness">Awareness</a></p>
-    </div>
+    <footer id="footer_div">
 
-    <div>
-        <p><a href="/blogs">Blogs</a></p>
-    </div>
+    </footer>
 
-    <div>
-        <p><a href="/about">About</a></p>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+</body>
+</html>
 
-    <div>
-        <p><a href="/contact">Contact</a></p>
-    </div>

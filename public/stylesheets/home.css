@@ -1,0 +1,72 @@
+/* HERO SECTION  W/ NAVBAR INSIDE */
+
+#hero_div {
+    background-image: url("../images/hero-image-rock-crystal.jpg");
+    background-size: cover;
+    background-position: 0%;
+    height: 100vh;
+    margin-bottom: 5%;
+}
+
+.hero_text {
+    color: white;
+}
+
+/* PHILOSOPHY */
+
+#philosophy_div {
+    height: 100vh;
+    background-image: url("../images/philosophy-bg.png");
+    background-size: cover;
+    background-position: 0 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 5%;
+}
+
+
+
+/* JEWELLERY */
+
+#jewellery_div {
+    height: 150vh;
+}
+
+.jewellery_top_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.jewellery_bottom_div {
+   text-align: center;
+}
+
+.jewellery_bottom_div--collections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* TREATMENTS */
+
+#treatments_div {
+    height: 100vh;
+    background-image: url("../images/healing-room-bed-overlay.png");
+    background-position: bottom;
+    background-size: cover;
+    display: grid;
+    text-align: center;
+    align-items: center;
+}
+
+.treatments_text {
+    color: white;
+    z-index: 3;
+}
+
+/* FOOTER */
+
+#footer_div {
+    height: 30vh;
+    background-color: black;
+}
+
