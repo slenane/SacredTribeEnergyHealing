@@ -2,11 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=Sa, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0">
     <title>Sacred Tribe Energy Healing</title>
 
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
     integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <!-- SWIPER.JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- MAIN STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 <body>
@@ -20,7 +30,6 @@
 
         <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
             <div class="container container-fluid">
-                <a class="navbar-brand" href="/">Sacred Tribe Energy Healing</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +54,7 @@
         </nav>
 
 
-        <div class="hero_text">
+        <div class="hero_text container">
             <div class="hero_text--header">
                 <h1>Sacred Tribe Energy Healing</h1>
             </div>
@@ -53,12 +62,23 @@
                 <div class="hero_text--link_1">
                     <a href="#philosophy_div">Philosophy</a>
                 </div>
+                <div class="hero_text--link_gap">
+                    <p>|</p>
+                </div>
                 <div class="hero_text--link_1">
                     <a href="#jewellery_div">Jewellery</a>
+                </div>
+                <div class="hero_text--link_gap">
+                    <p>|</p>
                 </div>
                 <div class="hero_text--link_2">
                     <a href="#treatments_div">Treatments</a>
                 </div>
+            </div>
+            <div class="hero_text--button">
+                <a href="#philosophy_div">
+                    <button>Get Started</button>
+                </a>
             </div>
         </div>
 
@@ -98,11 +118,11 @@
 
             <div class="jewellery_top_div--text">
 
-                <div class="jewellery_top_div--header">
-                    <h3>White Feather Jewellery</h3>
+                <div class="jewellery_top_div--logo">
+                    <img src="./images/logo/white-feather.png" alt="White Feather Jewellery logo">
                 </div>
                 <div class="jewellery_top_div--body">
-                    <p>Energy Attuned Unique handmade jewellery</p>
+                    <p>Energy Attuned Unique <br>handmade jewellery</p>
                 </div>
                 <div class="jewellery_top_div--button">
                     <form action="/jewellery">
@@ -112,7 +132,20 @@
 
             </div>
 
-            <div class="jewellery_top_div--image"></div>
+            <div class="jewellery_top_div--image">
+
+               <!-- Slider main container -->
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide swiper-slide-1"></div>
+                    <div class="swiper-slide swiper-slide-2"></div>
+                    <div class="swiper-slide swiper-slide-3"></div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
@@ -120,13 +153,13 @@
 
             <h3>Collections</h3>
 
-            <div class="jewellery_bottom_div--collections container">
+            <div class="jewellery_bottom_div--collections">
 
                 <div class="jewellery_bottom_div--collection collection_div--1">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top collection_div--image"" src="./images/jewellery-1.jpg" alt="Jewellery preview">
+                    <div class="card border-light">
+                        <img class="card-img-top collection_div--image" src="./images/jewellery-1.jpg" alt="Jewellery preview">
                         <div class="card-body">
-                            <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                            <h5 class="card-title collection_div--text-1">Bracelet and Earring Set</h5>
                             <div class="collection_div--button">
                                 <form action="/jewellery">
                                     <button>Shop Now</button>
@@ -137,10 +170,10 @@
                 </div>
 
                 <div class="jewellery_bottom_div--collection collection_div--2">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top collection_div--image"" src="./images/jewellery-2.jpg" alt="Jewellery preview">
+                    <div class="card border-light">
+                        <img class="card-img-top collection_div--image" src="./images/jewellery-2.jpg" alt="Jewellery preview">
                         <div class="card-body">
-                            <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                            <h5 class="card-title collection_div--text-2">Bracelet, Necklace and Earring Set</h5>
                             <div class="collection_div--button">
                                 <form action="/jewellery">
                                     <button>Shop Now</button>
@@ -151,10 +184,10 @@
                 </div>
 
                 <div class="jewellery_bottom_div--collection collection_div--3">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top collection_div--image"" src="./images/jewellery-3.jpg" alt="Jewellery preview">
+                    <div class="card border-light">
+                        <img class="card-img-top collection_div--image" src="./images/jewellery-3.jpg" alt="Jewellery preview">
                         <div class="card-body">
-                          <h5 class="card-title collection_div--text">Necklace and Earring Set</h5>
+                          <h5 class="card-title collection_div--text-3">Necklace and Earring Set</h5>
                             <div class="collection_div--button">
                                 <form action="/jewellery">
                                     <button>Shop Now</button>
@@ -176,7 +209,7 @@
 
             <div class="treatments_text">
                 <div class="treatments_text--header">
-                    <h3>Energy Treatments</h3>
+                    <h4>Energy Treatments</h4>
                 </div>
                 <div class="treatments_text--body">
                     <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
@@ -195,14 +228,39 @@
 
     <footer id="footer_div">
 
-    </footer>
+        
+        <div class="social_links">
+            <div class="social_link facebook"><a href="#"><i class="fab fa-facebook"></i></a></div>
+            <div class="social_link instagram"><a href="#"><i class="fab fa-instagram"></i></a></div>
+            <div class="social_link twitter"><a href="#"><i class="fab fa-twitter"></i></a></div>
+        </div>
 
+        <div class="contact_link">
+            <div class="contact_link--text">
+                <h6>Get In Contact</h6>
+            </div>
+            <div class="contact_link--button">
+                <form action="/contact">
+                    <button>Click Here</button>
+                </form>
+            </div>
+        </div>
+
+    </footer>
+    <!-- POPPER.JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
     integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     crossorigin="anonymous"></script>
+    <!-- SWIPER.JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Home.js -->
+    <script src='../javascripts/home.js'></script>
+
 </body>
 </html>
 

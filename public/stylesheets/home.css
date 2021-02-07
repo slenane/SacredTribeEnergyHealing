@@ -1,16 +1,82 @@
-/* HERO SECTION  W/ NAVBAR INSIDE */
+/* VARIABLES */
+:root {
+    /* Fonts */
+    --main-font: 'Amatic SC', cursive;
+    --secondary-font: "Open Sans";
 
+    /* Colours */
+    --crystal-cream: #f7e6ca;
+    --teal: #42b4b5;
+    --light-purple: #865e9c;
+    --deep-purple: #602f78;
+    --off-black: #060606;
+}
+
+/* GENERAL TAGS */
+body {
+    max-width: 1380px;
+    margin: 0 auto;
+    font-family: var(--main-font);
+}
+
+button,
+.nav-link {
+    font-family: var(--bs-font-sans-serif);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white; 
+}
+
+/* HERO SECTION  W/ NAVBAR INSIDE */
 #hero_div {
     background-image: url("../images/hero-image-rock-crystal.jpg");
     background-size: cover;
     background-position: 0%;
     height: 100vh;
-    margin-bottom: 5%;
+    margin-bottom: 5rem;
 }
 
 .hero_text {
-    color: white;
+    color: var(--crystal-cream);
+    max-width: 40%;
+    text-align: center;
+    margin: 5rem 0 0 4rem;
 }
+
+h1 {
+    font-size: 4rem;
+}
+
+.hero_text--links {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 2rem;
+}
+
+.hero_text--links a:hover {
+    color: var(--teal);
+}
+
+.hero_text--button button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.hero_text--button button:hover {
+    background-color: var(--teal);
+}
+
 
 /* PHILOSOPHY */
 
@@ -21,37 +87,145 @@
     background-position: 0 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 5%;
+    margin-bottom: 5rem;
 }
 
+.philosophy_image {
+    margin: 3rem 0 0 5rem;
+}
 
+.philosophy_text {
+    margin: 7rem 0 0 2rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--deep-purple);
+}
+
+.philosophy_text--body {
+    font-size: 2.5rem;
+}
+
+.philosophy_text--name {
+    font-size: 1.5rem;
+    color: var(--off-black);
+}
 
 /* JEWELLERY */
 
 #jewellery_div {
-    height: 150vh;
+    height: 200vh;
+    margin-bottom: 5rem;
 }
 
 .jewellery_top_div {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 4rem;
+}
+
+.jewellery_top_div--text {
+    margin: 5rem 0 0 2rem;
+    text-align: center;
+}
+
+.jewellery_top_div--logo img {
+   width: 14rem;
+}
+
+.jewellery_top_div--body {
+    font-size: 2.5rem;
+    color: var(--deep-purple);
+}
+
+.jewellery_top_div--button button{
+    background-color: white;
+    height: 2.5rem;
+    width: 8rem;
+    border: 1px solid var(--deep-purple);
+    color: var(--deep-purple);
+    border-radius: 10px;
+}
+
+.jewellery_top_div--button button:hover,
+.collection_div--button button:hover {
+    background-color: var(--deep-purple);
+    border: none;
+    color: white;
+}
+
+.jewellery_top_div--image {
+    margin: 2rem 5rem 0 0;
+}
+
+.swiper-container {
+    width: 800px;
+    height: 550px;
+  }
+
+.swiper-slide-1 {
+    background-image: url("../images/Jewellery-1.jpg");
+    background-size: cover;
+}
+
+.swiper-slide-2 {
+    background-image: url("../images/Jewellery-2.jpg");
+    background-size: cover;
+}
+
+.swiper-slide-3 {
+    background-image: url("../images/Jewellery-3.jpg");
+    background-size: cover;
 }
 
 .jewellery_bottom_div {
    text-align: center;
 }
 
+h3 {
+    font-size: 3.5rem;
+    color: var(--deep-purple);
+    margin-bottom: 4rem;
+}
+
 .jewellery_bottom_div--collections {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 18rem);
+    justify-content: space-around;
+    padding: 0 3rem;
+}
+
+.jewellery_bottom_div--collection {
+    width: 18rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+.collection_div--text-1,
+.collection_div--text-3 {
+    margin-top: 1rem;
+    margin-bottom: 1.7rem;
+}
+
+.collection_div--button button {
+    background-color: white;
+    height: 2rem;
+    width: 6rem;
+    border: 1px solid var(--deep-purple);
+    color: var(--deep-purple);
+    border-radius: 10px;
 }
 
 /* TREATMENTS */
 
 #treatments_div {
     height: 100vh;
-    background-image: url("../images/healing-room-bed-overlay.png");
-    background-position: bottom;
+    background-image: url("../images/treatments-bg.png");
+    background-position: 80%;
     background-size: cover;
     display: grid;
     text-align: center;
@@ -60,13 +234,89 @@
 
 .treatments_text {
     color: white;
-    z-index: 3;
+}
+
+h4 {
+    font-size: 4rem;
+}
+
+.treatments_text--body {
+    margin: 0 15rem;
+    font-size: 3rem;
+}
+
+.treatments_text--button button {
+    background: none;
+    height: 2.5rem;
+    width: 8rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+}
+
+.treatments_text--button button:hover {
+    background: white;
+    border: 1px solid var(--deep-purple);
+    color: var(--deep-purple);
 }
 
 /* FOOTER */
 
 #footer_div {
-    height: 30vh;
-    background-color: black;
+    height: 40vh;
+    background-color: var(--off-black);
+    color: white;
+    display: grid;
+    justify-content: center;
+    text-align: center;
 }
 
+.social_links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.social_link {
+    margin: 0 2rem;
+    font-size: 2rem;
+}
+
+.fa-facebook:hover {
+    color: #4267B2;
+}
+
+.fa-instagram:hover {
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-twitter:hover {
+    color: #1DA1F2;
+}
+
+h6 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact_link--button button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.contact_link--button button:hover {
+    background-color: var(--teal);
+}
