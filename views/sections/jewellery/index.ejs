@@ -1,10 +1,102 @@
 <% layout('layouts/boilerplate')%>
 
-    <h1>All Jewellery</h1>
-     
-    <ul>
-        <% for (let jewellery of jewelleries) { %>
-            <li><a href="/jewellery/<% jewellery._id %>"><% jewellery.title %></a></li>
-        <% } %>
-    </ul>
+<!-- HERO DIV -->
+
+<div id="jewellery__hero_div">
+
+    <div class="hero_header">
+
+        <div class="indian_woman--img-overlay">
+
+            <div class="hero_header-content">
+
+                <div class="hero_header--icon">
+                    <img src="./images/logo/white-feather.png" alt="White Feather Jewellery logo">
+                </div>
+    
+                <div class="hero_header--text">
+                   <p>Energy Attuned Unique Handmade Jewellery</p>
+                </div>
+    
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero_infobar">
+
+        <div class="hero_infobar--content">
+
+            <div class="hero_infobar--text">
+                <p>Buying as a gift or for yourself? Click below to read the buying guide</p>
+            </div>
+
+            <div class="hero_infobar--button">
+                <button class="buying-guide">Read More</button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="hero_grid">
+
+        <div class="hero_grid--item hero_grid--item-1">
+
+                <div class="overlay"></div>
+
+                <div class="hero_grid--item-content hero_grid--item-content-1">
+
+                    <div class="hero_grid--item-icon">
+                        <img src="./images/icons/simple-circle.png" alt="Circle icon">
+                    </div>
+
+                    <div class="hero_grid--item-text">
+                        <p>Unique Pieces</p>
+                    </div>
+
+                </div>
+
+        </div>
+
+        <div class="hero_grid--item hero_grid--item-2">
+
+            <div class="overlay"></div>
+            
+            <div class="hero_grid--item-content hero_grid--item-content-2">
+                
+                    <div class="hero_grid--item-icon">
+                        <img src="./images/icons/recycle.png" alt="Recycle icon">
+                    </div>
+                    
+                    <div class="hero_grid--item-text">
+                        <p>Made with 30% <br> reclaimed materials</p>
+                    </div>
+                    
+                </div>
+
+        </div>
+
+        <div class="hero_grid--item hero_grid--item-3">
+
+            <div class="overlay"></div>
+
+            <div class="hero_grid--item-content hero_grid--item-content-3">
+
+                <div class="hero_grid--item-icon">
+                    <img src="./images/icons/local-shipping.png" alt="Shipping icon">
+                </div>
+
+                <div class="hero_grid--item-text">
+                    <p>Free Shipping</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 

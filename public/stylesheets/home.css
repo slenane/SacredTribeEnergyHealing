@@ -52,6 +52,7 @@ a:hover {
 
 h1 {
     font-size: 4rem;
+    font-weight: 700;
 }
 
 .hero_text--links {
@@ -60,6 +61,7 @@ h1 {
     justify-content: space-around;
     padding: 0 2rem;
     font-size: 2rem;
+    font-weight: 700;
 }
 
 .hero_text--links a:hover {
@@ -89,6 +91,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 5rem;
+    font-weight: 700;
 }
 
 .philosophy_image {
@@ -141,6 +144,7 @@ h2 {
 .jewellery_top_div--text {
     margin: 5rem 0 0 2rem;
     text-align: center;
+    font-weight: 700;
 }
 
 .jewellery_top_div--logo img {
@@ -212,6 +216,7 @@ h3 {
     font-size: 3.5rem;
     color: var(--deep-purple);
     margin-bottom: 4rem;
+    font-weight: 700;
 }
 
 .jewellery_bottom_div--collections {
@@ -232,12 +237,14 @@ h3 {
 
 h5 {
     font-size: 2rem;
+    font-weight: 700;
 }
 
 .collection_div--text-1,
 .collection_div--text-3 {
     margin-top: 1rem;
     margin-bottom: 1.7rem;
+    font-weight: 700;
 }
 
 .collection_div--button button {
@@ -259,6 +266,7 @@ h5 {
     display: grid;
     text-align: center;
     align-items: center;
+    font-weight: 700;
 }
 
 .treatments_text {
@@ -267,6 +275,7 @@ h5 {
 
 h4 {
     font-size: 4rem;
+    font-weight: 700;
 }
 
 .treatments_text--body {
@@ -335,6 +344,7 @@ h4 {
 h6 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .contact_link--button button {
