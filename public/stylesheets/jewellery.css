@@ -1,0 +1,164 @@
+/* HERO DIV */
+
+#jewellery__hero_div {
+    height: 100vh;
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-rows:  45% 10% 35%;
+}
+
+.hero_header {
+    background-color: var(--deep-purple);
+}
+
+.indian_woman--img-overlay {
+    background-image: url("../images/woman2.png");
+    background-repeat: no-repeat;
+    background-size: 25rem;
+    background-position: 10% 80%;
+}
+
+.hero_header-content {
+    display: grid;
+    justify-content: center;
+    color: white;
+}
+
+.hero_header--icon {
+    display: grid;
+    margin-top: 2rem;
+    z-index: 2;
+}
+
+.hero_header--icon img {
+    width: 10rem;
+    justify-self: center;
+}
+
+.hero_header--text {
+    font-size: 2.5rem;
+    border: 2px solid white;
+    padding: 3rem 2rem 0 2rem;
+    position: relative;
+    transform: translateY(-3rem);
+    z-index: 1;
+}
+
+.hero_infobar {
+    background-color: var(--teal);
+    color: white;
+    font-family: "Open Sans";
+}
+
+.hero_infobar--content {
+    display: grid;
+    justify-content: center;
+}
+
+.hero_infobar--text p {
+    font-size: 1rem;
+    margin-top: .2rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.hero_infobar--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 24rem);
+    grid-gap: 5rem;
+    margin-top: 2rem;
+}
+
+.hero_infobar--grid-item-icon {
+    text-align: center;
+    display: grid;
+    grid-template-rows: 4rem 1fr;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.hero_infobar--button {
+    display: grid;
+}
+
+.buying_guide-button {
+    background: none;
+    height: 1.5rem;
+    width: 5rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+    justify-self: center;
+    font-size: .7rem;
+}
+
+.buying_guide-button:hover {
+    background-color: var(--deep-purple);
+    border: none;
+}
+
+.hero_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 16rem);
+    grid-template-rows: 16rem;
+    justify-content: center;
+    grid-gap: 6rem;
+}
+
+.hero_grid--item {
+    margin: 1rem 0;
+    display: grid;
+    overflow: hidden;
+}
+
+.hero_grid--item-1 {
+    background-image: url("../images/Jewellery-1.jpg");
+    background-size: contain;
+}
+
+.hero_grid--item-2 {
+    background-image: url("../images/Jewellery-2.jpg");
+    background-size: contain;
+}
+
+.hero_grid--item-3 {
+    background-image: url("../images/Jewellery-3.jpg");  
+    background-size: contain;                                                            
+}
+
+.overlay {
+    background-color: var(--deep-purple);
+    border: 1px solid white;
+    position: relative;
+    top: 1rem;
+    left: 2rem;
+    height: 12rem;
+    width: 12rem;
+    opacity: 0.7;
+}
+
+.hero_grid--item-content {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.hero_grid--item-content-1 {
+    top: -8rem !important;
+}
+
+.hero_grid--item-content-2 {
+    top: -9rem !important;
+}
+
+.hero_grid--item-content-3 {
+    top: -7.5rem !important;
+}
+
+.hero_grid--item-1 p,
+.hero_grid--item-3 p {
+    margin-top: 1rem;
+}
