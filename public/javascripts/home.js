@@ -1,3 +1,10 @@
+// ARROW BOUNCE
+
+window.addEventListener("load", () => {
+  const heroArrow = document.querySelector(".fa-angle-double-down");
+  heroArrow.classList.add("active");
+})
+
 // ANIMATIONS
 const slideInImg = document.querySelector(".slide-in");
 const slideUpImg = document.querySelector(".slide-up");
@@ -52,7 +59,6 @@ let overlaySlide = () => {
 let fadeIn = () => {
   // Create array of paragraph nodes
   let stepFadeChildren = Array.from(FadeInImg.childNodes).filter(node => node.nodeName == "P" || node.nodeName == "H2");
-  console.log(stepFadeChildren);
   
   stepFadeChildren.forEach(child => {
     const slideInAt = (window.scrollY + window.innerHeight);

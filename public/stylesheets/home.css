@@ -41,6 +41,7 @@ a:hover {
     background-position: 0%;
     height: 100vh;
     margin-bottom: 5rem;
+    position: relative;
 }
 
 .hero_text {
@@ -79,6 +80,44 @@ h1 {
 
 .hero_text--button button:hover {
     background-color: var(--teal);
+}
+
+.hero_arrow {
+    display: grid;
+    position: relative;
+    top: 30%;
+    justify-content: center;
+    color: white;
+}
+
+.fa-angle-double-down {
+    font-size: 3rem;
+}
+
+.fa-angle-double-down.active {
+    animation: bounce;
+    animation-duration: 4s;
+}
+
+@keyframes bounce {
+    15% {
+        transform: translateY(2rem);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    45% {
+        transform: translateY(2rem);
+    }
+    60% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(2rem);
+    }
+    90% {
+        transform: translateY(0);
+    }
 }
 
 /* PHILOSOPHY */

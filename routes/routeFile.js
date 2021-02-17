@@ -27,9 +27,14 @@ router.get("/jewellery", catchAsync(async (req, res) => {
 }));
 
 // SHOW
-router.get('/jewellery/:id', catchAsync(async (req, res,) => {
-    const jewellery = await Jewellery.findById(req.params.id)
-    res.render('sections/jewellery/show', { jewellery });
+// router.get('/jewellery/:id', catchAsync(async (req, res,) => {
+//     const jewellery = await Jewellery.findById(req.params.id)
+//     res.render('sections/jewellery/show', { jewellery });
+// }));
+
+// SHOW TEMPLATE
+router.get('/jewellery/show', catchAsync(async (req, res,) => {
+    res.render('sections/jewellery/show');
 }));
 
 // AWARENESS ROUTE

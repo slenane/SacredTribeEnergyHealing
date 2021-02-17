@@ -2,9 +2,8 @@
 
 #jewellery__hero_div {
     height: 100vh;
-    margin-bottom: 5rem;
     display: grid;
-    grid-template-rows:  45% 10% 35%;
+    grid-template-rows:  45% 10%;
 }
 
 .hero_header {
@@ -12,7 +11,7 @@
 }
 
 .indian_woman--img-overlay {
-    background-image: url("../images/woman2.png");
+    background-image: url("../../images/woman2.png");
     background-repeat: no-repeat;
     background-size: 25rem;
     background-position: 10% 80%;
@@ -113,17 +112,17 @@
 }
 
 .hero_grid--item-1 {
-    background-image: url("../images/Jewellery-1.jpg");
+    background-image: url("../../images/Jewellery-1.jpg");
     background-size: contain;
 }
 
 .hero_grid--item-2 {
-    background-image: url("../images/Jewellery-2.jpg");
+    background-image: url("../../images/Jewellery-2.jpg");
     background-size: contain;
 }
 
 .hero_grid--item-3 {
-    background-image: url("../images/Jewellery-3.jpg");  
+    background-image: url("../../images/Jewellery-3.jpg");  
     background-size: contain;                                                            
 }
 
@@ -161,4 +160,106 @@
 .hero_grid--item-1 p,
 .hero_grid--item-3 p {
     margin-top: 1rem;
+}
+
+.jewellery_title {
+    display: grid;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 3.5rem;
+    color: var(--deep-purple);
+    font-weight: 700;
+}
+
+/* CONTENT DIVS */
+
+.jewellery_content_div {
+    display: grid;
+    grid-template-columns: repeat(3, 20rem);
+    justify-content: space-around;
+    grid-gap: 3rem;
+    text-align: center;
+    margin: 3rem 5rem;
+}
+
+.jewellery_item {
+    width: 20rem;
+    height: 32rem;
+}
+
+h5 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.jewellery_item p {
+    font-size: 1.5rem;
+}
+
+.jewellery_item--button button {
+    background-color: white;
+    height: 2rem;
+    width: 6rem;
+    border: 1px solid var(--deep-purple);
+    color: var(--deep-purple);
+    border-radius: 10px;
+}
+
+.jewellery_item--button button:hover {
+    background-color: var(--deep-purple);
+    border: none;
+    color: white;
+}
+
+/* TREATMENT AND AWARENESS LINKs */
+
+.treatments_link,
+.awareness_link {
+    height: 40vh;
+    background-image: url("../../images/treatments-bg.png");
+    background-position: 0 50%;
+    background-size: cover;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.treatments_text,
+.awareness_text {
+    color: white;
+}
+
+h4 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.treatments_text--body {
+    margin: 0 20rem;
+    font-size: 2rem;
+}
+
+.awareness_text--body {
+    margin: 0 15rem;
+    font-size: 2rem;
+}
+
+.treatments_text--button button,
+.awareness_text--button button {
+    background: none;
+    height: 2rem;
+    width: 7rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+}
+
+.treatments_text--button button:hover,
+.awareness_text--button button:hover {
+    background: white;
+    border: 1px solid var(--deep-purple);
+    color: var(--deep-purple);
 }

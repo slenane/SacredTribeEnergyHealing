@@ -1,7 +1,8 @@
 let heroDiv = document.querySelector("#jewellery__hero_div");
 let infobarText = document.querySelector(".hero_infobar--text");
 let buyingGuide = document.querySelector(".hero_infobar--grid");
-let buyingGuideBtn = document.querySelector(".buying_guide-button");
+let buyingGuideBtn = document.querySelector(".buying_guide-button")
+let heroGrid = document.querySelector(".hero_grid");
 
 let toggleShowDropdown = (e) => {
     if (buyingGuide.classList.contains("hide")) {
@@ -13,6 +14,8 @@ let toggleShowDropdown = (e) => {
         buyingGuide.classList.remove("hide");
         // Change the text content of the button
         buyingGuideBtn.textContent = "Read Less";
+        // Hide the grid below the buying guide when dropdown open
+        heroGrid.classList.add("hide");
     } else {
         // Return grid to orignal size
         heroDiv.style.gridTemplateRows = "45% 10% 35%";
@@ -22,6 +25,8 @@ let toggleShowDropdown = (e) => {
         buyingGuide.classList.add("hide");
         // Change the text content of the button
         buyingGuideBtn.textContent = "Read More";
+        // Show the grid below the buying guide when dropdown closed
+        heroGrid.classList.remove("hide");
     }
 };
 

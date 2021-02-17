@@ -1,8 +1,69 @@
 <% layout('layouts/boilerplate')%>
 
-    <h1><%= jewellery.title %></h1>
-    <p><%= jewellery.description %></p>
-    <p><%= jewellery.price %></p>
-    <footer>
-        <a href="/jewellery">All Jewellery</a>
-    </footer>
+<!-- CONTENT WRAPPER FOR MARGIN -->
+<div class="wrapper">
+
+<!-- BACK TO ALL JEWELLERY -->
+
+<div class="back_to_jewellery">
+    <p><i class="fas fa-arrow-left"></i> Back to jewellery</p>
+</div>
+
+<!-- JEWELLERY CONTENT -->
+
+<div class="jewellery_content_div">
+
+    <div class="jewellery_content_main">
+        <div class="jewellery_content_main--section-1">
+            <!-- Swiper JS with photos on the side -->
+            <img src="../images/jewellery-1.jpg" alt="jewellery image">
+        </div>
+        <div class="jewellery_content_main--section-2">
+            <h1 class="jewellery_title">Product name</h1>
+            <h2 class="jewellery_type">Bracelet and Earring Set</h2>
+            <h3 class="jewellery_price">€85</h3>
+            <p class="jewellery_stock">ONLY ONE REMAINING (something like that)</p>
+            <form class="jewellery_buy_button">
+                <button>Buy Now</button>
+            </form>
+            <p class="jewellery_wishlist--add"><i class="far fa-heart"></i> ADD TO WISHLIST</p>
+
+            <div class="jewellery_description">
+                <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
+                <p class="jewellery_description--body">
+                    This bracelet and earring set, made with gemstones, comprises of the following: <br>
+                    • Lava stones <br>
+                    • Spacers with antique silver <br>
+                    • Wooden and synthetic beads <br>
+                    <br>
+                    Earrings made using stainless steel ear wires.<br>
+                    <br>
+                    All products are made with 30% reclaimed materials utilised in service to Mother Earth. <br>
+                    <br>
+                    Products shipped next working day.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="materials_grid">
+        <div class="materials_grid--item">
+            <img src="" alt="">
+            <p></p>
+        </div>
+        <div class="materials_grid--item">
+            <img src="" alt="">
+            <p></p>
+        </div>
+        <div class="materials_grid--item">
+            <img src="" alt="">
+            <p></p>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- SIMILAR ITEMS -->
+
+</div> <!--  End of content wrapper -->
