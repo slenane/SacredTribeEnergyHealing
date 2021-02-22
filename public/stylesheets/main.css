@@ -43,6 +43,10 @@ button:focus {
     display: none !important;
 }
 
+.wrapper {
+    margin: 0 5rem;
+}
+
 /* FOOTER */
 
 #footer_div {
