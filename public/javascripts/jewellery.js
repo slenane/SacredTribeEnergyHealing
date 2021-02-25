@@ -7,7 +7,7 @@ let heroGrid = document.querySelector(".hero_grid");
 let toggleShowDropdown = (e) => {
     if (buyingGuide.classList.contains("hide")) {
         // Adjust the CSS grid to have space for the dropdown menu
-        heroDiv.style.gridTemplateRows = "45% 50% 35%";
+        heroDiv.style.gridTemplateRows = "55% 50% 35%";
         // Remove the infobar text
         infobarText.classList.add("hide");
         // Show the buying guide
@@ -18,7 +18,7 @@ let toggleShowDropdown = (e) => {
         heroGrid.classList.add("hide");
     } else {
         // Return grid to orignal size
-        heroDiv.style.gridTemplateRows = "45% 10% 35%";
+        heroDiv.style.gridTemplateRows = "55% 10% 35%";
         // Display infobar text
         infobarText.classList.remove("hide");
         // Hide the buying guide

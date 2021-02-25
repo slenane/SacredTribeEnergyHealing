@@ -3,7 +3,8 @@
 #jewellery__hero_div {
     height: 100vh;
     display: grid;
-    grid-template-rows:  45% 10%;
+    grid-template-rows:  55% 10%;
+    margin-bottom: 3rem;
 }
 
 .hero_header {
@@ -41,6 +42,7 @@
     position: relative;
     transform: translateY(-3rem);
     z-index: 1;
+    text-shadow: var(--main-shadow);
 }
 
 .hero_infobar {
@@ -141,6 +143,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: white;
+    text-shadow: var(--main-shadow);
     text-align: center;
     position: relative;
 }
@@ -225,6 +228,7 @@ h5 {
     text-align: center;
     align-items: center;
     font-weight: 700;
+    text-shadow: var(--main-shadow);
 }
 
 .treatments_text,

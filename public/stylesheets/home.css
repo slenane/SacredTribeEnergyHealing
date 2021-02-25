@@ -10,6 +10,9 @@
     --light-purple: #865e9c;
     --deep-purple: #602f78;
     --off-black: #060606;
+
+    /*  Text Shadow */
+    --main-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 /* GENERAL TAGS */
@@ -54,6 +57,7 @@ a:hover {
 h1 {
     font-size: 4rem;
     font-weight: 700;
+    text-shadow: var(--main-shadow);
 }
 
 .hero_text--links {
@@ -63,6 +67,7 @@ h1 {
     padding: 0 2rem;
     font-size: 2rem;
     font-weight: 700;
+    text-shadow: var(--main-shadow);
 }
 
 .hero_text--links a:hover {
@@ -306,6 +311,7 @@ h5 {
     text-align: center;
     align-items: center;
     font-weight: 700;
+    text-shadow: var(--main-shadow);
 }
 
 .treatments_text {

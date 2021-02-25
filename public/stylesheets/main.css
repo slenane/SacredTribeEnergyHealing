@@ -12,6 +12,9 @@
     --light-purple: #865e9c;
     --deep-purple: #602f78;
     --off-black: #060606;
+
+    /*  Text Shadow */
+    --main-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 /* GENERAL TAGS */
@@ -46,6 +49,17 @@ button:focus {
 
 .wrapper {
     margin: 0 5rem;
+}
+
+/* NAVBAR */
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar_black_text a {
+    color: var(--off-black) !important;
 }
 
 /* FOOTER */
