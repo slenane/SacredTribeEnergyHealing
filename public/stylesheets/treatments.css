@@ -110,6 +110,8 @@ h4.treatments_hero_grid--item-header {
 
 
 /* TREATMENT SHOW PAGES */
+
+/* Treatment show hero div */
 .treatment_item_hero_div {
     height: 50vh;  
     display: grid;
@@ -118,7 +120,7 @@ h4.treatments_hero_grid--item-header {
 }
 
 .back_to_treatments {
-    padding: 0 3rem;
+    padding: 0 5rem;
 }
 
 .back_to_treatments a {
@@ -143,6 +145,160 @@ h4.treatments_hero_grid--item-header {
     text-shadow: var(--main-shadow);
 }
 
+/*  Treatment hero main */
+
+.jewellery_item_wrapper {
+    margin: 0 5rem;
+    padding: 2rem 0;
+}
+
+/*  Main div 1 */
+.treatment_item_main_div {
+    font-family: var(--bs-font-sans-serif);
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns:  50% 50%;
+}
+
+.grid_section_1--header-paragraph {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.grid_section_1--body,
+.grid_section_1--treatment-process-body,
+.grid_section_2--pre-treatment-body {
+    font-size: 1.2rem;
+}
+
+.grid_section_1--treatment-process-header,
+.grid_section_2--pre-treatment-header {
+    font-family: var(--main-font);
+    text-align: center;
+}
+
+.grid_section_1--treatment-process-header {
+    margin: 2rem 0;
+}
+
+
+.treatment_item_main_grid--section-2 {
+    display: grid;
+    grid-template-rows:  auto auto 1fr;
+}
+
+.jewellery_item_wrapper img {
+    padding-bottom: 3rem;
+    max-width: 100%;
+}
+
+/* PRICING GRID COMPONENT */
+
+.price_component_header {
+    font-family: var(--main-font);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.grid_component_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 22rem);
+    justify-content: center;
+    grid-gap: 1rem;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.price_component_grid--item {
+    border-radius: 5px;
+}
+
+.price_component_grid--item:hover {
+    transform: scale(1.05);
+}
+
+.treatment_price_component--energy-treatment .price_component_grid--header {
+    background: rgb(96,47,120);
+    background: linear-gradient(126deg, rgba(96,47,120,1) 31%, rgba(134,94,156,1) 100%);
+}
+
+.treatment_price_component--absentee-treatment .price_component_grid--header {
+    background: rgb(66,180,181);
+    background: linear-gradient(126deg, rgba(66,180,181,1) 31%, rgba(134,94,156,1) 100%);
+}
+
+.price_component_grid--header {
+    color: white;
+    border-radius: 5px 5px 0 0;
+}
+
+.price_component_grid--header-title h6 {
+    font-size: 1.4rem;
+    padding-top: 1rem;
+    margin-bottom: 0;
+    text-shadow: var(--main-shadow);
+}
+
+.price_component_grid--header-price h5 {
+    font-size: 3rem;
+    text-shadow: var(--main-shadow);
+    padding: 1rem;
+}
+
+.currency_small {
+    font-size: 1.5rem;
+    vertical-align: super;
+    padding-right: .2rem;
+}
+
+.price_component_grid--item-location {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 2rem;
+    justify-content: center;
+    grid-gap: 1rem;
+}
+
+.price_component_grid--item-location-text {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.price_component_grid--button {
+    margin: 1rem auto;
+}
+
+.price_component_grid--button button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.price_component_grid--button button:hover {
+    background-color: var(--teal);
+}
+/*  Image gallery div */
+
+/* .photo_div--header {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.image_gallery--top {
+    display: grid;
+    grid-template-columns:  60% 40%;
+    grid-gap: 2rem;
+}
+
+.image_gallery--bottom {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1rem;
+} */
 
 /* ENERGY TREATMENT SHOW PAGE */
 .energy_treatment_div {
