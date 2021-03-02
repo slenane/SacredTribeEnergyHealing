@@ -240,6 +240,10 @@ h4.treatments_hero_grid--item-header {
     text-shadow: var(--main-shadow);
 }
 
+.price_component_grid--header-price {
+    display: grid;
+}
+
 .price_component_grid--header-price h5 {
     font-size: 3rem;
     text-shadow: var(--main-shadow);
@@ -311,4 +315,46 @@ h4.treatments_hero_grid--item-header {
 .absentee_treatment_div {
     background-image: url("../images/background-teal.png");
     background-size: cover;
+}
+
+.treatment_link {
+    background-color: var(--teal);
+    color: white;
+    font-family: "Open Sans";
+    height: 5rem;
+}
+
+.treatment_link--content {
+    display: grid;
+    justify-content: center;
+    padding: .5rem;
+}
+
+.treatment_link--text p {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.treatment_link--button {
+    display: grid;
+    justify-content: center;
+}
+
+.link-button {
+    background: none;
+    height: 1.5rem;
+    width: 5rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+    justify-self: center;
+    font-size: .7rem;
+}
+
+.link-button:hover {
+    background-color: var(--deep-purple);
+    border: none;
 }

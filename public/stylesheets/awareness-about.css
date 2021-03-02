@@ -1,0 +1,88 @@
+.header_div {
+    text-align: center;
+
+}
+
+.header_div h1 {
+    font-weight: 700;
+    font-size: 3.5rem;
+}
+
+.header_img_div {
+    text-align: center;
+}
+
+
+.header_img_div img {
+    max-width: 40rem;
+    margin-bottom: 3rem;
+}
+
+.awareness_about--wrapper {
+    margin: 0 5rem;
+    padding: 2rem 0;
+}
+
+.body_div {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1.2rem;
+    padding: 0 12rem;
+}
+
+.body_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem auto;
+    grid-gap: 2rem;
+}
+
+.quote-box {
+    background-color: var(--deep-purple);
+    color: white;
+    font-size: 2rem;
+    padding: 3rem;
+    height: 18rem;
+    width: 22rem;
+}
+
+.awareness_about_link {
+    background-color: var(--teal);
+    color: white;
+    font-family: "Open Sans";
+    height: 5rem;
+}
+
+.awareness_about_link--content {
+    display: grid;
+    justify-content: center;
+    padding: .5rem;
+}
+
+.awareness_about_link--text p {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.awareness_about_link--button {
+    display: grid;
+    justify-content: center;
+}
+
+.link-button {
+    background: none;
+    height: 1.5rem;
+    width: 5rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+    justify-self: center;
+    font-size: .7rem;
+}
+
+.link-button:hover {
+    background-color: var(--deep-purple);
+    border: none;
+}

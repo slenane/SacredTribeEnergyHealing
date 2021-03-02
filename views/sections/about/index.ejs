@@ -1,3 +1,83 @@
 <% layout('layouts/boilerplate')%>
 
-    <h1>About</h1>
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+    <div class="container container-fluid">
+        <a class="navbar-brand black-brand" href="/">Sacred Tribe Energy Healing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar_black_text" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/jewellery">Jewellery</a>
+                <a class="nav-link" href="/treatments">Treatments</a>
+                <a class="nav-link" href="/awareness">Awareness</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/contact">Contact</a>
+                <div class="navbar-nav ml-auto">
+                    <% if(currentUser) {%>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="awareness_about--wrapper">
+
+    <div class="header_div">
+        <h1>Sacred Tribe Energy Healing</h1>
+    </div>
+
+    <div class="header_img_div">
+        <img src="../images/jenny-field.jpg" alt="Jennifer Wilson profile picture">
+    </div>
+
+    <div class="body_div">
+        <p>It is my honour to serve Spirit today through your presence; it is not by chance that you peruse this site but the perfect unfolding of the universal will, guided by your prayers, desires and dreams.</p>
+
+        <div class="body_grid body_grid--1">
+            <div class="body_grid--section-1 quote-box">
+                <p>I see only your incredible strength and power</p>
+            </div>
+            <div class="body_grid--section-2">
+                <p>You were guided here by the universal light (consciously or unconsciously) because it knows I see only your incredible strength and power, not stunted in any way but without awareness, misdirected to create the disharmony of issues that form your present reality.</p>
+            </div>
+        </div>
+
+        <p>Long term healing on any level, be it physical, mental, emotional or spiritual, requires an awareness of energy, so that you the individual may take control and responsibility for your own continued healing and reality. For it is a sacred truth that the healer must not take, be given or accept your power.</p>
+
+        <p>I will empower you to remember, to reclaim and to create that which you seek, by sharing with you the tools of Awareness so that you may observe and understand the power you hold within the structures of your relationship with self and others - amid the varied dynamics of your life.</p>
+
+        <p>This tribe consists of angels, archangels, ascended masters of all religions, teachers, guides, shamanic realm, Mother Earth and the spirit of her oceans, gypsy spirit, dragon energy, moon energy, elemental energy, nature spirit energy and other planetary tribes that have chosen to unite to serve the light.</p>
+
+        <div class="body_grid body_grid--2">
+            <div class="body_grid--section-1">
+                <p>It is their intent to unify as one, so that they may offer the tribes of this earth, their frequency of unified energy so that we too may hold this great potential through love to unite as one.</p>
+
+                <p>It is their gift to our world at this time of unfolding growth.</p>
+            </div>
+            <div class="body_grid--section-2 quote-box">
+                <p>... we too may hold this great potential through love to unite as one</p>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- END OF WRAPPER -->
+
+<div class="awareness_about_link">
+    <div class="awareness_about_link_infobar--content">
+
+        <div class="awareness_about_link--text">
+            <p>Discover the power of Awareness</p>
+        </div>
+
+        <div class="awareness_about_link--button">
+            <a href="/awareness">
+                <button class="link-button">Read more</button>
+            </a>
+        </div>
+</div>

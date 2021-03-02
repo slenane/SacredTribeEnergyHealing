@@ -53,12 +53,19 @@ button:focus {
 
 /* NAVBAR */
 
-.navbar-brand {
+a.navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
 }
+a.black-brand {
+    color: var(--off-black) !important;
+}
 
 .navbar_black_text a {
+    color: grey !important;
+}
+
+.navbar_black_text a:hover {
     color: var(--off-black) !important;
 }
 

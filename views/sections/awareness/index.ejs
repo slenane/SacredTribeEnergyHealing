@@ -1,4 +1,32 @@
 <% layout('layouts/boilerplate')%>
 
-    <h1>Awareness</h1>
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+    <div class="container container-fluid">
+        <a class="navbar-brand black-brand" href="/">Sacred Tribe Energy Healing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar_black_text" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/jewellery">Jewellery</a>
+                <a class="nav-link" href="/treatments">Treatments</a>
+                <a class="nav-link" href="/awareness">Awareness</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/contact">Contact</a>
+                <div class="navbar-nav ml-auto">
+                    <% if(currentUser) {%>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 
+<div class="awareness_about--wrapper">
+
+    <div class="header-img"></div>
+</div>
