@@ -1,11 +1,17 @@
-.header_div {
+.header_div,
+.subheader_div {
     text-align: center;
-
+    margin-bottom: 1rem;
 }
 
 .header_div h1 {
     font-weight: 700;
     font-size: 3.5rem;
+}
+
+.subheader_div h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
 .header_img_div {
@@ -14,35 +20,81 @@
 
 
 .header_img_div img {
-    max-width: 40rem;
+    max-width: 35rem;
     margin-bottom: 3rem;
+    border-radius: 5px;
 }
 
 .awareness_about--wrapper {
-    margin: 0 5rem;
-    padding: 2rem 0;
+    margin: 0 16rem;
+    margin-bottom: 2rem;
 }
 
 .body_div {
     font-family: var(--bs-font-sans-serif);
     font-size: 1.2rem;
-    padding: 0 12rem;
+    padding: 0 6rem 3rem;
 }
 
 .body_grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1rem auto;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
 }
 
 .quote-box {
     background-color: var(--deep-purple);
     color: white;
     font-size: 2rem;
-    padding: 3rem;
     height: 18rem;
     width: 22rem;
+    border-radius: 5px;
+    padding: 0 2rem;
+    display: grid;
+    align-items: center;
+}
+
+.about_open-quote-1,
+.about_open-quote-2 {
+    transform: translate(-.8rem, 1.2rem);
+}
+
+.about_close-quote-1 {
+    transform: translate(10rem, -3rem);
+}
+
+.about_close-quote-2 {
+    transform: translate(12rem, -2.5rem);
+}
+
+.awareness_open-quote-1 {
+    transform: translate(-.8rem, .8rem);
+}
+
+.awareness_open-quote-2 {
+    transform: translate(-.8rem, 2.5rem);
+}
+
+.awareness_close-quote-1 {
+    transform: translate(15rem, -1.5rem);
+}
+
+.awareness_close-quote-2 {
+    transform: translate(12rem, -4rem);
+}
+
+.jennifer-quote {
+    margin: 0 auto;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1.2rem;
+    padding: 0 6rem 3rem;
+}
+
+.quote-name {
+    display: block;
+    text-align: right;
+    padding-right: 3rem;
 }
 
 .awareness_about_link {
