@@ -26,22 +26,37 @@
     </div>
 </nav>
 
-<h1>All Blogs</h1>
-<div>
-    <a href="/blogs/new">Add Blogs</a>
+<div class="blog_index--header">
+    <h1>Blogs</h1>
 </div>
-<% for (let blog of blogs){%>
-<div class="card" mb-3>
-    <div class="row">
-        <div class="col-md-4">
-            <img class="img-fluid" alt="" src="<%=blog.image%>">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title"><%= blog.title %> </h5>
-                <a class="btn btn-primary" href="/blogs/<%=blog._id%>">Read</a>
+
+<% if (currentUser) { %>
+<div class="blog_index_add">
+    <a href="/blogs/new">
+        <button>Add a blog</button>
+    </a>
+</div>
+<% } %>
+
+<div class="blog_index_wrapper">
+
+    <div class="blog_index_grid">
+
+        <% for (let blog of blogs){ %>
+        <div class="blog_index_grid--item shadow">
+            <div class="card border-light">
+                <img class="img-fluid blog_item--image" alt="Blog image" src="<%=blog.image%>">
+                    <div class="card-body">
+                        <h5 class="card-title blog_item--title"><%= blog.title %></h5>
+                        <p class="card-text blog_item--text"><%= blog.header %></p>
+                        <a class="blog_item--button" href="/blogs/<%=blog._id%>">
+                            <button>Read more</button>
+                        </a>
+                    </div>
             </div>
         </div>
+        <% } %>
+                
     </div>
-</div>
-<% }%>
+
+</div> <!-- END OF WRAPPER -->

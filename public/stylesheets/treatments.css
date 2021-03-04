@@ -9,6 +9,7 @@
     align-items: center;
     color: white;
     padding-bottom: 2rem;
+    font-family: var(--main-font);
 }
 
 .treatments_hero_header {
@@ -137,12 +138,14 @@ h4.treatments_hero_grid--item-header {
     font-weight: 700;
     margin-bottom: 0;
     text-shadow: var(--main-shadow);
+    font-family: var(--main-font);
 }
 
 .treatment_item_hero--header h3 {
     font-size: 2.5rem;
     font-weight: 700;
     text-shadow: var(--main-shadow);
+    font-family: var(--main-font);
 }
 
 /*  Treatment hero main */
@@ -195,9 +198,13 @@ h4.treatments_hero_grid--item-header {
 /* PRICING GRID COMPONENT */
 
 .price_component_header {
-    font-family: var(--main-font);
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.price_component_grid--header h6, 
+.price_component_grid--header h5 {
+    font-family: var(--bs-font-sans-serif);
 }
 
 .grid_component_grid {

@@ -1,0 +1,125 @@
+.blog_index--header {
+    text-align: center;
+}
+
+
+.blog_index--header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: var(--main-font);
+}
+
+.blog_index_add {
+    text-align: center;
+}
+
+.blog_index_add button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+    
+.blog_index_add button:hover {
+    background-color: var(--teal);
+}
+
+.blog_wrapper {
+    margin: 0 5rem;
+    font-family: var(--bs-font-sans-serif);
+}
+
+.blog_index_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 32rem);
+    justify-content: space-around;
+    grid-gap: 3rem;
+    text-align: center;
+    margin: 3rem 5rem;
+}
+
+.blog_item--image {
+    max-height: 14rem;
+    object-fit: cover;
+}
+
+h5.blog_item--title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--main-font);
+}
+
+.blog_item--text {
+    font-family: var(--bs-font-sans-serif);
+}
+
+.blog_item--button button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+    
+.blog_item--button button:hover {
+    background-color: var(--teal);
+}
+
+/* SHOW PAGE */
+
+.back_to_blogs {
+    padding: 0 5rem;
+}
+
+.back_to_blogs a {
+    font-family: var(--bs-font-sans-serif);
+    color: var(--off-black);
+}
+
+.blog_show_wrapper {
+    margin: 0 16rem;
+    margin-bottom: 2rem;
+}
+
+.blog_title_div,
+.blog_img_div {
+    text-align: center;
+}
+
+.blog_title_div h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: var(--main-font);
+}
+
+.blog_img_div img {
+    max-width: 35rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.blog_body_div {
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1.2rem;
+    padding: 0 6rem 1rem;
+    white-space: pre-wrap;
+}
+
+/* NEW/EDIT BLOG */
+
+.new_edit_blog_div {
+    margin: 0 20rem 2rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.blog_new_edit_button {
+    text-align: center;
+}
+
+.blog_bottom_message {
+    margin-top: 1rem;
+}

@@ -8,6 +8,7 @@
     margin-top: 1rem;
     font-weight: 700;
     font-size: 3.5rem;
+    font-family: var(--main-font);
 }
 
 /* SOCIAL MEDIA */
@@ -72,6 +73,7 @@
     font-size: 2.5rem;
     margin-top: 1rem;
     text-shadow: var(--main-shadow);
+    font-family: var(--main-font);
 }
 
 .contact_form_grid--item {

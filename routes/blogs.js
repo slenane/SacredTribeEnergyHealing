@@ -22,7 +22,9 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.post("/", isLoggedIn, validateBlog, catchAsync(async (req, res) => {
     // if (!req.body.blog) throw new ExpressError('Invalid Blog Data', 400);
     const blog = new Blog(req.body.blog);
+    blog.author = req.user._id;
     await blog.save();
+    req.flash('success', 'Successfully made a new blog!');
     res.redirect(`/blogs/${blog._id}`)
 }));
 
@@ -38,7 +40,8 @@ router.get('/:id', catchAsync(async (req, res,) => {
 
 // EDIT 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res) => {
-    const blog = await Blog.findById(req.params.id);
+    const { id } = req.params;
+    const blog = await Blog.findById(id);
     if (!blog) {
         req.flash("error", "Cannot find that blog");
         return res.redirect("/blogs")

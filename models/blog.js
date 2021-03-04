@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const BlogSchema = new Schema({
     title: String,
+    header: String,
     image: String,
     text: String,
     author: {

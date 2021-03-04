@@ -21,7 +21,6 @@
 body {
     max-width: 1380px;
     margin: 0 auto;
-    font-family: var(--main-font);
 }
 
 button,
@@ -56,6 +55,7 @@ button:focus {
 a.navbar-brand {
     font-size: 1.5rem;
     font-weight: 700;
+    font-family: var(--main-font);
 }
 a.black-brand {
     color: var(--off-black) !important;
@@ -118,6 +118,7 @@ h6 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
+    font-family: var(--main-font);
 }
 
 .contact_link--button button {
@@ -131,4 +132,14 @@ h6 {
 
 .contact_link--button button:hover {
     background-color: var(--teal);
+}
+
+.register_login_div {
+    margin: 2rem 28rem;
+    padding: 1rem;
+}
+
+.register_login_div h1, 
+.register_login_button {
+    text-align: center;
 }

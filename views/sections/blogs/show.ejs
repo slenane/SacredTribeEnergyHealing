@@ -1,25 +1,57 @@
 <% layout('layouts/boilerplate')%>
 
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="card mb-3">
-            <img src="<%= blog.image%>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><%= blog.title %></h5>
-                <p class="card-text"><%= blog.text %></p>
-            </div>
-            <%  if( currentUser && blog.author.equals(currentUser._id))  {%>
-                <div class="card-body">
-                    <a class="card-link btn btn-info" href="/blogs/<%=blog._id%>/edit">Edit</a>
-                    <form class="d-inline" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+    <div class="container container-fluid">
+        <a class="navbar-brand black-brand" href="/">Sacred Tribe Energy Healing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar_black_text" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/jewellery">Jewellery</a>
+                <a class="nav-link" href="/treatments">Treatments</a>
+                <a class="nav-link" href="/awareness">Awareness</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/contact">Contact</a>
+                <div class="navbar-nav ml-auto">
+                    <% if(currentUser) {%>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
                 </div>
-                <% } %>
-            <div class="card-footer text-muted">
-                2 days ago
             </div>
         </div>
     </div>
+</nav>
+
+<div class="back_to_blogs">
+    <a href="/blogs"><i class="fas fa-arrow-left"></i> Back to blogs</a>
 </div>
+
+<div class="blog_show_wrapper shadow">
+
+    <%  if(currentUser && blog.author.equals(currentUser._id))  {%>
+        <div class="blog_edit_delete">
+            <a class="btn btn-info" href="/blogs/<%=blog._id%>/edit">Edit</a>
+            <form class="d-inline" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    <% } %>
+
+    <div class="blog_title_div">
+        <h1><%= blog.title %></h1>
+    </div>
+
+    <div class="blog_img_div">
+        <img class="shadow" src="<%= blog.image%>" alt="Blog image">
+    </div>
+
+    <div class="blog_body_div">
+        <p><%= blog.text %></p>
+    </div>
+
+</div> <!-- END OF WRAPPER -->
 

@@ -5,6 +5,7 @@
     display: grid;
     grid-template-rows:  55% 10%;
     margin-bottom: 3rem;
+    font-family: var(--main-font);
 }
 
 .hero_header {
@@ -171,6 +172,7 @@
 }
 
 h2 {
+    font-family: var(--main-font);
     font-size: 3.5rem;
     color: var(--deep-purple);
     font-weight: 700;
@@ -195,6 +197,7 @@ h2 {
 h5 {
     font-size: 2rem;
     font-weight: 700;
+    font-family: var(--main-font);
 }
 
 .jewellery_item p {
@@ -239,16 +242,19 @@ h5 {
 h4 {
     font-size: 3rem;
     font-weight: 700;
+    font-family: var(--main-font);
 }
 
 .treatments_text--body {
     margin: 0 20rem;
     font-size: 2rem;
+    font-family: var(--main-font);
 }
 
 .awareness_text--body {
     margin: 0 15rem;
     font-size: 2rem;
+    font-family: var(--main-font);
 }
 
 .treatments_text--button button,
@@ -400,6 +406,7 @@ h4.jewellery_description--header {
 }
 
 .materials_grid--header {
+    font-family: var(--main-font);
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
@@ -427,6 +434,7 @@ h4.jewellery_description--header {
     font-weight: 700;
     color: var(--deep-purple);
     margin-bottom: 0;
+    font-family: var(--main-font);
 }
 
 .materials_grid--text-body {
@@ -444,6 +452,7 @@ h4.jewellery_description--header {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
+    font-family: var(--main-font);
 }
 
 .white_feather_bio--body {
@@ -465,6 +474,7 @@ h4.jewellery_description--header {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2rem;
+    font-family: var(--main-font);
 }
 
 .similar_items--grid {

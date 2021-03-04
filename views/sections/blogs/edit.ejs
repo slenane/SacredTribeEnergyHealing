@@ -1,33 +1,77 @@
 <% layout('layouts/boilerplate')%>
-<div class="row">
+
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+    <div class="container container-fluid">
+        <a class="navbar-brand black-brand" href="/">Sacred Tribe Energy Healing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar_black_text" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/jewellery">Jewellery</a>
+                <a class="nav-link" href="/treatments">Treatments</a>
+                <a class="nav-link" href="/awareness">Awareness</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/contact">Contact</a>
+                <div class="navbar-nav ml-auto">
+                    <% if(currentUser) {%>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row new_edit_blog_div shadow">
     <h1 class="text-center">Edit Blog</h1>
-    <div class="col-6 offset-3">
+    <div class="col-10">
         <form action="/blogs/<%=blog._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+
             <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
+                <label class="form-label" for="title"><b>Blog Title</b></label>
                 <input class="form-control" type="text" id="title" name="blog[title]"
                     value="<%=blog.title %>" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
+
             <div class="mb-3">
-                <label class="form-label" for="image">Image Url</label>
+                <label class="form-label" for="image"><b>Image URL</b><br>
+                    Copy and paste a link to an image here - For best result, right click on the image you want to copy and select 'open image in new tab', then copy the link from the search bar</label>
                 <input class="form-control" type="text" id="image" name="blog[image]"
                     value="<%=blog.image %>" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
+
             <div class="mb-3">
-                <label class="form-label" for="text">Text</label>
-                <textarea class="form-control" type="text" id="text" name="blog[text]"
+                <label class="form-label" for="header"><b>Header</b><br>
+                    This is a brief description or some of the main ideas that will show on the blog page under the image but won't be shown when you click on the blog to read it. I have set a character limit of 400 to make sure all the boxes are the same size.<br>
+                    <i class="text-muted">Click and drag the bottom right of the box to make it bigger/smaller</i></label>
+                <textarea class="form-control" type="text" id="header" name="blog[header]" maxlength="400" rows="5"
+                    required><%= blog.header %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="text"><b>Text</b><br>
+                    This is the text that will appear when you click into the blog <br>
+                    All spaces that you add will show so be sure to skip a line when starting a new paragraph to avoid problems</label>
+                <textarea class="form-control" type="text" id="text" name="blog[text]" rows="10"
                     required><%= blog.text%></textarea>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 blog_new_edit_button">
                 <button class="btn btn-info">Update Blog</button>
             </div>
         </form>
