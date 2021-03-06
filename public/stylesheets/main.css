@@ -50,6 +50,80 @@ button:focus {
     margin: 0 5rem;
 }
 
+/* BACK TO TOP */
+
+#back-to-top {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 99;
+    border: 1px solid var(--deep-purple);
+    outline: none;
+    background-color: white;
+    color: var(--deep-purple); 
+    cursor: pointer; 
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 50%; 
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+  
+#back-to-top:hover {
+    background-color: var(--deep-purple);
+    color: white;
+    border: none;
+    transform: scale(1.05);
+}
+
+.fa-long-arrow-alt-up {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* SOCIAL BAR */
+
+.social_bar {
+    display: none;
+    position: fixed; 
+    top: 30vh;  
+    z-index: 99;
+    transition: top 0.8s;
+}
+
+.social_bar_item {
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.facebook-bar {
+    background-color: #4267B2;
+}
+
+.twitter-bar {
+    background-color: #1DA1F2;
+}
+
+.instagram-bar {
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+
+.mail-bar {
+    background-color: grey;
+}
+
+.plus-bar {
+    background-color: var(--deep-purple);
+}
+
 /* NAVBAR */
 
 a.navbar-brand {
@@ -94,11 +168,11 @@ a.black-brand {
     font-size: 2rem;
 }
 
-.fa-facebook:hover {
+.facebook-bottom:hover {
     color: #4267B2;
 }
 
-.fa-instagram:hover {
+.instagram-bottom:hover {
     background: #f09433; 
     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
     background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
@@ -110,7 +184,7 @@ a.black-brand {
     -webkit-text-fill-color: transparent;
 }
 
-.fa-twitter:hover {
+.twitter-bottom:hover {
     color: #1DA1F2;
 }
 

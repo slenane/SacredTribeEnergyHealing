@@ -16,10 +16,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <!-- MAIN STYLESHEET -->
+    <!-- HOME STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/home.css">
+    <!-- MAIN STYLESHEET -->
+    <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button onclick="topFunction()" id="back-to-top" class="shadow" title="Go to top">
+        <i class="fas fa-long-arrow-alt-up"></i> <br>
+        TOP
+    </button>
+
+    <!-- SHARE LINKS -->
+    <div class="social_bar">
+        <a href="#">
+            <div class="social_bar_item facebook-bar">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+        </a>
+        <a href="#">
+            <div class="social_bar_item twitter-bar">
+                <i class="fab fa-twitter"></i>
+             </div>
+        </a>
+        <a href="#">
+            <div class="social_bar_item instagram-bar">
+                <i class="fab fa-instagram"></i>
+             </div>
+        </a>
+        <a href="#">
+            <div class="social_bar_item mail-bar">
+                <i class="far fa-envelope"></i>
+             </div>
+        </a>
+        <a href="#">
+            <div class="social_bar_item plus-bar">
+                <i class="fas fa-plus"></i>
+             </div>
+        </a>
+    </div>
+
+    <!-- FLASH PARTIAL -->
+    <%- include('./partials/flash')%>
 
 
     <!-- HERO SECTION  W/ NAVBAR INSIDE-->
@@ -30,6 +70,7 @@
 
         <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
             <div class="container container-fluid">
+                <a class="navbar-brand home-brand" href="/">Sacred Tribe Energy Healing</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,6 +83,7 @@
                         <a class="nav-link" href="/awareness">Awareness</a>
                         <a class="nav-link" href="/blogs">Blogs</a>
                         <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="/links">Links</a>
                         <a class="nav-link" href="/contact">Contact</a>
                         <div class="navbar-nav ml-auto">
                             <% if(currentUser) {%>
@@ -228,9 +270,9 @@
 
         
         <div class="social_links">
-            <div class="social_link facebook"><a href="#"><i class="fab fa-facebook"></i></a></div>
-            <div class="social_link instagram"><a href="#"><i class="fab fa-instagram"></i></a></div>
-            <div class="social_link twitter"><a href="#"><i class="fab fa-twitter"></i></a></div>
+            <div class="social_link facebook"><a href="#"><i class="fab fa-facebook facebook-bottom"></i></a></div>
+            <div class="social_link instagram"><a href="#"><i class="fab fa-instagram instagram-bottom"></i></a></div>
+            <div class="social_link twitter"><a href="#"><i class="fab fa-twitter twitter-bottom"></i></a></div>
         </div>
 
         <div class="contact_link">

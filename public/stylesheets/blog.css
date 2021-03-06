@@ -2,7 +2,6 @@
     text-align: center;
 }
 
-
 .blog_index--header h1 {
     font-size: 3.5rem;
     font-weight: 700;
@@ -40,9 +39,14 @@
     margin: 3rem 5rem;
 }
 
+.blog_index_grid--item {
+    border-radius: 5px;
+}
+
 .blog_item--image {
     max-height: 14rem;
     object-fit: cover;
+    border-radius: 5px 5px 0 0;
 }
 
 h5.blog_item--title {

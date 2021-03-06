@@ -20,20 +20,26 @@
     <!-- JEWELLERY STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/jewellery.css">
     <!-- TREATMENT STYLESHEET -->
-    <link rel="stylesheet" href="/stylesheets/treatments.css">
+    <link rel="stylesheet" href="/stylesheets/treatment.css">
     <!-- BLOG STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/blog.css">
     <!-- AWARENESS/ABOUT STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/awareness-about.css">
+    <!-- LINK STYLESHEET -->
+    <link rel="stylesheet" href="/stylesheets/link.css">
     <!-- CONTACT STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/contact.css">
 
 </head>
 
 <body class="d-flex flex-column vh-100">
-    <!-- <%- include('../partials/navbar')%> -->
+
     <main>
         <%- include('../partials/flash')%>
+        <button onclick="topFunction()" id="back-to-top" class="shadow" title="Go to top">
+            <i class="fas fa-long-arrow-alt-up"></i> <br>
+            TOP
+        </button>
         <%- body %>
     </main>
     <%- include('../partials/footer')%>
@@ -46,6 +52,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
     integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     crossorigin="anonymous"></script>
+    <!-- MAIN SCRIPT -->
+    <script src='../javascripts/main.js'></script>
     <!-- JEWELLERY SCRIPT -->
     <script src='../javascripts/jewellery.js'></script>
 

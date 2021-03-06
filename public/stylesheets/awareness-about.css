@@ -136,6 +136,7 @@
 }
 
 .link-button:hover {
-    background-color: var(--deep-purple);
+    background-color: white;
+    color: var(--teal);
     border: none;
 }

@@ -47,6 +47,11 @@ router.get("/about", (req, res) => {
     res.render("sections/about/index");
 });
 
+// LINK ROUTE
+router.get("/links", (req, res) => {
+    res.render("sections/links/index");
+});
+
 // CONTACT ROUTE
 router.get("/contact", (req, res) => {
     res.render("sections/contact/index");

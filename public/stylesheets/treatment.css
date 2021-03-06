@@ -292,24 +292,6 @@ h4.treatments_hero_grid--item-header {
 .price_component_grid--button button:hover {
     background-color: var(--teal);
 }
-/*  Image gallery div */
-
-/* .photo_div--header {
-    display: grid;
-    grid-template-rows: auto auto;
-}
-
-.image_gallery--top {
-    display: grid;
-    grid-template-columns:  60% 40%;
-    grid-gap: 2rem;
-}
-
-.image_gallery--bottom {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 1rem;
-} */
 
 /* ENERGY TREATMENT SHOW PAGE */
 .energy_treatment_div {
@@ -362,6 +344,7 @@ h4.treatments_hero_grid--item-header {
 }
 
 .link-button:hover {
-    background-color: var(--deep-purple);
+    background-color: white;
+    color: var(--teal);
     border: none;
 }
