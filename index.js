@@ -14,6 +14,7 @@ const User = require("./models/user");
 // ROUTES FILES
 const userRoutes = require("./routes/users")
 const blogRoutes = require("./routes/blogs");
+const linkRoutes = require("./routes/links");
 const remainingRoutes = require("./routes/routeFile");
 
 // DATABASE SETUP
@@ -73,6 +74,7 @@ app.use((req, res, next) => {
 // ROUTES
 app.use('/', userRoutes);
 app.use("/blogs", blogRoutes);
+app.use("/links", linkRoutes);
 // Remaining routes
 app.use("/", remainingRoutes);
 

@@ -8,76 +8,46 @@
         <h3>Our favourite sites</h3>
     </div>
 
+    <% if (currentUser) { %>
+        <div class="link_add">
+            <a href="/links/new">
+                <button>Add a link</button>
+            </a>
+        </div>
+    <% } %>
+
     <div class="links_grid_div">
 
-        <div class="links_grid_item shadow">
-            <div class="card border-light">
-                <img class="img-fluid link_item--image" alt="Link image" src="./images/links/broken-arrow.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title link_item--title">Broken Arrow Healing</h5>
-                        <p class="card-text link_item--text">Christy Coote, a true healer from the Heart.<br>
-                            Shamanic, Energy Healer, Co. Clare</p>
-                        <a class="link_item--button" href="http://brokenarrowhealing.net/">
-                            <button>Visit</button>
-                        </a>
-                    </div>
-            </div>
-        </div>
+        <% for (let link of links) { %>
+            <div class="links_grid_item shadow">
+                <div class="card border-light">
+                    <% if(link.imagePos == 'top') { %>
+                        <img class="img-fluid link_item--image image-top" alt="Link image" src="<%= link.image %>">
+                    <% } else if(link.imagePos == 'center') { %>
+                        <img class="img-fluid link_item--image" alt="Link image" src="<%= link.image %>">
+                    <% } else if(link.imagePos == 'bottom') { %>
+                        <img class="img-fluid link_item--image image-bottom" alt="Link image" src="<%= link.image %>">
+                    <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title link_item--title"><%= link.title %></h5>
+                            <p class="card-text link_item--text"><%= link.text %></p>
+                            <a class="link_item--button" href="<%= link.link %>">
+                                <button>Visit</button>
+                            </a>
+                        </div>
 
-        <div class="links_grid_item shadow">
-            <div class="card border-light">
-                <img class="img-fluid link_item--image" alt="Link image" src="./images/links/angel-times.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title link_item--title">Angel Times</h5>
-                        <p class="card-text link_item--text">Angel Times Limerick and Ennis Co.Clare. An amazing Holistic center and shop.</p>
-                        <a class="link_item--button" href="http://www.angeltimes.ie/">
-                            <button>Visit</button>
-                        </a>
-                    </div>
+                        <%  if(currentUser && link.author.equals(currentUser._id))  {%>
+                            <div class="link_edit_delete">
+                                <a class="btn btn-info" href="/links/<%=link._id%>/edit">Edit</a>
+                                <form class="d-inline" action="/links/<%=link._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        <% } %>
+                </div>
             </div>
-        </div>
-        
-        <div class="links_grid_item shadow">
-            <div class="card border-light">
-                <img class="img-fluid link_item--image image-top" alt="Link image" src="./images/links/sacred-sites.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title link_item--title">Sacred Sites of Ireland</h5>
-                        <p class="card-text link_item--text">For Knowledge, Information and Workshops, a must see site for all those with a love for our Irish Heritage and Legends.</p>
-                        <a class="link_item--button" href="https://www.sacredsites.ie/">
-                            <button>Visit</button>
-                        </a>
-                    </div>
-            </div>
-        </div>
-
-        <div class="links_grid_item shadow">
-            <div class="card border-light">
-                <img class="img-fluid link_item--image" alt="Link image" src="./images/links/signposts.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title link_item--title">Signposts from the Soul</h5>
-                        <p class="card-text link_item--text">Julianna Jay an incredible 'Spirit Scribe' channels in written format, sharing information from your Soul on your Life's Purpose and unfolding your full potential.</p>
-                        <a class="link_item--button" href="https://signpostsfromthesoul.com/">
-                            <button>Visit</button>
-                        </a>
-                    </div>
-            </div>
-        </div>
-
-        <div class="links_grid_item shadow">
-            <div class="card border-light">
-                <img class="img-fluid link_item--image" alt="Link image" src="./images/links/clare-kayak.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title link_item--title">Clare Kayak Hire</h5>
-                        <p class="card-text link_item--text">Kayak Canoe Stand up Paddle, Hire and Lessons. All gear provided. Treat your Spirit to the great outdoors!!!</p>
-                        <a class="link_item--button" href="http://www.clarekayakhire.com/">
-                            <button>Visit</button>
-                        </a>
-                    </div>
-            </div>
-        </div>
-
+        <% } %>
 
     </div>
-
 
 </div>

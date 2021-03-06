@@ -217,3 +217,23 @@ h6 {
 .register_login_button {
     text-align: center;
 }
+
+/* FLASH MESSAGES */
+.alert-dismissible {
+    margin-bottom: 0;
+}
+
+.flash_message {
+    font-family: var(--bs-font-sans-serif);
+    margin: 0;
+}
+
+/* ERROR PAGE */
+.alert-danger {
+    text-align: center;
+    word-wrap: break-word;
+}
+
+h4.alert-heading {
+    font-family: var(--bs-font-sans-serif);
+}

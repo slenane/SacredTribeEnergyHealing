@@ -1,6 +1,7 @@
-const { blogSchema } = require('./schemas.js');
+const { blogSchema, linkSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Blog = require('./models/blog');
+const Link = require('./models/link');
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -21,12 +22,32 @@ module.exports.validateBlog = (req, res, next) => {
     }
 }
 
-module.exports.isAuthor = async (req, res, next) => {
+module.exports.validateLink = (req, res, next) => {
+    const { error } = linkSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.isBlogAuthor = async (req, res, next) => {
     const { id } = req.params;
     const blog = await Blog.findById(id);
     if (!blog.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
         return res.redirect(`/blogs/${id}`);
+    }
+    next();
+}
+
+module.exports.isLinkAuthor = async (req, res, next) => {
+    const { id } = req.params;
+    const link = await Link.findById(id);
+    if (!link.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that!');
+        return res.redirect("/links");
     }
     next();
 }

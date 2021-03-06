@@ -35,13 +35,16 @@
 <body class="d-flex flex-column vh-100">
 
     <main>
+        <!-- FLASH MESSAGES -->
         <%- include('../partials/flash')%>
-        <button onclick="topFunction()" id="back-to-top" class="shadow" title="Go to top">
-            <i class="fas fa-long-arrow-alt-up"></i> <br>
-            TOP
-        </button>
+        <!-- TO TOP BUTTON -->
+        <%- include('../partials/toTop')%>
+        <!-- SOCIAL BAR -->
+        <%- include('../partials/socialBar')%>
+        <!-- BODY CONTENT -->
         <%- body %>
     </main>
+    <!-- FOOTER -->
     <%- include('../partials/footer')%>
     
     <!-- POPPER.JS -->

@@ -23,6 +23,24 @@
     color: var(--deep-purple);
 }
 
+.link_add {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.link_add button {
+    background-color: var(--deep-purple);
+    height: 2.5rem;
+    width: 9rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+    
+.link_add button:hover {
+    background-color: var(--teal);
+}
+
 .links_grid_div {
     display: grid;
     grid-template-columns: repeat(3, 22rem);
@@ -45,6 +63,14 @@
     object-position: top;
 }
 
+.link_item--image.image-bottom {
+    object-position: bottom;
+}
+
+.link_item--text {
+    white-space: pre-wrap;
+}
+
 .link_item--button button {
     background-color: var(--deep-purple);
     height: 2.5rem;
@@ -56,4 +82,16 @@
 
 .link_item--button button:hover {
     background-color: var(--teal);
+}
+
+/* NEW/EDIT LINK */
+
+.new_edit_link_div {
+    margin: 0 20rem 2rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.link_new_edit_button {
+    text-align: center;
 }

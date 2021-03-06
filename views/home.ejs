@@ -23,44 +23,14 @@
 </head>
 <body>
 
-    <!-- BACK TO TOP BUTTON -->
-    <button onclick="topFunction()" id="back-to-top" class="shadow" title="Go to top">
-        <i class="fas fa-long-arrow-alt-up"></i> <br>
-        TOP
-    </button>
-
-    <!-- SHARE LINKS -->
-    <div class="social_bar">
-        <a href="#">
-            <div class="social_bar_item facebook-bar">
-                <i class="fab fa-facebook-f"></i>
-            </div>
-        </a>
-        <a href="#">
-            <div class="social_bar_item twitter-bar">
-                <i class="fab fa-twitter"></i>
-             </div>
-        </a>
-        <a href="#">
-            <div class="social_bar_item instagram-bar">
-                <i class="fab fa-instagram"></i>
-             </div>
-        </a>
-        <a href="#">
-            <div class="social_bar_item mail-bar">
-                <i class="far fa-envelope"></i>
-             </div>
-        </a>
-        <a href="#">
-            <div class="social_bar_item plus-bar">
-                <i class="fas fa-plus"></i>
-             </div>
-        </a>
-    </div>
-
     <!-- FLASH PARTIAL -->
     <%- include('./partials/flash')%>
-
+    
+    <!-- BACK TO TOP BUTTON -->
+    <%- include('./partials/toTop')%>
+    
+    <!-- SOCIAL LINKS -->
+    <%- include('./partials/socialBar')%>
 
     <!-- HERO SECTION  W/ NAVBAR INSIDE-->
 

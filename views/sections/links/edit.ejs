@@ -1,0 +1,83 @@
+<% layout('layouts/boilerplate')%>
+
+<%- include('../../partials/navbarBlack')%>
+
+<div class="row new_edit_link_div shadow">
+    <h1 class="text-center">Edit Link</h1>
+    <div class="col-10">
+        <form action="/links/<%=link._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+
+            <div class="mb-3">
+                <label class="form-label" for="title"><b>Link Title</b></label>
+                <input class="form-control" type="text" id="title" name="link[title]"
+                    value="<%=link.title %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="image"><b>Image URL</b><br>
+                    Copy and paste a link to an image here - For best result, right click on the image you want to copy and select 'open image in new tab', then copy the link from the search bar</label>
+                <input class="form-control" type="text" id="image" name="link[image]"
+                    value="<%=link.image %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="imagePos"><b>Image Position</b><br>
+                   Images will be centered to fit in the box, they may mean that some of the image is cut off if it is square. Rectangular images are best for the links but this option will allow you to choose the position of the image (top, center, or bottom). <br>
+                   If you are not sure how it will look, select center. After you save the link you will be able to edit it and change this option so it looks how you want.</label>
+                <select class="form-control" name="link[imagePos]" id="imagePos" required>
+                    <% if(link.imagePos == "center") { %>
+                        <option value="center" selected>Center</option>
+                        <option value="top">Top</option>
+                        <option value="bottom">Bottom</option>
+                    <% } else if(link.imagePos == "top") {%>
+                        <option value="center">Center</option>
+                        <option value="top" selected>Top</option>
+                        <option value="bottom">Bottom</option>
+                    <% } else { %>
+                        <option value="center">Center</option>
+                        <option value="top">Top</option>
+                        <option value="bottom" selected>Bottom</option>
+                    <% } %>
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="text"><b>Text</b><br>
+                    This is the description of the link - What they do, where they are located etc. <br>
+                    I put a maximum character limit of 500 characters to make sure all the links are even.
+                </label>
+                <textarea class="form-control" type="text" id="text" name="link[text]" rows="10" maxlength="500" required><%=link.text%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="link"><b>Link</b><br>
+                    This is the link to the website that users will go to when they click the button.
+                <input class="form-control" type="text" id="link" name="link[link]"
+                    value="<%=link.link %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3 link_new_edit_button">
+                <button class="btn btn-info">Update Link</button>
+            </div>
+
+        </form>
+        <a href="/links">Back To Links</a>
+
+    </div>
+</div>

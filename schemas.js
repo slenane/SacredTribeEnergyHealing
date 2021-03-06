@@ -8,3 +8,13 @@ module.exports.blogSchema = Joi.object({
         text: Joi.string().required()
     }).required()
 });
+
+module.exports.linkSchema = Joi.object({
+    link: Joi.object({
+        title: Joi.string().required(),
+        image: Joi.string().required(),
+        imagePos: Joi.string().required(),
+        text: Joi.string().required(),
+        link: Joi.string().required()
+    }).required()
+});
