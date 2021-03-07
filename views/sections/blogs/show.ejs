@@ -26,7 +26,22 @@
     </div>
 
     <div class="blog_body_div">
-        <p><%= blog.text %></p>
+        <% 
+        let body = blog.text; 
+        body = body.replace(/%B%/g, "<b>"); 
+        body = body.replace(/%XB%/g, "</b>"); 
+        body = body.replace(/%U%/g, "<u>"); 
+        body = body.replace(/%XU%/g, "</u>"); 
+        body = body.replace(/%I%/g, "<i>"); 
+        body = body.replace(/%XI%/g, "</i>");
+        body = body.replace(/%H%/g, "<h4>");
+        body = body.replace(/%XH%/g, "</h4>");
+        body = body.replace(/%LIST%/g, "<ul>");
+        body = body.replace(/%XLIST%/g, "</ul>"); 
+        body = body.replace(/%BULLET%/g, "<li>"); 
+        body = body.replace(/%XBULLET%/g, "</li>"); 
+        %>
+        <p><%- body %></p>
     </div>
 
 </div> <!-- END OF WRAPPER -->

@@ -90,7 +90,6 @@ button:focus {
     position: fixed; 
     top: 30vh;  
     z-index: 99;
-    transition: top 0.8s;
 }
 
 .social_bar_item {

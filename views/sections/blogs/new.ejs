@@ -39,7 +39,55 @@
                 <div class="mb-3">
                     <label class="form-label" for="text"><b>Text</b><br>
                         This is the text that will appear when you click into the blog <br>
-                        All spaces that you add will show so be sure to skip a line when starting a new paragraph to avoid problems
+                        All spaces that you add will show so be sure to skip a line when starting a new paragraph to avoid problems <br> <br>
+
+                        <b>Legend: </b>
+                        <table>
+                            <tr>
+                                <th>Open</th>
+                                <th>Effect</th>
+                                <th>Close</th>
+                            </tr>
+                            <tr>
+                                <td>%B%</td>
+                                <td>Bold</td>
+                                <td>%XB%</td>
+                            </tr>
+                            <tr>
+                                <td>%U%</td>
+                                <td>Underline</td>
+                                <td>%XU%</td>
+                            </tr>
+                            <tr>
+                                <td>%I%</td>
+                                <td>Italic</td>
+                                <td>%XI%</td>
+                            </tr>
+                            <tr>
+                                <td>%H%</td>
+                                <td>Header</td>
+                                <td>%XH%</td>
+                            </tr>
+                            <tr>
+                                <td>%LIST%</td>
+                                <td>List</td>
+                                <td>%XLIST%</td>
+                            </tr>
+                            <tr>
+                                <td>%BULLET%</td>
+                                <td>Bullet point</td>
+                                <td>%XBULLET%</td>
+                            </tr>
+                        </table> <br>
+
+                        For example: %B% Hello %XB% = <b>Hello</b> <br> <br>
+                        To use bullet points you must put them in a list. You can add as many bullets as you want to a list, just remember to close the list after. <br>
+                        For example: <br> 
+                        %LIST% %BULLET% Text 1 %XBULLET% %BULLET% Text 2 %XBULLET% %XLIST% = <br>
+                        <ul>
+                            <li>Text 1</li>
+                            <li>Text 2</li>
+                        </ul>
                     </label>
                     <textarea class="form-control" type="text" id="text" name="blog[text]" rows="10" required></textarea>
                     <div class="valid-feedback">
