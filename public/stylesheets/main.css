@@ -50,6 +50,16 @@ button:focus {
     margin: 0 5rem;
 }
 
+.progress {
+    background: linear-gradient(to right, var(--deep-purple) var(--scroll), transparent 0);
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 100%;
+    border-radius: 0;
+    height: .5rem;
+    z-index: 1;
+  }
+
 /* BACK TO TOP */
 
 #back-to-top {
