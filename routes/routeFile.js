@@ -47,9 +47,4 @@ router.get("/about", (req, res) => {
     res.render("sections/about/index");
 });
 
-// CONTACT ROUTE
-router.get("/contact", (req, res) => {
-    res.render("sections/contact/index");
-});
-
 module.exports = router;

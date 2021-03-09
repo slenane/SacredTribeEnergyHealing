@@ -17,6 +17,10 @@
     --main-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /* GENERAL TAGS */
 body {
     max-width: 1380px;

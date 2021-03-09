@@ -10,11 +10,13 @@ const methodOverride = require('method-override');
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
+require('dotenv').config();
 
 // ROUTES FILES
 const userRoutes = require("./routes/users")
 const blogRoutes = require("./routes/blogs");
 const linkRoutes = require("./routes/links");
+const contactRoutes = require("./routes/contact");
 const remainingRoutes = require("./routes/routeFile");
 
 // DATABASE SETUP
@@ -64,7 +66,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-    console.log(req.session)
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
@@ -74,6 +75,7 @@ app.use((req, res, next) => {
 // ROUTES
 app.use('/', userRoutes);
 app.use("/blogs", blogRoutes);
+app.use("/contact", contactRoutes);
 app.use("/links", linkRoutes);
 // Remaining routes
 app.use("/", remainingRoutes);
