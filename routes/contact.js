@@ -26,7 +26,7 @@ transporter.verify(function (error, success) {
     }
 });
 
-// CONTACT ROUTE
+// CONTACT ROUTES
 router.get("/", (req, res) => {
     res.render("sections/contact/index");
 });
@@ -36,9 +36,10 @@ router.post("/", async (req, res) => {
     let data = {};
 
     await form.parse(req, function (err, fields) {
-        console.log(fields);
+        //console.log(fields);
         Object.keys(fields).forEach(function (property) {
-            data[property] = fields[property].toString();
+            data[property.slice(6, property.length - 1)] = fields[property].toString();
+            console.log(data)
         })
     });
     const mail = {
@@ -51,12 +52,15 @@ router.post("/", async (req, res) => {
     transporter.sendMail(mail, (err, data) => {
     if (err) {
         console.log(err);
-        res.status(500).send("Something went wrong.");
+        res.status(500).send({
+            response: "Something went wrong."
+        });
     } else {
-        res.status(200).send("Email successfully sent to recipient!");
+        res.status(200).send({
+            response: "Email successfully sent to recipient!"
+        });
     }
     });
 });
-
 
 module.exports = router;

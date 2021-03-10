@@ -18,3 +18,12 @@ module.exports.linkSchema = Joi.object({
         link: Joi.string().required()
     }).required()
 });
+
+module.exports.emailSchema = Joi.object({
+    email: Joi.object({
+        name: Joi.string().required(),
+        email: Joi.string().required(),
+        subject: Joi.string().required(),
+        message: Joi.string().required()
+    }).required()
+});

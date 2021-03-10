@@ -1,4 +1,4 @@
-const { blogSchema, linkSchema } = require('./schemas.js');
+const { blogSchema, linkSchema, emailSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Blog = require('./models/blog');
 const Link = require('./models/link');
@@ -17,6 +17,16 @@ module.exports.validateBlog = (req, res, next) => {
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+}
+
+module.exports.validateEmail = (req, res, next) => {
+    const { error } = emailSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg, 400);
     } else {
         next();
     }

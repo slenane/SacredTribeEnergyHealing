@@ -250,3 +250,7 @@ h6 {
 h4.alert-heading {
     font-family: var(--bs-font-sans-serif);
 }
+
+.alert-stack {
+    text-align: start;
+}

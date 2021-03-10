@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
-const { blogSchema } = require('../schemas.js');
 const { isLoggedIn, isBlogAuthor, validateBlog } = require('../middleware');
 
 const Blog = require('../models/blog');
