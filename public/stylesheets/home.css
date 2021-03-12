@@ -46,6 +46,10 @@ a:hover {
     visibility: hidden;
 }
 
+.hero_mobile_header {
+    display: none;
+}
+
 .hero_text {
     color: var(--crystal-cream);
     max-width: 40%;
@@ -123,6 +127,11 @@ h1 {
         transform: translateY(0);
     }
 }
+
+.hero_curve_design,
+.philosophy_curve_design {
+    display: none;
+}
   
 
 /* PHILOSOPHY */
@@ -146,6 +155,10 @@ h1 {
 .slide-in {
     transform: translateX(-50%);
     opacity: 0;
+}
+
+.philosophy_mobile_header {
+    display: none;
 }
 
 .philosophy_text {
@@ -204,6 +217,7 @@ h2 {
 
 .jewellery_top_div--button button{
     background-color: white;
+    font-size: 1rem;
     height: 2.5rem;
     width: 8rem;
     border: 1px solid var(--deep-purple);
@@ -460,3 +474,288 @@ h6 {
         width: 0;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+        max-width: 600px;
+        overflow: hidden;
+        margin: 0;
+    }
+    
+    /* HERO SECTION  W/ NAVBAR INSIDE */
+    #hero_div {
+        background-size: cover;
+        background-position: 30% 50%;
+        height: 60vh;
+        margin-bottom: .5rem;
+    }
+
+    .mobile-navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .home-brand {
+        visibility: hidden;
+    }
+
+    .hero_mobile_header {
+        display: inline-block;
+        text-align: center;
+        padding-left: 2rem;
+        padding-top: 6rem;
+    }
+    
+    .hero_mobile_text--header h1 {
+        font-size: 2.5rem;
+        color: var(--crystal-cream);
+    }
+    
+    .hero_text {
+        max-width: 80%;
+        margin:  auto;
+        position: relative;
+        top: 30%;
+    }
+    
+    .hero_text--header h1 {
+        display: none;
+    }
+
+    .hero_text--links {
+        padding: 0;
+        font-size: 2rem;
+    }
+    
+    .hero_text--links a:hover {
+        color: var(--teal);
+    }
+    
+    .hero_text--button button {
+        display: none;
+    }
+    
+    .hero_arrow {
+        display: none;
+    }
+      
+    .hero_curve_design {
+        display: block;
+        position: relative;
+        top: 27%;
+        height: 2rem;
+        background-image: url("../images/curve-top-left.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-bottom: 0;
+    }
+
+    /* PHILOSOPHY */
+
+    #philosophy_div {
+        height: auto;
+        background-image: url("../images/crystal-bg-small.png");
+        background-size: 20rem;
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 3rem;
+        font-weight: 700;
+    }
+
+    .philosophy_image {
+        margin: 0 auto;
+    }
+
+    .profile-photo {
+        max-height: 20rem;
+    }
+
+    .slide-in {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .philosophy_mobile_header {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0;
+    }
+
+    h2.philosophy_mobile--header {
+        font-size: 2.5rem;
+    }
+
+    .philosophy_text {
+        margin: 0 auto;
+        margin-bottom: 7rem;
+        text-align: center;
+    }
+
+    h2.philosophy_text--header {
+        display: none;
+    }
+
+    .philosophy_text--body {
+        font-size: 2rem;
+    }
+
+    .step-fade-in p,
+    .step-fade-in h2 {
+        opacity: 1;
+    }
+
+    .philosophy_text--name {
+        font-size: 1.5rem;
+    }
+
+    .philosophy_curve_design {
+            display: block;
+            position: relative;
+            top: 25%;
+            left: 1%;
+            height: 2rem;
+            background-image: url("../images/curve-bottom-right.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 0;
+    }
+
+    /* JEWELLERY */
+
+    #jewellery_div {
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .jewellery_top_div {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 3rem;
+    }
+
+    .jewellery_top_div--text {
+        margin: auto;
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .jewellery_top_div--logo img {
+        width: 10rem;
+    }
+
+    .jewellery_top_div--body {
+        font-size: 2rem;
+    }
+
+    /* .jewellery_top_div--button button{
+        background-color: white;
+        font-size: 1rem;
+        height: 2.5rem;
+        width: 8rem;
+        border: 1px solid var(--deep-purple);
+        color: var(--deep-purple);
+        border-radius: 10px;
+    } */
+
+
+    .jewellery_top_div--image {
+        margin: auto;
+        position: relative;
+    }
+
+    .swiper-container {
+        display: none;
+    }
+
+    .jewellery_bottom_div {
+        text-align: center;
+    }
+
+    h3 {
+        display: none;
+    }
+
+    .jewellery_bottom_div--collections {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-around;
+        padding: 1rem;
+        grid-gap: 1rem;
+    }
+
+    .slide-up {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .jewellery_bottom_div--collection {
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    h5 {
+        font-size: 2rem;
+    }
+
+    .collection_div--text-1,
+    .collection_div--text-3 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .collection_div--button button {
+        background-color: white;
+        height: 2rem;
+        width: 6rem;
+        border: 1px solid var(--deep-purple);
+        color: var(--deep-purple);
+        border-radius: 10px;
+    }
+
+    /* TREATMENTS */
+
+    #treatments_div {
+        height: auto;
+        background-image: url("../images/treatments-bg.png");
+        background-position: center;
+        background-size: cover;
+        display: grid;
+        text-align: center;
+        align-items: center;
+    }
+
+    .treatments_text {
+        color: white;
+        margin: 0 auto;
+        padding: 8rem 1rem;
+    }
+
+    h4 {
+        font-size: 3rem;
+    }
+
+    .treatments_text--body {
+        margin: 0 auto;
+        font-size: 2rem;
+    }
+
+    .treatments_text--button button {
+        background: none;
+        height: 2.5rem;
+        width: 8rem;
+        border: 1px solid white;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .treatments_text--button button:hover {
+        background: white;
+        border: 1px solid var(--deep-purple);
+        color: var(--deep-purple);
+    }
+    
+  }

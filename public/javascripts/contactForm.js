@@ -13,6 +13,15 @@ const formSubmit = async e => {
     e.preventDefault();
     
     for (let field of fields) {
+        // Validate the email
+        if (field.type == "email") {
+            if (!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(field.value))) {
+                form.removeEventListener("submit", formSubmit);
+                form.addEventListener("submit", formSubmit);
+                return;
+            }
+        }
+        // Check if any of the fields are empty
         if (field.value == "") {
             form.removeEventListener("submit", formSubmit);
             form.addEventListener("submit", formSubmit);

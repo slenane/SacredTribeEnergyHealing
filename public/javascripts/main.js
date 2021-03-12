@@ -8,10 +8,10 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
     topButton.style.display = "block";
-    socialBar.style.display = "block";
+    //socialBar.style.display = "block";
   } else {
     topButton.style.display = "none";
-    socialBar.style.display = "none";
+    //socialBar.style.display = "none";
   }
 }
 
