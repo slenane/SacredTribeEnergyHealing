@@ -1,15 +1,13 @@
 /* HERO DIV */
 
 #jewellery__hero_div {
-    height: 100vh;
-    display: grid;
-    grid-template-rows:  55% 10%;
     margin-bottom: 3rem;
     font-family: var(--main-font);
 }
 
 .hero_header {
     background-color: var(--deep-purple);
+    height: 22rem;
 }
 
 .indian_woman--img-overlay {
@@ -47,14 +45,41 @@
 }
 
 .hero_infobar {
+    height: 4rem;
     background-color: var(--teal);
     color: white;
     font-family: "Open Sans";
 }
 
+.dropdown {
+    animation: down .5s ease-in-out forwards;
+}
+
+@keyframes down {
+    to {
+        height: 19rem;
+    }
+}
+
+.dropup {
+    animation: up .5s ease-in-out forwards;
+}
+
+@keyframes up {
+    to {
+        height: 4rem;
+    }
+}
+
+.hero_infobar.active {
+    height: 19rem;
+}
+
 .hero_infobar--content {
     display: grid;
     justify-content: center;
+    position: relative;
+    bottom: 0;
 }
 
 .hero_infobar--text p {
@@ -69,6 +94,31 @@
     grid-template-columns: repeat(2, 24rem);
     grid-gap: 5rem;
     margin-top: 2rem;
+    opacity: 0;
+}
+
+.hero_infobar--grid.fade-in {
+    animation: fade-in 1s forwards;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+.hero_infobar--grid.fade-out {
+    animation: fade-out .5s forwards;
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+.hero_infobar--grid.active {
+    opacity: 1;
 }
 
 .hero_infobar--grid-item-icon {
@@ -101,10 +151,14 @@
     border: none;
 }
 
+.hero_grid_mobile {
+    display: none;
+}
+
 .hero_grid {
     display: grid;
-    grid-template-columns: repeat(3, 16rem);
-    grid-template-rows: 16rem;
+    grid-template-columns: repeat(3, 14rem);
+    grid-template-rows: 14rem;
     justify-content: center;
     grid-gap: 6rem;
 }
@@ -136,8 +190,8 @@
     position: relative;
     top: 1rem;
     left: 2rem;
-    height: 12rem;
-    width: 12rem;
+    height: 10rem;
+    width: 10rem;
     opacity: 0.7;
 }
 
@@ -155,16 +209,27 @@
 }
 
 .hero_grid--item-content-2 {
-    top: -9rem !important;
+    top: -8rem !important;
 }
 
 .hero_grid--item-content-3 {
-    top: -7.5rem !important;
+    top: -7.3rem !important;
 }
 
-.hero_grid--item-1 p,
-.hero_grid--item-3 p {
+.hero_grid--item-icon img {
+    height: 4rem;
+}
+
+.shipping-icon img {
+    height: 3rem;
+}
+
+.hero_grid--item-1 p {
     margin-top: 1rem;
+}
+
+.hero_grid--item-3 p {
+    margin-top: 1.3rem;
 }
 
 .jewellery_featured {
@@ -485,4 +550,162 @@ h4.jewellery_description--header {
     grid-gap: 3rem;
     text-align: center;
     margin: 1rem 5rem 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        max-width: 600px;
+        /* overflow-x: hidden; */
+        margin: 0;
+    }
+
+    /* HERO DIV */
+
+    .hero_header {
+        height: 15rem;
+    }
+    
+    .indian_woman--img-overlay {
+        background-size: 22rem;
+        background-position: -10% 40%;
+    }
+    
+    .hero_header--icon {
+        margin-top: 1rem;
+    }
+    
+    .hero_header--icon img {
+        width: 6rem;
+    }
+    
+    .hero_header--text {
+        font-size: 1.5rem;
+        border: 1px solid white;
+        margin-top: 1rem;
+        padding: 2rem 1rem 0rem 1rem;
+    }
+    
+    @keyframes down {
+        to {
+            height: 21rem;
+        }
+    }
+    
+    .hero_infobar.active {
+        height: 21rem;
+    }
+    
+    .hero_infobar--grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 0;
+        margin-top: 1rem;
+    }
+    
+    .hero_infobar--grid-item-icon {
+        grid-template-rows: 2rem 1fr;
+        grid-gap: 1rem;
+    }
+
+    .grid_item--icon {
+        height: 2rem;
+    }
+
+    .hero_infobar--grid-item-text {
+        padding: 0 2rem;
+        font-size: .8rem;
+        text-align: center;
+    }
+
+    .hero_grid {
+        display: none;
+    }
+
+    .hero_grid_mobile {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 8rem;
+        justify-content: space-around;
+        padding: 0 1rem;
+    }
+
+    .hero_grid_mobile--item {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .hero_grid_mobile--item-icon {
+        display: grid;
+        justify-content: center;
+    }
+
+    .hero_grid_mobile--item-icon img {
+        height: 3.5rem;
+    }
+
+    .mobile--shipping-icon img {
+        height: 3rem;
+    }
+
+    .hero_grid_mobile--item-text {
+        font-size: 1.8rem;
+        text-align: center;
+        font-weight: 700;
+        color: var(--deep-purple);
+    }
+
+    .jewellery_featured {
+        display: none;
+    }
+
+    /* CONTENT DIVS */
+
+    .jewellery_content_div {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-around;
+        grid-gap: 1rem;
+        text-align: center;
+        margin: 2rem 1rem;
+    }
+
+    .jewellery_item {
+        width: auto;
+        height: auto;
+    }
+
+    h5 {
+        font-size: 2rem;
+    }
+
+    .jewellery_item p {
+        font-size: 1rem;
+    }
+
+    /* TREATMENT AND AWARENESS LINKs */
+
+    .treatments_link,
+    .awareness_link {
+        height: auto;
+        background-position: center;
+        background-size: cover;
+        padding: 2rem 1rem;
+    }
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    .treatments_text--body {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .awareness_text--body {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
 }

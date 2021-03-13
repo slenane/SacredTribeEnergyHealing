@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-local-shipping" data-name="Icon material-local-shipping" class="cls-1" d="M30,12H25.5V6H4.5a3.009,3.009,0,0,0-3,3V25.5h3a4.5,4.5,0,0,0,9,0h9a4.5,4.5,0,0,0,9,0h3V18ZM9,27.75a2.25,2.25,0,1,1,2.25-2.25A2.247,2.247,0,0,1,9,27.75Zm20.25-13.5L32.19,18H25.5V14.25ZM27,27.75a2.25,2.25,0,1,1,2.25-2.25A2.247,2.247,0,0,1,27,27.75Z" transform="translate(-1.5 -6)"/>
+</svg>
