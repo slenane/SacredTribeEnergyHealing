@@ -49,6 +49,7 @@
 
 .treatments_hero_grid--item:hover {
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 .treatments_hero_grid--item:hover h4.treatments_hero_grid--item-header-1 {
@@ -150,7 +151,7 @@ h4.treatments_hero_grid--item-header {
 
 /*  Treatment hero main */
 
-.jewellery_item_wrapper {
+.treatment_item_wrapper {
     margin: 0 5rem;
     padding: 2rem 0;
 }
@@ -190,7 +191,7 @@ h4.treatments_hero_grid--item-header {
     grid-template-rows:  auto auto 1fr;
 }
 
-.jewellery_item_wrapper img {
+.treatment_item_wrapper img {
     padding-bottom: 3rem;
     max-width: 100%;
 }
@@ -347,4 +348,64 @@ h4.treatments_hero_grid--item-header {
     background-color: white;
     color: var(--teal);
     border: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .treatments_hero_header h1 {
+        font-size: 2rem;
+    }
+    
+    .treatments_hero_header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .treatments_hero_grid {
+        grid-template-columns:  16rem;
+        grid-template-rows:  12rem 12rem;
+        grid-gap: 1rem;
+    }
+    
+    .treatments_hero_grid--item {
+        background-color: var(--off-white); 
+        color: var(--off-black);
+        font-family: var(--bs-font-sans-serif);
+        height: 12rem;
+        display: grid;
+        border-radius: 5px;
+    }
+    
+    h4.treatments_hero_grid--item-header-1 {
+        background-color: var(--deep-purple);
+        color: white;
+        text-shadow: var(--main-shadow);
+        border-radius: 4px 4px 0 0;
+    }
+    
+    h4.treatments_hero_grid--item-header-2 {
+        background-color: var(--teal);
+        color: white;
+        text-shadow: var(--main-shadow);
+        border-radius: 4px 4px 0 0;
+    }
+
+    .treatments_hero_grid--item-body {
+        font-size: 1rem;
+    }
+    
+    .treatments_hero_grid--item-location {
+
+        grid-gap: .5rem;
+    }
+
+    .treatments_hero_grid--item-location-icon {
+        width: .7rem;
+    }
+    
+    .treatments_hero_grid--item-location-text {
+        font-size: .8rem;
+    }
+    
+    .treatments_hero_grid--item-button button {
+        display: none;
+    }
 }

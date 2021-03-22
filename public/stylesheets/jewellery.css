@@ -38,6 +38,7 @@
     font-size: 2.5rem;
     border: 2px solid white;
     padding: 3rem 2rem 0 2rem;
+    font-weight: 700;
     position: relative;
     transform: translateY(-3rem);
     z-index: 1;
@@ -128,6 +129,10 @@
     justify-content: center;
     align-items: center;
     grid-gap: 1rem;
+}
+
+.grid_item--icon {
+    height: 4rem;
 }
 
 .hero_infobar--button {
@@ -344,6 +349,11 @@ h4 {
 /*       SHOW PAGE       */
 /* ##################### */
 
+.jewellery_show--wrapper {
+    margin: 0 5rem;
+}
+
+
 .back_to_jewellery {
     padding: 1rem 0;
 }
@@ -533,6 +543,10 @@ h4.jewellery_description--header {
     align-self: center;
 }
 
+.white_feather_bio--icon img {
+    height: 18rem;
+}
+
 /* SIMILAR ITEMS */
 
 .similar_items-header {
@@ -581,6 +595,7 @@ h4.jewellery_description--header {
     .hero_header--text {
         font-size: 1.5rem;
         border: 1px solid white;
+        font-weight: 700;
         margin-top: 1rem;
         padding: 2rem 1rem 0rem 1rem;
     }
@@ -708,4 +723,111 @@ h4.jewellery_description--header {
         font-size: 1.5rem;
     }
 
+    /* ##################### */
+    /*       SHOW PAGE       */
+    /* ##################### */
+
+    .jewellery_show--wrapper {
+        margin: 0;
+    }
+
+    .back_to_jewellery {
+        padding: 1rem;
+    }
+
+    .back_to_jewellery a {
+        font-size: 1rem;
+    }
+
+    .jewellery_content_main {
+        justify-content: center;
+        grid-template-columns: 1fr;
+        grid-template-rows:  28rem 1fr;
+        margin-bottom: 1rem;
+    }
+
+    .jewellery_content_main--section-1 {
+        display: block;
+        height: 25rem;
+        text-align: center;
+    }
+
+    .thumb_image {
+        display: none;
+    }
+
+    .share_item {
+        display: none;
+    }
+
+    .main_image {
+        max-width: 90%;
+    }
+
+    .jewellery_content_main--section-2 {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .jewellery_description {
+        text-align: start;
+        padding: 0 1rem;
+    }
+
+    .jewellery_wishlist--add {
+        padding-left: 0;
+    }
+
+    /* MATERIALS USED AND SYMBOLISM */
+
+    .materials_grid {
+        margin-bottom: 1rem;
+    }
+
+    .materials_grid--body {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        padding: 0 1rem;
+    }
+
+    /* WHITE FEATHER JEWELLERY BIO */
+
+    .white_feather_bio {
+        margin-bottom: 1rem;
+    }
+
+    .white_feather_bio--header {
+        margin-bottom: 0;
+    }
+
+    .white_feather_bio--body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-gap: 1rem;
+    }
+
+    .white_feather_bio--text {
+        padding: 0 1rem;
+        grid-row: 2 / -1;
+    }
+
+    .white_feather_bio--icon{
+        text-align: center;   
+    }
+
+    .white_feather_bio--icon img {
+        height: 10rem;
+    }
+
+    /* SIMILAR ITEMS */
+
+    .similar_items--grid {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-around;
+        grid-gap: 1rem;
+        text-align: center;
+        margin: 2rem 1rem;
+    }
 }
