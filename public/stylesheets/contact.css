@@ -3,13 +3,11 @@
 }
 
 /* MODAL */
-
 #modalButton {
     display: none;
 }
 
 /* PAGE HEADER */
-
 .contact_header h1 {
     margin-top: 1rem;
     font-weight: 700;
@@ -18,7 +16,6 @@
 }
 
 /* SOCIAL MEDIA */
-
 .social_div h2 {
     font-weight: 700;
     font-size: 2.5rem;
@@ -123,4 +120,68 @@
 
 .contact_button:hover {
     background-color: var(--teal);
+}
+
+@media only screen and (max-width: 600px) {
+    .contact_wrapper {
+        margin: 1rem;
+        padding: 0;
+    }
+
+    /* PAGE HEADER */
+    .contact_header h1 {
+        margin-top: 0;
+        font-size: 3rem;
+    }
+    
+    /* SOCIAL MEDIA */
+    .social_div h2 {
+        font-size: 2rem;
+    }
+    
+    .social_media_grid {
+        font-size: 2rem;
+    }
+    
+    /*  CONTACT FORM */
+    .contact_form_div {
+        margin: 1rem 0;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+    
+    .contact_form_grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    
+    /* SECTION 1 */
+    
+    .contact_form_grid--section-1 {
+        background-color: var(--deep-purple);
+        color: white;
+        display: grid;
+        align-items: space-around;
+    }
+    
+    .contact_form_grid--header h3 {
+        font-size: 2rem;
+        margin-top: .5rem;
+    }
+    
+    .contact_form_grid--item {
+        font-size: 1rem;
+    }
+    
+    .contact_form_grid--item img {
+        margin-bottom: .5rem;
+        width: 1.1rem;
+    }
+    
+    /* SECTION 2 */
+    
+    .form-group {
+        display: grid;
+        padding: 0.5rem 2rem;
+    }
 }

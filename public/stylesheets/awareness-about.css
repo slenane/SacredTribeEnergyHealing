@@ -140,3 +140,126 @@
     color: var(--teal);
     border: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .header_div,
+    .subheader_div {
+        margin-bottom: 1rem;
+    }
+
+    .header_div h1 {
+        font-size: 2.5rem;
+    }
+
+    .subheader_div h2 {
+        font-size: 2rem;
+    }
+
+    .header_img_div img {
+        max-width: 22rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+    }
+
+    .awareness_about--wrapper {
+        margin: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .body_div {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .body_grid {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin: 0 auto;
+        grid-gap: .6rem;
+    }
+
+    .body_grid--section-1.awareness-quote.quote-box {
+        font-size: 1.2rem;
+        height: 13rem;
+        width: 13rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .body_grid--section-2.awareness-quote.quote-box {
+        font-size: 1.2rem;
+        height: 10rem;
+        width: 10rem;
+        padding: 0 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .body_grid--section-1.about-quote.quote-box {
+        font-size: 1.2rem;
+        height: 11rem;
+        width: 11rem;
+        padding: .5rem 1.5rem;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .body_grid--section-2.about-quote.quote-box {
+        font-size: 1.2rem;
+        height: 12rem;
+        width: 12rem;
+        padding: .5rem 1.5rem;
+        text-align: center;
+    }
+
+    .about_open-quote-1,
+    .about_open-quote-2 {
+        transform: translate(-.5rem, 0.5rem);
+        margin-bottom: .2rem;
+        width: 1.2rem;
+    }
+
+    .about_close-quote-1 {
+        transform: translate(7rem, -1rem);
+        width: 1.2rem;
+    }
+
+    .about_close-quote-2 {
+        transform: translate(8rem, -1rem);
+        width: 1.2rem;
+    }
+
+    .awareness_open-quote-1 {
+        transform: translate(0, .8rem);
+        width: 1.2rem;
+    }
+
+    .awareness_close-quote-1 {
+        transform: translate(9rem, -1.5rem);
+        width: 1.2rem;
+    }
+
+    .awareness_open-quote-2 {
+        transform: translate(-.5rem, .5rem);
+        width: 1.2rem;
+    }
+
+    .awareness_close-quote-2 {
+        transform: translate(6rem, -1.5rem);
+        width: 1.2rem;
+    }
+
+    .jennifer-quote {
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+
+    .awareness_about_link {
+        height: 4rem;
+    }
+
+    .awareness_about_link--text p {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+}

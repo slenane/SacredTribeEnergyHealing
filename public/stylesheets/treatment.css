@@ -113,6 +113,19 @@ h4.treatments_hero_grid--item-header {
 
 /* TREATMENT SHOW PAGES */
 
+/* ENERGY TREATMENT SHOW PAGE */
+.energy_treatment_div {
+    background-image: url("../images/treatments-bg.png");
+    background-position: 0 70%;
+    background-size: cover;
+}
+
+/* ABSENTEE TREATMENT SHOW PAGE */
+.absentee_treatment_div {
+    background-image: url("../images/background-teal.png");
+    background-size: cover;
+}
+
 /* Treatment show hero div */
 .treatment_item_hero_div {
     height: 50vh;  
@@ -294,19 +307,7 @@ h4.treatments_hero_grid--item-header {
     background-color: var(--teal);
 }
 
-/* ENERGY TREATMENT SHOW PAGE */
-.energy_treatment_div {
-    background-image: url("../images/treatments-bg.png");
-    background-position: 0 70%;
-    background-size: cover;
-}
-
-/* ABSENTEE TREATMENT SHOW PAGE */
-.absentee_treatment_div {
-    background-image: url("../images/background-teal.png");
-    background-size: cover;
-}
-
+ /* TREATMENT LINK */
 .treatment_link {
     background-color: var(--teal);
     color: white;
@@ -360,8 +361,8 @@ h4.treatments_hero_grid--item-header {
     }
     
     .treatments_hero_grid {
-        grid-template-columns:  16rem;
-        grid-template-rows:  12rem 12rem;
+        grid-template-columns:  17rem;
+        grid-template-rows:  13.5rem 13.5rem;
         grid-gap: 1rem;
     }
     
@@ -369,7 +370,7 @@ h4.treatments_hero_grid--item-header {
         background-color: var(--off-white); 
         color: var(--off-black);
         font-family: var(--bs-font-sans-serif);
-        height: 12rem;
+        height: 13.5rem;
         display: grid;
         border-radius: 5px;
     }
@@ -406,6 +407,146 @@ h4.treatments_hero_grid--item-header {
     }
     
     .treatments_hero_grid--item-button button {
-        display: none;
+        background-color: white;
+        border: 1px solid var(--deep-purple);
+        color: var(--deep-purple);
+        height: 2rem;
+        width: 7rem;
+        border-radius: 10px;
+        font-size: .8rem;
+        font-weight: 700;
+    }
+
+    .treatments_hero_grid--item-button button:hover {
+        background-color: var(--deep-purple);
+        border: none;
+        color: white;
+    }
+
+    /* TREATMENT SHOW PAGES */
+
+    /* Treatment show hero div */
+    .treatment_item_hero_div {
+        height: 35vh;  
+    }
+
+    .back_to_treatments {
+        padding: 0 1rem;
+    }
+
+    .back_to_treatments a {
+        font-size: 0.8rem;
+    }
+
+    .treatment_item_hero--header {
+        margin-top: 1rem;
+    }
+
+    .treatment_item_hero--header h1 {
+        font-size: 2.5rem;
+    }
+
+    .treatment_item_hero--header h3 {
+        font-size: 1.5rem;
+    }
+
+    /*  Treatment hero main */
+
+    .treatment_item_wrapper {
+        margin: 0 1rem;
+        padding: 1rem 0;
+    }
+
+    /*  Main div 1 */
+    .treatment_item_main_div {
+        font-family: var(--bs-font-sans-serif);
+        display: grid;
+        grid-gap: 0;
+        grid-template-columns:  1fr;
+    }
+
+    .grid_section_1--header-paragraph {
+        font-size: 1.5rem;
+    }
+
+    .grid_section_1--body,
+    .grid_section_1--treatment-process-body,
+    .grid_section_2--pre-treatment-body {
+        font-size: 1rem;
+    }
+
+    .grid_section_1--treatment-process-header {
+        margin: 2rem 0;
+    }
+
+
+    .treatment_item_main_grid--section-2 {
+        display: grid;
+        grid-template-columns:  1fr;
+        grid-template-rows:  auto auto 1fr;
+    }
+
+    .treatment_item_wrapper img {
+        padding-bottom: 2rem;
+        max-width: 100%;
+    }
+
+    /* PRICING GRID COMPONENT */
+
+    .grid_component_grid {
+        grid-template-columns: 20rem;
+        grid-template-rows:  22rem 22rem 22rem;
+        grid-gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .price_component_grid--header-title h6 {
+        font-size: 1rem;
+        padding-top: 1rem;
+    }
+
+    .price_component_grid--header-price h5 {
+        font-size: 2rem;
+        padding: .5rem;
+    }
+
+    .currency_small {
+        font-size: 1rem;
+    }
+
+    .price_component_grid--item-location {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 1rem;
+        justify-content: center;
+        grid-gap: .5rem;
+    }
+
+    .price_component_grid--item-location-icon {
+        width: .9rem;
+    }
+
+    .price_component_grid--item-location-text {
+        font-size: 1rem;
+    }
+
+    .price_component_grid--button {
+        margin: 0 auto;
+        padding-top: 1rem;
+    }
+
+    /* TREATMENT LINK */
+
+    .treatment_link {
+        height: 4rem;
+    }
+
+    .treatment_link--content {
+        padding: .5rem;
+    }
+
+    .treatment_link--text p {
+        font-size: 1rem;
+        margin-bottom: 0;
     }
 }

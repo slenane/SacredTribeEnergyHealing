@@ -31,3 +31,32 @@ document.addEventListener('scroll', function() {
   scroll = (html.scrollTop || body.scrollTop) / ((html.scrollHeight || body.scrollHeight) - html.clientHeight) * 100;
   progress.style.setProperty('--scroll', scroll + '%');
 });
+
+/*******************
+ * TREATMENTS CODE
+*******************/
+const energyTreatment = document.querySelector(".treatments_hero_grid--1");
+const absenteeTreatment = document.querySelector(".treatments_hero_grid--2");
+const energyButton = document.querySelector(".energy-button");
+const absenteeButton = document.querySelector(".absentee-button");
+
+// Open treatment when div is clicked
+energyTreatment.addEventListener("click", () => {
+    energyButton.click();
+});
+
+// Open treatment when div is clicked
+absenteeTreatment.addEventListener("click", () => {
+    absenteeButton.click();
+});
+
+/*******************
+ * BLOGS CODE
+*******************/
+const blogItem = document.querySelectorAll(".blog_index_grid--item");
+
+// Open blog when div is clicked
+blogItem.forEach(item => item.addEventListener("click", () => {
+    // Click the current blogs button to open
+    item.querySelector(".blog-button").click();
+}));

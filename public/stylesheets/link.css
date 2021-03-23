@@ -95,3 +95,38 @@
 .link_new_edit_button {
     text-align: center;
 }
+
+@media only screen and (max-width: 600px) {
+    .links_wrapper {
+        margin: 0 1rem;
+    }
+    
+    .links_header_div {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .links_header_div h1 {
+        font-size: 3rem;
+    }
+    
+    .links_header_div h3 {
+        font-size: 2rem;
+    }
+    
+    .links_grid_div {
+        grid-template-columns: 22rem;
+    }
+    
+    .links_grid_item {
+        margin-bottom: 2rem;
+    }
+    
+    /* NEW/EDIT LINK */
+    
+    .new_edit_link_div {
+        margin: 1rem;
+        padding: 0;
+    }
+    
+}
