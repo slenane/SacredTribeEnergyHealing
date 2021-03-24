@@ -49,4 +49,6 @@ const sendMail = mail => {
     });
 };
 
-const formEvent = form.addEventListener("submit", formSubmit);
+if (form) {
+    const formEvent = form.addEventListener("submit", formSubmit);
+}

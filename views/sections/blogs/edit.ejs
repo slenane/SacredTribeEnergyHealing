@@ -1,6 +1,11 @@
+<!-- Include boilerplate -->
 <% layout('layouts/boilerplate')%>
-
+<!-- Include the navbar partial -->
 <%- include('../../partials/navbarBlack')%>
+<!-- Include the side navbar partial -->
+<%- include('../../partials/sideNavbarBlack')%>
+
+<div class="mobile_padding">
 
 <div class="row new_edit_blog_div shadow">
     <h1 class="text-center">Edit Blog</h1>
@@ -102,4 +107,6 @@
         <a href="/blogs/<%= blog._id%>">Back To Blog</a>
 
     </div>
+</div>
+
 </div>

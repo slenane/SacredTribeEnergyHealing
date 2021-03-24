@@ -1,0 +1,82 @@
+/* The side navigation menu */
+.side_navbar {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 100; 
+    top: 0; 
+    left: 0;
+    background-color: var(--deep-purple);
+    overflow-x: hidden; 
+    padding-top: 60px;
+    transition: 0.5s; 
+    text-align: start;
+  }
+  
+  /* The navigation menu links */
+  .side_navbar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 2rem;
+    font-family: var(--main-font);
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .side_navbar a:hover {
+    color: var(--teal);
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .side_navbar .side_navbar--close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 4rem;
+    margin-left: 50px;
+  }
+
+  .mobile_navbar {
+      display: none;
+  }
+
+@media only screen and (max-width: 1000px) {
+    .side_navbar {
+        display: block;
+    }
+
+    .mobile_navbar {
+      display: grid;  
+      width: 100%;
+      position: fixed;
+      /* background-color: white; */
+      z-index: 50;
+    }
+    
+    .mobile_navbar--container {
+      display: grid;
+      grid-template-columns: repeat(10, 10%);
+    }
+
+    .mobile_navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .side_navbar--open {
+        font-size: 2rem;
+        cursor: pointer;
+        color: white;
+        outline: none;
+        border: none;
+        background: none;
+        right: 1rem;
+        grid-column: 10 / -1;
+    }
+
+    .side_navbar--open.black {
+        color: black;
+    }
+    
+}

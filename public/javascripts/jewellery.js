@@ -58,4 +58,6 @@ let toggleShowDropdown = async (e) => {
     }
 };
 
-buyingGuideBtn.addEventListener("click", toggleShowDropdown)
+if (buyingGuideBtn) {
+    buyingGuideBtn.addEventListener("click", toggleShowDropdown);
+}

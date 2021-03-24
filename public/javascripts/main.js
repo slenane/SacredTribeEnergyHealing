@@ -27,10 +27,12 @@ let html = document.documentElement,
     progress = document.querySelector('.progress'),
     scroll;
 
-document.addEventListener('scroll', function() {
-  scroll = (html.scrollTop || body.scrollTop) / ((html.scrollHeight || body.scrollHeight) - html.clientHeight) * 100;
-  progress.style.setProperty('--scroll', scroll + '%');
-});
+if (progress) {
+  document.addEventListener('scroll', function() {
+    scroll = (html.scrollTop || body.scrollTop) / ((html.scrollHeight || body.scrollHeight) - html.clientHeight) * 100;
+    progress.style.setProperty('--scroll', scroll + '%');
+  });
+}
 
 /*******************
  * TREATMENTS CODE
@@ -41,14 +43,19 @@ const energyButton = document.querySelector(".energy-button");
 const absenteeButton = document.querySelector(".absentee-button");
 
 // Open treatment when div is clicked
-energyTreatment.addEventListener("click", () => {
+if (energyTreatment) {
+  energyTreatment.addEventListener("click", () => {
     energyButton.click();
-});
+  });
+}
+
 
 // Open treatment when div is clicked
-absenteeTreatment.addEventListener("click", () => {
-    absenteeButton.click();
-});
+if (absenteeTreatment) {
+  absenteeTreatment.addEventListener("click", () => {
+      absenteeButton.click();
+  });
+}
 
 /*******************
  * BLOGS CODE
@@ -60,3 +67,23 @@ blogItem.forEach(item => item.addEventListener("click", () => {
     // Click the current blogs button to open
     item.querySelector(".blog-button").click();
 }));
+
+/*******************
+ * SIDE NAVBAR CODE
+*******************/
+const sideNavbar = document.querySelector(".side_navbar");
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  console.log(sideNavbar);
+  if (sideNavbar.style.width === "250px") {
+    // If the sidebar is already open, close it
+    sideNavbar.style.width = "0";
+  } else {
+    sideNavbar.style.width = "250px";
+  }
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sideNavbar.style.width = "0";
+}

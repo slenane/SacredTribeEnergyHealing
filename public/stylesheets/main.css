@@ -156,6 +156,12 @@ a.black-brand {
     color: var(--off-black) !important;
 }
 
+/* MOBILE PADDING */
+
+.mobile_padding {
+    padding-top: 0;
+}
+
 /* FOOTER */
 
 #footer_div {
@@ -253,4 +259,14 @@ h4.alert-heading {
 
 .alert-stack {
     text-align: start;
+}
+
+@media only screen and (max-width: 1000px) {
+    .navbar {
+        display: none;
+    }
+
+    .mobile_padding {
+        padding-top: 3rem;
+    }
 }

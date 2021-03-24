@@ -161,7 +161,28 @@
         background-color: var(--deep-purple);
         color: white;
         display: grid;
-        align-items: space-around;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+    }
+
+    .contact_form_grid--header {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+    }
+
+    .contact_form_grid--address img {
+        width: 1.3rem;
+        margin-bottom: .5rem;
+    }
+
+    .contact_form_grid--email img {
+        width: 2rem;
+        margin-bottom: .8rem;
+    }
+
+    .contact_form_grid--phone img {
+        width: 1.7rem;
+        margin-bottom: .7rem;
     }
     
     .contact_form_grid--header h3 {
@@ -170,14 +191,9 @@
     }
     
     .contact_form_grid--item {
-        font-size: 1rem;
+        font-size: .8rem;
     }
-    
-    .contact_form_grid--item img {
-        margin-bottom: .5rem;
-        width: 1.1rem;
-    }
-    
+        
     /* SECTION 2 */
     
     .form-group {

@@ -16,6 +16,10 @@ body {
     height: 100%;
 }
 
+.navbar {
+    display: block;
+}
+
 button,
 .nav-link {
     font-family: var(--bs-font-sans-serif);
@@ -475,6 +479,14 @@ h6 {
     }
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .navbar {
+        display: none;
+    }
+}
+
+
 @media only screen and (max-width: 600px) {
     body {
         max-width: 600px;
@@ -488,12 +500,6 @@ h6 {
         background-position: 30% 50%;
         height: 60vh;
         margin-bottom: .5rem;
-    }
-
-    .mobile-navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
     }
 
     .home-brand {

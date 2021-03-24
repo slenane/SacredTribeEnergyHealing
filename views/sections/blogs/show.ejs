@@ -1,8 +1,13 @@
+<!-- Include boilerplate -->
 <% layout('layouts/boilerplate')%>
+<!-- Include the navbar partial -->
+<%- include('../../partials/navbarBlack')%>
+<!-- Include the side navbar partial -->
+<%- include('../../partials/sideNavbarBlack')%>
+
+<div class="mobile_padding">
 
 <div class="progress"></div>
-
-<%- include('../../partials/navbarBlack')%>
 
 <div class="back_to_blogs">
     <a href="/blogs"><i class="fas fa-arrow-left"></i> Back to blogs</a>
@@ -48,3 +53,4 @@
 
 </div> <!-- END OF WRAPPER -->
 
+</div>

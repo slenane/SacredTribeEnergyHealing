@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="/stylesheets/home.css">
     <!-- MAIN STYLESHEET -->
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <!-- SIDENAV STYLESHEET -->
+    <link rel="stylesheet" href="/stylesheets/sideNavbar.css">
 </head>
 <body>
 
@@ -31,38 +33,52 @@
     
     <!-- SOCIAL LINKS -->
     <%- include('./partials/socialBar')%>
-
     <!-- HERO SECTION  W/ NAVBAR INSIDE-->
     <div id="hero_div">
          
         <!-- NAVBAR -->
 
-        <nav class="navbar mobile-navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-transparent pt-0 mt-0">
             <div class="container container-fluid">
                 <a class="navbar-brand home-brand" href="/">Sacred Tribe Energy Healing</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="/">Home</a>
-                        <a class="nav-link" href="/jewellery">Jewellery</a>
-                        <a class="nav-link" href="/treatments">Treatments</a>
-                        <a class="nav-link" href="/awareness">Awareness</a>
-                        <a class="nav-link" href="/blogs">Blogs</a>
-                        <a class="nav-link" href="/about">About</a>
-                        <a class="nav-link" href="/links">Links</a>
-                        <a class="nav-link" href="/contact">Contact</a>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/jewellery">Jewellery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/treatments">Treatments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/awareness">Awareness</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blogs">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/links">Links</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
                         <div class="navbar-nav ml-auto">
                             <% if(currentUser) {%>
-                            <a class="nav-link" href="/logout">Logout</a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Logout</a>
+                                </li>
                             <% } %>
                         </div>
-                    </div>
-                </div>
+                    </ul>
             </div>
         </nav>
+
+        <%- include('./partials/sideNavbarWhite')%>
+
 
         <div class="hero_mobile_header">
             <div class="hero_mobile_text--header">

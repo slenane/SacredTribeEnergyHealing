@@ -112,3 +112,23 @@ function topFunction() {
 window.addEventListener('scroll', () => {
   document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
 }, false);
+
+/*******************
+ * SIDE NAVBAR CODE
+*******************/
+const sideNavbar = document.querySelector(".side_navbar");
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  console.log(sideNavbar);
+  if (sideNavbar.style.width === "250px") {
+    // If the sidebar is already open, close it
+    sideNavbar.style.width = "0";
+  } else {
+    sideNavbar.style.width = "250px";
+  }
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  sideNavbar.style.width = "0";
+}
