@@ -144,6 +144,7 @@ a.navbar-brand {
     font-weight: 700;
     font-family: var(--main-font);
 }
+
 a.black-brand {
     color: var(--off-black) !important;
 }
@@ -156,10 +157,20 @@ a.black-brand {
     color: var(--off-black) !important;
 }
 
+.navbar_black.background-color {
+    background-color: white;
+    transition: all .2s ease;
+}
+
+.navbar_white.background-color {
+    background-color: var(--deep-purple);
+    transition: all .2s ease;
+}
+
 /* MOBILE PADDING */
 
-.mobile_padding {
-    padding-top: 0;
+.navbar_top_padding {
+    padding-top: 3.5rem;
 }
 
 /* FOOTER */
@@ -266,7 +277,7 @@ h4.alert-heading {
         display: none;
     }
 
-    .mobile_padding {
+    .navbar_top_padding {
         padding-top: 3rem;
     }
 }

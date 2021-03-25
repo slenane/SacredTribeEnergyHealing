@@ -132,3 +132,22 @@ function openNav() {
 function closeNav() {
   sideNavbar.style.width = "0";
 }
+
+/*****************************
+ * NAVBAR BACKGROUND ON SCROLL
+*****************************/
+const navbarHome = document.querySelector(".navbar_home");
+const mobileNavbar = document.querySelector(".mobile_navbar");
+
+// When the user scrolls down 600px from the top of the document, show the button
+window.onscroll = function() {toggleNavbarBackground()};
+
+function toggleNavbarBackground() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    navbarHome.classList.add("background-color");
+    mobileNavbar.classList.add("background-color");
+  } else {
+    navbarHome.classList.remove("background-color");
+    mobileNavbar.classList.remove("background-color");
+  }
+}

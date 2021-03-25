@@ -54,6 +54,14 @@
       /* background-color: white; */
       z-index: 50;
     }
+
+    .mobile_navbar.background-color {
+      background-color: var(--deep-purple);
+    }
+
+    .mobile_navbar.black.background-color {
+      background-color: white;
+    }
     
     .mobile_navbar--container {
       display: grid;
@@ -73,6 +81,10 @@
         background: none;
         right: 1rem;
         grid-column: 10 / -1;
+    }
+
+    .side_navbar--open:hover {
+      transform: scale(1.1);
     }
 
     .side_navbar--open.black {
