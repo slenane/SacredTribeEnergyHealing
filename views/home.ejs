@@ -77,7 +77,27 @@
             </div>
         </nav>
 
-        <%- include('./partials/sideNavbarWhite')%>
+        <!-- MOBILE NAVBAR -->
+
+        <div class="side_navbar">
+            <a href="javascript:void(0)" class="side_navbar--close" onclick="closeNav()">&times;</a>
+            <a class="side-nav-link" href="/">Home</a>
+            <a class="side-nav-link" href="/jewellery">Jewellery</a>
+            <a class="side-nav-link" href="/treatments">Treatments</a>
+            <a class="side-nav-link" href="/awareness">Awareness</a>
+            <a class="side-nav-link" href="/blogs">Blogs</a>
+            <a class="side-nav-link" href="/about">About</a>
+            <a class="side-nav-link" href="/links">Links</a>
+            <a class="side-nav-link" href="/contact">Contact</a>
+        </div>
+        
+        
+        <div class="mobile_navbar">
+            <div class="mobile_navbar--container container container-fluid">
+                <a class="navbar-brand home-brand" href="/">Sacred Tribe Energy Healing</a>
+                <button class="side_navbar--open" onclick="openNav()">&#9776;</button>
+            </div>
+        </div>
 
         <div class="navbar_top_padding">
 
@@ -85,6 +105,24 @@
         <div class="hero_mobile_header">
             <div class="hero_mobile_text--header">
                 <h1>Sacred Tribe <br> Energy Healing</h1>
+            </div>
+        </div>
+
+        <div class="hero_mobile_links">
+            <div class="mobile_text--link_1">
+                <p>Philosophy</p>
+            </div>
+            <div class="mobile_text--link_gap">
+                <p>|</p>
+            </div>
+            <div class="mobile_text--link_2">
+                <p>Jewellery</p>
+            </div>
+            <div class="mobile_text--link_gap">
+                <p>|</p>
+            </div>
+            <div class="mobile_text--link_3">
+                <p>Treatments</p>
             </div>
         </div>
 
@@ -100,13 +138,13 @@
                 <div class="hero_text--link_gap">
                     <p>|</p>
                 </div>
-                <div class="hero_text--link_1">
+                <div class="hero_text--link_2">
                     <a href="#jewellery_div">Jewellery</a>
                 </div>
                 <div class="hero_text--link_gap">
                     <p>|</p>
                 </div>
-                <div class="hero_text--link_2">
+                <div class="hero_text--link_3">
                     <a href="#treatments_div">Treatments</a>
                 </div>
             </div>

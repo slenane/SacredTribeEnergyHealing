@@ -29,7 +29,7 @@ function debounce(func, wait = 20, immediate = true) {
 
 let slideIn = () => {
     // Halfway through the image
-    const slideInAt = (window.scrollY + window.innerHeight);
+    const slideInAt = (window.scrollY + window.innerHeight) + 100;
     const isShown = slideInAt > slideInImg.offsetTop;
     
     if (isShown) {
@@ -38,7 +38,7 @@ let slideIn = () => {
 } 
 
 let slideUp = () => {
-    const slideInAt = (window.scrollY + window.innerHeight);
+    const slideInAt = (window.scrollY + window.innerHeight) + 100;
     const isShown = slideInAt > slideUpImg.offsetTop;
     
     if (isShown) {

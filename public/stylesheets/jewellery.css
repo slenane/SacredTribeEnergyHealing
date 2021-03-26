@@ -14,7 +14,7 @@
     background-image: url("../images/woman2.png");
     background-repeat: no-repeat;
     background-size: 25rem;
-    background-position: 10% 80%;
+    background-position: 10% 90%;
 }
 
 .hero_header-content {
@@ -210,7 +210,7 @@
 }
 
 .hero_grid--item-content-1 {
-    top: -8rem !important;
+    top: -7rem !important;
 }
 
 .hero_grid--item-content-2 {
@@ -218,7 +218,7 @@
 }
 
 .hero_grid--item-content-3 {
-    top: -7.3rem !important;
+    top: -6.3rem !important;
 }
 
 .hero_grid--item-icon img {

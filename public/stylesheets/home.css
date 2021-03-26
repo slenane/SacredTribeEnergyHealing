@@ -21,11 +21,15 @@ body {
 }
 
 .navbar_home.background-color {
-    background-color: #211c18;
+    background-color: var(--deep-purple);
     transition: all .2s ease;
 }
 
 .navbar_home.background-color .home-brand {
+    visibility: visible;
+}
+
+.mobile_navbar.background-color .home-brand {
     visibility: visible;
 }
 
@@ -60,6 +64,10 @@ a:hover {
 }
 
 .hero_mobile_header {
+    display: none;
+}
+
+.hero_mobile_links {
     display: none;
 }
 
@@ -104,10 +112,9 @@ h1 {
 }
 
 .hero_arrow {
-    display: grid;
-    position: relative;
-    top: 30%;
-    justify-content: center;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
     color: white;
 }
 
@@ -162,7 +169,11 @@ h1 {
 }
 
 .philosophy_image {
-    margin: 3rem 0 0 5rem;
+    margin: 5rem 0 0 7rem;
+}
+
+.philosophy_image img {
+    width: 32rem;
 }
 
 .slide-in {
@@ -204,7 +215,6 @@ h2 {
 #jewellery_div {
     height: 200vh;
     margin-bottom: 5rem;
-    scroll-snap-align: start;
 }
 
 .jewellery_top_div {
@@ -477,7 +487,7 @@ h6 {
 
 .overlay-active {
     animation-name: overlay;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
@@ -507,7 +517,7 @@ h6 {
     #hero_div {
         background-size: cover;
         background-position: 30% 50%;
-        height: 60vh;
+        height: 50vh;
         margin-bottom: .5rem;
     }
 
@@ -516,22 +526,39 @@ h6 {
     }
 
     .hero_mobile_header {
-        display: inline-block;
+        display: block;
         text-align: center;
-        padding-left: 2rem;
-        padding-top: 6rem;
+        position: absolute;
+        top: 15%;
+        left: 5%;
     }
     
     .hero_mobile_text--header h1 {
         font-size: 2.5rem;
         color: var(--crystal-cream);
     }
+
+    .hero_mobile_links {
+        position: absolute;
+        bottom: 0;
+        display: grid;
+        color: white;
+        grid-template-columns: repeat(5, 1fr);
+        justify-content: space-around;
+        text-align: center;
+        padding: 0 4rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-shadow: var(--main-shadow);
+    }
+    
+    .hero_mobile_links a:hover {
+        color: var(--teal);
+    }
     
     .hero_text {
-        max-width: 80%;
-        margin:  auto;
-        position: relative;
-        top: 30%;
+        display: none;
+
     }
     
     .hero_text--header h1 {
@@ -539,13 +566,9 @@ h6 {
     }
 
     .hero_text--links {
-        padding: 0;
-        font-size: 2rem;
+        display: none;
     }
     
-    .hero_text--links a:hover {
-        color: var(--teal);
-    }
     
     .hero_text--button button {
         display: none;
@@ -578,14 +601,16 @@ h6 {
         grid-template-columns: 1fr;
         margin-bottom: 3rem;
         font-weight: 700;
+        padding-top: 1rem;
     }
 
     .philosophy_image {
         margin: 0 auto;
     }
 
-    .profile-photo {
-        max-height: 20rem;
+    .philosophy_image img {
+        width: 22rem;
+        padding-bottom: .5rem;
     }
 
     .slide-in {
@@ -596,7 +621,7 @@ h6 {
     .philosophy_mobile_header {
         display: block;
         margin: 0 auto;
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
     }
 
     h2.philosophy_mobile--header {
