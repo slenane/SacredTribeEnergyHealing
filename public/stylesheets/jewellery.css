@@ -1,5 +1,4 @@
 /* HERO DIV */
-
 #jewellery__hero_div {
     margin-bottom: 3rem;
     font-family: var(--main-font);
@@ -566,22 +565,351 @@ h4.jewellery_description--header {
     margin: 1rem 5rem 3rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 1024px) {
+    #jewellery__hero_div {
+        margin-bottom: 2rem;
+    }
+    
+    .indian_woman--img-overlay {
+        background-position: 0% 90%;
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+
+    /* CONTENT DIVS */
+
+    .jewellery_content_div {
+        display: grid;
+        grid-template-columns: repeat(3, 18rem);
+        justify-content: space-around;
+        grid-gap: 3rem;
+        text-align: center;
+        margin: 3rem 5rem;
+    }
+
+    .jewellery_item {
+        width: 18rem;
+        height: 30rem;
+    }
+
+    /* TREATMENT AND AWARENESS LINKs */
+
+    .treatments_link,
+    .awareness_link {
+        height: 20rem;
+    }
+
+    .treatments_text--body {
+        margin: 0 16rem;
+    }
+
+    .awareness_text--body {
+        margin: 0 12rem;
+    }
+
+    /* SHOW PAGES */
+
+    .jewellery_show--wrapper {
+        margin: 0 2rem;
+    }
+    
+    .back_to_jewellery {
+        padding: 1rem 0;
+    }
+    
+    .jewellery_content_main {
+        grid-template-columns: auto 30rem;
+        margin-bottom: 2rem;
+    }
+    
+    .jewellery_content_main--section-1 {
+        display: grid;
+        grid-template-columns: repeat(16, 1.6rem);
+        grid-template-rows: repeat(13, 1.6rem);
+        grid-gap: .2rem;
+    }
+    
+    .thumb_image {
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .share_item {
+        grid-column: 1 / 4;
+        grid-row: -3 / -1;
+    }
+    
+    /* .jewellery_content_main--section-2 {
+    
+    } */
+    
+    h1.jewellery_title {
+        font-size: 2.5rem;
+    }
+    
+    h2.jewellery_type {
+        font-size: 1.5rem;
+    }
+    
+    .jewellery_price {
+        font-size: 1.2rem;
+    }
+    
+    .delivery_included {
+        font-size: .8rem;
+    }
+    
+    h4.jewellery_description--header {
+        font-size: 1.2rem;
+    }
+    
+    /* .jewellery_description--body {
+    } */
+    
+    /* MATERIALS USED AND SYMBOLISM */
+    
+    .materials_grid {
+        margin-bottom: 2rem;
+    }
+    
+    /* SIMILAR ITEMS */
+    
+    .similar_items--grid {
+        display: grid;
+        grid-template-columns: repeat(3, 18rem);
+        justify-content: space-around;
+        grid-gap: 3rem;
+        text-align: center;
+        margin: 3rem 5rem;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+        /* HERO DIV */
+    #jewellery__hero_div {
+        margin-bottom: 1rem;
+    }
+
+    .indian_woman--img-overlay {
+        background-size: 22rem;
+        background-position: -10% 90%;
+    }
+
+    .hero_infobar--grid {
+        grid-template-columns: repeat(2, 22rem);
+        grid-gap: 2rem;
+    }
+
+    
+
+    .hero_infobar--grid-item-icon {
+        grid-template-rows: 3rem 1fr;
+    }
+
+    .grid_item--icon {
+        height: 3rem;
+    }
+
+    .hero_grid {
+        grid-template-columns: repeat(3, 12rem);
+        grid-template-rows: 12rem;
+        grid-gap: 3rem;
+    }
+
+    .overlay {
+        top: .5rem;
+        left: 1.5rem;
+        height: 9.2rem;
+        width: 9.2rem;
+    }
+
+    .hero_grid--item-content {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    /* CONTENT DIVS */
+
+    .jewellery_content_div {
+        display: grid;
+        grid-template-columns: repeat(3, 14rem);
+        grid-gap: 1rem;
+        text-align: center;
+        margin: 2rem 0;
+        padding: 0 1rem;
+    }
+
+    .jewellery_item {
+        width: 14rem;
+        height: 24rem;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+    }
+
+    .jewellery_item p {
+        font-size: 1rem;
+    }
+
+    /* TREATMENT AND AWARENESS LINKs */
+
+    .treatments_link,
+    .awareness_link {
+        height: 15rem;
+    }
+
+    h4 {
+        font-size: 2rem;
+    }
+
+    .treatments_text--body {
+        margin: 0 5rem;
+        font-size: 1.5rem;
+    }
+
+    .awareness_text--body {
+        margin: 0 5rem;
+        font-size: 1.5rem;
+    }
+
+    /* SHOW PAGES */
+    
+    .jewellery_content_main {
+        grid-template-columns: auto 24rem;
+        grid-gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .jewellery_content_main--section-1 {
+        display: grid;
+        grid-template-columns: repeat(16, 1.2rem);
+        grid-template-rows: repeat(13, 1.2rem);
+        grid-gap: .1rem;
+    }
+    
+    .thumb_image {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+    /* .jewellery_content_main--section-2 {
+    
+    } */
+    
+    h1.jewellery_title {
+        font-size: 1.5rem;
+    }
+    
+    h2.jewellery_type {
+        font-size: 1.2rem;
+    }
+    
+    .jewellery_price {
+        font-size: 1rem;
+    }
+    
+    .delivery_included {
+        font-size: .7rem;
+    }
+    
+    h4.jewellery_description--header {
+        font-size: 1rem;
+    }
+    
+    .jewellery_description--body {
+        font-size: 0.8rem;
+    }
+    
+    /* MATERIALS USED AND SYMBOLISM */
+    .materials_grid {
+        margin-bottom: 1rem;
+    }
+
+    
+    .materials_grid--body {
+        display: grid;
+        grid-template-columns: repeat(3, 16rem);
+        justify-content: space-around;
+    }
+    
+    .materials_grid--text-header {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+    
+    .materials_grid--text-body {
+        font-size: .8rem;
+    }
+    
+    /* WHITE FEATHER JEWELLERY BIO */
+    
+    .white_feather_bio {
+        margin-bottom: 1rem;
+    }
+    
+    .white_feather_bio--header {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .white_feather_bio--body {
+        display: grid;
+        grid-template-columns: 25rem auto;
+        justify-content: center;
+        grid-gap: 5rem;
+        font-family: var(--bs-font-sans-serif);
+        font-size: 0.8rem;
+    }
+    
+    .white_feather_bio--icon {
+        align-self: center;
+    }
+    
+    .white_feather_bio--icon img {
+        height: 14rem;
+    }
+    
+    /* SIMILAR ITEMS */
+    
+    .similar_items-header {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        font-family: var(--main-font);
+    }
+    
+    .similar_items--grid {
+        display: grid;
+        grid-template-columns: repeat(3, 13rem);
+        grid-gap: 2rem;
+        text-align: center;
+        margin: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
     body {
-        max-width: 600px;
+        max-width: 480px;
         /* overflow-x: hidden; */
         margin: 0;
     }
 
     /* HERO DIV */
-
     .hero_header {
         height: 15rem;
     }
     
     .indian_woman--img-overlay {
-        background-size: 22rem;
-        background-position: -10% 40%;
+        background-size: 20rem;
+        background-position: -60% 80%;
     }
     
     .hero_header--icon {
@@ -594,20 +922,18 @@ h4.jewellery_description--header {
     
     .hero_header--text {
         font-size: 1.5rem;
-        border: 1px solid white;
-        font-weight: 700;
-        margin-top: 1rem;
-        padding: 2rem 1rem 0rem 1rem;
+        margin-top: 2rem;
+        padding: 1rem 1rem 0rem 1rem;
     }
     
     @keyframes down {
         to {
-            height: 21rem;
+            height: 26rem;
         }
     }
     
     .hero_infobar.active {
-        height: 21rem;
+        height: 26rem;
     }
     
     .hero_infobar--grid {
@@ -647,7 +973,6 @@ h4.jewellery_description--header {
     .hero_grid_mobile--item {
         display: grid;
         justify-content: center;
-        align-items: center;
         margin-top: 1rem;
     }
 
@@ -665,7 +990,7 @@ h4.jewellery_description--header {
     }
 
     .hero_grid_mobile--item-text {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         text-align: center;
         font-weight: 700;
         color: var(--deep-purple);
@@ -678,25 +1003,29 @@ h4.jewellery_description--header {
     /* CONTENT DIVS */
 
     .jewellery_content_div {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        justify-content: space-around;
+        grid-template-columns: repeat(2, 10rem);
         grid-gap: 1rem;
-        text-align: center;
         margin: 2rem 1rem;
     }
 
     .jewellery_item {
-        width: auto;
-        height: auto;
+        width: 10rem;
+        height: 19rem;
     }
 
     h5 {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
 
     .jewellery_item p {
-        font-size: 1rem;
+        font-size: .8rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .jewellery_item--button button {
+        height: 1.5rem;
+        width: 4rem;
+        font-size: 0.8rem;
     }
 
     /* TREATMENT AND AWARENESS LINKs */
@@ -742,13 +1071,13 @@ h4.jewellery_description--header {
     .jewellery_content_main {
         justify-content: center;
         grid-template-columns: 1fr;
-        grid-template-rows:  28rem 1fr;
+        grid-template-rows:  20rem 1fr;
         margin-bottom: 1rem;
     }
 
     .jewellery_content_main--section-1 {
         display: block;
-        height: 25rem;
+        height: 20rem;
         text-align: center;
     }
 
@@ -769,6 +1098,24 @@ h4.jewellery_description--header {
         margin-top: 1rem;
     }
 
+    h1.jewellery_title {
+        font-size: 2rem;
+    }
+    
+    h2.jewellery_type {
+        font-size: 1.5rem;
+    }
+    
+    .jewellery_price {
+        font-size: 1.2rem;
+    }
+    
+    .delivery_included {
+        font-size: .8rem;
+    }
+    /* .jewellery_description--body {
+    } */
+
     .jewellery_description {
         text-align: start;
         padding: 0 1rem;
@@ -787,7 +1134,20 @@ h4.jewellery_description--header {
     .materials_grid--body {
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;
-        padding: 0 1rem;
+        padding: 0 .5rem;
+    }
+    
+    .materials_grid--icon {
+        height: 3rem;
+        border-radius: 50%;
+    }
+    
+    .materials_grid--text-header {
+        font-size: 1.5rem;
+    }
+    
+    .materials_grid--text-body {
+        font-size: 0.8rem;
     }
 
     /* WHITE FEATHER JEWELLERY BIO */
@@ -830,4 +1190,64 @@ h4.jewellery_description--header {
         text-align: center;
         margin: 2rem 1rem;
     }
+}
+
+@media only screen and (max-width: 320px) {
+    body {
+        max-width: 320px;
+        /* overflow-x: hidden; */
+        margin: 0;
+    }
+
+    /* HERO DIV */
+    .hero_header {
+        height: 15rem;
+    }
+    
+    .indian_woman--img-overlay {
+        background-size: 18rem;
+        background-position: -90% 90%;
+    }
+    
+    
+    .hero_header--text {
+        font-size: 1.2rem;
+    }
+    
+    @keyframes down {
+        to {
+            height: 28rem;
+        }
+    }
+    
+    .hero_infobar.active {
+        height: 28rem;
+    }
+
+    .hero_grid_mobile--item-text {
+        font-size: 1.2rem;
+    }
+
+    /* ##################### */
+    /*       SHOW PAGE       */
+    /* ##################### */
+
+    .jewellery_content_main {
+        grid-template-rows:  18rem 1fr;
+    }
+
+    .jewellery_content_main--section-1 {
+        height: 18rem;
+    }
+
+    .jewellery_content_main--section-2 {
+        margin-top: 0;
+    }
+
+    /* MATERIALS USED AND SYMBOLISM */
+
+    .materials_grid--body {
+        grid-template-columns: 1fr;
+    }
+
 }

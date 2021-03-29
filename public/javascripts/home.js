@@ -69,10 +69,15 @@ let fadeIn = () => {
   })
 }
 
-window.addEventListener("scroll", debounce(slideIn));
-window.addEventListener("scroll", debounce(slideUp));
+// If the screen width is larger than 1024 then show the following animations
+if (window.innerWidth > 1024) {
+  window.addEventListener("scroll", debounce(slideIn));
+  window.addEventListener("scroll", debounce(fadeIn));
+}
+
+// Always show these animations
 window.addEventListener("scroll", debounce(overlaySlide));
-window.addEventListener("scroll", debounce(fadeIn));
+window.addEventListener("scroll", debounce(slideUp));
 
 // SWIPERJS
 const swiper = new Swiper('.swiper-container', {
@@ -143,10 +148,16 @@ const mobileNavbar = document.querySelector(".mobile_navbar");
 window.onscroll = function() {toggleNavbarBackground()};
 
 function toggleNavbarBackground() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+  // While the hero section is on screen show a dark navbar, then show a purple one
+  if (document.body.scrollTop > window.innerHeight || document.documentElement.scrollTop > window.innerHeight) {
+    navbarHome.classList.remove("background-color-hero");
     navbarHome.classList.add("background-color");
+  } else if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    navbarHome.classList.remove("background-color");
+    navbarHome.classList.add("background-color-hero");
     mobileNavbar.classList.add("background-color");
   } else {
+    navbarHome.classList.remove("background-color-hero");
     navbarHome.classList.remove("background-color");
     mobileNavbar.classList.remove("background-color");
   }

@@ -20,6 +20,11 @@ body {
     display: block;
 }
 
+.navbar_home.background-color-hero {
+    background-color: #29211eb6;
+    transition: all .2s ease;
+}
+
 .navbar_home.background-color {
     background-color: var(--deep-purple);
     transition: all .2s ease;
@@ -53,7 +58,7 @@ a:hover {
     background-image: url("../images/hero-image-rock-crystal.jpg");
     background-size: cover;
     background-position: 0%;
-    height: 100vh;
+    height: 40rem;
     margin-bottom: 5rem;
     position: relative;
     scroll-snap-align: center;
@@ -73,7 +78,7 @@ a:hover {
 
 .hero_text {
     color: var(--crystal-cream);
-    max-width: 40%;
+    max-width: 35rem;
     text-align: center;
     margin: 7rem 0 0 4rem;
 }
@@ -113,7 +118,7 @@ h1 {
 
 .hero_arrow {
     position: absolute;
-    bottom: 5%;
+    bottom: 8%;
     left: 50%;
     color: white;
 }
@@ -125,6 +130,7 @@ h1 {
 .fa-angle-double-down.active {
     animation: bounce;
     animation-duration: 4s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes bounce {
@@ -145,6 +151,10 @@ h1 {
     }
     90% {
         transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
@@ -157,7 +167,7 @@ h1 {
 /* PHILOSOPHY */
 
 #philosophy_div {
-    height: 100vh;
+    height: 40rem;
     background-image: url("../images/philosophy-bg.png");
     background-size: cover;
     background-position: 0 100%;
@@ -173,7 +183,7 @@ h1 {
 }
 
 .philosophy_image img {
-    width: 32rem;
+    max-width: 32rem;
 }
 
 .slide-in {
@@ -213,8 +223,8 @@ h2 {
 /* JEWELLERY */
 
 #jewellery_div {
-    height: 200vh;
-    margin-bottom: 5rem;
+    height: 75rem;
+    margin-bottom: 4rem;
 }
 
 .jewellery_top_div {
@@ -262,8 +272,8 @@ h2 {
 
 .swiper-container {
     display: block;
-    width: 800px;
-    height: 550px;
+    width: 50rem;
+    height: 32rem;
   }
 
 .swiper-slide-1 {
@@ -342,7 +352,7 @@ h5 {
 /* TREATMENTS */
 
 #treatments_div {
-    height: 100vh;
+    height: 40rem;
     background-image: url("../images/treatments-bg.png");
     background-position: 80%;
     background-size: cover;
@@ -386,7 +396,7 @@ h4 {
 /* FOOTER */
 
 #footer_div {
-    height: 40vh;
+    height: 15rem;
     background-color: var(--off-black);
     color: white;
     display: grid;
@@ -498,31 +508,342 @@ h6 {
     }
 }
 
+@media  (max-width: 1024px) {
+    body {
+        max-width: 1024px;
+    }
+    
+    .mobile_navbar.background-color .home-brand {
+        visibility: visible;
+    }
 
-@media only screen and (max-width: 1000px) {
-    .navbar {
+    #hero_div {
+        height: 30rem; 
+        margin-bottom: 3rem;
+    }
+    
+    .hero_text {
+        color: var(--crystal-cream);
+        text-align: center;
+        max-width: 28rem;
+        margin: 0;
+        padding: 5rem 0 0 1rem;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    .hero_text--links {
+        padding: 0 3rem;
+        font-size: 1.5rem;
+    }
+
+    .hero_arrow {
         display: none;
+    }
+
+    /* PHILOSOPHY */
+
+    #philosophy_div {
+        background-position: 20% 80%;
+        height: 30rem;
+        scroll-snap-align: none;
+    }
+
+    .philosophy_image {
+        margin: 2rem 0 0 1.5rem;
+        padding-bottom: 3rem;
+    }
+
+    .philosophy_image img {
+        max-width: 26rem;
+    }
+
+    .philosophy_text {
+        margin: 0;
+        padding: 3.5rem 0 5rem 0rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--deep-purple);
+    }
+
+    .philosophy_text--body {
+        font-size: 2rem;
+    }
+
+    .slide-in {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .step-fade-in p,
+    .step-fade-in h2 {
+        opacity: 1;
+    }
+    
+    /* JEWELLERY */
+
+    #jewellery_div {
+        height: 60rem;
+        margin-bottom: 5rem;
+    }
+
+    .jewellery_top_div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 3rem;
+    }
+
+    .jewellery_top_div--text {
+        margin: 0;
+        padding: 3rem;
+    }
+
+    .jewellery_top_div--logo img {
+        width: 10rem;
+    }
+
+    .jewellery_top_div--body {
+        font-size: 2rem;
+    }
+
+    .jewellery_top_div--button button{
+        height: 2.3rem;
+        width: 6.5rem;
+    }
+
+    .jewellery_top_div--image {
+        margin: 2rem 3rem 0 0;
+    }
+
+    .swiper-container {
+        width: 600px;
+        height: 450px;
+    }
+
+    .jewellery_bottom_div {
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .jewellery_bottom_div--collections {
+        display: grid;
+        grid-template-columns: repeat(3, 15rem);
+        justify-content: space-around;
+        padding: 0 3rem;
+    }
+
+    .jewellery_bottom_div--collection {
+        width: 15rem;
+    }
+
+    h5 {
+        font-size: 1.8rem;
+    }
+
+    .collection_div--text-1,
+    .collection_div--text-3 {
+        margin: 0;
+    }
+
+    /* TREATMENTS */
+
+    #treatments_div {
+        height: 30rem;
+    }
+
+    h4 {
+        font-size: 3rem;
+    }
+
+    .treatments_text--body {
+        margin: 0;
+        padding: 0 5rem;
+        font-size: 2rem;
     }
 }
 
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     body {
-        max-width: 600px;
-        overflow: hidden;
+        max-width: 768px;
+        overflow-x: hidden;
         margin: 0;
     }
     
     /* HERO SECTION  W/ NAVBAR INSIDE */
     #hero_div {
         background-size: cover;
-        background-position: 30% 50%;
-        height: 50vh;
-        margin-bottom: .5rem;
+        background-position: 0%;
+        height: 26rem;
+        margin-bottom: 3rem;
+    }
+    
+    .hero_text {
+        max-width: 22rem;
+        margin: 0;
+        padding: 3rem 0 0 1rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero_text--links {
+        padding: 0 2rem;
+        font-size: 1.4rem;
     }
 
-    .home-brand {
-        visibility: hidden;
+    .hero_text--button button {
+        background-color: var(--deep-purple);
+        height: 2rem;
+        width: 7rem;
+        font-size: 0.9rem;
+    }
+
+    /* PHILOSOPHY */
+
+    #philosophy_div {
+        background-position: 20% 80%;
+        height: 26rem;
+        scroll-snap-align: none;
+    }
+
+    .philosophy_image {
+        margin: 1rem 0 0 1rem;
+        padding-bottom: 3rem;
+    }
+
+    .philosophy_image img {
+        max-width: 22rem;
+    }
+
+    .philosophy_text {
+        margin: 0;
+        padding: 3rem 0 4rem 0rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .philosophy_text--body {
+        font-size: 1.7rem;
+    }
+
+    
+    .philosophy_text--name {
+        font-size: 1.3rem;
+    }
+
+    
+    /* JEWELLERY */
+
+    #jewellery_div {
+        height: 55rem;
+        margin-bottom: 3rem;
+    }
+
+    .jewellery_top_div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 3rem;
+    }
+
+    .jewellery_top_div--text {
+        margin: 0;
+        padding: 2rem;
+    }
+
+    .jewellery_top_div--logo img {
+        width: 9rem;
+    }
+
+    .jewellery_top_div--body {
+        font-size: 1.7rem;
+    }
+
+    .jewellery_top_div--button button{
+        height: 2rem;
+        width: 6rem;
+        font-size: 0.9rem;
+    }
+
+    .jewellery_top_div--image {
+        margin: 2rem 2rem 0 0;
+    }
+
+    .swiper-container {
+        width: 32rem;
+        height: 25rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .jewellery_bottom_div--collections {
+        display: grid;
+        grid-template-columns: repeat(3, 12rem);
+        justify-content: space-around;
+        padding: 0 2rem;
+    }
+
+    .jewellery_bottom_div--collection {
+        width: 12rem;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+    }
+
+    .collection_div--text-1,
+    .collection_div--text-3 {
+        margin: 0;
+    }
+
+    .collection_div--button button {
+        height: 1.5rem;
+        width: 5rem;
+        font-size: .8rem;    
+    }
+
+    /* TREATMENTS */
+
+    #treatments_div {
+        height: 26rem;
+    }
+
+    h4 {
+        font-size: 2.5rem;
+    }
+
+    .treatments_text--body {
+        margin: 0;
+        padding: 0 5rem;
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    body {
+        max-width: 480px;
+        overflow-x: hidden;
+        margin: 0;
+    }
+    
+    /* HERO SECTION  W/ NAVBAR INSIDE */
+    #hero_div {
+        background-position: 30% 50%;
+        height: 20rem;
+        margin-bottom: .5rem;
     }
 
     .hero_mobile_header {
@@ -536,6 +857,7 @@ h6 {
     .hero_mobile_text--header h1 {
         font-size: 2.5rem;
         color: var(--crystal-cream);
+        text-shadow: var(--main-shadow);
     }
 
     .hero_mobile_links {
@@ -546,47 +868,15 @@ h6 {
         grid-template-columns: repeat(5, 1fr);
         justify-content: space-around;
         text-align: center;
-        padding: 0 4rem;
+        padding: 0 2rem;
+        grid-gap: .5rem;
         font-size: 1.5rem;
         font-weight: 700;
         text-shadow: var(--main-shadow);
     }
     
-    .hero_mobile_links a:hover {
-        color: var(--teal);
-    }
-    
     .hero_text {
         display: none;
-
-    }
-    
-    .hero_text--header h1 {
-        display: none;
-    }
-
-    .hero_text--links {
-        display: none;
-    }
-    
-    
-    .hero_text--button button {
-        display: none;
-    }
-    
-    .hero_arrow {
-        display: none;
-    }
-      
-    .hero_curve_design {
-        display: block;
-        position: relative;
-        top: 27%;
-        height: 2rem;
-        background-image: url("../images/curve-top-left.png");
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin-bottom: 0;
     }
 
     /* PHILOSOPHY */
@@ -602,20 +892,23 @@ h6 {
         margin-bottom: 3rem;
         font-weight: 700;
         padding-top: 1rem;
+        text-align: center;
     }
 
     .philosophy_image {
         margin: 0 auto;
+        padding-bottom: 0;
     }
 
     .philosophy_image img {
-        width: 22rem;
-        padding-bottom: .5rem;
+        max-width: 80%;
+        padding-bottom: 0;
     }
 
-    .slide-in {
-        transform: translateX(0);
-        opacity: 1;
+    .philosophy_text {
+        margin: 0;
+        padding: 1rem;
+        padding-bottom: 9rem;
     }
 
     .philosophy_mobile_header {
@@ -630,8 +923,6 @@ h6 {
 
     .philosophy_text {
         margin: 0 auto;
-        margin-bottom: 7rem;
-        text-align: center;
     }
 
     h2.philosophy_text--header {
@@ -651,18 +942,6 @@ h6 {
         font-size: 1.5rem;
     }
 
-    .philosophy_curve_design {
-            display: block;
-            position: relative;
-            top: 25%;
-            left: 1%;
-            height: 2rem;
-            background-image: url("../images/curve-bottom-right.png");
-            background-repeat: no-repeat;
-            background-size: contain;
-            margin-bottom: 0;
-    }
-
     /* JEWELLERY */
 
     #jewellery_div {
@@ -673,14 +952,15 @@ h6 {
     .jewellery_top_div {
         display: grid;
         grid-template-columns: 1fr;
-        margin-bottom: 3rem;
+        margin-bottom: 0;
     }
 
     .jewellery_top_div--text {
-        margin: auto;
+        margin: 0 auto;
+        padding: 0;
         text-align: center;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
     }
 
     .jewellery_top_div--logo img {
@@ -689,25 +969,15 @@ h6 {
 
     .jewellery_top_div--body {
         font-size: 2rem;
+        padding: 0;
+        padding-top: 0.5rem;
     }
 
-    /* .jewellery_top_div--button button{
-        background-color: white;
-        font-size: 1rem;
-        height: 2.5rem;
-        width: 8rem;
-        border: 1px solid var(--deep-purple);
-        color: var(--deep-purple);
-        border-radius: 10px;
-    } */
-
+    .jewellery_top_div--body p {
+        margin-bottom: 0;
+    }
 
     .jewellery_top_div--image {
-        margin: auto;
-        position: relative;
-    }
-
-    .swiper-container {
         display: none;
     }
 
@@ -724,7 +994,7 @@ h6 {
         grid-template-columns: repeat(2, 1fr);
         justify-content: space-around;
         padding: 1rem;
-        grid-gap: 1rem;
+        grid-gap: .5rem;
     }
 
     .slide-up {
@@ -738,64 +1008,47 @@ h6 {
     }
 
     h5 {
-        font-size: 2rem;
+        font-size: 1rem;
     }
 
     .collection_div--text-1,
     .collection_div--text-3 {
-        margin-top: 0;
-        margin-bottom: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     .collection_div--button button {
-        background-color: white;
-        height: 2rem;
-        width: 6rem;
-        border: 1px solid var(--deep-purple);
-        color: var(--deep-purple);
-        border-radius: 10px;
+        height: 1.5rem;
+        width: 5rem;
+        font-size: .8rem;
     }
 
     /* TREATMENTS */
 
     #treatments_div {
         height: auto;
-        background-image: url("../images/treatments-bg.png");
-        background-position: center;
-        background-size: cover;
-        display: grid;
-        text-align: center;
-        align-items: center;
     }
 
     .treatments_text {
         color: white;
         margin: 0 auto;
-        padding: 8rem 1rem;
+        padding: 8rem 0;
     }
 
     h4 {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .treatments_text--body {
-        margin: 0 auto;
-        font-size: 2rem;
+        margin: 0;
+        padding: 0 1rem;
+        font-size: 1.5rem;
     }
 
     .treatments_text--button button {
-        background: none;
-        height: 2.5rem;
-        width: 8rem;
-        border: 1px solid white;
-        color: white;
-        border-radius: 10px;
-    }
-
-    .treatments_text--button button:hover {
-        background: white;
-        border: 1px solid var(--deep-purple);
-        color: var(--deep-purple);
+        height: 2rem;
+        width: 6rem;
+        font-size: 0.8rem;
     }
     
   }

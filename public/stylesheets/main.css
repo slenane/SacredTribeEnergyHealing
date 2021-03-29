@@ -177,7 +177,7 @@ a.black-brand {
 /* FOOTER */
 
 #footer_div {
-    height: 40vh;
+    height: 20rem;
     margin-top: auto;
     width: 100%;
     background-color: var(--off-black);
@@ -239,6 +239,8 @@ h6 {
     background-color: var(--teal);
 }
 
+/* REGISTER/LOGIN */
+
 .register_login_div {
     margin: 1rem;
     padding: 1rem;
@@ -273,12 +275,64 @@ h4.alert-heading {
     text-align: start;
 }
 
-@media only screen and (max-width: 1000px) {
+@media (max-width: 1024px) {
+    body {
+        max-width: 1024px;
+        overflow-x: hidden;
+        margin: 0;
+    }
+
     .navbar {
         display: none;
     }
 
     .navbar_top_padding {
         padding-top: 3rem;
+    }
+
+    #footer_div {
+        height: 15rem;
+    }
+    
+    .social_links {
+        margin-top: 2rem;
+    }
+    
+    h6 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        max-width: 768px;
+        overflow-x: hidden;
+        margin: 0;
+    }
+
+    #footer_div {
+        height: 12rem;
+    }
+    
+    .social_links {
+        margin-top: 1.5rem;
+    }
+    
+    .social_link {
+        font-size: 1.8rem;
+    }
+
+    h6 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    body {
+        max-width: 480px;
+        overflow-x: hidden;
+        margin: 0;
     }
 }
