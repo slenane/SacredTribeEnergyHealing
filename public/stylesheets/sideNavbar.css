@@ -42,7 +42,62 @@
       display: none;
   }
 
-@media only screen and (max-width: 1024px) {
+@media only screen 
+and (max-width: 1024px)
+and (min-height: 1000px) {
+  
+    .side_navbar {
+        display: block;
+    }
+
+    .mobile_navbar {
+      display: grid;  
+      width: 100%;
+      position: fixed;
+      z-index: 50;
+    }
+
+    .mobile_navbar.background-color {
+      background-color: var(--deep-purple);
+    }
+
+    .mobile_navbar.black.background-color {
+      background-color: white;
+    }
+    
+    .mobile_navbar--container {
+      display: grid;
+      grid-template-columns: repeat(10, 10%);
+    }
+
+    .mobile_navbar .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .side_navbar--open {
+        font-size: 2rem;
+        cursor: pointer;
+        color: white;
+        outline: none;
+        border: none;
+        background: none;
+        right: 1rem;
+        grid-column: 10 / -1;
+    }
+
+    .side_navbar--open:hover {
+      transform: scale(1.1);
+    }
+
+    .side_navbar--open.black {
+        color: black;
+    }
+}
+
+@media only screen 
+and (max-width: 1000px)
+and (max-height: 999px) {
+
     .side_navbar {
         display: block;
     }

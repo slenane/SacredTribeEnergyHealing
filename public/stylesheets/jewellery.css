@@ -261,7 +261,10 @@ h2 {
 
 .jewellery_item {
     width: 20rem;
-    height: 32rem;
+    height: 29rem;
+}
+.jewellery_item .card-body {
+    padding: 0;
 }
 
 h5 {
@@ -271,7 +274,8 @@ h5 {
 }
 
 .jewellery_item p {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .jewellery_item--button button {
@@ -591,7 +595,7 @@ h4.jewellery_description--header {
 
     .jewellery_item {
         width: 18rem;
-        height: 30rem;
+        height: 27rem;
     }
 
     /* TREATMENT AND AWARENESS LINKs */
@@ -747,7 +751,7 @@ h4.jewellery_description--header {
 
     .jewellery_item {
         width: 14rem;
-        height: 24rem;
+        height: 22.5rem;
     }
 
     h5 {
@@ -1010,7 +1014,7 @@ h4.jewellery_description--header {
 
     .jewellery_item {
         width: 10rem;
-        height: 19rem;
+        height: 16.5rem;
     }
 
     h5 {

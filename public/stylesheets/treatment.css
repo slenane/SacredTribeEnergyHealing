@@ -14,6 +14,7 @@
 
 .treatments_hero_header {
     margin: 0 auto;
+    padding: 1rem 15rem;
 }
 
 .treatments_hero_header h1 {
@@ -128,7 +129,7 @@ h4.treatments_hero_grid--item-header {
 
 /* Treatment show hero div */
 .treatment_item_hero_div {
-    height: 50vh;  
+    height: 16rem;  
     display: grid;
     grid-template-rows:  auto auto 1fr;
     color: white;
@@ -351,7 +352,174 @@ h4.treatments_hero_grid--item-header {
     border: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 1024px)
+and (max-height: 999px) {
+    .treatments_hero_header {
+        margin: 0 auto;
+        padding: 1rem 4rem;
+    }
+
+    .treatments_hero_header h1 {
+        margin-bottom: 1rem;
+    }
+
+    .treatments_hero_grid {
+        margin-top: 2rem;
+    }
+}
+
+/* IPADS */
+@media (max-width: 1024px)
+and (min-height: 1000px) {
+    .treatments_hero_div {
+        height: 100vh;
+        padding-bottom: 0;
+    }
+    
+    .treatments_hero_header {
+        margin: 0 auto;
+        padding: 3rem 5rem;
+    }
+    
+    .treatments_hero_header h1 {
+        margin-bottom: 1rem;
+        font-size: 4rem;
+    }
+
+    .treatments_hero_header h3 {
+        font-size: 3.2rem;
+    }
+    
+    .treatments_hero_grid {
+        grid-template-columns:  auto;
+        grid-template-rows:  28rem 28rem;
+        grid-gap: 5rem;
+    }
+    
+    .treatments_hero_grid--item {
+        height: 28rem;
+        width: 28rem;
+    }
+
+    h4.treatments_hero_grid--item-header-1 {
+        background-color: var(--deep-purple);
+        color: white;
+        text-shadow: var(--main-shadow);
+        border-radius: 4px 4px 0 0;
+    }
+    
+    h4.treatments_hero_grid--item-header-2 {
+        background-color: var(--teal);
+        color: white;
+        text-shadow: var(--main-shadow);
+        border-radius: 4px 4px 0 0;
+    }
+    
+    
+    h4.treatments_hero_grid--item-header {
+        padding-top: 2rem;
+        font-size: 3.5rem;
+
+    }
+    
+    .treatments_hero_grid--item p {
+        margin-bottom: 0;
+    }
+    
+    .treatments_hero_grid--item-body {
+        font-size: 2rem;
+    }
+    
+    .treatments_hero_grid--item-location-text {
+        font-size: 1.5rem;
+    }
+
+    /* TREATMENT SHOW PAGES */
+
+
+    /* Treatment show hero div */
+    .treatment_item_hero_div {
+        height: 20rem;
+    }
+
+
+    /* PRICING GRID COMPONENT */
+
+
+    .grid_component_grid {
+        grid-template-columns: repeat(3, 20rem);
+    }
+
+}
+
+
+@media (max-width: 768px)
+and (max-height: 999px) {
+
+}
+
+/* TABLETS */
+@media only screen and (max-width: 768px) 
+and (min-height: 1000px) {
+    .treatments_hero_div {
+        height: 100vh;
+        padding-bottom: 0;
+    }
+    
+    .treatments_hero_header {
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    .treatments_hero_header h1 {
+        margin-bottom: .5rem;
+    }
+    
+    .treatments_hero_grid {
+        grid-template-rows:  21rem 21rem;
+        grid-gap: 3rem;
+    }
+    
+    .treatments_hero_grid--item {
+        height: 21rem;
+        width: 21rem;
+    }
+    
+    
+    h4.treatments_hero_grid--item-header {
+        padding-top: 1rem;
+        font-size: 3rem;
+
+    }
+    
+    .treatments_hero_grid--item-body {
+        font-size: 1.5rem;
+    }
+    
+    .treatments_hero_grid--item-location-text {
+        font-size: 1rem;
+    }
+
+    /* TREATMENT SHOW PAGES */
+
+    /* Treatment show hero div */
+    .treatment_item_hero_div {
+        height: 18rem;
+    }
+
+    /* PRICING GRID COMPONENT */
+    .grid_component_grid {
+        grid-template-columns: repeat(3, 15rem);
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .treatments_hero_header {
+        margin: 0 auto;
+        padding: 1rem 2rem 0;
+    }
+
     .treatments_hero_header h1 {
         font-size: 2rem;
     }
@@ -363,7 +531,7 @@ h4.treatments_hero_grid--item-header {
     .treatments_hero_grid {
         grid-template-columns:  17rem;
         grid-template-rows:  13.5rem 13.5rem;
-        grid-gap: 1rem;
+        grid-gap: 2rem;
     }
     
     .treatments_hero_grid--item {
@@ -427,7 +595,7 @@ h4.treatments_hero_grid--item-header {
 
     /* Treatment show hero div */
     .treatment_item_hero_div {
-        height: 35vh;  
+        height: 13rem;  
     }
 
     .back_to_treatments {
@@ -549,4 +717,94 @@ h4.treatments_hero_grid--item-header {
         font-size: 1rem;
         margin-bottom: 0;
     }
+}
+
+@media only screen and (max-width: 480px) 
+and (max-height: 700px) {
+    .treatments_hero_header {
+        padding: 1rem 2rem 0.5rem;
+    }
+
+    .treatments_hero_header h1 {
+        margin-bottom: 0;
+    }
+    
+    .treatments_hero_grid {
+        grid-template-columns:  13rem;
+        grid-template-rows:  13rem 13rem;
+        grid-gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .treatments_hero_grid--item {
+        height: 13rem;
+    }
+
+    .treatments_hero_grid--item-body {
+        font-size: 1rem;
+    }
+    
+    .treatments_hero_grid--item-location {
+        grid-gap: .5rem;
+    }
+
+    .treatments_hero_grid--item-location-icon {
+        width: .7rem;
+    }
+    
+    .treatments_hero_grid--item-location-text {
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .treatments_hero_header {
+        padding: 0rem 1rem 0rem;
+    }
+
+    .treatments_hero_header h1 {
+        font-size: 2rem;
+    }
+    
+    .treatments_hero_header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .treatments_hero_grid {
+        grid-template-columns:  11rem;
+        grid-template-rows:  11rem 11rem;
+        grid-gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .treatments_hero_grid--item {
+        height: 11rem;
+    }
+
+    h4.treatments_hero_grid--item-header {
+        padding-top: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .treatments_hero_grid--item-body {
+        font-size: .9rem;
+    }
+    
+    .treatments_hero_grid--item-location {
+        grid-gap: .5rem;
+    }
+
+    .treatments_hero_grid--item-location-icon {
+        width: .7rem;
+    }
+    
+    .treatments_hero_grid--item-location-text {
+        font-size: .6rem;
+    }
+    
+    .treatments_hero_grid--item-button button {
+        height: 1.5rem;
+        width: 5rem;
+        font-size: .7rem;
+    } 
 }
