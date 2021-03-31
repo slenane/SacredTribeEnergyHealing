@@ -8,6 +8,9 @@
     <a class="side-nav-link" href="/about">About</a>
     <a class="side-nav-link" href="/links">Links</a>
     <a class="side-nav-link" href="/contact">Contact</a>
+    <% if(currentUser) {%>
+        <a class="side-nav-link" href="/logout">Logout</a>
+    <% } %>
 </div>
 
 
