@@ -236,7 +236,7 @@
     margin-top: 1.3rem;
 }
 
-.jewellery_featured {
+.jewellery_collection {
     display: grid;
     justify-content: center;
 }
@@ -1000,7 +1000,7 @@ h4.jewellery_description--header {
         color: var(--deep-purple);
     }
 
-    .jewellery_featured {
+    .jewellery_collection {
         display: none;
     }
 

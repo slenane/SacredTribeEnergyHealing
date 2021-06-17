@@ -13,7 +13,8 @@ const User = require("./models/user");
 require('dotenv').config();
 
 // ROUTES FILES
-const userRoutes = require("./routes/users")
+const userRoutes = require("./routes/users");
+const jewelleryRoutes = require("./routes/jewelleries");
 const blogRoutes = require("./routes/blogs");
 const linkRoutes = require("./routes/links");
 const contactRoutes = require("./routes/contact");
@@ -74,6 +75,7 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use('/', userRoutes);
+app.use("/jewellery", jewelleryRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/contact", contactRoutes);
 app.use("/links", linkRoutes);

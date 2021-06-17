@@ -10,12 +10,12 @@ const Link = require('../models/link');
 // INDEX
 router.get("/", catchAsync(async (req, res) => {
     const links = await Link.find({});
-    res.render("sections/links/index", { links });
+    res.render("links/index", { links });
 }));
 
 // NEW
 router.get("/new", isLoggedIn, (req, res) => {
-    res.render("sections/links/new");
+    res.render("links/new");
 });
 
 router.post("/", isLoggedIn, validateLink, catchAsync(async (req, res) => {
@@ -35,7 +35,7 @@ router.get('/:id/edit', isLoggedIn, isLinkAuthor, catchAsync(async (req, res) =>
         req.flash("error", "Cannot find that link");
         return res.redirect("/links")
     }
-    res.render('sections/links/edit', { link });
+    res.render('links/edit', { link });
 }));
 
 router.put('/:id', isLoggedIn, validateLink, isLinkAuthor, catchAsync(async (req, res) => {
