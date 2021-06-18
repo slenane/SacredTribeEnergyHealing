@@ -172,7 +172,7 @@
         </div>
 
         <div class="philosophy_image">
-            <img src="./assets/images/jennifer-profile.png" alt="Jennifer profile photo" class="profile-photo slide-in">
+            <img src="/assets/images/jennifer-profile.png" alt="Jennifer profile photo" class="profile-photo slide-in">
         </div>
 
         <div class="philosophy_text">
@@ -198,7 +198,7 @@
             <div class="jewellery_top_div--text">
 
                 <div class="jewellery_top_div--logo">
-                    <img src="./assets/images/logo/white-feather.svg" alt="White Feather Jewellery logo">
+                    <img src="/assets/images/logo/white-feather.svg" alt="White Feather Jewellery logo">
                 </div>
                 <div class="jewellery_top_div--body">
                     <p>Energy Attuned Unique <br>handmade jewellery</p>
@@ -220,9 +220,10 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide swiper-slide-1"></div>
-                        <div class="swiper-slide swiper-slide-2"></div>
-                        <div class="swiper-slide swiper-slide-3"></div>
+                        <% for (let img of featuredImages) { %>
+                            <div class="swiper-slide" style="background-image: url(<%=img%>);"></div>
+                        <% } %>
+
                     </div>
                 </div>
             </div>
@@ -237,11 +238,11 @@
 
                 <div class="jewellery_bottom_div--collection collection_div--1 shadow">
                     <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="./assets/images/jewellery-1.jpg" alt="Jewellery preview">
+                        <img class="card-img-top collection_div--image" src="<%=featuredItems[0].images[0].src%>" alt="Jewellery preview">
                         <div class="card-body">
-                            <h5 class="card-title collection_div--text-1">Bracelet and Earring Set</h5>
+                            <h5 class="card-title collection_div--text-1"><%=featuredItems[0].productType%></h5>
                             <div class="collection_div--button">
-                                <form action="/jewellery">
+                                <form action="/jewellery/collections/bracelet-earring#product_container">
                                     <button>Shop Now</button>
                                 </form>
                             </div>
@@ -251,11 +252,11 @@
 
                 <div class="jewellery_bottom_div--collection collection_div--2 shadow">
                     <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="./assets/images/jewellery-2.jpg" alt="Jewellery preview">
+                        <img class="card-img-top collection_div--image" src="<%=featuredItems[1].images[0].src%>" alt="Jewellery preview">
                         <div class="card-body">
-                            <h5 class="card-title collection_div--text-2">Bracelet, Necklace and Earring Set</h5>
+                            <h5 class="card-title collection_div--text-2"><%=featuredItems[1].productType%></h5>
                             <div class="collection_div--button">
-                                <form action="/jewellery">
+                                <form action="/jewellery/collections/bracelet-necklace-earring#product_container">
                                     <button>Shop Now</button>
                                 </form>
                             </div>
@@ -265,11 +266,11 @@
 
                 <div class="jewellery_bottom_div--collection collection_div--3 shadow">
                     <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="./assets/images/jewellery-3.jpg" alt="Jewellery preview">
+                        <img class="card-img-top collection_div--image" src="<%=featuredItems[2].images[0].src%>" alt="Jewellery preview">
                         <div class="card-body">
-                          <h5 class="card-title collection_div--text-3">Necklace and Earring Set</h5>
+                          <h5 class="card-title collection_div--text-3"><%=featuredItems[2].productType%></h5>
                             <div class="collection_div--button">
-                                <form action="/jewellery">
+                                <form action="/jewellery/collections/necklace-earring#product_container">
                                     <button>Shop Now</button>
                                 </form>
                             </div>
@@ -340,7 +341,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Home.js -->
-    <script src='../assets/javascripts/home.js'></script>
+    <script src='/assets/javascripts/home.js'></script>
 
 </body>
 </html>

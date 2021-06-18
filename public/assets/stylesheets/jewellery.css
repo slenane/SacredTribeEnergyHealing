@@ -175,17 +175,20 @@
 
 .hero_grid--item-1 {
     background-image: url("../images/Jewellery-1.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .hero_grid--item-2 {
     background-image: url("../images/Jewellery-2.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .hero_grid--item-3 {
     background-image: url("../images/Jewellery-3.jpg");  
-    background-size: contain;                                                            
+    background-size: cover;
+    background-repeat: no-repeat;                                                           
 }
 
 .overlay {
@@ -250,13 +253,48 @@ h2 {
 
 /* CONTENT DIVS */
 
+#product_container {
+    display: block;
+    position: relative;
+    top: -4rem;
+    visibility: hidden;
+}
+
 .jewellery_content_div {
     display: grid;
-    grid-template-columns: repeat(3, 20rem);
-    justify-content: space-around;
-    grid-gap: 3rem;
+    grid-template-columns: 15rem 1fr;
+}
+
+.jewellery_side_panel ul {
+    padding-left: 0.3rem;
+}
+
+.jewellery_side_panel a {
+    color: black;
+    text-decoration: none; 
+}
+
+.collection_selection {
+    list-style: none;
+}
+
+.collection_selection.active {
+    background-color: var(--deep-purple);
+    color: white;
+    padding-left: 0.5rem
+}
+
+.collection_selection.active a {
+    color: white;
+}
+
+
+.jewellery_item_div {
+    display: grid;
+    grid-template-columns: repeat(3, 18rem);
     text-align: center;
-    margin: 3rem 5rem;
+    grid-gap: 4rem;
+    margin: 2rem;
 }
 
 .jewellery_item {
@@ -500,11 +538,13 @@ h4.jewellery_description--header {
 
 .materials_grid--item {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 3rem 1fr;
+    grid-gap: .5rem;
 }
 
 .materials_grid--icon {
     height: 3rem;
+    width: 3rem;
     border-radius: 50%;
 }
 
@@ -584,7 +624,7 @@ h4.jewellery_description--header {
 
     /* CONTENT DIVS */
 
-    .jewellery_content_div {
+    .jewellery_item_div {
         display: grid;
         grid-template-columns: repeat(3, 18rem);
         justify-content: space-around;
@@ -740,7 +780,7 @@ h4.jewellery_description--header {
 
     /* CONTENT DIVS */
 
-    .jewellery_content_div {
+    .jewellery_item_div {
         display: grid;
         grid-template-columns: repeat(3, 14rem);
         grid-gap: 1rem;
@@ -1006,7 +1046,7 @@ h4.jewellery_description--header {
 
     /* CONTENT DIVS */
 
-    .jewellery_content_div {
+    .jewellery_item_div {
         grid-template-columns: repeat(2, 10rem);
         grid-gap: 1rem;
         margin: 2rem 1rem;
@@ -1143,6 +1183,7 @@ h4.jewellery_description--header {
     
     .materials_grid--icon {
         height: 3rem;
+        width: 3rem;
         border-radius: 50%;
     }
     

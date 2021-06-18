@@ -272,23 +272,13 @@ h2 {
 
 .swiper-container {
     display: block;
-    width: 50rem;
-    height: 32rem;
+    width: 45rem;
+    height: 30rem;
   }
 
-.swiper-slide-1 {
-    background-image: url("../images/Jewellery-1.jpg");
+.swiper-slide {
     background-size: cover;
-}
-
-.swiper-slide-2 {
-    background-image: url("../images/Jewellery-2.jpg");
-    background-size: cover;
-}
-
-.swiper-slide-3 {
-    background-image: url("../images/Jewellery-3.jpg");
-    background-size: cover;
+    background-position: center;
 }
 
 .overlay {
@@ -315,7 +305,8 @@ h3 {
 .jewellery_bottom_div--collections {
     display: grid;
     grid-template-columns: repeat(3, 18rem);
-    justify-content: space-around;
+    justify-content: center;
+    grid-gap: 5rem;
     padding: 0 3rem;
 }
 

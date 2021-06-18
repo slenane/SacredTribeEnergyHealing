@@ -19,52 +19,51 @@
 
 <div class="jewellery_show_content">
 
-    <div class="jewellery_content_main">
+    <!-- <div class="product-component" id="<%=product.id%>">
+
+    </div> -->
+
+ <div class="jewellery_content_main">
 
         <!-- Gris section 1 -->
 
         <div class="jewellery_content_main--section-1">
             <!-- Swiper JS with photos on the side -->
-            <img class="thumb_image thumb-1" src="../assets/images/jewellery-1.jpg" alt="jewellery image">
-            <img class="thumb_image thumb-2" src="../assets/images/jewellery-1.jpg" alt="jewellery image">
-            <img class="thumb_image thumb-3" src="../assets/images/jewellery-1.jpg" alt="jewellery image">
+            <img class="thumb_image thumb-1" src="<%=product.images[1].src%>" alt="jewellery image">
+            <img class="thumb_image thumb-2" src="<%=product.images[2].src%>" alt="jewellery image">
+            <img class="thumb_image thumb-3" src="<%=product.images[3].src%>" alt="jewellery image">
             <div class="share_item">
-                <img class="share_item--icon" src="../assets/images/icons/share.svg" alt="Share icon">
+                <img class="share_item--icon" src="../../../assets/images/icons/share.svg" alt="Share icon">
                 <p class="share_item--text">Share</p>
             </div>
-            <img class="main_image" src="../assets/images/jewellery-1.jpg" alt="jewellery image">
-        </div>
+            <img class="main_image" src="<%=product.images[0].src%>" alt="jewellery image">
+        </div> 
 
-        <!-- Gris section 2 -->
+        <!-- Grid section 2 -->
 
         <div class="jewellery_content_main--section-2">
-            <h1 class="jewellery_title">Blue Jasper Wood</h1>
-            <h2 class="jewellery_type">Bracelet and Earring Set</h2>
-            <p class="jewellery_price">€85 <span class="delivery_included">Delivery included</span></p>
+            <h1 class="jewellery_title"><%=product.title%></h1>
+            <h2 class="jewellery_type"><%=product.productType%></h2>
+            <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
             <p class="jewellery_stock">Unique item! Only one in stock</p>
             <form class="jewellery_buy_button">
                 <button>Buy Now</button>
             </form>
-            <p class="jewellery_wishlist--add"><i class="far fa-heart"></i> ADD TO WISHLIST</p>
 
             <div class="jewellery_description">
                 <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
                 <p class="jewellery_description--body">
-                    This bracelet and earring set, made with gemstones, comprises of the following: <br>
-                    • Lava stones <br>
-                    • Spacers with antique silver <br>
-                    • Wooden and synthetic beads <br>
-                    Earrings made using stainless steel ear wires.<br>
-                    All products are made with 30% reclaimed materials utilised in service to Mother Earth. <br>
-                    Products shipped next working day.
+                    <%-description%>
                 </p>
             </div>
         </div>
-    </div>
+    </div> 
 
     <!-- MATERIALS AND SYMBOLISM -->
 
     <div class="materials_grid">
+
+        <% if (Object.keys(materials).length > 0) { %>
 
         <div class="materials_grid--header">
             <p>Materials and Symbolism</p>
@@ -72,33 +71,18 @@
 
         <div class="materials_grid--body">
 
-            <div class="materials_grid--item">
-                <img class="materials_grid--icon" src="../assets/images/jasper.jpeg" alt="Materials used thumbnail">
-                <div class="materials_grid--text">
-                    <p class="materials_grid--text-header">Blue Jasper</p>
-                    <p class="materials_grid--text-body">Trust, Honour, Strength, Wisdom, Power, Freedom, Courage.
-                    Message of Support from the Angelic Spirit Realm and from Departed Loved Ones.</p>
+            <% for (let key of Object.keys(materials)) { %>
+                <div class="materials_grid--item">
+                    <img class="materials_grid--icon" src="<%=materials[key].image%>" alt="Materials used thumbnail">
+                    <div class="materials_grid--text">
+                        <p class="materials_grid--text-header"><%=materials[key].title%></p>
+                        <p class="materials_grid--text-body"><%=materials[key].text%></p>
+                    </div>
                 </div>
-            </div>
-            <div class="materials_grid--item">
-                <img class="materials_grid--icon" src="../assets/images/jasper.jpeg" alt="Materials used thumbnail">
-                <div class="materials_grid--text">
-                    <p class="materials_grid--text-header">Blue Jasper</p>
-                    <p class="materials_grid--text-body">Trust, Honour, Strength, Wisdom, Power, Freedom, Courage.
-                    Message of Support from the Angelic Spirit Realm and from Departed Loved Ones.</p>
-                </div>
-            </div>
-            <div class="materials_grid--item">
-                <img class="materials_grid--icon" src="../assets/images/jasper.jpeg" alt="Materials used thumbnail">
-                <div class="materials_grid--text">
-                    <p class="materials_grid--text-header">Blue Jasper</p>
-                    <p class="materials_grid--text-body">Trust, Honour, Strength, Wisdom, Power, Freedom, Courage.
-                    Message of Support from the Angelic Spirit Realm and from Departed Loved Ones.</p>
-                </div>
-            </div>
+            <% } %>
 
         </div>
-
+        <% } %>
     </div>
 
 </div>
@@ -119,7 +103,7 @@
         </div>
         
         <div class="white_feather_bio--icon">
-            <img src="../assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
+            <img src="../../../assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
         </div>
 
     </div>
@@ -128,104 +112,33 @@
 <!-- SIMILAR ITEMS -->
 
 <div class="similar_items">
+    <% if (similarItems.length > 0) { %>
 
     <div class="similar_items-header">
         <p>View similar products</p>
     </div>
 
     <div class="similar_items--grid">
-
+        <!-- MAKE RANDOM LATER AND MAKE SURE THAT THE SHOW ITEM IS NOT HERE-->
+        <% for (let i = 0; i < 6; i++) { %>
         <div class="jewellery_item shadow">
             <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
+                <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
                 <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
+                    <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>
+                    <p class="card-text jewellery_item--text"><%=similarItems[i].productType%> <br> <span class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></span></p>
                     <div class="jewellery_item--button">
-                        <form action="/jewellery/show">
+                        <form action="/jewellery/show/<%=similarItems[i].id%>">
                             <button>View</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    
-        <div class="jewellery_item shadow">
-            <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
-                <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
-                    <div class="jewellery_item--button">
-                        <form action="/jewellery">
-                            <button>View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="jewellery_item shadow">
-            <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
-                <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
-                    <div class="jewellery_item--button">
-                        <form action="/jewellery">
-                            <button>View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="jewellery_item shadow">
-            <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
-                <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
-                    <div class="jewellery_item--button">
-                        <form action="/jewellery/show">
-                            <button>View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="jewellery_item shadow">
-            <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
-                <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
-                    <div class="jewellery_item--button">
-                        <form action="/jewellery">
-                            <button>View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="jewellery_item shadow">
-            <div class="card border-light">
-                <img class="card-img-top jewellery_item--image" src="../assets/images/jewellery-1.jpg" alt="Jewellery image">
-                <div class="card-body">
-                    <h5 class="card-title jewellery_item--title">Blue Jasper Wood</h5>
-                    <p class="card-text jewellery_item--text">Bracelet and Earring Set <br> <span class="text-muted jewellery_item--price">€85</span></p>
-                    <div class="jewellery_item--button">
-                        <form action="/jewellery">
-                            <button>View</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% } %>
 
     </div>
+    <% } %>
 </div>
 
 </div> <!--  End of content wrapper -->
