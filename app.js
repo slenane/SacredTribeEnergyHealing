@@ -13,13 +13,13 @@ const User = require("./models/user");
 require('dotenv').config();
 
 // ROUTES FILES
-const homeRoutes = require("./routes/home");
-const userRoutes = require("./routes/users");
-const jewelleryRoutes = require("./routes/jewelleries");
-const blogRoutes = require("./routes/blogs");
-const linkRoutes = require("./routes/links");
-const contactRoutes = require("./routes/contact");
-const remainingRoutes = require("./routes/routeFile");
+const blogRouter = require("./routes/blogs");
+const contactRouter = require("./routes/contact");
+const indexRouter = require("./routes/index");
+const jewelleryRouter = require("./routes/jewelleries");
+const linkRouter = require("./routes/links");
+const treatmentRouter = require("./routes/treatments");
+const userRouter = require("./routes/users");
 
 // DATABASE SETUP
 mongoose.connect("mongodb://localhost:27017/sacred-tribe-energy-healing", {
@@ -72,17 +72,16 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next();
-})
+});
 
 // ROUTES
-app.use('/', homeRoutes);
-app.use('/', userRoutes);
-app.use("/jewellery", jewelleryRoutes);
-app.use("/blogs", blogRoutes);
-app.use("/contact", contactRoutes);
-app.use("/links", linkRoutes);
-// Remaining routes
-app.use("/", remainingRoutes);
+app.use('/', indexRouter);
+app.use('/', userRouter);
+app.use("/blogs", blogRouter);
+app.use("/contact", contactRouter);
+app.use("/jewellery", jewelleryRouter);
+app.use("/links", linkRouter);
+app.use("/treatments", treatmentRouter);
 
 // ERROR SETTINGS
 app.all("*", (req, res, next) => {

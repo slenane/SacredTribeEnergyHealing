@@ -9,7 +9,6 @@
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="/">
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
@@ -19,6 +18,8 @@
     <link rel="stylesheet" href="/assets/stylesheets/main.css">
     <!-- SIDENAV STYLESHEET -->
     <link rel="stylesheet" href="/assets/stylesheets/sideNavbar.css">
+    <!-- CART STYLESHEET -->
+    <link rel="stylesheet" href="/assets/stylesheets/cart.css">
     <!-- JEWELLERY STYLESHEET -->
     <link rel="stylesheet" href="/assets/stylesheets/jewellery.css">
     <!-- TREATMENT STYLESHEET -->
@@ -39,10 +40,10 @@
     <main>
         <!-- FLASH MESSAGES -->
         <%- include('../partials/flash')%>
+        <!-- CART DISPLAY -->
+        <%- include('../partials/cart')%>
         <!-- TO TOP BUTTON -->
         <%- include('../partials/toTop')%>
-        <!-- SOCIAL BAR -->
-        <%- include('../partials/socialBar')%>
         <!-- BODY CONTENT -->
         <%- body %>
     </main>

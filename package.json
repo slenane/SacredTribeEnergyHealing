@@ -2,9 +2,9 @@
   "name": "sacredtribeenergyhealing",
   "version": "1.0.0",
   "description": "Sacred Tribe Energy Healing",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "author": "Stephen Lenane",
   "license": "ISC",

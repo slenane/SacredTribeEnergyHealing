@@ -1,0 +1,24 @@
+<div id="cart" class="<%=showCart === true ? 'show-cart' : ''%> shadow">
+        <a href="javascript:void(0)" class="cart--close" onclick="closeCart()">&times;</a>
+            <% if (cart.lineItems.length === 0) { %>
+                <div class="empty-cart">
+                    <h6>Your cart is empty!</h6>
+                </div>
+            <% } else { %>
+            <div>
+                <% for (let item of cart.lineItems) { %>
+                    <div>
+                        <p><%=item.title%></p>
+                        <p><%=item.quantity%></p>
+                        
+                        <form action="/jewellery/remove-from-cart/<%=item.id%>" method="POST">
+                            <button>x</button>
+                        </form>
+                    </div>
+                <% } %>
+                
+                <p>Total Price: <%=cart.totalPrice%></p>
+                <a href="<%=cart.webUrl%>">Checkout</a>
+            </div>
+            <% } %>
+</div>

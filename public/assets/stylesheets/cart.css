@@ -1,0 +1,26 @@
+/* NAVBAR ICON */
+.nav-main-cart:hover {
+    cursor: pointer;
+}
+
+/* CART DIV */
+#cart {
+    margin-top: 3rem;
+    height: auto; 
+    width: 20rem; 
+    position: fixed; 
+    z-index: 100; 
+    top: 0; 
+    right: 0;
+    margin-right: 1rem;
+    background-color: white;
+    overflow-x: hidden; 
+    transition: 0.5s; 
+    text-align: start;
+    transform: translateX(0);
+}
+
+#cart.show-cart {
+    transform: translateX(0);
+}
+

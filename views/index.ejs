@@ -17,9 +17,11 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- HOME STYLESHEET -->
-    <link rel="stylesheet" href="/assets/stylesheets/home.css">
+    <link rel="stylesheet" href="/assets/stylesheets/index.css">
     <!-- MAIN STYLESHEET -->
     <link rel="stylesheet" href="/assets/stylesheets/main.css">
+    <!-- CART STYLESHEET -->
+    <link rel="stylesheet" href="/assets/stylesheets/cart.css">
     <!-- SIDENAV STYLESHEET -->
     <link rel="stylesheet" href="/assets/stylesheets/sideNavbar.css">
 </head>
@@ -27,12 +29,11 @@
 
     <!-- FLASH PARTIAL -->
     <%- include('./partials/flash')%>
-    
+    <!-- CART DISPLAY -->
+    <%- include('./partials/cart')%>
     <!-- BACK TO TOP BUTTON -->
     <%- include('./partials/toTop')%>
     
-    <!-- SOCIAL LINKS -->
-    <%- include('./partials/socialBar')%>
     <!-- HERO SECTION  W/ NAVBAR INSIDE-->
     <div id="hero_div">
          
@@ -65,6 +66,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-main-cart" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                         <div class="navbar-nav ml-auto">
                             <% if(currentUser) {%>
@@ -341,7 +345,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Home.js -->
-    <script src='/assets/javascripts/home.js'></script>
+    <script src='/assets/javascripts/index.js'></script>
 
 </body>
 </html>

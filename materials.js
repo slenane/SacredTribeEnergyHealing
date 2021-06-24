@@ -32,7 +32,7 @@ module.exports = {
     "dragon vein agate": {
         title: "Dragon Vein Agate",
         text:  "Bringing forward hidden talents, ability to manifest, heightens creativity, energy, strength and finding true love",
-        image: "https://cdn.shopify.com/s/files/1/0249/4529/5414/products/CustomPlugs-BlueDragonVeinStonePlugSingle_2000x.jpg?v=1597055642",
+        image: "https://www.gemstone7.com/image/gemstone/388-dragons-vein-agate.png",
     },
     "jade": {
         title: "Jade",

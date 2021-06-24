@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const shopify = require('../shopify');
 
 const multiparty = require("multiparty");
 const nodemailer = require("nodemailer");
 router.use(express.json());
+
+let session;
 
 const transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
@@ -27,8 +30,12 @@ transporter.verify(function (error, success) {
 });
 
 // CONTACT ROUTES
-router.get("/", (req, res) => {
-    res.render("contact/index");
+router.get("/", async (req, res) => {
+    // Fetch the cart, if it exists
+    session = req.session;
+    let cart = await shopify.getCart(session) || {};
+    
+    res.render("contact/index", { cart, showCart: false });
 });
 
 router.post("/", async (req, res) => {

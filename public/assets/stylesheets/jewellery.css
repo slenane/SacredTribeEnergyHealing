@@ -239,7 +239,7 @@
     margin-top: 1.3rem;
 }
 
-.jewellery_collection {
+.jewellery_collection_title {
     display: grid;
     justify-content: center;
 }
@@ -251,6 +251,43 @@ h2 {
     font-weight: 700;
 }
 
+.collection_list {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: center;
+    grid-gap: 4rem;
+}
+
+.collection_list a {
+    color: black;
+    text-decoration: none; 
+    margin: 0;
+}
+
+.collection_selection {
+    list-style: none;
+    padding: .1rem .4rem;
+}
+
+.collection_selection:hover {
+    background-color: var(--deep-purple);
+    border-radius: 10px;
+}
+
+.collection_selection:hover a {
+    color: white;
+}
+
+.collection_selection.active {
+    background-color: var(--deep-purple);
+    color: white;
+    border-radius: 10px;
+}
+
+.collection_selection.active a {
+    color: white;
+}
+
 /* CONTENT DIVS */
 
 #product_container {
@@ -260,60 +297,34 @@ h2 {
     visibility: hidden;
 }
 
-.jewellery_content_div {
-    display: grid;
-    grid-template-columns: 15rem 1fr;
-}
-
-.jewellery_side_panel ul {
-    padding-left: 0.3rem;
-}
-
-.jewellery_side_panel a {
-    color: black;
-    text-decoration: none; 
-}
-
-.collection_selection {
-    list-style: none;
-}
-
-.collection_selection.active {
-    background-color: var(--deep-purple);
-    color: white;
-    padding-left: 0.5rem
-}
-
-.collection_selection.active a {
-    color: white;
-}
-
-
 .jewellery_item_div {
     display: grid;
-    grid-template-columns: repeat(3, 18rem);
+    grid-template-columns: repeat(3, 20rem);
+    justify-content: center;
     text-align: center;
-    grid-gap: 4rem;
-    margin: 2rem;
+    grid-gap: 3rem;
+    margin: 2rem 6rem;
 }
 
 .jewellery_item {
     width: 20rem;
-    height: 29rem;
+    height: auto;
 }
 .jewellery_item .card-body {
     padding: 0;
 }
 
-h5 {
+h5.jewellery_item--title {
     font-size: 2rem;
     font-weight: 700;
     font-family: var(--main-font);
+    color: var(--deep-purple);
 }
 
 .jewellery_item p {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    color: black;
 }
 
 .jewellery_item--button button {
@@ -1040,7 +1051,7 @@ h4.jewellery_description--header {
         color: var(--deep-purple);
     }
 
-    .jewellery_collection {
+    .jewellery_collection_title {
         display: none;
     }
 

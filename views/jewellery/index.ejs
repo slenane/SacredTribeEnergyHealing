@@ -181,100 +181,91 @@
 <div class="main_body_container">
 
     <!-- JEWELLERY COLLECTION TITLE -->
-    <div class="jewellery_collection">
-        <% if (type === "all-products") { %>
-            <h2>Featured Jewellery</h2>
-        <% } else if (type === "bracelet-earring") { %>
-            <h2>Bracelet & Earring Sets</h2>
-        <% } else if (type === "necklace-earring") { %>
-            <h2>Necklace & Earring Sets</h2>
-        <% } else if (type === "bracelet-necklace-earring") { %>
-            <h2>Bracelet, Necklace & Earring Sets</h2>
-        <% } %>
-    </div>
-    
-    <!-- JEWELLERY CONTENT DIV -->
-    
-    <div class="jewellery_content_div">
-    
-        <div class="jewellery_side_panel shadow">
-            <div class="refine_title">
-                <p>Refine search</p>
-            </div>
+    <div class="collection_div">
+        <div class="jewellery_collection_title">
+            <% if (type === "all-products") { %>
+                <h2>Featured Jewellery</h2>
+            <% } else if (type === "bracelet-earring") { %>
+                <h2>Bracelet & Earring Sets</h2>
+            <% } else if (type === "necklace-earring") { %>
+                <h2>Necklace & Earring Sets</h2>
+            <% } else if (type === "bracelet-necklace-earring") { %>
+                <h2>Bracelet, Necklace & Earring Sets</h2>
+            <% } %>
+        </div>
 
-            <div class="collection_selection_title">
-                <p>View by collection:</p>
-            </div>
-            <ul>
+        <div class="jewellery_collection_selection">
+            <ul class="collection_list">
                 <li class="collection_selection <%= type === 'all-products' ? 'active' : ''%>"><a href="/jewellery#product_container">All products</a></li>
                 <li class="collection_selection <%= type === 'bracelet-earring' ? 'active' : ''%>"><a href="/jewellery/collections/bracelet-earring#product_container">Bracelet & Earring sets</a></li>
                 <li class="collection_selection <%= type === 'necklace-earring' ? 'active' : ''%>"><a href="/jewellery/collections/necklace-earring#product_container">Necklace & Earring sets</a></li>
                 <li class="collection_selection <%= type === 'bracelet-necklace-earring' ? 'active' : ''%>"><a href="/jewellery/collections/bracelet-necklace-earring#product_container">Bracelet, Necklace & Earring sets</a></li>
             </ul>
         </div>
-    
-        <div class="jewellery_main_panel">
+    </div>
 
-            <div class="jewellery_item_div">
-                <% console.log(products); %>
-                <% products.forEach((product) => { %>
+
+    
+    <!-- JEWELLERY CONTENT DIV -->
+    
+    <div class="jewellery_content_div">
+
+        <div class="jewellery_item_div">
+            <% products.forEach((product) => { %>
+                <a href="/jewellery/show/<%=product.id%>">
                     <div class="jewellery_item shadow">
                         <div class="card border-light">
-                            <a href="/jewellery/show/<%=product.id%>"><img class="card-img-top jewellery_item--image" src="<%=product.images[0].src%>" alt="Jewellery image"></a>
+                            <img class="card-img-top jewellery_item--image" src="<%=product.images[0].src%>" alt="Jewellery image">
                             <div class="card-body">
-                                <h5 class="card-title jewellery_item--title"><%= product.title %></h5>
+                                <h5 class="card-title jewellery_item--title"><%=product.title%></h5>
                                 <p class="card-text jewellery_item--text"><%= product.productType %> <br> <span class="text-muted jewellery_item--price">€<%=product.variants[0].price%></span></p>
-                                <div class="jewellery_item--button">
-                                    <form action="/jewellery/show/<%=product.id%>">
-                                        <button>View</button>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>  
-                <% }); %>
-            </div>
-            
-            <!-- TREATMENTS LINK -->
-            
-            <div class="treatments_link">
-            
-                <div class="treatments_text">
-                    <div class="treatments_text--header">
-                        <h4>Energy Treatments</h4>
-                    </div>
-                    <div class="treatments_text--body">
-                        <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
-                    </div>
-                    <div class="treatments_text--button">
-                        <form action="/treatments">
-                            <button>Read More</button>
-                        </form>
-                    </div>
-                </div>
-            
-            </div>
-            
-            <!-- AWARENESS LINK -->
-            
-            <div class="awareness_link">
-            
-                <div class="awareness_text">
-                    <div class="awareness_text--header">
-                        <h4>Awareness</h4>
-                    </div>
-                    <div class="awareness_text--body">
-                        <p>We the peoples of this Earth are known among the Tribes of the skies as the 'Chosen people' as the universal laws of this planet are based on 'Freewill' the Right to Choose.</p>
-                    </div>
-                    <div class="awareness_text--button">
-                        <form action="/awareness">
-                            <button>Read More</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+                </a>
+            <% }); %>
         </div>
+        
+        <!-- TREATMENTS LINK -->
+        
+        <div class="treatments_link">
+        
+            <div class="treatments_text">
+                <div class="treatments_text--header">
+                    <h4>Energy Treatments</h4>
+                </div>
+                <div class="treatments_text--body">
+                    <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
+                </div>
+                <div class="treatments_text--button">
+                    <form action="/treatments">
+                        <button>Read More</button>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+        
+        <!-- AWARENESS LINK -->
+        
+        <div class="awareness_link">
+        
+            <div class="awareness_text">
+                <div class="awareness_text--header">
+                    <h4>Awareness</h4>
+                </div>
+                <div class="awareness_text--body">
+                    <p>We the peoples of this Earth are known among the Tribes of the skies as the 'Chosen people' as the universal laws of this planet are based on 'Freewill' the Right to Choose.</p>
+                </div>
+                <div class="awareness_text--button">
+                    <form action="/awareness">
+                        <button>Read More</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 

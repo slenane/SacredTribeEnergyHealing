@@ -1,29 +1,4 @@
 /*******************
- *   BACK TO TOP
-*******************/
-let topButton = document.getElementById("back-to-top"),
-    socialBar = document.querySelector(".social_bar");
-
-// When the user scrolls down 600px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-    topButton.style.display = "block";
-    //socialBar.style.display = "block";
-  } else {
-    topButton.style.display = "none";
-    //socialBar.style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-
-/*******************
  *  PROGRESS BAR
 *******************/
 let html = document.documentElement,
@@ -86,14 +61,20 @@ function closeNav() {
 }
 
 /*****************************
+ *     SCROLL FUNCTIONS
+*****************************/
+// When the user scrolls down 600px from the top of the document, show the button
+window.onscroll = function() {
+  toggleNavbarBackground();
+  scrollFunction();
+};
+
+/*****************************
  * NAVBAR BACKGROUND ON SCROLL
 *****************************/
 const navbarWhite = document.querySelector(".navbar_white");
 const navbarBlack = document.querySelector(".navbar_black");
 const mobileNavbar = document.querySelector(".mobile_navbar");
-
-// When the user scrolls down 600px from the top of the document, show the button
-window.onscroll = function() {toggleNavbarBackground()};
 
 function toggleNavbarBackground() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -105,4 +86,43 @@ function toggleNavbarBackground() {
     navbarBlack?.classList.remove("background-color");
     mobileNavbar?.classList.remove("background-color");
   }
+}
+
+/*******************
+ *   BACK TO TOP
+*******************/
+let topButton = document.getElementById("back-to-top"),
+    socialBar = document.querySelector(".social_bar");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+/*******************
+ *      CART
+*******************/
+const cart = document.querySelector("#cart");
+
+// Toggle cart open/close
+function toggleCart() {
+  if (cart.classList.contains("show-cart")) {
+    cart.classList.remove("show-cart");
+  } else {
+    cart.classList.add("show-cart");
+  }
+}
+
+/* Set the width of the side navigation to 0 */
+function closeCart() {
+  cart.classList.remove("show-cart");
 }

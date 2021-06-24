@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
 
 router.get('/register', (req, res) => {
-    res.render('users/register');
+    res.render('users/register', { cart: [], showCart: false });
 });
 
 router.post('/register', catchAsync(async (req, res, next) => {
@@ -25,7 +25,7 @@ router.post('/register', catchAsync(async (req, res, next) => {
 }));
 
 router.get('/login', (req, res) => {
-    res.render('users/login');
+    res.render('users/login', { cart: [], showCart: false });
 })
 
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
