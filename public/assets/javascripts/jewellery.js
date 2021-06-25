@@ -2,6 +2,7 @@ let infobar = document.querySelector(".hero_infobar");
 let infobarText = document.querySelector(".hero_infobar--text");
 let buyingGuide = document.querySelector(".hero_infobar--grid");
 let buyingGuideBtn = document.querySelector(".buying_guide-button");
+let buyButton = document.querySelector(".buy_button");
 
 let toggleShowDropdown = async (e) => {
     if (buyingGuide.classList.contains("hide")) {
@@ -58,6 +59,10 @@ let toggleShowDropdown = async (e) => {
     }
 };
 
-if (buyingGuideBtn) {
-    buyingGuideBtn.addEventListener("click", toggleShowDropdown);
+let addingToCart = () => {
+    buyButton.classList.add("cart--adding_to_cart");
+    buyButton.textContent = "ADDING TO BAG";
 }
+
+buyingGuideBtn?.addEventListener("click", toggleShowDropdown);
+buyButton?.addEventListener("click", addingToCart);

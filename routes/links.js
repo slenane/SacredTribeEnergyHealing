@@ -1,30 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
-const { linkSchema } = require('../schemas.js');
 const { isLoggedIn, isLinkAuthor, validateLink } = require('../middleware');
-const shopify = require('../shopify');
-
 const Link = require('../models/link');
 
-let session;
 
 // INDEX
 router.get("/", catchAsync(async (req, res) => {
     const links = await Link.find({});
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
-    res.render("links/index", { links, cart, showCart: false });
+    res.render("links/index", { links });
 }));
 
 // NEW
-router.get("/new", isLoggedIn, catchAsync( async (req, res) => {
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
-    res.render("links/new", { cart, showCart: false });
-}));
+router.get("/new", isLoggedIn, (req, res) => {
+    res.render("links/new");
+});
 
 router.post("/", isLoggedIn, validateLink, catchAsync(async (req, res) => {
     // if (!req.body.link) throw new ExpressError('Invalid Link Data', 400);
@@ -39,19 +29,16 @@ router.post("/", isLoggedIn, validateLink, catchAsync(async (req, res) => {
 router.get('/:id/edit', isLoggedIn, isLinkAuthor, catchAsync(async (req, res) => {
     const { id } = req.params;
     const link = await Link.findById(id);
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
     if (!link) {
         req.flash("error", "Cannot find that link");
         return res.redirect("/links")
     }
-    res.render('links/edit', { link, cart, showCart: false });
+    res.render('links/edit', { link });
 }));
 
 router.put('/:id', isLoggedIn, validateLink, isLinkAuthor, catchAsync(async (req, res) => {
     const { id } = req.params;
-    const link = await Link.findByIdAndUpdate(id, { ...req.body.link });
+    await Link.findByIdAndUpdate(id, { ...req.body.link });
     req.flash("success", "Successfully updated link!");
     res.redirect("/links")
 }));

@@ -1,4 +1,5 @@
 // APP SETUP
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -10,7 +11,8 @@ const methodOverride = require('method-override');
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
-require('dotenv').config();
+const url = require('url');
+const shopify = require("./shopify");
 
 // ROUTES FILES
 const blogRouter = require("./routes/blogs");
@@ -47,7 +49,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const sessionConfig = {
-    secret: 'CarbonaraIsDelicious!',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -67,7 +69,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+    // Show the cart on page load if query.cart is set to true
+    res.locals.showCart = url.parse(req.url, true).query.cart === 'true' ? true : false;
+    // Load the cart on every page
+    res.locals.cart = await shopify.getCart(req.session) || {};
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');

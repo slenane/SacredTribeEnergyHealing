@@ -11,17 +11,38 @@ const client = Client.buildClient({
     storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN
 });
 
-// const shopPromise = client.shop.fetchInfo();
-// const productsPromise = client.product.fetchAll();
-
 // Get all products
-let getAllProducts = client.product.fetchAll()
-    .then((products) => {
-        return products;
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+let getAllProducts = async () => {
+    let products;
+    await client.product.fetchAll()
+            .then((foundProducts) => {
+                products = foundProducts;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    // return Jewellery only
+    return products
+    .filter(item => item.productType !== "Energy Treatment")
+    .filter(item => item.productType !== "Absentee Treatment");
+}
+
+let getTreatment = async (type) => {
+    // Collection ID for treatments
+    let collectionID = "Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzMyMzc4OTUyMTA5Ng==";
+    let collection = {};
+
+    await client.collection
+        .fetchWithProducts(collectionID, {productsFirst: 10})
+        .then((foundCollection) => {
+            collection = foundCollection.products;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    
+    return collection.filter(treatment => treatment.productType === type);
+}
 
 // Get featured products for homepage
 let getFeaturedProducts = async () => {
@@ -34,6 +55,7 @@ let getFeaturedProducts = async () => {
             else if (collection.products[0].productType === "Necklace & Earring Set") featuredItems[2] = collection.products[0];
         }
 
+        // REDO THIS BUT BETTERRRRRRR
         for (let i = 0; i < 6; i++) {
             featuredImages.push(collections[0].products[i].images[0].src);
         }
@@ -80,12 +102,12 @@ let getCollection = async (type) => {
 let getProduct = async (productID) => {
     let product = {};
     await client.product.fetch(productID)
-    .then((foundProduct) => {
-        product = foundProduct;
-    })
-    .catch((err) => {
-    console.log(err);
-    });
+        .then((foundProduct) => {
+            product = foundProduct;
+        })
+        .catch((err) => {
+        console.log(err);
+        });
     // let obj = {};
     // let keys = Object.keys(product);
     // for (key of keys) {
@@ -159,8 +181,22 @@ let getCart = async (session) => {
             //     obj[key] = cart[key];
             // }
             // console.log(obj);
+            // console.log(obj.lineItems)
 
     return cart;
+}
+
+let isProductInCart = async (checkoutID, productID) => {
+    let answer;
+    await client.checkout.fetch(checkoutID)
+        .then((foundCart) => {
+            for (let item of foundCart.lineItems) {
+                if (productID === item.variant.product.id) answer = true;
+            }
+        })
+        .catch ((err) => console.log(err));
+
+    return answer === true ? true : false;
 }
 
 // Add an item to the checkout
@@ -175,8 +211,6 @@ let addLineItem = async (checkoutID, productID) => {
     // Add the item to the checkout
     await client.checkout.addLineItems(checkoutID, lineItem)
         .then(checkout => {
-            // console.log("ADD", checkout.id);
-            // console.log(checkout.lineItems[0]);
             return checkout;
         })
         .catch(err => { return err; }); 
@@ -187,18 +221,20 @@ let removeLineItem = async (checkoutID, productID) => {
     await client.checkout.removeLineItems(checkoutID, [productID])
         .then((checkout) => {
             return checkout;
-        });
+        })
+        .catch(err => { return err; });
 }
-
 
 module.exports = {
     getAllProducts,
+    getTreatment,
     getFeaturedProducts,
     getCollection,
     getProduct,
     parseDescription,
     createCheckout,
     getCart,
+    isProductInCart,
     addLineItem,
     removeLineItem
 }

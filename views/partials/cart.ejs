@@ -1,24 +1,60 @@
-<div id="cart" class="<%=showCart === true ? 'show-cart' : ''%> shadow">
-        <a href="javascript:void(0)" class="cart--close" onclick="closeCart()">&times;</a>
-            <% if (cart.lineItems.length === 0) { %>
-                <div class="empty-cart">
-                    <h6>Your cart is empty!</h6>
-                </div>
-            <% } else { %>
-            <div>
+<div id="cart" class="<%=showCart === true ? 'show_cart' : ''%> shadow">
+    <div class="cart-loader"></div>
+    <div class="cart-overlay">
+        <div class="cart--close">
+            <a href="javascript:void(0)" onclick="closeCart()">Close</a>
+        </div>
+        <% if (cart.lineItems.length === 0) { %>
+            <div class="empty_cart">
+                <img class="empty_cart--img" src="/assets/images/icons/shopping-bag.svg" alt="Empty shopping bag">
+                <p class="empty_cart--text">Your bag is empty!</p>
+                <a class="empty_cart--jewellery_link" href="/jewellery"><button>View Jewellery</button></a>
+                <a class="empty_cart--treatments_link" href="/treatments"><button>View Treatments</button></a>
+            </div>
+        <% } else { %>
+            <div class="full_cart">
                 <% for (let item of cart.lineItems) { %>
-                    <div>
-                        <p><%=item.title%></p>
-                        <p><%=item.quantity%></p>
-                        
-                        <form action="/jewellery/remove-from-cart/<%=item.id%>" method="POST">
-                            <button>x</button>
+                    <!-- Get product URL based on the prouct handle -->
+                    <% let productURL;%>
+                    <% if (item.variant.product.handle === "absentee-treatment") { %>
+                        <% productURL = "/treatments/absentee-treatment/"; %>
+                    <% } else if (item.variant.product.handle === "energy-treatment") { %>
+                        <% productURL = "/treatments/energy-treatment/"; %>
+                    <% } else { %>
+                        <% productURL = "/jewellery/show/" + item.variant.product.id %>
+                    <% } %>
+
+                    <div class="cart--line_item">
+                        <a href="<%=productURL%>">
+                            <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
+                        </a>
+                        <div class="line_items--body">
+                            <p class="line_item--title"><a href="<%=productURL%>"><%=item.title%></a></p>
+                            <p class="line_item--price">€<%=item.variant.price%></p>
+                        </div>
+                        <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
+                            <button>&times;</button>
                         </form>
                     </div>
                 <% } %>
-                
-                <p>Total Price: <%=cart.totalPrice%></p>
-                <a href="<%=cart.webUrl%>">Checkout</a>
+                <div class="cart--checkout">
+                    <div class="checkout--totals">
+                        <p class="checkout--totals_item checkout--subtotal">
+                            <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
+                        </p>
+                        <p class="checkout--totals_item checkout--shipping">
+                            <span class="totals_text">SHIPPING</span> <span class="totals_price">€0.00</span>
+                        </p>
+                        <p class="checkout--totals_item checkout--total">
+                            <span class="totals_text">TOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
+                        </p>
+                    </div>
+                    <p class="checkout--shopify_disclaimer text-muted">Payments are processed securely through shopify</p>
+                    <div class="checkout--button">
+                        <a href="<%=cart.webUrl%>"><button class="checkout--submit">Checkout</button></a>
+                    </div>
+                </div>
             </div>
-            <% } %>
+        <% } %>
+    </div>
 </div>

@@ -49,12 +49,12 @@
             </div>
     
             <div class="grid_section_1--healing-room">
-                <img class="treatment_grid--image" src="../assets/images/healing-room-3.jpg" alt="Treatment room image">
+                <img class="treatment_grid--image" src="/assets/images/healing-room-3.jpg" alt="Treatment room image">
             </div>
         </div>
         <div class="treatment_item_main_grid--section-2">
-            <img class="treatment_grid--image" src="../assets/images/healing-room-1.jpg" alt="Treatment room image">
-            <img class="treatment_grid--image" src="../assets/images/healing-room-2.jpg" alt="Treatment room image">
+            <img class="treatment_grid--image" src="/assets/images/healing-room-1.jpg" alt="Treatment room image">
+            <img class="treatment_grid--image" src="/assets/images/healing-room-2.jpg" alt="Treatment room image">
     
             <div class="grid_section_2-text">
                 <div class="grid_section_2--pre-treatment-header">
@@ -106,7 +106,7 @@
     
     
     <!-- PRICE COMPONENT -->
-    <div class="treatment_item_price_component">
+    <div id="treatment-options" class="treatment_item_price_component">
         <div class="treatment_price_component--absentee-treatment">
             <div class="price_component_header">
                 <h4>Book your Energy Treatment</h4>
@@ -129,11 +129,13 @@
                           <p class="card-text">No expiry date</p>
                           <p class="card-text">Placeholder</p>
                           <div class="price_component_grid--item-location">
-                            <img src="../assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
+                            <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
                             <p class="price_component_grid--item-location-text">Worldwide</p>
                           </div>
                           <div class="price_component_grid--button">
-                              <a href="#"><button>Reserve now</button></a>
+                            <form action="/treatments/add-to-cart/<%=treatment[0].id%>" method="POST">
+                                <button>Reserve now</button>
+                            </form>
                           </div>
                         </div>
                     </div>
@@ -155,7 +157,7 @@
                           <p class="card-text">No expiry date</p>
                           <p class="card-text">Save €15</p>
                           <div class="price_component_grid--item-location">
-                            <img src="../assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
+                            <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
                             <p class="price_component_grid--item-location-text">Worldwide</p>
                           </div>
                           <div class="price_component_grid--button">
@@ -181,7 +183,7 @@
                           <p class="card-text">No expiry date</p>
                           <p class="card-text">Save €45</p>
                           <div class="price_component_grid--item-location">
-                            <img src="../assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
+                            <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
                             <p class="price_component_grid--item-location-text">Worldwide</p>
                           </div>
                           <div class="price_component_grid--button">

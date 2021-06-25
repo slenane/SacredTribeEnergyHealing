@@ -315,7 +315,7 @@ h2 {
 }
 
 h5.jewellery_item--title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     font-family: var(--main-font);
     color: var(--deep-purple);
@@ -506,6 +506,11 @@ h2.jewellery_type {
 .jewellery_buy_button button:hover {
     background-color: var(--teal);
 }
+
+.buy_button.cart--adding_to_cart {
+    background-color: var(--teal);
+}
+
  
 .jewellery_wishlist--add {
     font-size: .8rem;

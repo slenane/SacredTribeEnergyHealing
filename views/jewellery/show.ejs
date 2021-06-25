@@ -43,11 +43,10 @@
 
         <div class="jewellery_content_main--section-2">
             <h1 class="jewellery_title"><%=product.title%></h1>
-            <h2 class="jewellery_type"><%=product.productType%></h2>
             <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
             <p class="jewellery_stock">Unique item! Only one in stock</p>
             <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" class="jewellery_buy_button">
-                <button>Add to cart</button>
+                <button class="buy_button">ADD TO BAG</button>
             </form>
 
             <div class="jewellery_description">
@@ -133,7 +132,7 @@
                     <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
                     <div class="card-body">
                         <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>
-                        <p class="card-text jewellery_item--text"><%=similarItems[i].productType%> <br> <span class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></span></p>
+                        <p class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></p>
                     </div>
                 </div>
             </div>

@@ -2,30 +2,19 @@ const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, isBlogAuthor, validateBlog } = require('../middleware');
-const shopify = require('../shopify');
 const Blog = require('../models/blog');
-
-let session;
 
 // INDEX
 router.get("/", catchAsync(async (req, res) => {
     // Find all blogs
     const blogs = await Blog.find({});
 
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
-
-    res.render("blogs/index", { blogs, cart, showCart: false });
+    res.render("blogs/index", { blogs });
 }));
 
 // NEW
 router.get("/new", isLoggedIn, catchAsync(async(req, res) => {
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
-
-    res.render("blogs/new", { cart, showCart: false });
+    res.render("blogs/new");
 }));
 
 router.post("/", isLoggedIn, validateBlog, catchAsync(async (req, res) => {
@@ -43,15 +32,12 @@ router.post("/", isLoggedIn, validateBlog, catchAsync(async (req, res) => {
 router.get('/:id', catchAsync(async (req, res,) => {
     // Find one blog
     const blog = await Blog.findById(req.params.id);
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
 
     if (!blog) {
         req.flash("error", "Cannot find that blog");
         return res.redirect("/blogs")
     }
-    res.render('blogs/show', { blog, cart, showCart: false });
+    res.render('blogs/show', { blog });
 }));
 
 // EDIT 
@@ -59,15 +45,12 @@ router.get('/:id/edit', isLoggedIn, isBlogAuthor, catchAsync(async (req, res) =>
     // Find one blog by the id
     const { id } = req.params;
     const blog = await Blog.findById(id);
-    // Fetch the cart, if it exists
-    session = req.session;
-    let cart = await shopify.getCart(session) || {};
 
     if (!blog) {
         req.flash("error", "Cannot find that blog");
         return res.redirect("/blogs")
     }
-    res.render('blogs/edit', { blog, cart, showCart: false });
+    res.render('blogs/edit', { blog });
 }));
 
 router.put('/:id', isLoggedIn, validateBlog, isBlogAuthor, catchAsync(async (req, res) => {
