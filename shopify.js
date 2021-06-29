@@ -11,9 +11,45 @@ const client = Client.buildClient({
     storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN
 });
 
+// Create a customer checkout
+let createCheckout = async () => {
+    let newCheckout = {};
+    // Create the new checkout
+    await client.checkout.create()
+        .then((checkout) => {
+            newCheckout = checkout;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    // Return the new Checkout
+    return newCheckout.id;
+}
+
+let getCart = async (session) => {
+    let cart = {};
+
+    if (!session.checkoutID) session.checkoutID = await createCheckout();
+
+    await client.checkout.fetch(session.checkoutID)
+        .then((foundCart) => {
+            cart = foundCart;
+        })
+        .catch ((err) => console.log(err));
+
+            // let obj = {};
+            // let keys = Object.keys(cart);
+            // for (key of keys) {
+            //     obj[key] = cart[key];
+            // }
+            // console.log(obj);
+
+    return cart;
+}
+
 // Get all products
 let getAllProducts = async () => {
-    let products;
+    let products, custom;
     await client.product.fetchAll()
             .then((foundProducts) => {
                 products = foundProducts;
@@ -22,9 +58,13 @@ let getAllProducts = async () => {
                 console.log(err);
             });
     // return Jewellery only
-    return products
-    .filter(item => item.productType !== "Energy Treatment")
-    .filter(item => item.productType !== "Absentee Treatment");
+    custom = products.filter(item => item.productType === "Custom Jewellery")[0];
+    products = products
+        .filter(item => item.productType !== "Energy Treatment")
+        .filter(item => item.productType !== "Absentee Treatment")
+        .filter(item => item.productType !== "Custom Jewellery");
+    
+    return [products, custom]; 
 }
 
 let getTreatment = async (type) => {
@@ -57,7 +97,7 @@ let getFeaturedProducts = async () => {
 
         // REDO THIS BUT BETTERRRRRRR
         for (let i = 0; i < 6; i++) {
-            featuredImages.push(collections[0].products[i].images[0].src);
+            featuredImages.push(collections[0].products[0].images[0]?.src);
         }
     })
     .catch((err) => {
@@ -149,41 +189,37 @@ let getMaterials = (materialsArr) => {
     return materials;
 }
 
-// Create a customer checkout
-let createCheckout = async () => {
-    let newCheckout = {};
-    // Create the new checkout
-    await client.checkout.create()
+let getCustomJewelleryItem = async (checkoutID, lineItemID) => {
+    let custom;
+    await client.checkout.fetch(checkoutID)
         .then((checkout) => {
-            newCheckout = checkout;
-        })
-        .catch((err) => {
-            console.log(err);
+            checkout.lineItems.forEach(item => {
+                if (item.id === lineItemID) custom = item;
+            });
         });
-    // Return the new Checkout
-    return newCheckout.id;
+    return custom;
 }
 
-let getCart = async (session) => {
-    let cart = {};
+let getLineItemID = async (checkoutID, productID) => {
+    let lineItemID;
+    await client.checkout.fetch(checkoutID)
+        .then((checkout) => {
+            checkout.lineItems.forEach(item => {
+                if (item.variant.product.id === productID) lineItemID = item.id;
+            });
+        });
+    return lineItemID;
+}
 
-    if (!session.checkoutID) session.checkoutID = await createCheckout();
+let getLineItemIDs = async (checkoutID) => {
+    let IDs = [];
 
-    await client.checkout.fetch(session.checkoutID)
-        .then((foundCart) => {
-            cart = foundCart;
-        })
-        .catch ((err) => console.log(err));
+    await client.checkout.fetch(checkoutID)
+        .then((checkout) => {
+            checkout.lineItems.forEach(item =>  IDs.push(item.id));
+        });
 
-            // let obj = {};
-            // let keys = Object.keys(cart);
-            // for (key of keys) {
-            //     obj[key] = cart[key];
-            // }
-            // console.log(obj);
-            // console.log(obj.lineItems)
-
-    return cart;
+    return IDs;
 }
 
 let isProductInCart = async (checkoutID, productID) => {
@@ -200,13 +236,28 @@ let isProductInCart = async (checkoutID, productID) => {
 }
 
 // Add an item to the checkout
-let addLineItem = async (checkoutID, productID) => {
+let addLineItem = async (checkoutID, productID, customOptions) => {
     // Get the current product from it's ID
     let product = await getProduct(productID);
     // Provide the options of the item
-    let lineItem = {
-        variantId: product.variants[0].id,
-        quantity: 1
+    let lineItem;
+    if (customOptions) {
+        let variantID;
+        product.variants.forEach((item) => {
+            if (item.title === `${customOptions.type} / ${customOptions.size}`) variantID = item.id;
+        });
+        if (!variantID) return;
+
+        lineItem = {
+            variantId: variantID,
+            quantity: Number(customOptions.quantity),
+            customAttributes: [{key: "message", value: customOptions.message}]
+        }
+    } else {
+        lineItem = {
+            variantId: product.variants[0].id,
+            quantity: 1
+        }
     }
     // Add the item to the checkout
     await client.checkout.addLineItems(checkoutID, lineItem)
@@ -214,6 +265,34 @@ let addLineItem = async (checkoutID, productID) => {
             return checkout;
         })
         .catch(err => { return err; }); 
+}
+
+let updateLineItem =  async (checkoutID, lineItemID, customOptions) => {
+    let lineItems, variantID;
+    let lineItem = await getCustomJewelleryItem(checkoutID, lineItemID);
+    let product = await getProduct(lineItem.variant.product.id);
+
+    product.variants.forEach((item) => {
+        if (item.title === `${customOptions.type} / ${customOptions.size}`) variantID = item.id;
+    });
+    if (!variantID) return;
+
+    let lineItemToUpdate = [
+        {
+            id: lineItemID, 
+            variantId: variantID,
+            quantity: Number(customOptions.quantity),
+            customAttributes: [{key: "message", value: customOptions.message}]
+        }
+    ];
+
+    await client.checkout.updateLineItems(checkoutID, lineItemToUpdate)
+        .then((checkout) => {
+            lineItems = checkout.lineItems;
+        })
+        .catch(err => { return err });
+
+    return lineItems;
 }
 
 // Remove an item from the checkout
@@ -232,9 +311,13 @@ module.exports = {
     getCollection,
     getProduct,
     parseDescription,
+    getCustomJewelleryItem,
+    getLineItemID,
     createCheckout,
     getCart,
+    getLineItemIDs,
     isProductInCart,
     addLineItem,
+    updateLineItem,
     removeLineItem
 }

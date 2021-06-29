@@ -3,6 +3,7 @@ let infobarText = document.querySelector(".hero_infobar--text");
 let buyingGuide = document.querySelector(".hero_infobar--grid");
 let buyingGuideBtn = document.querySelector(".buying_guide-button");
 let buyButton = document.querySelector(".buy_button");
+let addToBagLoader = document.querySelector(".add_to_bag_loader");
 
 let toggleShowDropdown = async (e) => {
     if (buyingGuide.classList.contains("hide")) {
@@ -59,9 +60,35 @@ let toggleShowDropdown = async (e) => {
     }
 };
 
+// ###################################
+//             SHOW PAGE
+// ###################################
+
+// Image gallery
+const swiperThumbnails = new Swiper(".swiperThumbnails", {
+    slidesPerView: 7,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    direction: 'vertical'
+});
+const swiperMainImage = new Swiper(".swiperMainImage", {
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+        swiper: swiperThumbnails,
+    },
+});
+
+console.log(swiperThumbnails);
+
+// Add item to cart
 let addingToCart = () => {
     buyButton.classList.add("cart--adding_to_cart");
-    buyButton.textContent = "ADDING TO BAG";
+    buyButton.classList.add("flash");
+    buyButton.innerHTML = "ADDING TO BAG";
 }
 
 buyingGuideBtn?.addEventListener("click", toggleShowDropdown);

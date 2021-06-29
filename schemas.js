@@ -27,3 +27,12 @@ module.exports.emailSchema = Joi.object({
         message: Joi.string().required()
     }).required()
 });
+
+module.exports.customJewellerySchema = Joi.object({
+    custom: Joi.object({
+        type: Joi.string().required(),
+        size: Joi.string().required(),
+        quantity: Joi.number().required().min(1),
+        message: Joi.string().required(),
+    }).required()
+});

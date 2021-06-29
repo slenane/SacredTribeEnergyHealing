@@ -1,4 +1,4 @@
-const { blogSchema, linkSchema, emailSchema } = require('./schemas.js');
+const { blogSchema, linkSchema, emailSchema, customJewellerySchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const Blog = require('./models/blog');
 const Link = require('./models/link');
@@ -24,6 +24,19 @@ module.exports.validateBlog = (req, res, next) => {
 
 module.exports.validateEmail = (req, res, next) => {
     const { error } = emailSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
+module.exports.validateCustomJewellery = (req, res, next) => {
+    // If the product is not a custom item then move on
+    if (!req.body.custom) return next();
+    // Else test for an error
+    const { error } = customJewellerySchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);

@@ -19,25 +19,34 @@
 
 <div class="jewellery_show_content">
 
-    <!-- <div class="product-component" id="<%=product.id%>">
-
-    </div> -->
-
- <div class="jewellery_content_main">
+    <div class="jewellery_content_main">
 
         <!-- Gris section 1 -->
-
         <div class="jewellery_content_main--section-1">
-            <!-- Swiper JS with photos on the side -->
-            <img class="thumb_image thumb-1" src="<%=product.images[1].src%>" alt="jewellery image">
-            <img class="thumb_image thumb-2" src="<%=product.images[2].src%>" alt="jewellery image">
-            <img class="thumb_image thumb-3" src="<%=product.images[3].src%>" alt="jewellery image">
-            <div class="share_item">
-                <img class="share_item--icon" src="../../../assets/images/icons/share.svg" alt="Share icon">
-                <p class="share_item--text">Share</p>
+            
+            <div thumbsSlider="" class="swiper-container swiperThumbnails">
+                <div class="swiper-wrapper thumbnail-wrapper">
+                    <% for (let i = 0; i < product.images.length; i++) { %>
+                        <div class="swiper-slide">
+                            <img class="product_image--thumbnail" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                        </div>
+                        <% } %>
+                </div>
             </div>
-            <img class="main_image" src="<%=product.images[0].src%>" alt="jewellery image">
-        </div> 
+
+            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                class="swiper-container swiperMainImage">
+                <div class="swiper-wrapper">
+                    <% for (let i = 0; i < product.images.length; i++) { %>
+                    <div class="swiper-slide">
+                        <img class="product_image--main" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                    </div>
+                    <% } %>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
 
         <!-- Grid section 2 -->
 
@@ -46,14 +55,32 @@
             <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
             <p class="jewellery_stock">Unique item! Only one in stock</p>
             <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" class="jewellery_buy_button">
-                <button class="buy_button">ADD TO BAG</button>
-            </form>
+                <% let addedToCart; %>
+                <% for (let item of cart.lineItems) { %>
+                    <% if (item.variant.product.id === product.id) addedToCart = true; %>
+                <% } %>
 
+                <% if (addedToCart) {%>
+                    <button class="bought_button" disabled="true">ADDED TO BAG</button>
+                <% } else { %>
+                    <button class="buy_button">ADD TO BAG</button>
+                <% } %>
+            </form>
+            
             <div class="jewellery_description">
                 <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
                 <p class="jewellery_description--body">
                     <%-description%>
                 </p>
+                <div class="toAdd">
+                    TO ADD:
+                    <ul>
+                        <li>Sizes</li>
+                        <li>Hardcode description</li>
+                        <li>Furtherinformation below</li>
+                    </ul>
+                </div>
+                
             </div>
         </div>
     </div> 
@@ -79,7 +106,7 @@
             </div>
             
             <div class="white_feather_bio--icon">
-                <img src="../../../assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
+                <img src="/assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
             </div>
 
         </div>
@@ -116,29 +143,56 @@
 <!-- SIMILAR ITEMS -->
 
 <div class="similar_items">
-    <% if (similarItems.length > 0) { %>
+    <% if (similarItems.length > 0 && !(similarItems.length === 1 && (similarItems[0].id === product.id))) { %>
+        <div class="similar_items-header">
+            <p>View similar products</p>
+        </div>
 
-    <div class="similar_items-header">
-        <p>View similar products</p>
-    </div>
+        <div class="similar_items--grid">
+            <!-- Get the length of similar items to show -->
+            <% let length = similarItems.length >= 6 ? 6 : similarItems.length; %>
+            <!-- If there are more than 6 items to show then randomize which items are shown from all items -->
+            <% if (similarItems.length > 7) { %>
+                <% let rand = []; %>
+                <% while (rand.length !== 6) { %>
+                    <% let randomNumber = Math.floor(Math.random() * similarItems.length); %>
+                    <% if (similarItems[randomNumber].id === product.id) continue; %>
+                    <% rand.push(randomNumber); %>
+                    <% rand = [...new Set(rand)]; %>
+                <% } %>
 
-    <div class="similar_items--grid">
-        <!-- MAKE RANDOM LATER AND MAKE SURE THAT THE SHOW ITEM IS NOT HERE-->
-        <% let length = similarItems.length >= 6 ? 6 : similarItems.length; %>
-        <% for (let i = 0; i < length; i++) { %>
-        <a href="/jewellery/show/<%=similarItems[i].id%>">
-            <div class="jewellery_item shadow">
-                <div class="card border-light">
-                    <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
-                    <div class="card-body">
-                        <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>
-                        <p class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <% } %>
-    </div>
+                <% for (let i = 0; i < 6; i++) { %>
+                    <a href="/jewellery/show/<%=similarItems[rand[i]].id%>">
+                        <div class="jewellery_item shadow">
+                            <div class="card border-light">
+                                <img class="card-img-top jewellery_item--image" src="<%=similarItems[rand[i]].images[0].src%>" alt="Jewellery image">
+                                <div class="card-body">
+                                    <h5 class="card-title jewellery_item--title"><%=similarItems[rand[i]].title%></h5>
+                                    <p class="text-muted jewellery_item--price">€<%=similarItems[rand[i]].variants[0].price%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <% } %>
+
+            <% } else { %>
+                <!-- Else just show the items in whatever order they are in -->
+                <% for (let i = 0; i < length; i++) { %>
+                    <% if (similarItems[i].id === product.id) continue; %>
+                    <a href="/jewellery/show/<%=similarItems[i].id%>">
+                        <div class="jewellery_item shadow">
+                            <div class="card border-light">
+                                <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
+                                <div class="card-body">
+                                    <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>
+                                    <p class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <% } %>
+            <% } %>
+        </div>
     <% } %>
 </div>
 

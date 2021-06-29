@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate')%>
+
+<%- include('../../partials/navbarBlack')%>
+
+<%- include('../../partials/sideNavbarBlack')%>
+
+
+
+<div class="custom--review_order shadow">
+        <h3>Custom <%=(custom.variant.title).split(" / ")[0];%></h3>
+        <div class="review_order--body"> 
+            <p><span class="review--label">Product type: </span><%=(custom.variant.title).split(" / ")[0];%></p>
+        
+            <p><span class="review--label">Size: </span><%=(custom.variant.title).split(" / ")[1];%></p>
+
+            <p><span class="review--label">Quantity: </span><%=custom.quantity%></p>
+
+            <p><span class="review--label">Message: </span><%=custom.customAttributes[0].value%></p>
+
+            <div class="text-center">
+                <button class="custom--form_submit"><a href="/jewellery/custom/<%=custom.id%>/edit">Edit</a></button>
+            </div>
+        </div>
+</div>
