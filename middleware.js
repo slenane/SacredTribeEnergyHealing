@@ -36,7 +36,7 @@ module.exports.validateCustomJewellery = (req, res, next) => {
     // If the product is not a custom item then move on
     if (!req.body.custom) return next();
     // Else test for an error
-    const { error } = customJewellerySchema.validate(req.body);
+    const { error } = customJewellerySchema.validate(req.body, {allowUnknown: true});
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
         throw new ExpressError(msg, 400);

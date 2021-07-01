@@ -244,14 +244,23 @@ let addLineItem = async (checkoutID, productID, customOptions) => {
     if (customOptions) {
         let variantID;
         product.variants.forEach((item) => {
-            if (item.title === `${customOptions.type} / ${customOptions.size}`) variantID = item.id;
+            if (item.title === customOptions.type) variantID = item.id;
         });
         if (!variantID) return;
+
+        let additionalItems = Object.keys(customOptions).filter(item => item.match("Item ") || item.match("Size"));
+        
+        let custom = [];
+
+        for (let i = 0; i < additionalItems.length; i++) {
+            custom.push({key: additionalItems[i], value: customOptions[additionalItems[i]]});
+        }
+        custom.push({key: "Message", value: customOptions.Message});
 
         lineItem = {
             variantId: variantID,
             quantity: Number(customOptions.quantity),
-            customAttributes: [{key: "message", value: customOptions.message}]
+            customAttributes: [...custom]
         }
     } else {
         lineItem = {
@@ -273,16 +282,25 @@ let updateLineItem =  async (checkoutID, lineItemID, customOptions) => {
     let product = await getProduct(lineItem.variant.product.id);
 
     product.variants.forEach((item) => {
-        if (item.title === `${customOptions.type} / ${customOptions.size}`) variantID = item.id;
+        if (item.title === customOptions.type) variantID = item.id;
     });
     if (!variantID) return;
+
+    let additionalItems = Object.keys(customOptions).filter(item => item.match("Item ") || item.match("Size"));
+        
+    let custom = [];
+
+    for (let i = 0; i < additionalItems.length; i++) {
+        custom.push({key: additionalItems[i], value: customOptions[additionalItems[i]]});
+    }
+    custom.push({key: "Message", value: customOptions.Message});
 
     let lineItemToUpdate = [
         {
             id: lineItemID, 
             variantId: variantID,
             quantity: Number(customOptions.quantity),
-            customAttributes: [{key: "message", value: customOptions.message}]
+            customAttributes: [...custom]
         }
     ];
 

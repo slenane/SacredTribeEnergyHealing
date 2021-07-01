@@ -34,13 +34,22 @@
                     <% } %>
 
                     <% if (item.variant.product.handle === "custom-jewellery") { %>
+                        <% let size = item.customAttributes[0].value; %>
+                        <% for (let i = 0; i < (item.customAttributes.length - 1); i++) { %>
+                           <% if (size === item.customAttributes[i].value) {
+                               continue; %>
+                            <% } else { %>
+                                <% size = "Multiple sizes"; %>
+                                <% break; %>
+                            <% } %>
+                        <% } %>
                         <div class="cart--line_item">
                             <a href="/jewellery/custom/<%=item.id%>">
                                 <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                             </a>
                             <div class="line_items--body">
-                                <p class="line_item--title"><a href="/jewellery/custom/<%=item.id%>">Custom <%=(item.variant.title).split("/")[0];%></a></p>
-                                <p class="line_item--options"><%=(item.variant.title).split("/")[1];%> | <%= item.quantity %> | <a href="/jewellery/custom/<%=item.id%>/edit">Edit</a></p>
+                                <p class="line_item--title"><a href="/jewellery/custom/<%=item.id%>">Custom <%=item.variant.title%></a></p>
+                                <p class="line_item--options"><%= size %> | <%= item.quantity %> | <a href="/jewellery/custom/<%=item.id%>/edit">Edit</a></p>
                                 <p class="line_item--price">€<%=item.variant.price%></p>
                             </div>
                             <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">

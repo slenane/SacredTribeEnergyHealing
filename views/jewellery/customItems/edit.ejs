@@ -4,62 +4,59 @@
 
 <%- include('../../partials/sideNavbarBlack')%>
 
-<div class="custom_order_div container shadow">
-    <div class="custom_order--div_1">
-        <h1>Custom Jewellery</h1>
-        <p>This is placeholder text for the description of the custom jewellery and what the person should write when ordering custom jewellery</p>
-        <p>Icons / Images / Examples</p>
+
+<div class="content container">
+
+    <div class="custom--back_to_jewellery">
+        <a href="/jewellery/custom/<%=custom.id%>"><i class="fas fa-arrow-left"></i> Back to jewellery review</a>
     </div>
-    <div class="custom_order--div_2">
-        <form action="/jewellery/update-cart/<%=custom.id%>" method="POST" novalidate class="validated-form custom_order--form">
-            <div class="mb-2">
-                <label class="form-label" for="custom--product_type">Product type:</label>
-                <select id="custom--product_type" class="form-control" name="custom[type]" required> 
-                    <% if ((custom.variant.title).split(" / ")[0] === "Bracelet & Earring Set")  { %>
-                        <option value="Bracelet & Earring Set" selected>Bracelet & Earring Set (€55/set)</option>
-                    <% } else { %>
-                        <option value="Bracelet & Earring Set">Bracelet & Earring Set (€55/set)</option>
-                    <% } %>
+        
+    <div class="custom_order_div container shadow">
+        <div class="custom_order--div_1 px-3">
+            <h1>Custom Jewellery</h1>
+            <p>This is placeholder text for the description of the custom jewellery and what the person should write when ordering custom jewellery</p>
+            <p>Icons / Images / Examples</p>
+        </div>
+        <div class="custom_order--div_2">
+            <form action="/jewellery/update-cart/<%=custom.id%>" method="POST" novalidate class="validated-form custom_order--form">
+                <div class="mb-2">
+                    <label class="form-label" for="custom--product_type">Product type:</label>
+                    <select id="custom--product_type" class="form-control" name="custom[type]" required> 
 
-                    <% if ((custom.variant.title).split(" / ")[0] === "Necklace & Earring Set") { %>
-                        <option value="Necklace & Earring Set" selected>Necklace & Earring Set (€80/set)</option>
-                    <% } else { %>
-                        <option value="Necklace & Earring Set">Necklace & Earring Set (€80/set)</option>
-                    <% } %>
-
-                    <% if ((custom.variant.title).split(" / ")[0] === "Bracelet, Necklace & Earring Set") { %>
-                        <option value="Bracelet, Necklace & Earring Set" selected>Bracelet, Necklace & Earring Set (€120/set)</option>
-                    <% } else { %>
-                        <option value="Bracelet, Necklace & Earring Set">Bracelet, Necklace & Earring Set (€120/set)</option>
-                    <% } %>
-
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-
-            <div class="row mb-2">   
-                <div class="col">
-                    <label class="form-label" for="custom--size">Size:</label>
-                    <select class="form-control" name="custom[size]" id="custom--size" required>
-
-                        <% if ((custom.variant.title).split(" / ")[1] === "Small") { %>
-                            <option value="Small" selected>Small</option>
+                        <% if (custom.variant.title === "Bracelet, Necklace & Earring Set") { %>
+                            <option value="Bracelet, Necklace & Earring Set" selected>Bracelet, Necklace & Earring Set (€120/set + FREE SHIPPING)</option>
                         <% } else { %>
-                            <option value="Small">Small</option>
+                            <option value="Bracelet, Necklace & Earring Set">Bracelet, Necklace & Earring Set (€120/set + FREE SHIPPING)</option>
+                        <% } %>
+                        
+                        <% if (custom.variant.title === "Necklace & Earring Set") { %>
+                            <option value="Necklace & Earring Set" selected>Necklace & Earring Set (€80/set + FREE SHIPPING)</option>
+                        <% } else { %>
+                            <option value="Necklace & Earring Set">Necklace & Earring Set (€80/set + FREE SHIPPING)</option>
+                        <% } %>
+                                
+                        <% if (custom.variant.title === "Bracelet & Earring Set")  { %>
+                            <option value="Bracelet & Earring Set" selected>Bracelet & Earring Set (€55/set + FREE SHIPPING)</option>
+                        <% } else { %>
+                            <option value="Bracelet & Earring Set">Bracelet & Earring Set (€55/set + FREE SHIPPING)</option>
+                        <% } %>
+                                
+                        <% if (custom.variant.title === "Necklace") { %>
+                            <option value="Necklace">Necklace (€40 + SHIPPING)</option>
+                        <% } else { %>
+                            <option value="Necklace">Necklace (€40 + SHIPPING)</option>
                         <% } %>
 
-                        <% if ((custom.variant.title).split(" / ")[1] === "Medium") { %>
-                            <option value="Medium" selected>Medium</option>
+                        <% if (custom.variant.title === "Bracelet") { %>
+                            <option value="Bracelet">Bracelet (€30 + SHIPPING)</option>
                         <% } else { %>
-                            <option value="Medium">Medium</option>
+                            <option value="Bracelet">Bracelet (€30 + SHIPPING)</option>
                         <% } %>
 
-                        <% if ((custom.variant.title).split(" / ")[1] === "Large") { %>
-                            <option value="Large" selected>Large</option>
+                        <% if (custom.variant.title === "Earrings") { %>
+                            <option value="Earrings">Earrings (€55 + SHIPPING)</option>
                         <% } else { %>
-                            <option value="Large">Large</option>
+                            <option value="Earrings">Earrings (€55 + SHIPPING)</option>
                         <% } %>
 
                     </select>
@@ -68,27 +65,102 @@
                     </div>
                 </div>
 
-                <div class="col">
-                    <label class="form-label" for="custom--quantity">Quantity:</label>
-                    <input class="form-control" type="number" name="custom[quantity]" id="custom--quantity" value="<%=custom.quantity%>" min="1" required>
+                <div class="row mb-2">   
+                    <div class="col custom_size--div">
+                        <label class="form-label custom--size_label" for="custom--size">Size:</label>
+                        <select class="form-control" name="custom[Size]" id="custom--size" required>
+                            <option class="size--option" value="" disabled>Jewellery Size</option>
+
+                            <% if (custom.customAttributes[0].value === "Small") { %>
+                                <option class="size--option" value="Small" selected>Small</option>
+                            <% } else { %>
+                                <option class="size--option" value="Small">Small</option>
+                            <% } %>
+
+                            <% if (custom.customAttributes[0].value === "Medium") { %>
+                                <option class="size--option" value="Medium" selected>Medium</option>
+                            <% } else { %>
+                                <option class="size--option" value="Medium">Medium</option>
+                            <% } %>
+
+                            <% if (custom.customAttributes[0].value === "Large") { %>
+                                <option class="size--option" value="Large" selected>Large</option>
+                            <% } else { %>
+                                <option class="size--option" value="Large">Large</option>
+                            <% } %>
+
+                            <% if (custom.customAttributes[0].value === "One size") { %>
+                                <option class="one_size--option" value="One size" selected>One size</option>
+                            <% } else { %>
+                                <option class="one_size--option" value="One size">One size</option>
+                            <% } %>
+
+                        </select>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label class="form-label custom--quantity_label" for="custom--quantity">Quantity:</label>
+                        <input class="form-control" type="number" name="custom[quantity]" id="custom--quantity" value="<%=custom.quantity%>" min="1" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional_sizes">
+                    <% if (custom.customAttributes[0].value !== "One size") { %>
+                        <% for (let i = 1; i < custom.quantity; i++) { %>
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label class="form-label" for="custom--size_<%=i + 1%>">Item <%=i + 1%> size:</label>
+                                    <select class="form-control" name="custom[Item <%=i + 1%> size]" id="custom--size_<%=i + 1%>" required>
+
+                                        <% if (custom.customAttributes[i].value === "Small") { %>
+                                            <option value="Small" selected>Small</option>
+                                        <% } else { %>
+                                            <option value="Small">Small</option>
+                                        <% } %>
+            
+                                        <% if (custom.customAttributes[i].value === "Medium") { %>
+                                            <option value="Medium" selected>Medium</option>
+                                        <% } else { %>
+                                            <option value="Medium">Medium</option>
+                                        <% } %>
+            
+                                        <% if (custom.customAttributes[i].value === "Large") { %>
+                                            <option value="Large" selected>Large</option>
+                                        <% } else { %>
+                                            <option value="Large">Large</option>
+                                        <% } %>
+
+                                    </select>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+
+
+                <div class="mb-2">
+                    <label class="form-label" for="custom--message">Tell us a little about you so we can custom make the perfect piece for you!</label>
+                    <textarea class="form-control" name="custom[Message]" id="custom--message" cols="30" rows="6"required><%=custom.customAttributes[custom.customAttributes.length - 1].value%></textarea>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
-            </div>
 
-
-            <div class="mb-2">
-                <label class="form-label" for="custom--message">Tell us a little about you so we can custom make the perfect piece for you!</label>
-                <textarea class="form-control" name="custom[message]" id="custom--message" cols="30" rows="6"required><%=custom.customAttributes[0].value%></textarea>
-                <div class="valid-feedback">
-                    Looks good!
+    
+                <div class="text-center mb-2">
+                    <input class="custom--form_submit" type="submit" value="Update order">
                 </div>
-            </div>
 
-            <div class="text-center mb-2">
-                <input class="custom--form_submit" type="submit" value="Update order">
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

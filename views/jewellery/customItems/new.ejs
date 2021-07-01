@@ -4,63 +4,77 @@
 
 <%- include('../../partials/sideNavbarBlack')%>
 
-<div class="custom_order_div container shadow">
-    <div class="custom_order--div_1">
-        <h1>Custom Jewellery</h1>
-        <p>This is placeholder text for the description of the custom jewellery and what the person should write when ordering custom jewellery</p>
-        <p>Icons / Images / Examples</p>
-    </div>
-    <div class="custom_order--div_2">
-        <form action="/jewellery/add-to-cart/<%=custom.id%>" method="POST" novalidate class="validated-form custom_order--form">
-            
-            <div class="mb-2">
-                <label class="form-label" for="custom--product_type">Product type:</label>
-                <select id="custom--product_type" class="form-control" name="custom[type]" required> 
-                    <option value="" disabled selected>Jewellery Type</option>
-                    <option value="Bracelet & Earring Set">Bracelet & Earring Set (€55/set)</option>
-                    <option value="Necklace & Earring Set">Necklace & Earring Set (€80/set)</option>
-                    <option value="Bracelet, Necklace & Earring Set">Bracelet, Necklace & Earring Set (€120/set)</option>
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+<div class="content container">
 
-            <div class="row mb-2">
-                <div class="col">
-                    <label class="form-label" for="custom--size">Size:</label>
-                    <select class="form-control" name="custom[size]" id="custom--size" required>
-                        <option value="" disabled selected>Jewellery Size</option>
-                        <option value="Small">Small</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Large">Large</option>
+    <div class="custom--back_to_jewellery">
+        <a href="/jewellery"><i class="fas fa-arrow-left"></i> Back to jewellery</a>
+    </div>
+
+    <div class="custom_order_div container shadow">
+    
+        <div class="custom_order--div_1 px-3">
+            <h1>Custom Jewellery</h1>
+            <p>This is placeholder text for the description of the custom jewellery and what the person should write when ordering custom jewellery</p>
+            <p>Icons / Images / Examples</p>
+        </div>
+        <div class="custom_order--div_2">
+            <form action="/jewellery/add-to-cart/<%=custom.id%>" method="POST" novalidate class="validated-form custom_order--form">
+                
+                <div class="mb-2">
+                    <label class="form-label" for="custom--product_type">Product type:</label>
+                    <select id="custom--product_type" class="form-control" name="custom[type]" required> 
+                        <option value="" disabled selected>Jewellery Type</option>
+                        <option value="Bracelet, Necklace & Earring Set">Bracelet, Necklace & Earring Set (€120/set + FREE SHIPPING)</option>
+                        <option value="Necklace & Earring Set">Necklace & Earring Set (€80/set + FREE SHIPPING)</option>
+                        <option value="Bracelet & Earring Set">Bracelet & Earring Set (€55/set + FREE SHIPPING)</option>
+                        <option value="Necklace">Necklace (€40 + SHIPPING)</option>
+                        <option value="Bracelet">Bracelet (€30 + SHIPPING)</option>
+                        <option value="Earrings">Earrings (€55 + SHIPPING)</option>
                     </select>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
+    
+                <div class="row mb-2">
+                    <div class="col custom_size--div">
+                        <label class="form-label custom--size_label" for="custom--size">Size:</label>
+                        <select class="form-control" name="custom[Size]" id="custom--size" required>
+                            <option class="size--option" value="" disabled selected>Jewellery Size</option>
+                            <option class="size--option" value="Small">Small</option>
+                            <option class="size--option" value="Medium">Medium</option>
+                            <option class="size--option" value="Large">Large</option>
+                            <option class="one_size--option" style="display: none;" value="One size">One size</option>
+                        </select>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+    
+                    <div class="col">
+                        <label class="form-label custom--quantity_label" for="custom--quantity">Quantity:</label>
+                        <input class="form-control" type="number" name="custom[quantity]" id="custom--quantity" value="1" min="1" max="10" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+    
+                </div>
 
-                <div class="col">
-                    <label class="form-label" for="custom--quantity">Quantity:</label>
-                    <input class="form-control" type="number" name="custom[quantity]" id="custom--quantity" value="1" min="1" required>
+                <div class="additional_sizes"></div>
+    
+                <div class="mb-2">
+                    <label class="form-label" for="custom--message">Tell us a little about you so we can custom make the perfect piece for you!</label>
+                    <textarea class="form-control" name="custom[Message]" id="custom--message" cols="10" rows="10" required></textarea>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
-
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label" for="custom--message">Tell us a little about you so we can custom make the perfect piece for you!</label>
-                <textarea class="form-control" name="custom[message]" id="custom--message" cols="10" rows="10" required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
+    
+                <div class="text-center mb-2">
+                    <input class="custom--form_submit" type="submit" value="Add to bag">
                 </div>
-            </div>
-
-            <div class="text-center mb-2">
-                <input class="custom--form_submit" type="submit" value="Add to bag">
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>

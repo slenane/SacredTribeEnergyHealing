@@ -80,7 +80,7 @@ router.post('/add-to-cart/:id', validateCustomJewellery, catchAsync(async (req, 
     }
     // Add the product to the correct checkout
     else await shopify.addLineItem(checkoutID, productID, customOptions);
-
+    
     if (customOptions) {
         let lineItemID = await shopify.getLineItemID(checkoutID, productID) || []; 
         return res.redirect(`/jewellery/custom/${lineItemID}?cart=true`);

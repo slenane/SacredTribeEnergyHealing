@@ -676,10 +676,19 @@ h4.jewellery_description--header {
 }
 
 /* CUSTOM ORDER PAGE */
+.custom--back_to_jewellery  {
+    margin-top: 4rem;
+}
+
+.custom--back_to_jewellery a {
+    color: var(--deep-purple);
+    font-family: var(--bs-font-sans-serif);
+}
+
 .custom_order_div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 5rem auto;
+    margin: 1rem auto;
     justify-content: center;
     padding: 1rem;
 }
