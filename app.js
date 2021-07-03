@@ -16,7 +16,7 @@ const shopify = require("./shopify");
 
 // ROUTES FILES
 const blogRouter = require("./routes/blogs");
-const contactRouter = require("./routes/contact");
+// const contactRouter = require("./routes/contact");
 const indexRouter = require("./routes/index");
 const jewelleryRouter = require("./routes/jewellery");
 const linkRouter = require("./routes/links");
@@ -84,7 +84,7 @@ app.use(async (req, res, next) => {
 app.use('/', indexRouter);
 app.use('/', userRouter);
 app.use("/blogs", blogRouter);
-app.use("/contact", contactRouter);
+// app.use("/contact", contactRouter);
 app.use("/jewellery", jewelleryRouter);
 app.use("/links", linkRouter);
 app.use("/treatments", treatmentRouter);

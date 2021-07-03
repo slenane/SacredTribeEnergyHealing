@@ -42,6 +42,27 @@
     transform: translateX(0);
 }
 
+/* width */
+#cart::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+#cart::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+#cart::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+    /* Handle on hover */
+#cart::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 #arrow {
     position: absolute;
     width: 20px;
@@ -216,6 +237,11 @@
 .totals_text {
     font-weight: 500;
 }
+
+.checkout--discount {
+    color: green;
+}
+
 
 .checkout--shopify_disclaimer {
     font-size: 0.7rem;

@@ -32,7 +32,7 @@ module.exports = {
     "dragon vein agate": {
         title: "Dragon Vein Agate",
         text:  "Bringing forward hidden talents, ability to manifest, heightens creativity, energy, strength and finding true love",
-        image: "https://www.gemstone7.com/image/gemstone/388-dragons-vein-agate.png",
+        image: "https://i.pinimg.com/236x/99/0e/a1/990ea1a4106e3b3036967d0be7d67799--round-pendant-boho.jpg",
     },
     "jade": {
         title: "Jade",
@@ -40,6 +40,11 @@ module.exports = {
         image: "https://www.annmariegianni.com/wp-content/uploads/2019/03/mar2019_newseltter_blog_jade-800x533.jpg",
     },
     "wood": {
+        title: "Wood",
+        text: "Wisdom, knowledge, grounding and connecting",
+        image: "https://static.scientificamerican.com/sciam/cache/file/E00E5DC5-1F35-4256-9693D7CD448C302B_source.jpg",
+    },
+    "wood spacers": {
         title: "Wood",
         text: "Wisdom, knowledge, grounding and connecting",
         image: "https://static.scientificamerican.com/sciam/cache/file/E00E5DC5-1F35-4256-9693D7CD448C302B_source.jpg",
@@ -170,6 +175,11 @@ module.exports = {
         image: "https://i.etsystatic.com/6433225/d/il/0da437/2526079317/il_340x270.2526079317_bvny.jpg?version=0",
     },
     "silver": {
+        title: "Antique Silver",
+        text: "Reflects back energy, balances power, wealth and spiritual energy",
+        image: "https://www.silverinstitute.org/wp-content/uploads/2017/07/silver-report2020.jpg",
+    },
+    "antique silver": {
         title: "Antique Silver",
         text: "Reflects back energy, balances power, wealth and spiritual energy",
         image: "https://www.silverinstitute.org/wp-content/uploads/2017/07/silver-report2020.jpg",

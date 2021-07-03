@@ -22,6 +22,14 @@ router.get("/about", catchAsync(async (req, res) => {
     res.render("about/index");
 }));
 
+// WISHLIST ROUTE
+router.get("/wishlist", catchAsync(async (req, res) => {
+    // Fetch all products from shopify - Then filter on page load with localstorage info
+    let [products, ] = await shopify.getAllProducts() || [];
+
+    res.render("wishlist/index", { products });
+}));
+
 // CART ROUTES
 // REMOVE FROM CART
 router.delete('/remove-from-cart/:id', catchAsync(async (req, res) => {

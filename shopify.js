@@ -16,7 +16,7 @@ let createCheckout = async () => {
     let newCheckout = {};
     // Create the new checkout
     await client.checkout.create()
-        .then((checkout) => {
+        .then(async (checkout) => {
             newCheckout = checkout;
         })
         .catch((err) => {
@@ -25,6 +25,7 @@ let createCheckout = async () => {
     // Return the new Checkout
     return newCheckout.id;
 }
+
 
 let getCart = async (session) => {
     let cart = {};
@@ -158,31 +159,16 @@ let getProduct = async (productID) => {
 } 
 
 // Parse the product description to get materials and description
-let parseDescription = async (productDescription, productDescriptionHTML) => {
-    let materialsRegex = /MATERIALS/;
-    // Find the index of where the materials list starts in description and descriptionHTML (+/- "materials:")
-    let indexDescription = (productDescription).match(materialsRegex)?.index + 11;
-    let indexDescriptionHTML = (productDescriptionHTML).match(materialsRegex)?.index - 4;
-    // If there's no material list, then return
-    if (indexDescription === -1 || indexDescription === undefined) return;
-    if (indexDescriptionHTML === -1 || indexDescriptionHTML === undefined) return;
-    // Get an array of the materials from the description
-    let materialsArr = (productDescription).slice(indexDescription).split(", ");
-    // Get the material data from the materialsObj
-    let materials = getMaterials(materialsArr);
-    // Get the description with the materials removed
-    let description = (productDescriptionHTML).slice(0, indexDescriptionHTML);
-
-    return [materials, description];
-}
-
-// Get the matching materials fromt he materials object
-let getMaterials = (materialsArr) => {
+let getMaterials = async (productDescription) => {
     let materials = {};
+    let materialsArr = productDescription.split(" and ")
+                        .join(", ")
+                        .split(", ")
+                        .map(material => material.toLowerCase());
+
     // If the materials listed match the materialsObj then add it to the new materials array
     for (let i = 0; i < materialsArr.length; i++) {
-        // console.log(materialsArr[i]);
-        if (materialsObj[materialsArr[i].toLowerCase()]) {
+        if (materialsObj[materialsArr[i]]) {
             materials[materialsArr[i]] = materialsObj[materialsArr[i]];
         } 
     }
@@ -328,7 +314,7 @@ module.exports = {
     getFeaturedProducts,
     getCollection,
     getProduct,
-    parseDescription,
+    getMaterials,
     getCustomJewelleryItem,
     getLineItemID,
     createCheckout,

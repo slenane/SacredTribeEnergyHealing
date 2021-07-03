@@ -76,11 +76,16 @@
                     <div class="cart--checkout">
                     <div class="checkout--totals">
                         <p class="checkout--totals_item checkout--subtotal">
-                            <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
+                            <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€<%=cart.lineItemsSubtotalPrice?.amount%>0</span> 
                         </p>
                         <p class="checkout--totals_item checkout--shipping">
                             <span class="totals_text">SHIPPING</span> <span class="totals_price">€0.00</span>
                         </p>
+                        <% if (cart.lineItemsSubtotalPrice.amount > 100.0) { %>
+                            <p class="checkout--totals_item checkout--discount">
+                                <span class="totals_text">DISCOUNT</span> <span class="totals_price">€<%=cart.totalPrice - cart.lineItemsSubtotalPrice?.amount%>.00</span> 
+                            </p>
+                        <% } %>
                         <p class="checkout--totals_item checkout--total">
                             <span class="totals_text">TOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
                         </p>

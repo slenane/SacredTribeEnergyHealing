@@ -69,6 +69,9 @@
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/wishlist"><i class="far fa-heart"></i></a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link nav-main-cart" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="item_number"><%=cart.lineItems.length > 0 ? cart.lineItems.length : ""%></span></a>
                             <div id="arrow"></div>
                         </li>
@@ -243,45 +246,51 @@
             <div class="jewellery_bottom_div--collections slide-up">
 
                 <div class="jewellery_bottom_div--collection collection_div--1 shadow">
-                    <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="<%=featuredItems[0].images[0].src%>" alt="Jewellery preview">
-                        <div class="card-body">
-                            <h5 class="card-title collection_div--text-1"><%=featuredItems[0].productType%></h5>
-                            <div class="collection_div--button">
-                                <form action="/jewellery/collections/bracelet-earring#product_container">
-                                    <button>Shop Now</button>
-                                </form>
+                    <a href="/jewellery/collections/bracelet-earring#product_container">
+                        <div class="card border-light">
+                            <img class="card-img-top collection_div--image" src="<%=featuredItems[0].images[0].src%>" alt="Jewellery preview">
+                            <div class="card-body">
+                                <h5 class="card-title collection_div--text-1"><%=featuredItems[0].productType%>s</h5>
+                                <div class="collection_div--button">
+                                    <form action="/jewellery/collections/bracelet-earring#product_container">
+                                        <button>Shop Now</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="jewellery_bottom_div--collection collection_div--2 shadow">
-                    <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="<%=featuredItems[1].images[0].src%>" alt="Jewellery preview">
-                        <div class="card-body">
-                            <h5 class="card-title collection_div--text-2"><%=featuredItems[1].productType%></h5>
-                            <div class="collection_div--button">
-                                <form action="/jewellery/collections/bracelet-necklace-earring#product_container">
-                                    <button>Shop Now</button>
-                                </form>
+                    <a href="/jewellery/collections/bracelet-necklace-earring#product_container">
+                        <div class="card border-light">
+                            <img class="card-img-top collection_div--image" src="<%=featuredItems[1].images[0].src%>" alt="Jewellery preview">
+                            <div class="card-body">
+                                <h5 class="card-title collection_div--text-2"><%=featuredItems[1].productType%>s</h5>
+                                <div class="collection_div--button">
+                                    <form action="/jewellery/collections/bracelet-necklace-earring#product_container">
+                                        <button>Shop Now</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="jewellery_bottom_div--collection collection_div--3 shadow">
-                    <div class="card border-light">
-                        <img class="card-img-top collection_div--image" src="<%=featuredItems[2].images[0].src%>" alt="Jewellery preview">
-                        <div class="card-body">
-                          <h5 class="card-title collection_div--text-3"><%=featuredItems[2].productType%></h5>
-                            <div class="collection_div--button">
-                                <form action="/jewellery/collections/necklace-earring#product_container">
-                                    <button>Shop Now</button>
-                                </form>
+                    <a href="/jewellery/collections/necklace-earring#product_container">
+                        <div class="card border-light">
+                            <img class="card-img-top collection_div--image" src="<%=featuredItems[2].images[0].src%>" alt="Jewellery preview">
+                            <div class="card-body">
+                              <h5 class="card-title collection_div--text-3"><%=featuredItems[2].productType%>s</h5>
+                                <div class="collection_div--button">
+                                    <form action="/jewellery/collections/necklace-earring#product_container">
+                                        <button>Shop Now</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <!-- End of jewellery_bottom_div--collections -->
             </div>
@@ -311,28 +320,63 @@
         
     </div>
     
-    <!-- FOOTER -->
-
     <footer id="footer_div">
 
-        
-        <div class="social_links">
-            <div class="social_link facebook"><a href="#"><i class="fab fa-facebook facebook-bottom"></i></a></div>
-            <div class="social_link instagram"><a href="#"><i class="fab fa-instagram instagram-bottom"></i></a></div>
-            <div class="social_link twitter"><a href="#"><i class="fab fa-twitter twitter-bottom"></i></a></div>
-        </div>
-
-        <div class="contact_link">
-            <div class="contact_link--text">
-                <h6>Get In Contact</h6>
+        <div class="footer--div_1">
+            <h4>Sacred Tribe Energy Healing</h4>
+    
+            <div class="social_links">
+                <div class="social_link facebook"><a href="#"><i class="fab fa-facebook facebook-bottom"></i></a></div>
+                <div class="social_link instagram"><a href="#"><i class="fab fa-instagram instagram-bottom"></i></a></div>
+                <div class="social_link twitter"><a href="#"><i class="fab fa-twitter twitter-bottom"></i></a></div>
             </div>
-            <div class="contact_link--button">
-                <form action="/contact">
-                    <button>Click Here</button>
-                </form>
+    
+            <div class="contact_details">
+                <div class="footer_contact footer_contact-address">
+                    <img src="/assets/images/icons/location.svg" alt="Location icon">
+                    <p>Shannon, Co. Clare, Ireland</p>
+                </div>
+                <div class="footer_contact footer_contact-email">
+                    <img class="icon-padding-top" src="/assets/images/icons/email.svg" alt="Email icon">
+                    <p>jenny@sacredtribe-energyhealing.com</p>
+                </div>
+                <div class="footer_contact footer_contact-phone">
+                    <img class="icon-padding-top" src="/assets/images/icons/phone.svg" alt="Phone icon">
+                    <p>(+353) 87 936 1919</p>
+                </div>
             </div>
         </div>
-
+        <div class="footer--div_2">
+            <h6><a href="/jewellery">Jewellery</a></h6>
+            <ul>
+                <li><a href="/jewellery/collections/bracelet-earring#product_container">Bracelet & Earring Sets</a></li>
+                <li><a href="/jewellery/collections/necklace-earring#product_container">Necklace & Earring Sets</a></li>
+                <li><a href="/jewellery/collections/bracelet-necklace-earring#product_container">Bracelet, Necklace & <br> Earring Sets</a></li>
+                <li><a href="/jewellery/custom">Custom Jewellery</a></li>
+            </ul>
+        </div>
+        <div class="footer--div_3">
+            <h6><a href="/treatments">Treatments</a></h6>
+            <ul>
+                <li><a href="/treatments/energy-treatment">Energy Treatments</a></li>
+                <li><a href="/treatments/absentee-treatment">Absentee Treatments</a></li>
+            </ul>
+        </div>
+        <div class="footer--div_4">
+            <h6><a href="/about">Philosophy</a></h6>
+            <ul>
+                <li><a href="/awareness">Awareness</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/links">Links</a></li>
+            </ul>
+    
+        </div>
+        <div class="footer--div_5">
+            <h6><a href="/contact">Get in contact</a></h6>
+            <a class="contact_link--button" href="/contact"><button>Click Here</button></a>
+        </div>
+    
     </footer>
 
     <!-- POPPER.JS -->

@@ -56,11 +56,11 @@ router.get('/show/:id', catchAsync(async (req, res) => {
     // Fetch the product from shopify based on the url
     let product = await shopify.getProduct(req.params.id) || [];
     // Get materials used from product description and the description without the materials
-    let [materials, description] = await shopify.parseDescription(product.description, product.descriptionHtml) || [{}, product.descriptionHtml];
+    let materials = await shopify.getMaterials(product.description) || {};
     // Get similar items from the same collection
     let similarItems = await shopify.getCollection(product.productType) || [];
 
-    res.render('jewellery/show', { product, description, materials, similarItems });
+    res.render('jewellery/show', { product, materials, similarItems });
 }));
 
 // ADD TO CART

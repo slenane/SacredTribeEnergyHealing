@@ -197,13 +197,35 @@ let updateSizeHTML = () => {
         customSizeLabel.innerHTML = "Bracelet Size:";
         // Update the quantity inputs
         updateQuantityHTML();
-    } else {
-        customSizeLabel.innerHTML = "Bracelet Size:";
-    }
+    } 
+}
+
+let jewelleryContentDiv = document.querySelector('.jewellery_content_div');
+let jewelleryLoader = document.querySelector('.jewellery-loader-div');
+let jewelleryContent = document.querySelector('.jewellery_content');
+
+// Display loader until the page has fully loaded
+if (jewelleryContentDiv) {
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            jewelleryLoader.classList.add("hide");
+            jewelleryContent.classList.remove("hide");
+        }, 500);
+    });
+}
+
+let jewelleryShowDiv = document.querySelector('.jewellery_show_content');
+let jewelleryShowLoader = document.querySelector('.jewellery-show-loader');
+let jewelleryShowOverlay = document.querySelector('.jewellery-show-overlay');
+
+if (jewelleryShowDiv) {
+    window.addEventListener("load", () => {
+        jewelleryShowLoader.classList.add("hide");
+        jewelleryShowOverlay.style.opacity = 1;
+    }); 
 }
 
 // Ensure the HTML is up to date when the page loads
-
 if (customOrder) {
     window.addEventListener("load", updateSizeHTML);
 }

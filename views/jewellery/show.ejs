@@ -16,80 +16,69 @@
 </div>
 
 <!-- JEWELLERY CONTENT -->
-
 <div class="jewellery_show_content">
+    <div class="jewellery-show-loader"></div>
+    <div class="jewellery-show-overlay">
+        <div class="jewellery_content_main">
+            <!-- Grid section 1 -->
+            <div class="jewellery_content_main--section-1">
+                
+                <div thumbsSlider="" class="swiper-container swiperThumbnails">
+                    <div class="swiper-wrapper thumbnail-wrapper">
+                        <% for (let i = 0; i < product.images.length; i++) { %>
+                            <div class="swiper-slide">
+                                <img class="product_image--thumbnail" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
 
-    <div class="jewellery_content_main">
-
-        <!-- Gris section 1 -->
-        <div class="jewellery_content_main--section-1">
-            
-            <div thumbsSlider="" class="swiper-container swiperThumbnails">
-                <div class="swiper-wrapper thumbnail-wrapper">
-                    <% for (let i = 0; i < product.images.length; i++) { %>
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                    class="swiper-container swiperMainImage">
+                    <div class="swiper-wrapper">
+                        <% for (let i = 0; i < product.images.length; i++) { %>
                         <div class="swiper-slide">
-                            <img class="product_image--thumbnail" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                            <img class="product_image--main" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
                         </div>
                         <% } %>
-                </div>
-            </div>
-
-            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                class="swiper-container swiperMainImage">
-                <div class="swiper-wrapper">
-                    <% for (let i = 0; i < product.images.length; i++) { %>
-                    <div class="swiper-slide">
-                        <img class="product_image--main" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- Grid section 2 -->
+
+            <div class="jewellery_content_main--section-2">
+                <h1 class="jewellery_title"><%=product.title%></h1>
+                <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
+                <p class="jewellery_stock">Unique item! Only one in stock</p>
+                <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" class="jewellery_buy_button">
+                    <% let addedToCart; %>
+                    <% for (let item of cart.lineItems) { %>
+                        <% if (item.variant.product.id === product.id) addedToCart = true; %>
                     <% } %>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
 
-        <!-- Grid section 2 -->
-
-        <div class="jewellery_content_main--section-2">
-            <h1 class="jewellery_title"><%=product.title%></h1>
-            <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
-            <p class="jewellery_stock">Unique item! Only one in stock</p>
-            <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" class="jewellery_buy_button">
-                <% let addedToCart; %>
-                <% for (let item of cart.lineItems) { %>
-                    <% if (item.variant.product.id === product.id) addedToCart = true; %>
-                <% } %>
-
-                <% if (addedToCart) {%>
-                    <button class="bought_button" disabled="true">ADDED TO BAG</button>
-                <% } else { %>
-                    <button class="buy_button">ADD TO BAG</button>
-                <% } %>
-            </form>
-            
-            <div class="jewellery_description">
-                <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
-                <p class="jewellery_description--body">
-                    <%-description%>
-                </p>
-                <div class="toAdd">
-                    TO ADD:
-                    <ul>
-                        <li>Sizes</li>
-                        <li>Hardcode description</li>
-                        <li>Furtherinformation below</li>
-                    </ul>
-                </div>
+                    <% if (addedToCart) {%>
+                        <button class="bought_button" disabled="true">ADDED TO BAG</button>
+                    <% } else { %>
+                        <button class="buy_button">ADD TO BAG</button>
+                    <% } %>
+                </form>
                 
+                <div class="jewellery_description">
+                    <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
+                    <%=product.description%>
+                </div>
             </div>
-        </div>
+        </div>  
     </div> 
 
     <!-- WHITE FEATHER JEWELLERY --> 
 
     <div class="white_feather_bio">
         <div class="white_feather_bio--header">
-            <p>White Feather Jewellery Process</p>
+            <p>White Feather Jewellery Attunement Process</p>
         </div>
         <div class="white_feather_bio--body">
             <div class="white_feather_bio--text">
@@ -164,7 +153,7 @@
                 <% for (let i = 0; i < 6; i++) { %>
                     <a href="/jewellery/show/<%=similarItems[rand[i]].id%>">
                         <div class="jewellery_item shadow">
-                            <div class="card border-light">
+                            <div class="card card--jewellery border-light">
                                 <img class="card-img-top jewellery_item--image" src="<%=similarItems[rand[i]].images[0].src%>" alt="Jewellery image">
                                 <div class="card-body">
                                     <h5 class="card-title jewellery_item--title"><%=similarItems[rand[i]].title%></h5>
@@ -181,7 +170,7 @@
                     <% if (similarItems[i].id === product.id) continue; %>
                     <a href="/jewellery/show/<%=similarItems[i].id%>">
                         <div class="jewellery_item shadow">
-                            <div class="card border-light">
+                            <div class="card card--jewellery border-light">
                                 <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
                                 <div class="card-body">
                                     <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>

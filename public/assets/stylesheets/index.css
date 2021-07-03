@@ -1,24 +1,3 @@
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 10px;
-}
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
-
 /* GENERAL TAGS */
 html {
     overflow-y: scroll;
@@ -340,9 +319,10 @@ h3 {
     width: 18rem;
 }
 
-h5 {
+.jewellery_bottom_div--collection h5 {
     font-size: 2rem;
     font-weight: 700;
+    color: var(--deep-purple);
 }
 
 .collection_div--text-1,
@@ -408,24 +388,61 @@ h4 {
 /* FOOTER */
 
 #footer_div {
-    height: 15rem;
+    height: 20rem;
+    margin-top: auto;
+    width: 100%;
     background-color: var(--off-black);
-    color: white;
+    color: rgba(255,255,255,.55);
     display: grid;
-    justify-content: center;
-    text-align: center;
+    grid-template-columns:  40% auto auto auto auto;
+    justify-content: space-around;
+    padding: 2rem;
+    padding-top: 3rem;
+    font-size: .8rem;
+    font-family: 'Open Sans';
+}
+
+#footer_div h4 {
+    font-family: var(--main-font);
+    color: white;
+    font-size: 3rem;
+}
+
+#footer_div ul {
+    padding-inline-start: 0;
+}
+
+#footer_div li {
+    padding-top: .5rem;
+    list-style: none;
+}
+
+#footer_div li a {
+    color: rgba(255,255,255,.55);
+}
+
+#footer_div li a:hover {
+    color: #d7cbdd;
+}
+
+#footer_div h6 {
+    color: white;
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .social_links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    margin-top: 2rem;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    padding-left: 3rem;
+    margin-top: 0.5rem;
 }
 
 .social_link {
     margin: 0 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .facebook-bottom:hover {
@@ -446,12 +463,28 @@ h4 {
 
 .twitter-bottom:hover {
     color: #1DA1F2;
+} 
+
+.contact_details {
+    margin-top: 2rem;
 }
 
-h6 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
+.footer_contact {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+}
+
+.footer_contact img {
+    width: 1rem;
+}
+
+.icon-padding-top {
+    padding-top: .3rem;
+}
+
+.footer--div_5  {
+    text-align: center;
 }
 
 .contact_link--button button {
@@ -461,11 +494,12 @@ h6 {
     border: none;
     color: white;
     border-radius: 10px;
+    font-size: 1rem;
 }
 
 .contact_link--button button:hover {
     background-color: var(--teal);
-}
+} 
 
 /*##### ANIMATIONS #####*/
 

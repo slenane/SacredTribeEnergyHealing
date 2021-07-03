@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate')%>
+
+<%- include('../partials/navbarBlack')%>
+
+<%- include('../partials/sideNavbarBlack')%>
+
+<div class="wishlist_div container">
+    <h1>Saved Items</h1>
+
+    <div class="wishlist_content_div">
+    
+        <div class="wishlist-loader-div">
+            <div class="wishlist-loader"></div>
+        </div>
+
+        <div class="empty_wishlist hide">
+            <i class="far fa-heart empty_wishlist--heart"></i>
+            <p>You don't have any saved items</p>
+            <a class="empty_wishlist--button" href="/jewellery"><button>View Jewellery</button></a>
+
+        </div>
+    
+        <div class="wishlist_content hide">
+    
+            <div class="wishlist_item_div">
+                <% for (let i = 0; i < products.length; i++) { %>
+                        <div class="wishlist_item shadow">
+                            <div class="card card--jewellery border-light">
+                                <div class="card_image">
+                                    <i class="far fa-heart wishlist_add" data-id="<%=products[i].id%>"></i>
+                                    <a href="/jewellery/show/<%=products[i].id%>">
+                                        <img class="card-img-top jewellery_item--image" src="<%=products[i].images[0].src%>" alt="Jewellery image">
+                                    </a>
+                                </div>
+                                <a href="/jewellery/show/<%=products[i].id%>">
+                                    <div class="card-body">
+                                        <h5 class="card-title jewellery_item--title"><%=products[i].title%></h5>
+                                        <p class="text-muted jewellery_item--price">€<%=products[i].variants[0].price%></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>  
+                    </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
