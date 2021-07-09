@@ -5,7 +5,8 @@
 let wishlistDiv = document.querySelector('.wishlist_div');
 let wishlistIcons = document.querySelectorAll('.wishlist_add');
 let wishlistItems = document.querySelectorAll('.wishlist_item');
-let emptyWishlistDiv = document.querySelector('.empty_wishlist')
+let emptyWishlistDiv = document.querySelector('.empty_wishlist');
+let wishlistMessage = document.querySelector('.show_wishlist--text');
 
 let wishlistLoader = document.querySelector('.wishlist-loader-div');
 let wishlistContent = document.querySelector('.wishlist_content');
@@ -35,6 +36,7 @@ let toggleWishlist = (e) => {
         item.classList.remove("far");
         item.classList.add("fas");
         item.classList.add("added");
+        if (wishlistMessage && (id === wishlistMessage.dataset.id)) wishlistMessage.textContent = "ADDED TO WISHLIST";
     } else {
         // Else remove it from the wishlist
         products.splice(index, 1);
@@ -47,6 +49,7 @@ let toggleWishlist = (e) => {
                 item.classList.remove("fa-heart-broken");
                 item.classList.add("far");
                 item.classList.add("fa-heart");
+                if (wishlistMessage && (id === wishlistMessage.dataset.id)) wishlistMessage.textContent = "ADD TO WISHLIST";
             }, 300);
         }, 200);
     }
@@ -120,6 +123,7 @@ let loadWishlist = () => {
                 icon.classList.remove("far");
                 icon.classList.add("fas");
                 icon.classList.add("added");
+                if (wishlistMessage && (icon.dataset.id === wishlistMessage.dataset.id)) wishlistMessage.textContent = "ADDED TO WISHLIST";
             }
         });
 

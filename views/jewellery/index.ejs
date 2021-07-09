@@ -219,18 +219,16 @@
         </div>
 
         <div class="jewellery_content hide">
-
             <div class="jewellery_item_div">
-            <% let rand = []; %>
-            <% while (rand.length !== products.length) { %>
-                <% let randomNumber = Math.floor(Math.random() * products.length); %>
-                <% rand.push(randomNumber); %>
-                <% rand = [...new Set(rand)]; %>
-            <% } %>
+                <% let rand = []; %>
+                <% while (rand.length !== products.length) { %>
+                    <% let randomNumber = Math.floor(Math.random() * products.length); %>
+                    <% rand.push(randomNumber); %>
+                    <% rand = [...new Set(rand)]; %>
+                <% } %>
 
-            <% let length = products.length >= 15 ? 15 : products.length%>
-                <% for (let i = 0; i < length; i++) { %>
-                    
+                <% for (let i = 0; i < products.length; i++) { %>
+                    <% if (products[rand[i]].availableForSale) { %>
                         <div class="jewellery_item shadow">
                             <div class="card card--jewellery border-light">
                                 <div class="card_image">
@@ -246,104 +244,46 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>  
-                    </a>
+                        </div>
+                    <% } else { %>
+                        <div class="jewellery_item shadow">
+                            <div class="card card--jewellery border-light">
+                                <div class="card_image">
+                                    <i class="far fa-heart wishlist_add" data-id="<%=products[rand[i]].id%>"></i>
+                                    <a href="/jewellery/show/<%=products[rand[i]].id%>">
+                                        <img class="card-img-top jewellery_item--image" src="<%=products[rand[i]].images[0].src%>" alt="Jewellery image">
+                                    </a>
+                                </div>
+                                <a href="/jewellery/show/<%=products[rand[i]].id%>">
+                                    <div class="card-body">
+                                        <h5 class="card-title jewellery_item--title"><%=products[rand[i]].title%></h5>
+                                        <p class="item--sold-out">SOLD OUT</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <% } %>
                 <% } %>
             </div>
-            
-            
-            <% if (length > 15) { %>
-                <!-- TREATMENTS LINK -->
-                <div class="treatments_link">
-                    <div class="treatments_text">
-                        <div class="treatments_text--header">
-                            <h4>Energy Treatments</h4>
-                        </div>
-                        <div class="treatments_text--body">
-                            <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
-                        </div>
-                        <div class="treatments_text--button">
-                            <form action="/treatments">
-                                <button>Read More</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="jewellery_item_div">
-                    <% length = products.length >= 30 ? 30 : products.length %>
-                        <% for (let i = 15; i < length; i++) { %>
-                            <a href="/jewellery/show/<%=products[rand[i]].id%>">
-                                <div class="jewellery_item shadow">
-                                    <div class="card border-light">
-                                        <img class="card-img-top jewellery_item--image" src="<%=products[rand[i]].images[0].src%>" alt="Jewellery image">
-                                        <div class="card-body">
-                                            <h5 class="card-title jewellery_item--title"><%=products[rand[i]].title%></h5>
-                                            <p class="text-muted jewellery_item--price">€<%=products[rand[i]].variants[0].price%></p>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </a>
-                        <% } %>
-                    </div>
-            <% } %>
-            
-            <% if (length > 30) { %>
-                <!-- AWARENESS LINK -->
-                <div class="awareness_link">
-                    <div class="awareness_text">
-                        <div class="awareness_text--header">
-                            <h4>Awareness</h4>
-                        </div>
-                        <div class="awareness_text--body">
-                            <p>We the peoples of this Earth are known among the Tribes of the skies as the 'Chosen people' as the universal laws of this planet are based on 'Freewill' the Right to Choose.</p>
-                        </div>
-                        <div class="awareness_text--button">
-                            <form action="/awareness">
-                                <button>Read More</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="jewellery_item_div">
-                    <% length = products.length >= 45 ? 45 : products.length %>
-                        <% for (let i = 30; i < length; i++) { %>
-                            <a href="/jewellery/show/<%=products[rand[i]].id%>">
-                                <div class="jewellery_item shadow">
-                                    <div class="card border-light">
-                                        <img class="card-img-top jewellery_item--image" src="<%=products[rand[i]].images[0].src%>" alt="Jewellery image">
-                                        <div class="card-body">
-                                            <h5 class="card-title jewellery_item--title"><%=products[rand[i]].title%></h5>
-                                            <p class="text-muted jewellery_item--price">€<%=products[rand[i]].variants[0].price%></p>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </a>
-                        <% } %>
-                </div>
-            <% } %>
-
-            <% if (length < 15) { %>
-                <!-- TREATMENTS LINK -->
-                <div class="treatments_link">
-        
-                    <div class="treatments_text">
-                        <div class="treatments_text--header">
-                            <h4>Energy Treatments</h4>
-                        </div>
-                        <div class="treatments_text--body">
-                            <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
-                        </div>
-                        <div class="treatments_text--button">
-                            <form action="/treatments">
-                                <button>Read More</button>
-                            </form>
-                        </div>
+            <!-- TREATMENTS LINK -->
+            <div class="treatments_link">
+    
+                <div class="treatments_text">
+                    <div class="treatments_text--header">
+                        <h4>Energy Treatments</h4>
                     </div>
-                
+                    <div class="treatments_text--body">
+                        <p>The euphoria experienced post-treatment is the perfect frequency for launching into the life you desire...</p>
+                    </div>
+                    <div class="treatments_text--button">
+                        <form action="/treatments">
+                            <button>Read More</button>
+                        </form>
+                    </div>
                 </div>
-            <% } %>
+            </div>
         </div>
 
     </div>

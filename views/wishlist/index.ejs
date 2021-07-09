@@ -14,7 +14,7 @@
         </div>
 
         <div class="empty_wishlist hide">
-            <i class="far fa-heart empty_wishlist--heart"></i>
+            <i class="fas fa-heart-broken empty_wishlist--heart"></i>
             <p>You don't have any saved items</p>
             <a class="empty_wishlist--button" href="/jewellery"><button>View Jewellery</button></a>
 
@@ -24,6 +24,7 @@
     
             <div class="wishlist_item_div">
                 <% for (let i = 0; i < products.length; i++) { %>
+                    <% if (products[i].availableForSale) { %>
                         <div class="wishlist_item shadow">
                             <div class="card card--jewellery border-light">
                                 <div class="card_image">
@@ -40,14 +41,26 @@
                                 </a>
                             </div>
                         </div>  
-                    </a>
+                    <% } else { %>
+                        <div class="wishlist_item shadow">
+                            <div class="card card--jewellery border-light">
+                                <div class="card_image">
+                                    <i class="far fa-heart wishlist_add" data-id="<%=products[i].id%>"></i>
+                                    <a href="/jewellery/show/<%=products[i].id%>">
+                                        <img class="card-img-top jewellery_item--image" src="<%=products[i].images[0].src%>" alt="Jewellery image">
+                                    </a>
+                                </div>
+                                <a href="/jewellery/show/<%=products[i].id%>">
+                                    <div class="card-body">
+                                        <h5 class="card-title jewellery_item--title"><%=products[i].title%></h5>
+                                        <p class="item--sold-out">SOLD OUT</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>  
+                    <% } %>
                 <% } %>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-

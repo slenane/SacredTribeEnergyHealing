@@ -11,8 +11,8 @@
 
 <!-- BACK TO ALL JEWELLERY -->
 
-<div class="back_to_jewellery">
-    <a href="/jewellery"><i class="fas fa-arrow-left"></i> Back to jewellery</a>
+<div class="breadcrumbs">
+    <a href="/">Home</a> > <a href="/jewellery">Jewellery</a> > <a class="text-muted" href="#" disabled><%=product.title%></a>
 </div>
 
 <!-- JEWELLERY CONTENT -->
@@ -23,7 +23,7 @@
             <!-- Grid section 1 -->
             <div class="jewellery_content_main--section-1">
                 
-                <div thumbsSlider="" class="swiper-container swiperThumbnails">
+                <div thumbsSlider="" class="swiper-container swiper-thumbnails">
                     <div class="swiper-wrapper thumbnail-wrapper">
                         <% for (let i = 0; i < product.images.length; i++) { %>
                             <div class="swiper-slide">
@@ -34,11 +34,13 @@
                 </div>
 
                 <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                    class="swiper-container swiperMainImage">
+                    class="swiper-container swiper-main-image">
                     <div class="swiper-wrapper">
                         <% for (let i = 0; i < product.images.length; i++) { %>
-                        <div class="swiper-slide">
-                            <img class="product_image--main" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                        <div class="swiper-slide show_slide--main">
+                            <div class="swiper-zoom-container">
+                                <img class="product_image--main" src="<%=product.images[i].src%>" alt="jewellery image <%=i%>">
+                            </div>
                         </div>
                         <% } %>
                     </div>
@@ -51,82 +53,162 @@
 
             <div class="jewellery_content_main--section-2">
                 <h1 class="jewellery_title"><%=product.title%></h1>
-                <p class="jewellery_price">€<%=product.variants[0].price%> <span class="delivery_included">Delivery included</span></p>
-                <p class="jewellery_stock">Unique item! Only one in stock</p>
-                <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" class="jewellery_buy_button">
-                    <% let addedToCart; %>
-                    <% for (let item of cart.lineItems) { %>
-                        <% if (item.variant.product.id === product.id) addedToCart = true; %>
+                <div class="jewellery_price_stock">
+                    <% if (product.availableForSale) { %>
+                        <p class="jewellery_price">€<%=product.variants[0].price%></p>
+                        <p class="jewellery_stock">Only 1 in stock!</p>
+                    <%} else { %>
+                        <p class="jewellery_price"><strike>€<%=product.variants[0].price%></strike></p>
                     <% } %>
+                </div>
 
-                    <% if (addedToCart) {%>
-                        <button class="bought_button" disabled="true">ADDED TO BAG</button>
-                    <% } else { %>
-                        <button class="buy_button">ADD TO BAG</button>
-                    <% } %>
-                </form>
-                
                 <div class="jewellery_description">
                     <h4 class="jewellery_description--header">Energy attuned handmade designer jewellery</h4>
-                    <%=product.description%>
+                    <p class="jewellery_description--body"><%=product.productType%> comprising of <%=product.description%></p>
                 </div>
+
+                <div class="jewellery_action">
+                    <% if (product.availableForSale) { %>
+                        <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" novalidate class="validated-form jewellery_buy_button">
+                            <div class="jewellery_size">
+                                <div class="jewellery_size--standard">
+                                    <% if (jewellerySize) { %>
+                                        <p class="jewellery_size-body">Selected size: <%=jewellerySize%></p>
+                                    <% } else { %>
+                                        <p class="jewellery_size-body">All bracelets are made to fit a size 7.5" - <span class="jewellery_size--adjust">Click here to adjust</span></p>
+                                        <input type="radio" value='7.5"' name="jewellery[Size]" id="size_option--medium" checked>
+                                    <% } %>
+                                </div>
+                                
+                                <div class="jewellery_size--radio_buttons closed">
+                                    <label class="form-label jewellery--size_label" for="jewellery--size">SELECT SIZE</label>
+                                    <div id="jewellery--size">
+                                        <input type="radio" value='7"' name="jewellery[Size]" id="size_option--small" required>
+                                        <label class="radio_option" for="size_option--small">7"</label>
+        
+                                        <input type="radio" value='7.5"' name="jewellery[Size]" id="size_option--medium" >
+                                        <label class="radio_option" for="size_option--medium">7.5"</label>
+        
+                                        <input type="radio" value='8"' name="jewellery[Size]" id="size_option--large">
+                                        <label class="radio_option" for="size_option--large">8"</label>
+        
+                                        <input type="radio" value='8.5"' name="jewellery[Size]" id="size_option--xlarge">
+                                        <label class="radio_option" for="size_option--xlarge">8.5"</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="jewellery_action--buttons">
+                                    <div class="jewellery--add_to_cart">
+                                        <% let addedToCart; %>
+                                        <% for (let item of cart.lineItems) { %>
+                                            <% if (item.variant.product.id === product.id) addedToCart = true; %>
+                                        <% } %>
+                
+                                        <% if (addedToCart) {%>
+                                            <button class="bought_button" disabled="true">ADDED TO BAG</button>
+                                        <% } else { %>
+                                            <button class="buy_button">ADD TO BAG</button>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </form>
+                                <div class="show_wishlist">
+                                    <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
+                                </div>
+                        <% } else { %>
+                            <div class="jewellery_action--buttons">
+                                <div class="jewellery--add_to_cart">
+                                        <button class="sold_button" disabled="true">SOLD OUT</button>
+                                </div>
+                            <div class="show_wishlist">
+                                <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
+                            </div>
+                            </div>
+                        <% } %>
+                </div>
+                
+                <div class="trust_badges">
+                    <p class="trust_badges--text">Secure Checkout with</p>
+                    <div class="trust_badges--icons">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            
             </div>
         </div>  
     </div> 
 
-    <!-- WHITE FEATHER JEWELLERY --> 
-
-    <div class="white_feather_bio">
-        <div class="white_feather_bio--header">
-            <p>White Feather Jewellery Attunement Process</p>
+    
+    <div class="product_details--div">
+        <div class="product_details--options">
+            <div class="product_details--option option--bio active">Attunement Process</div>
+            <div class="product_details--option option--materials">Materials & Symbolism</div>
+            <div class="product_details--option option--delivery">Delivery & Returns</div>
         </div>
-        <div class="white_feather_bio--body">
-            <div class="white_feather_bio--text">
-                <p>
-                    Sacred space is created and held for the duration of the creative process, intent and focus is maintained, acknowledging and strengthening the key holistic words in relation to the crystals, gemstones and the colours and textures of the spacers utilized. 
-                </p>
-                <p>
-                    When the set is complete, energy is channelled through me into the set and is absorbed into the recipient’s energy field when worn. To assist in the desires and/or challenges being experienced by the individual at this time.
-                </p>
-                <p>
-                    White Feather is the tribal name given to me by the Sacred Tribe so I have chosen White Feather Jewellery as the name for this collaboration between my spirit team and I in the creating for you jewellery that is not only beautiful, unique and handmade but also energy attuned. <br>
-                </p>
+        
+        <div class="product_details--body-div">
+            <!-- WHITE FEATHER JEWELLERY --> 
+            <div class="white_feather_bio product_details--body body--bio">
 
-            </div>
-            
-            <div class="white_feather_bio--icon">
-                <img src="/assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
-            </div>
-
-        </div>
-    </div>
-
-    <!-- MATERIALS AND SYMBOLISM -->
-
-    <div class="materials_grid">
-
-        <% if (Object.keys(materials).length > 0) { %>
-
-        <div class="materials_grid--header">
-            <p>Materials and Symbolism</p>
-        </div>
-
-        <div class="materials_grid--body">
-
-            <% for (let key of Object.keys(materials)) { %>
-                <div class="materials_grid--item">
-                    <img class="materials_grid--icon" src="<%=materials[key].image%>" alt="Materials used thumbnail">
-                    <div class="materials_grid--text">
-                        <p class="materials_grid--text-header"><%=materials[key].title%></p>
-                        <p class="materials_grid--text-body"><%=materials[key].text%></p>
+                <div class="white_feather_bio--body">
+                    <div class="white_feather_bio--text">
+                        <p>
+                            Sacred space is created and held for the duration of the creative process, intent and focus is maintained, acknowledging and strengthening the key holistic words in relation to the crystals, gemstones and the colours and textures of the spacers utilized. 
+                        </p>
+                        <p>
+                            When the set is complete, energy is channelled through me into the set and is absorbed into the recipient’s energy field when worn. To assist in the desires and/or challenges being experienced by the individual at this time.
+                        </p>
+                        <p>
+                            White Feather is the tribal name given to me by the Sacred Tribe so I have chosen White Feather Jewellery as the name for this collaboration between my spirit team and I in the creating for you jewellery that is not only beautiful, unique and handmade but also energy attuned. <br>
+                        </p>
                     </div>
+                    
+                    <div class="white_feather_bio--icon">
+                        <img src="/assets/images/logo/white-feather.svg" alt="White Feather Jewellery icon">
+                    </div>
+        
                 </div>
-            <% } %>
+            </div>
+
+             <!-- MATERIALS AND SYMBOLISM -->
+
+            <div class="materials_grid product_details--body body--materials hide">
+                <div class="materials_grid--body">
+                    <% for (let key of Object.keys(materials)) { %>
+                        <div class="materials_grid--item">
+                            <img class="materials_grid--icon" src="<%=materials[key].image%>" alt="Materials used thumbnail">
+                            <div class="materials_grid--text">
+                                <p class="materials_grid--text-header"><%=materials[key].title%></p>
+                                <p class="materials_grid--text-body"><%=materials[key].text%></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- DELIVERY/RETURNS OPTIONS -->
+
+            <div class="delivery_returns product_details--body body--delivery hide">
+                <div class="show_delivery">
+                    <h6>Delivery</h6>
+                    <p>Free Worldwide delivery</p>
+                    <p>All items shipped within 48 hours</p>
+                    <p>Track your order</p>
+                </div>
+                <div class="show_returns">
+                    <h6>Returns</h6>
+                    <p>Free returns</p>
+                    <p>Blah blah blah</p>
+                </div>
+            </div>
 
         </div>
-        <% } %>
-    </div>
 
+    </div>
 </div>
 
 <!-- SIMILAR ITEMS -->
@@ -145,40 +227,52 @@
                 <% let rand = []; %>
                 <% while (rand.length !== 6) { %>
                     <% let randomNumber = Math.floor(Math.random() * similarItems.length); %>
-                    <% if (similarItems[randomNumber].id === product.id) continue; %>
+                    <% if (similarItems[randomNumber].id === product.id || !similarItems[randomNumber].availableForSale) continue; %>
                     <% rand.push(randomNumber); %>
                     <% rand = [...new Set(rand)]; %>
                 <% } %>
 
                 <% for (let i = 0; i < 6; i++) { %>
-                    <a href="/jewellery/show/<%=similarItems[rand[i]].id%>">
-                        <div class="jewellery_item shadow">
-                            <div class="card card--jewellery border-light">
-                                <img class="card-img-top jewellery_item--image" src="<%=similarItems[rand[i]].images[0].src%>" alt="Jewellery image">
+                    <div class="jewellery_item shadow">
+                        <div class="card card--jewellery border-light">
+                            <div class="card_image">
+                                <i class="far fa-heart wishlist_add" data-id="<%=similarItems[rand[i]].id%>"></i>
+                                <a href="/jewellery/show/<%=similarItems[rand[i]].id%>">
+                                    <img class="card-img-top jewellery_item--image" src="<%=similarItems[rand[i]].images[0].src%>" alt="Jewellery image">
+                                </a>
+                            </div>
+                            <a href="/jewellery/show/<%=similarItems[rand[i]].id%>">
                                 <div class="card-body">
                                     <h5 class="card-title jewellery_item--title"><%=similarItems[rand[i]].title%></h5>
                                     <p class="text-muted jewellery_item--price">€<%=similarItems[rand[i]].variants[0].price%></p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 <% } %>
+
+
 
             <% } else { %>
                 <!-- Else just show the items in whatever order they are in -->
                 <% for (let i = 0; i < length; i++) { %>
                     <% if (similarItems[i].id === product.id) continue; %>
-                    <a href="/jewellery/show/<%=similarItems[i].id%>">
-                        <div class="jewellery_item shadow">
-                            <div class="card card--jewellery border-light">
-                                <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
+                    <div class="jewellery_item shadow">
+                        <div class="card card--jewellery border-light">
+                            <div class="card_image">
+                                <i class="far fa-heart wishlist_add" data-id="<%=similarItems[i].id%>"></i>
+                                <a href="/jewellery/show/<%=similarItems[i].id%>">
+                                    <img class="card-img-top jewellery_item--image" src="<%=similarItems[i].images[0].src%>" alt="Jewellery image">
+                                </a>
+                            </div>
+                            <a href="/jewellery/show/<%=similarItems[i].id%>">
                                 <div class="card-body">
                                     <h5 class="card-title jewellery_item--title"><%=similarItems[i].title%></h5>
                                     <p class="text-muted jewellery_item--price">€<%=similarItems[i].variants[0].price%></p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 <% } %>
             <% } %>
         </div>

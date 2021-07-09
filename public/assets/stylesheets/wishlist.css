@@ -44,7 +44,9 @@
 }
 
 .empty_wishlist--heart {
-    font-size: 2rem;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #a83f39;
 }
 
 .empty_wishlist--button button {
@@ -76,4 +78,9 @@
 
 .wishlist_item .card-body {
     padding: 0 1rem;
+}
+
+.item--sold-out {
+    color: black;
+    font-weight: 700;
 }

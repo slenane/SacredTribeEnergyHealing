@@ -2,8 +2,7 @@ let infobar = document.querySelector(".hero_infobar");
 let infobarText = document.querySelector(".hero_infobar--text");
 let buyingGuide = document.querySelector(".hero_infobar--grid");
 let buyingGuideBtn = document.querySelector(".buying_guide-button");
-let buyButton = document.querySelector(".buy_button");
-let addToBagLoader = document.querySelector(".add_to_bag_loader");
+
 
 let toggleShowDropdown = async (e) => {
     if (buyingGuide.classList.contains("hide")) {
@@ -64,15 +63,19 @@ let toggleShowDropdown = async (e) => {
 //             SHOW PAGE
 // ###################################
 
+let buyButton = document.querySelector(".buy_button");
+let addToBagLoader = document.querySelector(".add_to_bag_loader");
+
 // Image gallery
-const swiperThumbnails = new Swiper(".swiperThumbnails", {
-    slidesPerView: 7,
+const swiperThumbnails = new Swiper(".swiper-thumbnails", {
+    slidesPerView: 6.5,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
     direction: 'vertical'
 });
-const swiperMainImage = new Swiper(".swiperMainImage", {
+const swiperMainImage = new Swiper(".swiper-main-image", {
     loop: true,
+    zoom: true,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -81,6 +84,22 @@ const swiperMainImage = new Swiper(".swiperMainImage", {
         swiper: swiperThumbnails,
     },
 });
+let radioOptions = document.querySelectorAll(".radio_option");
+
+//  Swiper styles
+let productImages = document.querySelectorAll('.product_image--main');
+let paginationNext = document.querySelector('.swiper-button-next');
+let paginationPrev = document.querySelector('.swiper-button-prev');
+
+productImages?.forEach(img => img.addEventListener("click", (e) => {
+    if (e.target.parentElement.parentElement.classList.contains("swiper-slide-zoomed")) {
+        paginationNext.classList.add("zoomed");
+        paginationPrev.classList.add("zoomed");
+    } else {
+        paginationNext.classList.remove("zoomed");
+        paginationPrev.classList.remove("zoomed");
+    }
+}));
 
 // Add item to cart
 let addingToCart = () => {
@@ -91,6 +110,57 @@ let addingToCart = () => {
 
 buyingGuideBtn?.addEventListener("click", toggleShowDropdown);
 buyButton?.addEventListener("click", addingToCart);
+
+
+// Jewellery size radio buttons
+let jewellerySize = document.querySelector('#jewellery--size');
+let jewellerySizeAdjust = document.querySelector('.jewellery_size--adjust');
+let jewellerySizeDiv = document.querySelector('.jewellery_size--radio_buttons');
+
+
+jewellerySize?.addEventListener("click", (e) => {
+    if (e.target.classList.contains("radio_option")) {
+        radioOptions.forEach(option => option.classList.remove("active"));
+        e.target.classList.add("active");
+    }
+});
+
+jewellerySizeAdjust?.addEventListener("click", () => {
+    if (jewellerySizeDiv.classList.contains("closed")) jewellerySizeDiv.classList.remove("closed");
+    else jewellerySizeDiv.classList.add("closed");
+});
+
+// Product options toggle
+let productDetailOptions = document.querySelectorAll('.product_details--option');
+let productDetailBody = document.querySelectorAll('.product_details--body');
+let bioDiv = document.querySelector('.body--bio');
+let materialsDiv = document.querySelector('.body--materials');
+let deliveryDiv = document.querySelector('.body--delivery');
+
+let toggleOption = (e) => {
+    // If the target is already active
+    if (e.target.classList.contains("active")) return;
+    // Remove display of everything before setting the new one if the current is different
+    productDetailOptions.forEach(option => {
+        if (option.classList.contains("active")) option.classList.remove("active")
+    });
+    productDetailBody.forEach(option => {
+        if (!option.classList.contains("hide")) option.classList.add("hide");
+    });
+    // Update active tab
+    e.target.classList.add("active");
+
+    if (e.target.classList.contains('option--bio')) {
+        bioDiv.classList.remove("hide");
+    } else if (e.target.classList.contains('option--materials')) {
+        materialsDiv.classList.remove("hide");
+    } else {
+        deliveryDiv.classList.remove("hide");
+    }
+}
+
+productDetailOptions?.forEach(option => option.addEventListener("click", toggleOption));
+
 
 // ###################################
 //           CUSTOM ITEMS

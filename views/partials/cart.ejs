@@ -65,7 +65,7 @@
                             </a>
                             <div class="line_items--body">
                                 <p class="line_item--title"><a href="<%=productURL%>"><%=item.title%></a></p>
-                                <p class="line_item--price">€<%=item.variant.price%></p>
+                                <p class="line_item--price"><%=item.customAttributes[0].value%> | €<%=item.variant.price%></p>
                             </div>
                             <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
                                 <button>&times;</button>

@@ -1,6 +1,6 @@
 .treatments_hero_div {
     height: 100vh;
-    background-image: url("../images/treatments-bg.png");
+    background-image: url("/assets/images/treatments-bg.png");
     background-position: 80%;
     background-size: cover;
     display: grid;
@@ -116,14 +116,14 @@ h4.treatments_hero_grid--item-header {
 
 /* ENERGY TREATMENT SHOW PAGE */
 .energy_treatment_div {
-    background-image: url("../images/treatments-bg.png");
+    background-image: url("/assets/images/treatments-bg.png");
     background-position: 0 70%;
     background-size: cover;
 }
 
 /* ABSENTEE TREATMENT SHOW PAGE */
 .absentee_treatment_div {
-    background-image: url("../images/background-teal.png");
+    background-image: url("/assets/images/background-teal.png");
     background-size: cover;
 }
 

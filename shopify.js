@@ -51,7 +51,7 @@ let getCart = async (session) => {
 // Get all products
 let getAllProducts = async () => {
     let products, custom;
-    await client.product.fetchAll()
+    await client.product.fetchAll(50)
             .then((foundProducts) => {
                 products = foundProducts;
             })
@@ -74,7 +74,7 @@ let getTreatment = async (type) => {
     let collection = {};
 
     await client.collection
-        .fetchWithProducts(collectionID, {productsFirst: 10})
+        .fetchWithProducts(collectionID)
         .then((foundCollection) => {
             collection = foundCollection.products;
         })
@@ -129,7 +129,7 @@ let getCollection = async (type) => {
     else return;
     
     await client.collection
-        .fetchWithProducts(collectionID, {productsFirst: 10})
+        .fetchWithProducts(collectionID)
         .then((foundCollection) => {
             collection = foundCollection.products;
         })
@@ -172,6 +172,11 @@ let getMaterials = async (productDescription) => {
             materials[materialsArr[i]] = materialsObj[materialsArr[i]];
         } 
     }
+    // Add the feather to all materials
+    materials["feather"] = materialsObj["feather"];
+    materials["reclaimed"] = materialsObj["reclaimed"];
+    materials["earrings"] = materialsObj["earrings"];
+    // return materials list
     return materials;
 }
 
@@ -186,15 +191,15 @@ let getCustomJewelleryItem = async (checkoutID, lineItemID) => {
     return custom;
 }
 
-let getLineItemID = async (checkoutID, productID) => {
-    let lineItemID;
+let getLineItem = async (checkoutID, productID) => {
+    let lineItem;
     await client.checkout.fetch(checkoutID)
         .then((checkout) => {
             checkout.lineItems.forEach(item => {
-                if (item.variant.product.id === productID) lineItemID = item.id;
+                if (item.variant.product.id === productID) lineItem = item;
             });
         });
-    return lineItemID;
+    return lineItem;
 }
 
 let getLineItemIDs = async (checkoutID) => {
@@ -222,7 +227,7 @@ let isProductInCart = async (checkoutID, productID) => {
 }
 
 // Add an item to the checkout
-let addLineItem = async (checkoutID, productID, customOptions) => {
+let addLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
     // Get the current product from it's ID
     let product = await getProduct(productID);
     // Provide the options of the item
@@ -251,7 +256,8 @@ let addLineItem = async (checkoutID, productID, customOptions) => {
     } else {
         lineItem = {
             variantId: product.variants[0].id,
-            quantity: 1
+            quantity: 1,
+            customAttributes: [{key: "Size", value: jewelleryOptions["Size"]}]
         }
     }
     // Add the item to the checkout
@@ -316,7 +322,7 @@ module.exports = {
     getProduct,
     getMaterials,
     getCustomJewelleryItem,
-    getLineItemID,
+    getLineItem,
     createCheckout,
     getCart,
     getLineItemIDs,

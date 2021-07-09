@@ -8,8 +8,7 @@ const shopify = require('../shopify');
 router.get("/", catchAsync(async (req, res) => {
     // Fetch all products from shopify
     let [products, custom] = await shopify.getAllProducts() || [];
-    // console.log(products);
-;
+
     res.render("jewellery/index", { products, custom, type: "all-products" });
 }));
 
@@ -53,14 +52,23 @@ router.get('/custom/:id/edit', catchAsync(async (req, res) => {
 
 // SHOW PRODUCT
 router.get('/show/:id', catchAsync(async (req, res) => {
+    let productID = req.params.id;
+    let checkoutID = req.session.checkoutID;
     // Fetch the product from shopify based on the url
-    let product = await shopify.getProduct(req.params.id) || [];
+    let product = await shopify.getProduct(productID) || [];
+    // If the product is already in the cart then get the lineItem
+    let lineItem = await shopify.getLineItem(checkoutID, productID);
     // Get materials used from product description and the description without the materials
     let materials = await shopify.getMaterials(product.description) || {};
     // Get similar items from the same collection
     let similarItems = await shopify.getCollection(product.productType) || [];
 
-    res.render('jewellery/show', { product, materials, similarItems });
+    let jewellerySize;
+    if (lineItem) {
+       jewellerySize  = lineItem.customAttributes[0].value;
+    }
+
+    res.render('jewellery/show', { product, jewellerySize, materials, similarItems });
 }));
 
 // ADD TO CART
@@ -68,6 +76,7 @@ router.post('/add-to-cart/:id', validateCustomJewellery, catchAsync(async (req, 
     let productID = req.params.id;
     let checkoutID = req.session.checkoutID;
     let customOptions = req.body.custom;
+    let jewelleryOptions = req.body.jewellery;
     let productAlreadyInCart = await shopify.isProductInCart(checkoutID, productID)
     // If the checkout id is not set on the session or the item is already in the cart then return
     if (!checkoutID || (productAlreadyInCart && !customOptions)) {
@@ -79,11 +88,11 @@ router.post('/add-to-cart/:id', validateCustomJewellery, catchAsync(async (req, 
         return res.redirect(`/jewellery/custom`);
     }
     // Add the product to the correct checkout
-    else await shopify.addLineItem(checkoutID, productID, customOptions);
+    else await shopify.addLineItem(checkoutID, productID, jewelleryOptions, customOptions);
     
     if (customOptions) {
-        let lineItemID = await shopify.getLineItemID(checkoutID, productID) || []; 
-        return res.redirect(`/jewellery/custom/${lineItemID}?cart=true`);
+        let lineItem = await shopify.getLineItem(checkoutID, productID) || []; 
+        return res.redirect(`/jewellery/custom/${lineItem.id}?cart=true`);
     } else {
         // Redirect to the jewellery page with the cart open
         res.redirect(`/jewellery/show/${productID}/?cart=true`);

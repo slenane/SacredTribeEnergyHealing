@@ -55,7 +55,7 @@ a:hover {
 
 /* HERO SECTION  W/ NAVBAR INSIDE */
 #hero_div {
-    background-image: url("../images/hero-image-rock-crystal.jpg");
+    background-image: url("/assets/images/hero-image-rock-crystal.jpg");
     background-size: cover;
     background-position: 0%;
     height: 40rem;
@@ -168,7 +168,7 @@ h1 {
 
 #philosophy_div {
     height: 40rem;
-    background-image: url("../images/philosophy-bg.png");
+    background-image: url("/assets/images/philosophy-bg.png");
     background-size: cover;
     background-position: 0 100%;
     display: grid;
@@ -345,7 +345,7 @@ h3 {
 
 #treatments_div {
     height: 40rem;
-    background-image: url("../images/treatments-bg.png");
+    background-image: url("/assets/images/treatments-bg.png");
     background-position: 80%;
     background-size: cover;
     display: grid;
@@ -929,7 +929,7 @@ h4 {
 
     #philosophy_div {
         height: auto;
-        background-image: url("../images/crystal-bg-small.png");
+        background-image: url("/assets/images/crystal-bg-small.png");
         background-size: 20rem;
         background-repeat: no-repeat;
         background-position: 100% 100%;
