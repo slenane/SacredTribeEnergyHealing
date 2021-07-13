@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sacred Tribe Energy Healing</title>
+    <% if (title !== "") { %>
+        <title><%= title %> | Sacred Tribe Energy Healing</title>
+    <% } else { %>
+        <title>Sacred Tribe Energy Healing</title>
+    <% } %>
 
     <!-- FAVICON -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">  

@@ -111,19 +111,19 @@
                                             <button class="buy_button">ADD TO BAG</button>
                                         <% } %>
                                     </div>
-                                </div>
                             </form>
-                                <div class="show_wishlist">
-                                    <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
+                                    <div class="show_wishlist">
+                                        <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
+                                    </div>
                                 </div>
                         <% } else { %>
                             <div class="jewellery_action--buttons">
                                 <div class="jewellery--add_to_cart">
                                         <button class="sold_button" disabled="true">SOLD OUT</button>
                                 </div>
-                            <div class="show_wishlist">
-                                <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
-                            </div>
+                                <div class="show_wishlist">
+                                    <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>
+                                </div>
                             </div>
                         <% } %>
                 </div>

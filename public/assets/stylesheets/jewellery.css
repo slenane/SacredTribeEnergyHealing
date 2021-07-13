@@ -349,7 +349,6 @@ h2 {
     border-radius: 5px;
 }
 
-
 .card--jewellery {
     height: 27rem;
     border-radius: 5px;
@@ -380,6 +379,10 @@ h2 {
 
 .jewellery_item .card-body {
     padding: 0 1rem;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: center;
+    height: 7rem;
 }
 
 h5.jewellery_item--title {

@@ -35,3 +35,13 @@ module.exports.customJewellerySchema = Joi.object({
         Message: Joi.string().required(),
     }).required()
 });
+
+module.exports.treatmentSchema = Joi.object({
+    treatment: Joi.object({
+        Name: Joi.string().required(),
+        Email: Joi.string().required(),
+        Phone: Joi.string().required(),
+        Quantity: Joi.number().required().min(1).max(5),
+        Message: Joi.string().required(),
+    }).required()
+});

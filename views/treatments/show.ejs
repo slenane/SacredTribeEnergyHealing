@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate')%>
+
+<%- include('../partials/navbarBlack')%>
+
+<%- include('../partials/sideNavbarBlack')%>
+
+<div class="treatment--review_order shadow">
+        <h3><%=treatment.title%></h3>
+
+        <div class="review_order--body"> 
+
+            <p><span class="review--label">Name: </span><%=treatment.customAttributes[0].value%></p>
+
+            <p><span class="review--label">Email: </span><%=treatment.customAttributes[1].value%></p>
+
+            <p><span class="review--label">Phone: </span><%=treatment.customAttributes[2].value%></p>
+
+            <p><span class="review--label">Quantity: </span><%=treatment.quantity%></p>
+            
+            <p><span class="review--label">Message: </span><%=treatment.customAttributes[3].value%></p>
+
+            <% if (treatment.customAttributes[4]) { %>
+                <p><span class="review--label">Preferences: </span><%=treatment.customAttributes[4].value%></p>
+            <% } %>
+            
+            <div class="text-center">
+                <a href="/treatments/<%=treatment.id%>/edit"><button class="custom--form_submit">Edit</button></a>
+            </div>
+        </div>
+</div>
+

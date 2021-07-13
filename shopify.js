@@ -82,7 +82,7 @@ let getTreatment = async (type) => {
             console.log(err);
         });
     
-    return collection.filter(treatment => treatment.productType === type);
+    return collection.filter(treatment => treatment.productType === type)[0];
 }
 
 // Get featured products for homepage
@@ -180,7 +180,7 @@ let getMaterials = async (productDescription) => {
     return materials;
 }
 
-let getCustomJewelleryItem = async (checkoutID, lineItemID) => {
+let getCustomItem = async (checkoutID, lineItemID) => {
     let custom;
     await client.checkout.fetch(checkoutID)
         .then((checkout) => {
@@ -226,33 +226,46 @@ let isProductInCart = async (checkoutID, productID) => {
     return answer === true ? true : false;
 }
 
+let generateJewelleryLineItem = (product, options, lineItemID) => {
+    let variantID, custom = [];
+
+    product.variants.forEach((item) => {
+        if (item.title === options.type) variantID = item.id;
+    });
+    if (!variantID) return;
+
+    let additionalItems = Object.keys(options).filter(item => item.match("Item ") || item.match("Size"));
+
+    for (let i = 0; i < additionalItems.length; i++) {
+        custom.push({key: additionalItems[i], value: options[additionalItems[i]]});
+    }
+    custom.push({key: "Message", value: options.Message});
+
+    if (lineItemID) {
+        return [{
+            id: lineItemID, 
+            variantId: variantID,
+            quantity: Number(options.quantity),
+            customAttributes: [...custom]
+        }];
+    } else {
+        return {
+            variantId: variantID,
+            quantity: Number(options.quantity),
+            customAttributes: [...custom]
+        }
+    }
+}
+
 // Add an item to the checkout
-let addLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
+let addJewelleryLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
     // Get the current product from it's ID
     let product = await getProduct(productID);
     // Provide the options of the item
     let lineItem;
     if (customOptions) {
-        let variantID;
-        product.variants.forEach((item) => {
-            if (item.title === customOptions.type) variantID = item.id;
-        });
-        if (!variantID) return;
-
-        let additionalItems = Object.keys(customOptions).filter(item => item.match("Item ") || item.match("Size"));
-        
-        let custom = [];
-
-        for (let i = 0; i < additionalItems.length; i++) {
-            custom.push({key: additionalItems[i], value: customOptions[additionalItems[i]]});
-        }
-        custom.push({key: "Message", value: customOptions.Message});
-
-        lineItem = {
-            variantId: variantID,
-            quantity: Number(customOptions.quantity),
-            customAttributes: [...custom]
-        }
+        lineItem = generateJewelleryLineItem(product, customOptions);
+        if (lineItem === undefined) return;
     } else {
         lineItem = {
             variantId: product.variants[0].id,
@@ -268,33 +281,80 @@ let addLineItem = async (checkoutID, productID, jewelleryOptions, customOptions)
         .catch(err => { return err; }); 
 }
 
-let updateLineItem =  async (checkoutID, lineItemID, customOptions) => {
-    let lineItems, variantID;
-    let lineItem = await getCustomJewelleryItem(checkoutID, lineItemID);
+let updateJewelleryLineItem =  async (checkoutID, lineItemID, customOptions) => {
+    let lineItems;
+    // Get the line item from the checkout
+    let lineItem = await getCustomItem(checkoutID, lineItemID);
+    // Get the product based on the product id
     let product = await getProduct(lineItem.variant.product.id);
+    // Get the correct variant id based on the type from customOptions
+    let lineItemToUpdate = generateJewelleryLineItem(product, customOptions, lineItemID);
+    if (!lineItemToUpdate) return;
 
-    product.variants.forEach((item) => {
-        if (item.title === customOptions.type) variantID = item.id;
-    });
-    if (!variantID) return;
+    await client.checkout.updateLineItems(checkoutID, lineItemToUpdate)
+        .then((checkout) => {
+            lineItems = checkout.lineItems;
+        })
+        .catch(err => { return err });
 
-    let additionalItems = Object.keys(customOptions).filter(item => item.match("Item ") || item.match("Size"));
-        
-    let custom = [];
+    return lineItems;
+}
 
-    for (let i = 0; i < additionalItems.length; i++) {
-        custom.push({key: additionalItems[i], value: customOptions[additionalItems[i]]});
+let generateTreatmentLineItem = (product, options, lineItemID) => {
+    let treatmentOptions = [];
+    let optionKeys = Object.keys(options).filter(item => !item.match("Quantity") && !item.match("Preferences"));
+    // push options to the array
+    for (let i = 0; i < optionKeys.length; i++) {
+        treatmentOptions.push({key: optionKeys[i], value: options[optionKeys[i]]});
     }
-    custom.push({key: "Message", value: customOptions.Message});
-
-    let lineItemToUpdate = [
-        {
-            id: lineItemID, 
-            variantId: variantID,
-            quantity: Number(customOptions.quantity),
-            customAttributes: [...custom]
+    // If there are preferences then it is an energy treatment
+    if (options["Preferences"]) {
+        if ((typeof options["Preferences"]) === "object") {
+            let preferences = options["Preferences"].join(", ");
+            treatmentOptions.push({key: "Preferences", value: preferences});
+        } else {
+            treatmentOptions.push({key: "Preferences", value: options["Preferences"]});
         }
-    ];
+    }
+    // If there is a lineItemID then we are updating the item
+    if (lineItemID) {
+        return [{
+            id: lineItemID, 
+            variantId: product.variants[0].id,
+            quantity: Number(options["Quantity"]),
+            customAttributes: [...treatmentOptions]
+        }];
+
+    } else {
+        return {
+            variantId: product.variants[0].id,
+            quantity: Number(options["Quantity"]),
+            customAttributes: [...treatmentOptions]
+        }
+    }
+}
+
+// Add an item to the checkout
+let addTreatmentLineItem = async (checkoutID, productID, options) => {
+    // Get the current product from it's ID
+    let product = await getProduct(productID);
+    // Compile the treatment options
+    let lineItem = generateTreatmentLineItem(product, options);
+
+    // Add the item to the checkout
+    await client.checkout.addLineItems(checkoutID, lineItem)
+        .then(checkout => {
+            return checkout;
+        })
+        .catch(err => { return err; }); 
+}
+
+let updateTreatmentLineItem =  async (checkoutID, lineItemID, options) => {
+    let lineItems;
+    let lineItem = await getCustomItem(checkoutID, lineItemID);
+    let product = await getProduct(lineItem.variant.product.id);
+    // Get the new line item to add
+    let lineItemToUpdate = generateTreatmentLineItem(product, options, lineItemID);
 
     await client.checkout.updateLineItems(checkoutID, lineItemToUpdate)
         .then((checkout) => {
@@ -321,13 +381,15 @@ module.exports = {
     getCollection,
     getProduct,
     getMaterials,
-    getCustomJewelleryItem,
+    getCustomItem,
     getLineItem,
     createCheckout,
     getCart,
     getLineItemIDs,
     isProductInCart,
-    addLineItem,
-    updateLineItem,
+    addJewelleryLineItem,
+    addTreatmentLineItem,
+    updateJewelleryLineItem,
+    updateTreatmentLineItem,
     removeLineItem
 }

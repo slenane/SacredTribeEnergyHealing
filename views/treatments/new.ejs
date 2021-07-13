@@ -1,0 +1,107 @@
+<% layout('layouts/boilerplate')%>
+
+<%- include('../partials/navbarBlack')%>
+
+<%- include('../partials/sideNavbarBlack')%>
+
+<div class="treatment_order_content container">
+
+    <div class="treatment--back_to_treatments">
+        <a href="/treatments"><i class="fas fa-arrow-left"></i> Back to Treatments</a>
+    </div>
+
+    <div class="treatment_order_div container shadow">
+    
+        <div class="treatment_order--div_1 px-3">
+            <h1><%= treatment.title %></h1>
+            <p>What happens next?</p>
+            <p>Icons / Images / Examples</p>
+        </div>
+        <div class="treatment_order--div_2">
+            <form action="/treatments/add-to-cart/<%=treatment.id%>" method="POST" novalidate class="validated-form treatment--form">
+                
+                <div class="mb-2">
+                    <label class="form-label" for="treatment--name">Name:</label>
+                    <input class="form-control" type="text" id="treatment--name" name="treatment[Name]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" for="treatment--email">Email:</label>
+                    <input class="form-control" type="email" id="treatment--email" name="treatment[Email]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" for="treatment--number">Phone Number:</label>
+                    <input class="form-control" type="tel" id="treatment--number" name="treatment[Phone]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" for="treatment--quantity">Quantity:</label>
+                    <input class="form-control" type="number" id="treatment--quantity" name="treatment[Quantity]" min="1" max="5" value="1" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+    
+                <div class="mb-2">
+                    <label class="form-label" for="treatment--message">Tell me a little more about you:</label>
+                    <textarea class="form-control" name="treatment[Message]" id="treatment--message" cols="5" rows="5" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <% if (treatment.title === "Energy Treatment") { %>
+                    <label class="form-label" for="treatment--preference">Preference (select all that apply):</label>
+                    <div class="mb-2" id="treatment--preference">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--monday" name="treatment[Preferences]" value="Monday">
+                            <label class="form-check-label" for="preference--monday">Monday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--tuesday" name="treatment[Preferences]" value="Tuesday">
+                            <label class="form-check-label" for="preference--tuesday">Tuesday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--wednesday" name="treatment[Preferences]" value="Wednesday">
+                            <label class="form-check-label" for="preference--wednesday">Wednesday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--thursday" name="treatment[Preferences]" value="Thursday">
+                            <label class="form-check-label" for="preference--thursday">Thursday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--friday" name="treatment[Preferences]" value="Friday">
+                            <label class="form-check-label" for="preference--friday">Friday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--saturday" name="treatment[Preferences]" value="Saturday">
+                            <label class="form-check-label" for="preference--saturday">Saturday</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="preference--sunday" name="treatment[Preferences]" value="Sunday">
+                            <label class="form-check-label" for="preference--sunday">Sunday</label>
+                        </div>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                <% } %>
+
+                <div class="text-center mb-2">
+                    <input class="treatment--submit" type="submit" value="Add to bag">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

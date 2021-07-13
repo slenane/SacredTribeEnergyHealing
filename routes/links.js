@@ -8,12 +8,12 @@ const Link = require('../models/link');
 // INDEX
 router.get("/", catchAsync(async (req, res) => {
     const links = await Link.find({});
-    res.render("links/index", { links });
+    res.render("links/index", { links, title: "Links" });
 }));
 
 // NEW
 router.get("/new", isLoggedIn, (req, res) => {
-    res.render("links/new");
+    res.render("links/new", { title: "Links" });
 });
 
 router.post("/", isLoggedIn, validateLink, catchAsync(async (req, res) => {
@@ -33,7 +33,7 @@ router.get('/:id/edit', isLoggedIn, isLinkAuthor, catchAsync(async (req, res) =>
         req.flash("error", "Cannot find that link");
         return res.redirect("/links")
     }
-    res.render('links/edit', { link });
+    res.render('links/edit', { link, title: "Links" });
 }));
 
 router.put('/:id', isLoggedIn, validateLink, isLinkAuthor, catchAsync(async (req, res) => {

@@ -9,12 +9,12 @@ router.get("/", catchAsync(async (req, res) => {
     // Find all blogs
     const blogs = await Blog.find({});
 
-    res.render("blogs/index", { blogs });
+    res.render("blogs/index", { blogs, title: "Blogs"  });
 }));
 
 // NEW
 router.get("/new", isLoggedIn, catchAsync(async(req, res) => {
-    res.render("blogs/new");
+    res.render("blogs/new", { title: "Blogs" });
 }));
 
 router.post("/", isLoggedIn, validateBlog, catchAsync(async (req, res) => {
@@ -37,7 +37,7 @@ router.get('/:id', catchAsync(async (req, res,) => {
         req.flash("error", "Cannot find that blog");
         return res.redirect("/blogs")
     }
-    res.render('blogs/show', { blog });
+    res.render('blogs/show', { blog, title: "Blogs"  });
 }));
 
 // EDIT 
@@ -50,7 +50,7 @@ router.get('/:id/edit', isLoggedIn, isBlogAuthor, catchAsync(async (req, res) =>
         req.flash("error", "Cannot find that blog");
         return res.redirect("/blogs")
     }
-    res.render('blogs/edit', { blog });
+    res.render('blogs/edit', { blog, title: "Blogs" });
 }));
 
 router.put('/:id', isLoggedIn, validateBlog, isBlogAuthor, catchAsync(async (req, res) => {

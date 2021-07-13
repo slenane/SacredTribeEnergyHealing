@@ -9,7 +9,7 @@ router.get("/", catchAsync(async (req, res) => {
     // Fetch all products from shopify
     let [products, custom] = await shopify.getAllProducts() || [];
 
-    res.render("jewellery/index", { products, custom, type: "all-products" });
+    res.render("jewellery/index", { title: "Jewellery", type: "all-products", products, custom });
 }));
 
 // INDEX - COLLECTIONS
@@ -19,7 +19,7 @@ router.get("/collections/:type", catchAsync(async (req, res) => {
     // Fetch the correct collection from shopify based on type
     let products = await shopify.getCollection(type) || [];
     
-    res.render("jewellery/index", { products, type });
+    res.render("jewellery/index", { title: "Jewellery", products, type });
 }));
 
 // NEW CUSTOM PRODUCT
@@ -27,27 +27,27 @@ router.get('/custom', catchAsync(async (req, res) => {
     // Get the custom jewellery from all products (ignore the first return item because it is all products)
     let [, custom] = await shopify.getAllProducts() || [];
 
-    res.render("jewellery/customItems/new", { custom });
+    res.render("jewellery/customItems/new", { title: "Custom Jewellery", custom });
 }));
 
 // SHOW CUSTOM PRODUCT
 router.get('/custom/:id', catchAsync(async (req, res) => {
     let lineItemID = req.params.id;
     let checkoutID = req.session.checkoutID;
-    // Get the custom jewellery from all products (ignore the first return item because it is all products)
-    let custom = await shopify.getCustomJewelleryItem(checkoutID, lineItemID) || [];
+    // Get the custom jewellery from all products 
+    let custom = await shopify.getCustomItem(checkoutID, lineItemID) || [];
 
-    res.render("jewellery/customItems/show", { custom });
+    res.render("jewellery/customItems/show", { title: "Custom Jewellery", custom });
 }));
 
 // EDIT CUSTOM PRODUCT
 router.get('/custom/:id/edit', catchAsync(async (req, res) => {
     let lineItemID = req.params.id;
     let checkoutID = req.session.checkoutID;
-    // Get the custom jewellery from all products (ignore the first return item because it is all products)
-    let custom = await shopify.getCustomJewelleryItem(checkoutID, lineItemID) || [];
+    // Get the custom jewellery from all products
+    let custom = await shopify.getCustomItem(checkoutID, lineItemID) || [];
 
-    res.render("jewellery/customItems/edit", { custom });
+    res.render("jewellery/customItems/edit", { title: "Custom Jewellery", custom });
 }));
 
 // SHOW PRODUCT
@@ -68,7 +68,7 @@ router.get('/show/:id', catchAsync(async (req, res) => {
        jewellerySize  = lineItem.customAttributes[0].value;
     }
 
-    res.render('jewellery/show', { product, jewellerySize, materials, similarItems });
+    res.render('jewellery/show', { title: "Jewellery", product, jewellerySize, materials, similarItems });
 }));
 
 // ADD TO CART
@@ -88,7 +88,7 @@ router.post('/add-to-cart/:id', validateCustomJewellery, catchAsync(async (req, 
         return res.redirect(`/jewellery/custom`);
     }
     // Add the product to the correct checkout
-    else await shopify.addLineItem(checkoutID, productID, jewelleryOptions, customOptions);
+    else await shopify.addJewelleryLineItem(checkoutID, productID, jewelleryOptions, customOptions);
     
     if (customOptions) {
         let lineItem = await shopify.getLineItem(checkoutID, productID) || []; 
@@ -106,8 +106,10 @@ router.post('/update-cart/:id', validateCustomJewellery, catchAsync(async (req, 
     let customOptions = req.body.custom;
     let lineItemIDs = await shopify.getLineItemIDs(checkoutID);
 
-    let lineItems = await shopify.updateLineItem(checkoutID, lineItemID, customOptions);
+    // Update the item
+    let lineItems = await shopify.updateJewelleryLineItem(checkoutID, lineItemID, customOptions);
     
+    // If the product had updated enough to change the lineItemID then find the ID that is not in the lineItemIDs array
     for (let item of lineItems) {
         if (lineItemIDs.indexOf(item.id) === -1) lineItemID = item.id
     }

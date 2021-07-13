@@ -74,6 +74,7 @@ app.use(async (req, res, next) => {
     res.locals.showCart = url.parse(req.url, true).query.cart === 'true' ? true : false;
     // Load the cart on every page
     res.locals.cart = await shopify.getCart(req.session) || {};
+    res.locals.title = "";
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');

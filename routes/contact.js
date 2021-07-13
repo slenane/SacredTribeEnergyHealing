@@ -27,7 +27,7 @@ transporter.verify(function (error, success) {
 
 // CONTACT ROUTES
 router.get("/", async (req, res) => {
-    res.render("contact/index");
+    res.render("contact/index", { title: "Contact"});
 });
 
 router.post("/", async (req, res) => {

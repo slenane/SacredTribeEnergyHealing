@@ -9,17 +9,17 @@ router.get("/", catchAsync(async (req, res) => {
     // Fetch all featured products from shopify
     let [featuredItems, featuredImages] =  await shopify.getFeaturedProducts() || [{}, []];
 
-    res.render("index", { featuredItems, featuredImages });
+    res.render("index", { featuredItems, featuredImages, title: "Home" });
 }));
 
 // AWARENESS ROUTE
 router.get("/awareness", catchAsync(async (req, res) => {
-    res.render("awareness/index");
+    res.render("awareness/index", { title: "Awareness"});
 }));
 
 // ABOUT ROUTE
 router.get("/about", catchAsync(async (req, res) => {
-    res.render("about/index");
+    res.render("about/index" , { title: "About"});
 }));
 
 // WISHLIST ROUTE
@@ -27,7 +27,7 @@ router.get("/wishlist", catchAsync(async (req, res) => {
     // Fetch all products from shopify - Then filter on page load with localstorage info
     let [products, ] = await shopify.getAllProducts() || [];
 
-    res.render("wishlist/index", { products });
+    res.render("wishlist/index", { products, title: "Wishlist" });
 }));
 
 // CART ROUTES
