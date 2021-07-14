@@ -11,7 +11,7 @@ router.get("/", catchAsync(async (req, res) => {
 }));
 
 // NEW
-router.get("/:type", catchAsync(async (req, res) => {
+router.get("/booking/:type", catchAsync(async (req, res) => {
     let treatment;
     if (req.params.type === "energy-treatment") treatment = await shopify.getTreatment("Energy Treatment"); 
     else  treatment = await shopify.getTreatment("Absentee Treatment");
@@ -44,11 +44,11 @@ router.post("/add-to-cart/:id", validateTreatment, catchAsync(async (req, res) =
     let lineItem = await shopify.getLineItem(checkoutID, productID) || []; 
 
     // Redirect to the page the user came from with the cart still open
-    return res.redirect(`/treatments/show/${lineItem.id}/?cart=true`);
+    return res.redirect(`/treatments/booking/show/${lineItem.id}/?cart=true`);
 }));
 
 // SHOW 
-router.get("/show/:id", catchAsync(async (req, res) => {
+router.get("/booking/show/:id", catchAsync(async (req, res) => {
     let lineItemID = req.params.id;
     let checkoutID = req.session.checkoutID;
     // Get the treatment information
@@ -60,7 +60,7 @@ router.get("/show/:id", catchAsync(async (req, res) => {
 }));
 
 // EDIT CUSTOM PRODUCT
-router.get('/:id/edit', catchAsync(async (req, res) => {
+router.get('/booking/:id/edit', catchAsync(async (req, res) => {
     let lineItemID = req.params.id;
     let checkoutID = req.session.checkoutID;
     // Get the custom jewellery from all products
@@ -86,7 +86,7 @@ router.post('/update-cart/:id', validateTreatment, catchAsync(async (req, res) =
         if (lineItemIDs.indexOf(item.id) === -1) lineItemID = item.id
     }
 
-    return res.redirect(`/treatments/show/${lineItemID}?cart=true`);
+    return res.redirect(`/treatments/booking/show/${lineItemID}?cart=true`);
 }));
 
 module.exports = router;

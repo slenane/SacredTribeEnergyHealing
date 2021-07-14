@@ -74,7 +74,8 @@
         </div>
     </div>
 
-
+    <% let energy = cart.lineItems.filter(item => item.title === "Energy Treatment");%>
+    <% let absentee = cart.lineItems.filter(item => item.title === "Absentee Treatment");%>
 
     <!-- PRICE COMPONENT -->
     <div id="treatment-options" class="treatment_item_price_component">
@@ -98,20 +99,28 @@
                             <p class="card-title"><b>One Treatment Session</b></p>
                             <p class="card-text">Allow 2-3 hours if first visit</p>
                             <p class="card-text">No expiry date</p>
-                        <p class="card-text">Placeholder</p>
-                        <div class="price_component_grid--item-location">
-                            <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
-                            <p class="price_component_grid--item-location-text">Shannon, Co. Clare, Ireland</p>
+                            <p class="card-text">Placeholder</p>
+                            <div class="price_component_grid--item-location">
+                                <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
+                                <p class="price_component_grid--item-location-text">Shannon, Co. Clare, Ireland</p>
                             </div>
-                            <div class="price_component_grid--button">
-                                <a href="/treatments/energy-treatment">
-                                    <button>Book now</button>
+                            
+                            <% if (energy.length > 0) { %>
+                            <div class="price_component_grid--button booked">
+                                <a href="/treatments/booking/show/<%=energy[0].id%>">
+                                    <button>View booking</button>
                                 </a>
                             </div>
+                            <% } else { %>
+                                <div class="price_component_grid--button">
+                                    <a href="/treatments/booking/energy-treatment">
+                                        <button>Book now</button>
+                                    </a>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
-                    
                     
                 <div class="price_component_grid--item price_component_grid--item-2">
                     <div class="card shadow">
@@ -129,14 +138,23 @@
                             <p class="card-text">No expiry date</p>
                             <p class="card-text">Placeholder</p>
                             <div class="price_component_grid--item-location">
-                            <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
-                            <p class="price_component_grid--item-location-text">Worldwide</p>
+                                <img src="/assets/images/icons/location-teal.svg" alt="locations icon" class="price_component_grid--item-location-icon">
+                                <p class="price_component_grid--item-location-text">Worldwide</p>
                             </div>
-                            <div class="price_component_grid--button">
-                            <a href="/treatments/absentee-treatment">
-                                <button>Book now</button>
-                            </a>
-                            </div>
+
+                            <% if (absentee.length > 0) { %>
+                                <div class="price_component_grid--button booked">
+                                    <a href="/treatments/booking/show/<%=absentee[0].id%>">
+                                        <button>View booking</button>
+                                    </a>
+                                </div>
+                            <% } else { %>
+                                <div class="price_component_grid--button">
+                                    <a href="/treatments/booking/absentee-treatment">
+                                        <button>Book now</button>
+                                    </a>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>

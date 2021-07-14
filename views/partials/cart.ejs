@@ -25,10 +25,10 @@
                 <% for (let item of cart.lineItems) { %>
                     <!-- Get product URL based on the prouct handle -->
                     <% let productURL;%>
-                    <% if (item.variant.product.handle === "absentee-treatment") { %>
-                        <% productURL = "/treatments/absentee-treatment/"; %>
-                    <% } else if (item.variant.product.handle === "energy-treatment") { %>
-                        <% productURL = "/treatments/energy-treatment/"; %>
+                    <% if (item.variant.product.handle === "absentee-treatment" || item.variant.product.handle === "energy-treatment") { %>
+                        <% productURL = "/treatments/booking/show/" + item.id; %>
+                    <% } else if (item.variant.product.handle === "custom-jewellery") { %>
+                        <% productURL = "/jewellery/custom/" + item.id; %>
                     <% } else { %>
                         <% productURL = "/jewellery/show/" + item.variant.product.id %>
                     <% } %>
@@ -45,7 +45,7 @@
                             <% } %>
                         <% } %>
                             <div class="cart--line_item">
-                                <a href="/jewellery/custom/<%=item.id%>">
+                                <a href="<%=productURL%>">
                                     <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                                 </a>
                                 <div class="line_items--body">
@@ -60,15 +60,19 @@
 
                     <!-- IF THE ITEM IS A TREATMENT -->
                     <% } else if (item.variant.product.handle === "absentee-treatment" || item.variant.product.handle === "energy-treatment") { %>
-                        <% let deposit = "";%>
-                        <% if (item.variant.product.handle === "energy-treatment") deposit = "Deposit"%>
+                        <% let deposit = "", location = "Worldwide";%>
+                        <% if (item.variant.product.handle === "energy-treatment") { %>
+                            <% deposit = "Deposit"; %>
+                            <% location = "Ireland"; %>
+                        <% } %>
                         <div class="cart--line_item">
                             <a href="<%=productURL%>">
                                 <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                             </a>
                             <div class="line_items--body">
                                 <p class="line_item--title"><a href="<%=productURL%>"><%=item.title%></a></p>
-                                <p class="line_item--price"> <%= item.quantity %> | <%=deposit%> €<%=item.variant.price%></p>
+                                <p class="line_item--options"><%=location%> | <%= item.quantity %> | <a href="/treatments/booking/<%=item.id%>/edit">Edit</a></p>
+                                <p class="line_item--price"><%=deposit%> €<%=item.variant.price%></p>
                             </div>
                             <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
                                 <button>&times;</button>

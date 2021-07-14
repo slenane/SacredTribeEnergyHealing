@@ -197,6 +197,10 @@
     background-color: var(--teal);
 }
 
+.price_component_grid--button.booked button {
+    background-color: var(--teal);
+}
+
 /* TREATMENT ORDER PAGE */
 .treatment--back_to_treatments {
     margin-top: 4rem;

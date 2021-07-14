@@ -7,7 +7,7 @@
 <div class="treatment_order_content container">
 
     <div class="treatment--back_to_treatments">
-        <a href="/treatments/show/<%=treatment.id%>"><i class="fas fa-arrow-left"></i> Back to Treatment</a>
+        <a href="/treatments/booking/show/<%=treatment.id%>"><i class="fas fa-arrow-left"></i> Back to Treatment</a>
     </div>
 
     <div class="treatment_order_div container shadow">
@@ -61,12 +61,15 @@
                 </div>
 
                 <% if (treatment.title === "Energy Treatment") { %>
-                    <% let days = (treatment.customAttributes[4].value).split(", ");%>
+                    <% let days; %>
+                    <% if (treatment.customAttributes[4]) { %>
+                        <% days = (treatment.customAttributes[4].value).split(", ");%>
+                    <% } %>
 
                     <label class="form-label" for="treatment--preference">Preference (select all that apply):</label>
                     <div class="mb-2" id="treatment--preference">
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Monday") !== -1) { %>
+                            <% if (days && days.indexOf("Monday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--monday" name="treatment[Preferences]" value="Monday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--monday" name="treatment[Preferences]" value="Monday">
@@ -74,7 +77,7 @@
                             <label class="form-check-label" for="preference--monday">Monday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Tuesday") !== -1) { %>
+                            <% if (days && days.indexOf("Tuesday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--tuesday" name="treatment[Preferences]" value="Tuesday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--tuesday" name="treatment[Preferences]" value="Tuesday">
@@ -82,7 +85,7 @@
                             <label class="form-check-label" for="preference--tuesday">Tuesday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Wednesday") !== -1) { %>
+                            <% if (days && days.indexOf("Wednesday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--wednesday" name="treatment[Preferences]" value="Wednesday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--wednesday" name="treatment[Preferences]" value="Wednesday">
@@ -90,7 +93,7 @@
                             <label class="form-check-label" for="preference--wednesday">Wednesday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Thursday") !== -1) { %>
+                            <% if (days && days.indexOf("Thursday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--thursday" name="treatment[Preferences]" value="Thursday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--thursday" name="treatment[Preferences]" value="Thursday">
@@ -98,7 +101,7 @@
                             <label class="form-check-label" for="preference--thursday">Thursday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Friday") !== -1) { %>
+                            <% if (days && days.indexOf("Friday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--friday" name="treatment[Preferences]" value="Friday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--friday" name="treatment[Preferences]" value="Friday">
@@ -106,7 +109,7 @@
                             <label class="form-check-label" for="preference--friday">Friday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Saturday") !== -1) { %>
+                            <% if (days && days.indexOf("Saturday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--saturday" name="treatment[Preferences]" value="Saturday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--saturday" name="treatment[Preferences]" value="Saturday">
@@ -114,7 +117,7 @@
                             <label class="form-check-label" for="preference--saturday">Saturday</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <% if (days.indexOf("Sunday") !== -1) { %>
+                            <% if (days && days.indexOf("Sunday") !== -1) { %>
                                 <input class="form-check-input" type="checkbox" id="preference--sunday" name="treatment[Preferences]" value="Sunday" checked>
                             <% } else { %>
                                 <input class="form-check-input" type="checkbox" id="preference--sunday" name="treatment[Preferences]" value="Sunday">
@@ -125,7 +128,7 @@
                 <% } %>
 
                 <div class="text-center mb-2">
-                    <input class="treatment--submit" type="submit" value="Update order">
+                    <input class="treatment--form_submit" type="submit" value="Update order">
                 </div>
             </form>
         </div>

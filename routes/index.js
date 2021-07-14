@@ -45,6 +45,7 @@ router.delete('/remove-from-cart/:id', catchAsync(async (req, res) => {
     else await shopify.removeLineItem(req.session.checkoutID, productID);
 
     if (backURL.match("custom") && backURL.match(productID)) return res.redirect("/jewellery/?cart=true");
+    else if (backURL.match("booking") && backURL.match(productID)) return res.redirect("/treatments/?cart=true");
     // Redirect to the page the user came from with the cart still open
     res.redirect(backURL + "/?cart=true");
 }));
