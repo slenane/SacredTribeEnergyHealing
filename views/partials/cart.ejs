@@ -1,5 +1,6 @@
 
 <div id="cart" class="<%=showCart === true ? 'show_cart' : ''%> shadow">
+    <p class="cart-user--checkout_id hide"><%=cart.id%></p>
     <div class="cart-loader"></div>
     <div class="cart-overlay">
         <div class="cart-top">
@@ -13,15 +14,15 @@
                 <a href="javascript:void(0)" onclick="closeCart()">Close</a>
             </div>
         </div>
-        <% if (cart.lineItems.length === 0) { %>
-            <div class="empty_cart">
-                <img class="empty_cart--img" src="/assets/images/icons/shopping-bag.svg" alt="Empty shopping bag">
-                <p class="empty_cart--text">Your bag is empty!</p>
-                <a class="empty_cart--jewellery_link" href="/jewellery"><button>View Jewellery</button></a>
-                <a class="empty_cart--treatments_link" href="/treatments"><button>View Treatments</button></a>
-            </div>
-        <% } else { %>
-            <div class="full_cart">
+        <div class="cart--body">
+            <% if (cart.lineItems.length === 0) { %>
+                <div class="empty_cart">
+                    <img class="empty_cart--img" src="/assets/images/icons/shopping-bag.svg" alt="Empty shopping bag">
+                    <p class="empty_cart--text">Your bag is empty!</p>
+                    <a class="empty_cart--jewellery_link" href="/jewellery"><button>View Jewellery</button></a>
+                    <a class="empty_cart--treatments_link" href="/treatments"><button>View Treatments</button></a>
+                </div>
+            <% } else { %>
                 <% for (let item of cart.lineItems) { %>
                     <!-- Get product URL based on the prouct handle -->
                     <% let productURL;%>
@@ -37,26 +38,25 @@
                     <% if (item.variant.product.handle === "custom-jewellery") { %>
                         <% let size = item.customAttributes[0].value; %>
                         <% for (let i = 0; i < (item.customAttributes.length - 1); i++) { %>
-                           <% if (size === item.customAttributes[i].value) {
-                               continue; %>
+                            <% if (size === item.customAttributes[i].value) {
+                                continue; %>
                             <% } else { %>
                                 <% size = "Multiple sizes"; %>
                                 <% break; %>
                             <% } %>
                         <% } %>
-                            <div class="cart--line_item">
-                                <a href="<%=productURL%>">
-                                    <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
-                                </a>
-                                <div class="line_items--body">
-                                    <p class="line_item--title"><a href="/jewellery/custom/<%=item.id%>">Custom <%=item.variant.title%></a></p>
-                                    <p class="line_item--options"><%= size %> | <%= item.quantity %> | <a href="/jewellery/custom/<%=item.id%>/edit">Edit</a></p>
-                                    <p class="line_item--price">€<%=item.variant.price%></p>
-                                </div>
-                                <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
-                                    <button>&times;</button>
-                                </form>
+
+                        <div class="cart--line_item" data-id="<%=item.id%>">
+                            <a href="<%=productURL%>">
+                                <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
+                            </a>
+                            <div class="line_items--body">
+                                <p class="line_item--title"><a href="/jewellery/custom/<%=item.id%>">Custom <%=item.variant.title%></a></p>
+                                <p class="line_item--options"><%= size %> | <%= item.quantity %> | <a href="/jewellery/custom/<%=item.id%>/edit">Edit</a></p>
+                                <p class="line_item--price">€<%=item.variant.price%></p>
                             </div>
+                            <button class="line_item--remove_item">&times;</button>
+                        </div>
 
                     <!-- IF THE ITEM IS A TREATMENT -->
                     <% } else if (item.variant.product.handle === "absentee-treatment" || item.variant.product.handle === "energy-treatment") { %>
@@ -65,7 +65,7 @@
                             <% deposit = "Deposit"; %>
                             <% location = "Ireland"; %>
                         <% } %>
-                        <div class="cart--line_item">
+                        <div class="cart--line_item" data-id="<%=item.id%>">
                             <a href="<%=productURL%>">
                                 <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                             </a>
@@ -74,15 +74,12 @@
                                 <p class="line_item--options"><%=location%> | <%= item.quantity %> | <a href="/treatments/booking/<%=item.id%>/edit">Edit</a></p>
                                 <p class="line_item--price"><%=deposit%> €<%=item.variant.price%></p>
                             </div>
-                            <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
-                                <button>&times;</button>
-                            </form>
+                            <button class="line_item--remove_item">&times;</button>
                         </div>
-
                     
                     <!-- IF THE ITEM IS JEWELLERY -->
                     <% } else { %>        
-                        <div class="cart--line_item">
+                        <div class="cart--line_item" data-id="<%=item.id%>">
                             <a href="<%=productURL%>">
                                 <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                             </a>
@@ -90,36 +87,36 @@
                                 <p class="line_item--title"><a href="<%=productURL%>"><%=item.title%></a></p>
                                 <p class="line_item--price"><%=item.customAttributes[0].value%> | €<%=item.variant.price%></p>
                             </div>
-                            <form action="/remove-from-cart/<%=item.id%>?_method=DELETE" method="POST" class="line_item--remove_item">
-                                <button>&times;</button>
-                            </form>
+                            <button class="line_item--remove_item">&times;</button>
                         </div>
-
                     <% } %>
                 <% } %>
-                    <div class="cart--checkout">
-                    <div class="checkout--totals">
-                        <p class="checkout--totals_item checkout--subtotal">
-                            <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€<%=parseFloat(cart.lineItemsSubtotalPrice?.amount).toFixed(2)%></span> 
+            <% } %>
+        </div>
+
+        <div class="cart--checkout">
+            <% if (cart.lineItems.length > 0) { %>
+                <div class="checkout--totals">
+                    <p class="checkout--totals_item checkout--subtotal">
+                        <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€<%=parseFloat(cart.lineItemsSubtotalPrice?.amount).toFixed(2)%></span> 
+                    </p>
+                    <p class="checkout--totals_item checkout--shipping">
+                        <span class="totals_text">SHIPPING</span> <span class="totals_price">€0.00</span>
+                    </p>
+                    <% if (cart.lineItemsSubtotalPrice.amount > 100.0) { %>
+                        <p class="checkout--totals_item checkout--discount">
+                            <span class="totals_text">DISCOUNT</span> <span class="totals_price">€<%=parseFloat(cart.totalPrice - cart.lineItemsSubtotalPrice?.amount).toFixed(2)%></span> 
                         </p>
-                        <p class="checkout--totals_item checkout--shipping">
-                            <span class="totals_text">SHIPPING</span> <span class="totals_price">€0.00</span>
-                        </p>
-                        <% if (cart.lineItemsSubtotalPrice.amount > 100.0) { %>
-                            <p class="checkout--totals_item checkout--discount">
-                                <span class="totals_text">DISCOUNT</span> <span class="totals_price">€<%=parseFloat(cart.totalPrice - cart.lineItemsSubtotalPrice?.amount).toFixed(2)%></span> 
-                            </p>
-                        <% } %>
-                        <p class="checkout--totals_item checkout--total">
-                            <span class="totals_text">TOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
-                        </p>
-                    </div>
-                    <p class="checkout--shopify_disclaimer text-muted">Payments are processed securely through shopify</p>
-                    <div class="checkout--button">
-                        <a href="<%=cart.webUrl%>"><button class="checkout--submit">Checkout</button></a>
-                    </div>
+                    <% } %>
+                    <p class="checkout--totals_item checkout--total">
+                        <span class="totals_text">TOTAL</span> <span class="totals_price">€<%=cart.totalPrice%></span> 
+                    </p>
                 </div>
-            </div>
-        <% } %>
+                <p class="checkout--shopify_disclaimer text-muted">Payments are processed securely through shopify</p>
+                <div class="checkout--button">
+                    <a href="<%=cart.webUrl%>"><button class="checkout--submit">Checkout</button></a>
+                </div>
+            <% } %>
+        </div>
     </div>
 </div>

@@ -68,7 +68,7 @@ router.get('/show/:id', catchAsync(async (req, res) => {
        jewellerySize  = lineItem.customAttributes[0].value;
     }
 
-    res.render('jewellery/show', { title: "Jewellery", product, jewellerySize, materials, similarItems });
+    res.render('jewellery/show', { title: "Jewellery", product, checkoutID, jewellerySize, materials, similarItems });
 }));
 
 // ADD TO CART

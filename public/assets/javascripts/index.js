@@ -1,3 +1,6 @@
+// Initialise socket.io
+let socket = io();
+
 // ARROW BOUNCE
 window.addEventListener("load", () => {
   const heroArrow = document.querySelector(".fa-angle-double-down");

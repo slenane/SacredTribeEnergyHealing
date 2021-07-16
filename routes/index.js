@@ -3,7 +3,6 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const shopify = require('../shopify');
 
-
 // HOME ROUTE
 router.get("/", catchAsync(async (req, res) => {
     // Fetch all featured products from shopify

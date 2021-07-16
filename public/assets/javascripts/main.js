@@ -1,3 +1,6 @@
+// Initialise socket.io
+let socket = io();
+
 /*******************
  *  PROGRESS BAR
 *******************/

@@ -13,6 +13,8 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const url = require('url');
 const shopify = require("./shopify");
+const socketio = require("socket.io");
+const http = require('http');
 
 // ROUTES FILES
 const blogRouter = require("./routes/blogs");
@@ -38,6 +40,10 @@ db.once("open", () => {
 });
 
 const app = express();
+
+// SOCKET.IO SET UP
+const server = http.createServer(app);
+const io = socketio(server);
 
 // APP SETTINGS
 app.engine('ejs', ejsMate)
@@ -101,7 +107,28 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
+// SOCKET.IO
+io.on('connection', (socket) => {
+    socket.on('add jewellery item', async (product) => {
+        // Add the item to the checkout 
+        let [checkout, lineItem] = await shopify.addJewelleryLineItem(product);
+        // Send checkout information back to browser
+        socket.emit("jewllery item added", checkout, lineItem);
+    });
+    socket.on('remove line item', async (lineItem) => {
+        // Add the item to the checkout 
+        let checkout = await shopify.removeLineItem(lineItem.checkoutID, lineItem.id);
+        // Send checkout information back to browser
+        socket.emit('line item removed', checkout, lineItem.id);
+    });
+    // socket.on('add treatment', async (product) => {
+    //     console.log('jewellery: ', product);
+    //     await shopify.addTreatmentLineItem(product);
+    //     console.log("done");
+    // });
+});
+
 // LISTENING
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log('Serving on port 3000')
 })

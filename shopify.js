@@ -26,7 +26,6 @@ let createCheckout = async () => {
     return newCheckout.id;
 }
 
-
 let getCart = async (session) => {
     let cart = {};
 
@@ -258,27 +257,63 @@ let generateJewelleryLineItem = (product, options, lineItemID) => {
 }
 
 // Add an item to the checkout
-let addJewelleryLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
+// let addJewelleryLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
+//     console.log(checkoutID);
+//     // Get the current product from it's ID
+//     let product = await getProduct(productID);
+//     console.log(product);
+//     // Provide the options of the item
+//     let lineItem;
+//     if (customOptions) {
+//         lineItem = generateJewelleryLineItem(product, customOptions);
+//         if (lineItem === undefined) return;
+//     } else {
+//         lineItem = {
+//             variantId: product.variants[0].id,
+//             quantity: 1,
+//             customAttributes: [{key: "Size", value: jewelleryOptions["Size"]}]
+//         }
+//     }
+//     console.log(lineItem);
+//     // Add the item to the checkout
+//     await client.checkout.addLineItems(checkoutID, lineItem)
+//         .then(checkout => {
+//             console.log(checkout.lineItems);
+//             return checkout;
+//         })
+//         .catch(err => { return err; }); 
+// }
+
+let addJewelleryLineItem = async (product, customOptions) => {
+    let newLineItem, newCheckout;
+
+    let inCart = await isProductInCart(product.checkoutID, product.id);
+    if (inCart) return;
+    
     // Get the current product from it's ID
-    let product = await getProduct(productID);
+    let currentProduct = await getProduct(product.id);
+
     // Provide the options of the item
     let lineItem;
     if (customOptions) {
-        lineItem = generateJewelleryLineItem(product, customOptions);
+        lineItem = generateJewelleryLineItem(currentProduct, customOptions);
         if (lineItem === undefined) return;
     } else {
         lineItem = {
-            variantId: product.variants[0].id,
+            variantId: currentProduct.variants[0].id,
             quantity: 1,
-            customAttributes: [{key: "Size", value: jewelleryOptions["Size"]}]
+            customAttributes: [{key: "Size", value: product["Size"]}]
         }
     }
     // Add the item to the checkout
-    await client.checkout.addLineItems(checkoutID, lineItem)
+    await client.checkout.addLineItems(product.checkoutID, lineItem)
         .then(checkout => {
-            return checkout;
+            newCheckout = checkout;
+            newLineItem = checkout.lineItems.filter(item => item.variant.product.id === product.id)[0];
         })
         .catch(err => { return err; }); 
+
+    return [newCheckout, newLineItem];
 }
 
 let updateJewelleryLineItem =  async (checkoutID, lineItemID, customOptions) => {
@@ -367,11 +402,13 @@ let updateTreatmentLineItem =  async (checkoutID, lineItemID, options) => {
 
 // Remove an item from the checkout
 let removeLineItem = async (checkoutID, productID) => {
+    let newCheckout;
     await client.checkout.removeLineItems(checkoutID, [productID])
         .then((checkout) => {
-            return checkout;
+            newCheckout = checkout;
         })
         .catch(err => { return err; });
+    return newCheckout;
 }
 
 module.exports = {

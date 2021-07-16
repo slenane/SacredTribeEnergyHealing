@@ -197,7 +197,7 @@ module.exports = {
     "malachite": {
         title: "Malachite",
         text: "Abundance, manifesting, clears and activates all chakras. Eases menstrual cramps and childbirth. Amplifies energy, purifies and protects",
-        image: "/assets/images/materials/red-wood.png",
+        image: "/assets/images/materials/malachite.png",
     },
     "crackled agate": {
         title: "Crackled Agate",

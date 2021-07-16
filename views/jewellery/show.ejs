@@ -69,30 +69,32 @@
 
                 <div class="jewellery_action">
                     <% if (product.availableForSale) { %>
-                        <form action="/jewellery/add-to-cart/<%=product.id%>" method="POST" novalidate class="validated-form jewellery_buy_button">
+                        <form action="#" method="POST" novalidate class="validated-form jewellery_buy_button">
+                            <p class="jewellery--product_id hide"><%=product.id%></p>
+                            <p class="user--checkout_id hide"><%=checkoutID%></p>
                             <div class="jewellery_size">
                                 <div class="jewellery_size--standard">
                                     <% if (jewellerySize) { %>
                                         <p class="jewellery_size-body">Selected size: <%=jewellerySize%></p>
                                     <% } else { %>
                                         <p class="jewellery_size-body">All bracelets are made to fit a size 7.5" - <span class="jewellery_size--adjust">Click here to adjust</span></p>
-                                        <input type="radio" value='7.5"' name="jewellery[Size]" id="size_option--medium" checked>
+                                        <input type="radio" class="radio_option" value='7.5"'>
                                     <% } %>
                                 </div>
                                 
                                 <div class="jewellery_size--radio_buttons closed">
                                     <label class="form-label jewellery--size_label" for="jewellery--size">SELECT SIZE</label>
                                     <div id="jewellery--size">
-                                        <input type="radio" value='7"' name="jewellery[Size]" id="size_option--small" required>
+                                        <input class="jewellery_show--size_option" type="radio" value='7"' id="size_option--small">
                                         <label class="radio_option" for="size_option--small">7"</label>
         
-                                        <input type="radio" value='7.5"' name="jewellery[Size]" id="size_option--medium" >
+                                        <input class="jewellery_show--size_option" type="radio" value='7.5"' id="size_option--medium" >
                                         <label class="radio_option" for="size_option--medium">7.5"</label>
         
-                                        <input type="radio" value='8"' name="jewellery[Size]" id="size_option--large">
+                                        <input class="jewellery_show--size_option" type="radio" value='8"' id="size_option--large">
                                         <label class="radio_option" for="size_option--large">8"</label>
         
-                                        <input type="radio" value='8.5"' name="jewellery[Size]" id="size_option--xlarge">
+                                        <input class="jewellery_show--size_option" type="radio" value='8.5"' id="size_option--xlarge">
                                         <label class="radio_option" for="size_option--xlarge">8.5"</label>
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@
     cursor: pointer;
 }
 
-.item_number {
+.cart--line_item_count {
     background-color: green;
     color: white;
     border-radius: 50%;
@@ -201,16 +201,16 @@
     color: var(--deep-purple) !important;
 }
 
-.line_item--remove_item button {
+.line_item--remove_item {
     outline: none;
     border: none;
     background: none;
     font-size: 1.5rem;
     padding-right: 1rem;
-    align-self: center;
+    align-self: flex-start;
 }   
 
-.line_item--remove_item button:hover {
+.line_item--remove_item:hover {
     transform: scale(1.1);
 }
 

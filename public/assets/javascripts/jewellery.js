@@ -59,12 +59,130 @@ let toggleShowDropdown = async (e) => {
     }
 };
 
+buyingGuideBtn?.addEventListener("click", toggleShowDropdown);
+
 // ###################################
 //             SHOW PAGE
 // ###################################
 
+let jewelleryAddToCart = document.querySelector(".jewellery_buy_button");
+let productID = document.querySelector(".jewellery--product_id");
+let productSize = document.querySelector("#size_option--medium-preset");
+let checkoutID = document.querySelector(".user--checkout_id");
 let buyButton = document.querySelector(".buy_button");
-let addToBagLoader = document.querySelector(".add_to_bag_loader");
+let boughtButton = document.querySelector(".bought_button");
+let showSizeOptions = document.querySelectorAll(".jewellery_show--size_option");
+let jewellerySizeBody = document.querySelector(".jewellery_size-body");
+let showOptionsDiv = document.querySelector(".jewellery_size--radio_buttons");
+// let cartBody = document.querySelector(".cart--body");
+// let cartCheckout = document.querySelector(".cart--checkout");
+
+jewelleryAddToCart?.addEventListener('submit', (e) => {
+    // Prevent the page from reloading
+    e.preventDefault();
+
+    buyButton.classList.add("cart--adding_to_cart");
+    buyButton.classList.add("flash");
+    buyButton.innerHTML = "ADDING TO BAG";
+    buyButton.setAttribute("disabled", true);
+
+    let selectedSize = Array.from(showSizeOptions).filter(option => option.checked)[0]?.value;
+    if (!selectedSize) selectedSize = '7.5"';
+
+    // Add the item to the cart 
+    socket.emit("add jewellery item", {
+        checkoutID: checkoutID.textContent,
+        id: productID.textContent,
+        Size: selectedSize
+    });
+});
+
+// When the message comes back then update the UI
+socket.on("jewllery item added", (checkout, lineItem) => {
+    // Add the item to the UI
+    updateCartHTMLAdd(checkout, lineItem);
+});
+
+// Add item to cart
+let updateCartHTMLAdd = async (checkout, lineItem) => {
+    // If the empty cart is shown - remove it
+    if ((cartBody.children).length === 1  && cartBody.children[0].classList.contains("empty_cart")) {
+        cartBody.removeChild(cartBody.children[0]);
+    }
+
+    // Add the item to the cart
+    cartBody.insertAdjacentHTML("beforeend", `
+        <div class="cart--line_item" data-id="${lineItem.id}">
+            <a href="/jewllery/show/${lineItem.variant.product.id}">
+                <img class="line_item--thumbnail" src="${lineItem.variant.image.src}" alt="Product thumbnail">
+            </a>
+            <div class="line_items--body">
+                <p class="line_item--title"><a href="/jewllery/show/${lineItem.variant.product.id}">${lineItem.title}</a></p>
+                <p class="line_item--price">${lineItem.customAttributes[0].value} | €${lineItem.variant.price}</p>
+            </div>
+            <button class="line_item--remove_item">&times;</button>
+        </div>
+    `);
+
+    // // Update the checkout information
+    if (cartCheckout.children.length > 0) cartCheckout.innerHTML = "";
+    cartCheckout.insertAdjacentHTML("afterbegin", `
+        <div class="cart--checkout">
+            <div class="checkout--totals">
+                <p class="checkout--totals_item checkout--subtotal">
+                    <span class="totals_text">SUBTOTAL</span> <span class="totals_price">€${parseFloat(checkout.lineItemsSubtotalPrice.amount).toFixed(2)}</span> 
+                </p>
+                <p class="checkout--totals_item checkout--shipping">
+                    <span class="totals_text">SHIPPING</span> <span class="totals_price">€0.00</span>
+                </p>
+                <p class="checkout--totals_item checkout--discount ${Number(checkout.lineItemsSubtotalPrice.amount) < 100 ? "hide" : "" }">
+                    <span class="totals_text">DISCOUNT</span> <span class="totals_price">€${parseFloat(Number(checkout.lineItemsSubtotalPrice.amount) - Number(checkout.totalPrice)).toFixed(2)}</span> 
+                </p>
+                <p class="checkout--totals_item checkout--total">
+                    <span class="totals_text">TOTAL</span> <span class="totals_price">€${checkout.totalPrice}</span> 
+                </p>
+            </div>
+            <p class="checkout--shopify_disclaimer text-muted">Payments are processed securely through shopify</p>
+            <div class="checkout--button">
+                <a href="${checkout.webUrl}"><button class="checkout--submit">Checkout</button></a>
+            </div>
+        </div>  
+    `); 
+
+    if (lineItemCount.children > 0) lineItemCount.innerHTML = "";
+    lineItemCount.innerHTML = `My bag <span class="cart_top--message_item_count">(${(cartBody.children).length} item${(cartBody.children).length > 1 ? "s" : ""})</span>`;
+    navLineItemCount.textContent = (cartBody.children).length;
+
+    // Show cart
+    cart.classList.add("show_cart");
+    arrow.classList.add("show_cart");
+    // Update button state
+    buyButton.classList.remove("flash");
+    buyButton.innerHTML = "ADDED TO BAG";  
+    // Update size body text
+    jewellerySizeBody.textContent =  `Selected size: ${lineItem.customAttributes[0].value}`;
+    showOptionsDiv.classList.add("closed");
+}
+
+// Jewellery size radio buttons
+let jewellerySize = document.querySelector('#jewellery--size');
+let jewellerySizeDiv = document.querySelector('.jewellery_size--radio_buttons');
+
+
+jewellerySize?.addEventListener("click", (e) => {
+    if (e.target.classList.contains("radio_option")) {
+        radioOptions.forEach(option => option.classList.remove("active"));
+        e.target.classList.add("active");
+        productSize = e.target;
+    }
+});
+
+jewellerySizeBody?.addEventListener("click", (e) => {
+    if (e.target.classList.contains("jewellery_size--adjust")) {
+        if (jewellerySizeDiv.classList.contains("closed")) jewellerySizeDiv.classList.remove("closed");
+        else jewellerySizeDiv.classList.add("closed");
+    }
+});
 
 // Image gallery
 const swiperThumbnails = new Swiper(".swiper-thumbnails", {
@@ -100,35 +218,6 @@ productImages?.forEach(img => img.addEventListener("click", (e) => {
         paginationPrev.classList.remove("zoomed");
     }
 }));
-
-// Add item to cart
-let addingToCart = () => {
-    buyButton.classList.add("cart--adding_to_cart");
-    buyButton.classList.add("flash");
-    buyButton.innerHTML = "ADDING TO BAG";
-}
-
-buyingGuideBtn?.addEventListener("click", toggleShowDropdown);
-buyButton?.addEventListener("click", addingToCart);
-
-
-// Jewellery size radio buttons
-let jewellerySize = document.querySelector('#jewellery--size');
-let jewellerySizeAdjust = document.querySelector('.jewellery_size--adjust');
-let jewellerySizeDiv = document.querySelector('.jewellery_size--radio_buttons');
-
-
-jewellerySize?.addEventListener("click", (e) => {
-    if (e.target.classList.contains("radio_option")) {
-        radioOptions.forEach(option => option.classList.remove("active"));
-        e.target.classList.add("active");
-    }
-});
-
-jewellerySizeAdjust?.addEventListener("click", () => {
-    if (jewellerySizeDiv.classList.contains("closed")) jewellerySizeDiv.classList.remove("closed");
-    else jewellerySizeDiv.classList.add("closed");
-});
 
 // Product options toggle
 let productDetailOptions = document.querySelectorAll('.product_details--option');
