@@ -112,7 +112,7 @@ let updateCartHTMLAdd = async (checkout, lineItem) => {
 
     // Add the item to the cart
     cartBody.insertAdjacentHTML("beforeend", `
-        <div class="cart--line_item" data-id="${lineItem.id}">
+        <div class="cart--line_item" data-id="${lineItem.id}" data-product-id="${lineItem.variant.product.id}">
             <a href="/jewllery/show/${lineItem.variant.product.id}">
                 <img class="line_item--thumbnail" src="${lineItem.variant.image.src}" alt="Product thumbnail">
             </a>

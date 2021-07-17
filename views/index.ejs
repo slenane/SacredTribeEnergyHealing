@@ -72,8 +72,8 @@
                             <a class="nav-link" href="/wishlist"><i class="far fa-heart"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-main-cart" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="item_number"><%=cart.lineItems.length > 0 ? cart.lineItems.length : ""%></span></a>
-                            <div id="arrow"></div>
+                            <a class="nav-link nav-main-cart" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart--line_item_count"><%=cart.lineItems.length > 0 ? cart.lineItems.length : ""%></span></a>
+                            <div id="arrow" class="<%=showCart === true ? 'show_cart' : ''%>"></div>
                         </li>
                         <div class="navbar-nav ml-auto">
                             <% if(currentUser) {%>
@@ -379,6 +379,8 @@
     
     </footer>
 
+    <!-- SOCKET.IO -->
+    <script src="/socket.io/socket.io.js"></script>
     <!-- POPPER.JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -390,9 +392,9 @@
     <!-- SWIPER.JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Home.js -->
+    <!-- INDEX.JS -->
     <script src='/assets/javascripts/index.js'></script>
-    <!-- CART SCRIPT -->
+    <!-- CART.JS -->
     <script src='/assets/javascripts/cart.js'></script>
 
 </body>

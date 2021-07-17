@@ -79,7 +79,7 @@
                     
                     <!-- IF THE ITEM IS JEWELLERY -->
                     <% } else { %>        
-                        <div class="cart--line_item" data-id="<%=item.id%>">
+                        <div class="cart--line_item" data-id="<%=item.id%>" data-product-id="<%=item.variant.product.id%>">
                             <a href="<%=productURL%>">
                                 <img class="line_item--thumbnail" src="<%=item.variant.image.src%>" alt="Product thumbnail">
                             </a>

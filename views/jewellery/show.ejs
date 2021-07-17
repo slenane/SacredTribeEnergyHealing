@@ -85,34 +85,35 @@
                                 <div class="jewellery_size--radio_buttons closed">
                                     <label class="form-label jewellery--size_label" for="jewellery--size">SELECT SIZE</label>
                                     <div id="jewellery--size">
-                                        <input class="jewellery_show--size_option" type="radio" value='7"' id="size_option--small">
+                                        <input class="jewellery_show--size_option" name="jewellery-size--radio" type="radio" value='7"' id="size_option--small">
                                         <label class="radio_option" for="size_option--small">7"</label>
         
-                                        <input class="jewellery_show--size_option" type="radio" value='7.5"' id="size_option--medium" >
+                                        <input class="jewellery_show--size_option" name="jewellery-size--radio" type="radio" value='7.5"' id="size_option--medium" >
                                         <label class="radio_option" for="size_option--medium">7.5"</label>
         
-                                        <input class="jewellery_show--size_option" type="radio" value='8"' id="size_option--large">
+                                        <input class="jewellery_show--size_option" name="jewellery-size--radio" type="radio" value='8"' id="size_option--large">
                                         <label class="radio_option" for="size_option--large">8"</label>
         
-                                        <input class="jewellery_show--size_option" type="radio" value='8.5"' id="size_option--xlarge">
+                                        <input class="jewellery_show--size_option" name="jewellery-size--radio" type="radio" value='8.5"' id="size_option--xlarge">
                                         <label class="radio_option" for="size_option--xlarge">8.5"</label>
                                     </div>
                                 </div>
                             </div>
 
-                                <div class="jewellery_action--buttons">
-                                    <div class="jewellery--add_to_cart">
-                                        <% let addedToCart; %>
-                                        <% for (let item of cart.lineItems) { %>
-                                            <% if (item.variant.product.id === product.id) addedToCart = true; %>
-                                        <% } %>
-                
-                                        <% if (addedToCart) {%>
-                                            <button class="bought_button" disabled="true">ADDED TO BAG</button>
-                                        <% } else { %>
-                                            <button class="buy_button">ADD TO BAG</button>
-                                        <% } %>
-                                    </div>
+                            <div class="jewellery_action--buttons">
+                                <div class="jewellery--add_to_cart">
+                                    <% let addedToCart; %>
+                                    <% for (let item of cart.lineItems) { %>
+                                        <% if (item.variant.product.id === product.id) addedToCart = true; %>
+                                    <% } %>
+            
+                                    <% if (addedToCart) {%>
+                                        <button class="buy_button bought_button" disabled="true">ADDED TO BAG</button>
+                                    <% } else { %>
+                                        <button class="buy_button">ADD TO BAG</button>
+                                    <% } %>
+                           
+                                </div>
                             </form>
                                     <div class="show_wishlist">
                                         <i class="far fa-heart wishlist_add" data-id="<%=product.id%>"></i> <span class="show_wishlist--text" data-id="<%=product.id%>">ADD TO WISHLIST</span>

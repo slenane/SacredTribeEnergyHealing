@@ -9,6 +9,7 @@ let cartBody = document.querySelector(".cart--body");
 let cartCheckout = document.querySelector(".cart--checkout");
 let cartCheckoutID = document.querySelector(".cart-user--checkout_id");
 // let boughtButton = document.querySelector(".bought_button");
+// let buyButton = document.querySelector(".buy_button");
 
 // Toggle cart open/close
 function toggleCart() {
@@ -59,6 +60,8 @@ let updateCartHTMLRemove = async (checkout, lineItemID) => {
   // Get the HTML element for the line item to be reomved
   let elements = Array.from(cartBody.children);
   let lineItem = elements.filter(elem => elem.dataset.id === lineItemID)[0];
+
+  let currentProductID = lineItem.dataset.productId;
   cartBody.removeChild(lineItem);
 
   // Get the remaining HTML elements
@@ -114,24 +117,39 @@ let updateCartHTMLRemove = async (checkout, lineItemID) => {
     navLineItemCount.textContent = "";
   }
 
-  // if button classlist contains bought and there is no match in the datasets
+  let url = window.location.href;
+  let jewelleryShowRegex = `/jewellery/show/${currentProductID}`;
+  let treatmentsShowRegex = `/treatments/booking/show/${lineItemID}`;
+  let treatmentsEditRegex = `/treatments/booking/${lineItemID}/edit`;
+  let customJewelleryShowRegex = `/jewellery/custom/${lineItemID}`;
+  let customJewelleryEditRegex = `/jewellery/custom/${lineItemID}/edit`;
 
-  if (productID) {
-    let itemStillInCart = remainingElements.filter(elem => elem.dataset.id === productID.textContent)[0];
-  
-    if (buyButton.classList.contains("cart--adding_to_cart") && !itemStillInCart) {
-      buyButton.removeAttribute("disabled");
-      buyButton.classList.remove("cart--adding_to_cart");
-      buyButton.innerHTML = "ADD TO BAG";
-    } 
+  // If the item removed is the page that the user is on then update UI
+  if (url.match(jewelleryShowRegex)) {
+    buyButton.removeAttribute("disabled");
+    buyButton.classList.remove("cart--adding_to_cart");
+    buyButton.classList.remove("bought_button");
+    buyButton.innerHTML = "ADD TO BAG";
+    
+    // Update size body text and clear radio options
+    jewellerySizeBody.innerHTML =  `All bracelets are made to fit a size 7.5" - <span class="jewellery_size--adjust">Click here to adjust</span>`;
+    radioOptions.forEach(option => option.classList.remove("active"));
+    showSizeOptions.forEach(option => option.checked = false);
+
+    // if the item removed is a treatment and the user is on the show/edit pages of that treatment
+  } else if (url.match(treatmentsShowRegex) || url.match(treatmentsEditRegex)) {
+    window.location.pathname = '/treatments';
+
+    // if the item removed is a custom jewellery item and the user is on the show/edit pages of that custom jewellery item
+  } else if (url.match(customJewelleryShowRegex) || url.match(customJewelleryEditRegex)) {
+    window.location.pathname = '/jewellery';
   }
 
   cart.querySelector(".cart-loader").classList.remove("active");
   cart.querySelector(".cart-overlay").classList.remove("active");
-  // Update size body text and clear radio options
-  jewellerySizeBody.innerHTML =  `All bracelets are made to fit a size 7.5" - <span class="jewellery_size--adjust">Click here to adjust</span>`;
-  radioOptions.forEach(option => option.classList.remove("active"));
-  showSizeOptions.forEach(option => option.checked = false);
 }
 
 cartBody.addEventListener("click", removeButtonClicked);
+
+// If the user clicks back the reload the page to ensure that the cart is up to date
+if (typeof window.performance != "undefined" && window.performance.navigation.type === 2 ) window.location.reload();

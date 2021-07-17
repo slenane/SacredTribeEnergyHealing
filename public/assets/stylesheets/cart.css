@@ -141,6 +141,7 @@
 }
 
 .empty_cart {
+    margin-top: 2rem;
     text-align: center;
 }
 
@@ -155,7 +156,6 @@
     color: white;
     border-radius: 5px;
     padding: .5rem;
-    margin-bottom: 1rem;
 }
 
 .empty_cart button:hover {

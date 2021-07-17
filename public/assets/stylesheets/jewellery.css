@@ -755,7 +755,7 @@ h1.jewellery_title {
 }
 
 .buy_button.cart--adding_to_cart,
-.bought_button,
+.buy_button.bought_button,
 .sold_button {
     background-color: var(--teal);
     -webkit-animation-duration: 2s;

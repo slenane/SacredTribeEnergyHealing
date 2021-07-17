@@ -111,7 +111,7 @@ app.use((err, req, res, next) => {
 io.on('connection', (socket) => {
     socket.on('add jewellery item', async (product) => {
         // Add the item to the checkout 
-        let [checkout, lineItem] = await shopify.addJewelleryLineItem(product);
+        let [checkout, lineItem] = await shopify.addJewelleryLineItemSocket(product);
         // Send checkout information back to browser
         socket.emit("jewllery item added", checkout, lineItem);
     });
@@ -121,11 +121,6 @@ io.on('connection', (socket) => {
         // Send checkout information back to browser
         socket.emit('line item removed', checkout, lineItem.id);
     });
-    // socket.on('add treatment', async (product) => {
-    //     console.log('jewellery: ', product);
-    //     await shopify.addTreatmentLineItem(product);
-    //     console.log("done");
-    // });
 });
 
 // LISTENING

@@ -257,34 +257,30 @@ let generateJewelleryLineItem = (product, options, lineItemID) => {
 }
 
 // Add an item to the checkout
-// let addJewelleryLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
-//     console.log(checkoutID);
-//     // Get the current product from it's ID
-//     let product = await getProduct(productID);
-//     console.log(product);
-//     // Provide the options of the item
-//     let lineItem;
-//     if (customOptions) {
-//         lineItem = generateJewelleryLineItem(product, customOptions);
-//         if (lineItem === undefined) return;
-//     } else {
-//         lineItem = {
-//             variantId: product.variants[0].id,
-//             quantity: 1,
-//             customAttributes: [{key: "Size", value: jewelleryOptions["Size"]}]
-//         }
-//     }
-//     console.log(lineItem);
-//     // Add the item to the checkout
-//     await client.checkout.addLineItems(checkoutID, lineItem)
-//         .then(checkout => {
-//             console.log(checkout.lineItems);
-//             return checkout;
-//         })
-//         .catch(err => { return err; }); 
-// }
+let addJewelleryLineItem = async (checkoutID, productID, jewelleryOptions, customOptions) => {
+    // Get the current product from it's ID
+    let product = await getProduct(productID);
+    // Provide the options of the item
+    let lineItem;
+    if (customOptions) {
+        lineItem = generateJewelleryLineItem(product, customOptions);
+        if (lineItem === undefined) return;
+    } else {
+        lineItem = {
+            variantId: product.variants[0].id,
+            quantity: 1,
+            customAttributes: [{key: "Size", value: jewelleryOptions["Size"]}]
+        }
+    }
+    // Add the item to the checkout
+    await client.checkout.addLineItems(checkoutID, lineItem)
+        .then(checkout => {
+            return checkout;
+        })
+        .catch(err => { return err; }); 
+}
 
-let addJewelleryLineItem = async (product, customOptions) => {
+let addJewelleryLineItemSocket = async (product, customOptions) => {
     let newLineItem, newCheckout;
 
     let inCart = await isProductInCart(product.checkoutID, product.id);
@@ -425,6 +421,7 @@ module.exports = {
     getLineItemIDs,
     isProductInCart,
     addJewelleryLineItem,
+    addJewelleryLineItemSocket,
     addTreatmentLineItem,
     updateJewelleryLineItem,
     updateTreatmentLineItem,
