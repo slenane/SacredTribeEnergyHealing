@@ -45,7 +45,7 @@
 }
 
 .hero_infobar {
-    height: 3.5rem;
+    height: 2rem;
     background-color: var(--teal);
     color: white;
     font-family: "Open Sans";
@@ -57,7 +57,7 @@
 
 @keyframes down {
     to {
-        height: 19rem;
+        height: 14rem;
     }
 }
 
@@ -67,34 +67,55 @@
 
 @keyframes up {
     to {
-        height: 4rem;
+        height: 2rem;
     }
 }
 
 .hero_infobar.active {
-    height: 19rem;
+    height: 14rem;
 }
 
 .hero_infobar--content {
     display: grid;
-    justify-content: center;
-    position: relative;
-    bottom: 0;
+    align-content: center;
+}
+
+.hero_infobar--text {
+    display: grid;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+    grid-template-columns:  auto auto;
+    justify-content: space-around;
 }
 
 .hero_infobar--text p {
-    font-size: 0.8rem;
-    margin-top: .2rem;
-    margin-bottom: 0.2rem;
-    text-align: center;
+    margin-bottom: 0;
+    margin-block-end: 0;
+}
+
+.buying_guide-button {
+    cursor: pointer;
+}
+
+.buying_guide--arrow {
+    display: inline-block;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.buying_guide--arrow.down {
+    transform: rotateX(-180deg);
 }
 
 .hero_infobar--grid {
     display: grid;
     grid-template-columns: repeat(2, 24rem);
-    grid-gap: 5rem;
-    margin-top: 2rem;
+    justify-content: center;
+    gap: 4rem;
+    margin: 1rem 0;
     opacity: 0;
+    transition-delay: 0.5s;
 }
 
 .hero_infobar--grid.fade-in {
@@ -124,14 +145,18 @@
 .hero_infobar--grid-item-icon {
     text-align: center;
     display: grid;
-    grid-template-rows: 4rem 1fr;
+    grid-template-rows: 2rem 1fr;
     justify-content: center;
     align-items: center;
-    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+.hero_infobar--grid-item-text {
+    font-size: 0.9rem;
 }
 
 .grid_item--icon {
-    height: 4rem;
+    height: 2rem;
 }
 
 .hero_infobar--button {
@@ -139,20 +164,7 @@
 }
 
 .buying_guide-button {
-    background: none;
-    height: 1.5rem;
-    width: 5rem;
-    border: 1px solid white;
     color: white;
-    border-radius: 10px;
-    justify-self: center;
-    font-size: .7rem;
-}
-
-.buying_guide-button:hover {
-    background-color: white;
-    color: var(--teal);
-    border: none;
 }
 
 .hero_grid_mobile {
@@ -164,7 +176,7 @@
     grid-template-columns: repeat(3, 14rem);
     grid-template-rows: 14rem;
     justify-content: center;
-    grid-gap: 6rem;
+    gap: 6rem;
 }
 
 .hero_grid--item {
@@ -255,7 +267,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-content: center;
-    grid-gap: 4rem;
+    gap: 4rem;
 }
 
 .collection_list a {
@@ -266,7 +278,7 @@ h2 {
 
 .collection_selection {
     list-style: none;
-    padding: .1rem .4rem;
+    padding: .1rem .6rem;
 }
 
 .collection_selection:hover {
@@ -340,7 +352,7 @@ h2 {
     grid-template-columns: repeat(3, 20rem);
     justify-content: center;
     text-align: center;
-    grid-gap: 3rem;
+    gap: 3rem;
     margin: 2rem 6rem;
 }
 
@@ -494,7 +506,7 @@ h4 {
     display: grid;
     justify-content: center;
     grid-template-columns: 50% 50%;
-    grid-gap: 1rem;
+    gap: 1rem;
     text-align: start;
     font-family: var(--bs-font-sans-serif);
     margin: 0 3rem 2rem 3rem;
@@ -616,7 +628,7 @@ h1.jewellery_title {
     justify-content: start;
     align-items: center;
     margin-bottom: 0;
-    grid-gap: 0.5rem;
+    gap: 0.5rem;
     height: 1.5rem;
 }
 
@@ -653,7 +665,7 @@ h1.jewellery_title {
 .jewellery_description--icons {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 0.5rem;
+    gap: 0.5rem;
     margin-bottom: 0.3rem;
 }
 
@@ -733,7 +745,7 @@ h1.jewellery_title {
     grid-template-columns:  auto auto;
     align-content: flex-end;
     justify-content: left;
-    grid-gap: 1rem;
+    gap: 1rem;
     margin: .8rem 0;
 }
 
@@ -845,7 +857,7 @@ h4.jewellery_description--header {
     display: grid;
     grid-template-columns: 13rem 13rem 13rem;
     justify-content: center;
-    grid-gap: 2rem;
+    gap: 2rem;
     text-align: center;
     margin-bottom: 2rem;
     font-weight: 600;
@@ -882,7 +894,7 @@ h4.jewellery_description--header {
 .materials_grid--item {
     display: grid;
     grid-template-columns: 3rem 1fr;
-    grid-gap: .5rem;
+    gap: .5rem;
 }
 
 .materials_grid--icon {
@@ -919,7 +931,7 @@ h4.jewellery_description--header {
     display: grid;
     grid-template-columns: 35rem auto;
     justify-content: center;
-    grid-gap: 5rem;
+    gap: 5rem;
     font-family: var(--bs-font-sans-serif);
 }
 
@@ -959,7 +971,7 @@ h4.jewellery_description--header {
     display: grid;
     grid-template-columns: repeat(3, 20rem);
     justify-content: space-around;
-    grid-gap: 3rem;
+    gap: 3rem;
     text-align: center;
     margin: 1rem 5rem 3rem;
 }
@@ -1025,7 +1037,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: repeat(3, 18rem);
         justify-content: space-around;
-        grid-gap: 3rem;
+        gap: 3rem;
         text-align: center;
         margin: 3rem 5rem;
     }
@@ -1069,7 +1081,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: repeat(16, 1.6rem);
         grid-template-rows: repeat(13, 1.6rem);
-        grid-gap: .2rem;
+        gap: .2rem;
     }
     
     .thumb_image {
@@ -1121,7 +1133,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: repeat(3, 18rem);
         justify-content: space-around;
-        grid-gap: 3rem;
+        gap: 3rem;
         text-align: center;
         margin: 3rem 5rem;
     }
@@ -1141,7 +1153,7 @@ h4.jewellery_description--header {
 
     .hero_infobar--grid {
         grid-template-columns: repeat(2, 22rem);
-        grid-gap: 2rem;
+        gap: 2rem;
     }
 
     
@@ -1151,13 +1163,13 @@ h4.jewellery_description--header {
     }
 
     .grid_item--icon {
-        height: 3rem;
+        height: 2rem;
     }
 
     .hero_grid {
         grid-template-columns: repeat(3, 12rem);
         grid-template-rows: 12rem;
-        grid-gap: 3rem;
+        gap: 3rem;
     }
 
     .overlay {
@@ -1180,7 +1192,7 @@ h4.jewellery_description--header {
     .jewellery_item_div {
         display: grid;
         grid-template-columns: repeat(3, 14rem);
-        grid-gap: 1rem;
+        gap: 1rem;
         text-align: center;
         margin: 2rem 0;
         padding: 0 1rem;
@@ -1224,7 +1236,7 @@ h4.jewellery_description--header {
     
     .jewellery_content_main {
         grid-template-columns: auto 24rem;
-        grid-gap: 1rem;
+        gap: 1rem;
         margin-bottom: 2rem;
     }
     
@@ -1232,7 +1244,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: repeat(16, 1.2rem);
         grid-template-rows: repeat(13, 1.2rem);
-        grid-gap: .1rem;
+        gap: .1rem;
     }
     
     .thumb_image {
@@ -1303,7 +1315,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: 25rem auto;
         justify-content: center;
-        grid-gap: 5rem;
+        gap: 5rem;
         font-family: var(--bs-font-sans-serif);
         font-size: 0.8rem;
     }
@@ -1329,7 +1341,7 @@ h4.jewellery_description--header {
     .similar_items--grid {
         display: grid;
         grid-template-columns: repeat(3, 13rem);
-        grid-gap: 2rem;
+        gap: 2rem;
         text-align: center;
         margin: 1rem;
         margin-bottom: 2rem;
@@ -1380,17 +1392,17 @@ h4.jewellery_description--header {
     .hero_infobar--grid {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        grid-gap: 0;
+        gap: 0;
         margin-top: 1rem;
     }
     
     .hero_infobar--grid-item-icon {
         grid-template-rows: 2rem 1fr;
-        grid-gap: 1rem;
+        gap: 1rem;
     }
 
     .grid_item--icon {
-        height: 2rem;
+        height: 1.5rem;
     }
 
     .hero_infobar--grid-item-text {
@@ -1445,7 +1457,7 @@ h4.jewellery_description--header {
 
     .jewellery_item_div {
         grid-template-columns: repeat(2, 10rem);
-        grid-gap: 1rem;
+        gap: 1rem;
         margin: 2rem 1rem;
     }
 
@@ -1606,7 +1618,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
-        grid-gap: 1rem;
+        gap: 1rem;
     }
 
     .white_feather_bio--text {
@@ -1628,7 +1640,7 @@ h4.jewellery_description--header {
         display: grid;
         grid-template-columns: repeat(2, auto);
         justify-content: space-around;
-        grid-gap: 1rem;
+        gap: 1rem;
         text-align: center;
         margin: 2rem 1rem;
     }

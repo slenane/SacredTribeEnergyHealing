@@ -240,7 +240,7 @@ a.black-brand {
 .footer_contact {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 1rem;
+    gap: 1rem;
 }
 
 .footer_contact img {

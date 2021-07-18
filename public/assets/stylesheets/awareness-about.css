@@ -41,7 +41,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1rem auto;
-    grid-gap: 1rem;
+    gap: 1rem;
 }
 
 .quote-box {
@@ -250,7 +250,7 @@
         grid-template-columns: auto;
         grid-template-rows: auto auto;
         margin: 0 auto;
-        grid-gap: .6rem;
+        gap: .6rem;
     }
 
     .body_grid--section-1.awareness-quote.quote-box {

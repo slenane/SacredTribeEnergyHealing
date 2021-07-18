@@ -59,7 +59,7 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
-    grid-gap: 1rem;
+    gap: 1rem;
     margin: 3rem 0;
 }
 
@@ -119,7 +119,7 @@
     display: grid;
     grid-template-columns: 25rem 25rem;
     justify-content: center;
-    grid-gap: 1rem;
+    gap: 1rem;
     font-family: var(--bs-font-sans-serif);
     font-size: 1.2rem;
     text-align: center;
@@ -172,7 +172,7 @@
     grid-template-columns: auto auto;
     grid-template-rows: 2rem;
     justify-content: center;
-    grid-gap: 1rem;
+    gap: 1rem;
 }
 
 .price_component_grid--item-location-text {
@@ -285,7 +285,7 @@ and (min-height: 1000px) {
     .treatments_hero_grid {
         grid-template-columns:  auto;
         grid-template-rows:  28rem 28rem;
-        grid-gap: 5rem;
+        gap: 5rem;
     }
     
     .treatments_hero_grid--item {
@@ -369,7 +369,7 @@ and (min-height: 1000px) {
     
     .treatments_hero_grid {
         grid-template-rows:  21rem 21rem;
-        grid-gap: 3rem;
+        gap: 3rem;
     }
     
     .treatments_hero_grid--item {
@@ -423,7 +423,7 @@ and (min-height: 1000px) {
     .treatments_hero_grid {
         grid-template-columns:  17rem;
         grid-template-rows:  13.5rem 13.5rem;
-        grid-gap: 2rem;
+        gap: 2rem;
     }
     
     .treatments_hero_grid--item {
@@ -455,7 +455,7 @@ and (min-height: 1000px) {
     
     .treatments_hero_grid--item-location {
 
-        grid-gap: .5rem;
+        gap: .5rem;
     }
 
     .treatments_hero_grid--item-location-icon {
@@ -521,7 +521,7 @@ and (min-height: 1000px) {
     .treatment_item_main_div {
         font-family: var(--bs-font-sans-serif);
         display: grid;
-        grid-gap: 0;
+        gap: 0;
         grid-template-columns:  1fr;
     }
 
@@ -556,7 +556,7 @@ and (min-height: 1000px) {
     .grid_component_grid {
         grid-template-columns: 20rem;
         grid-template-rows:  22rem 22rem 22rem;
-        grid-gap: 1rem;
+        gap: 1rem;
         font-size: 1rem;
     }
 
@@ -579,7 +579,7 @@ and (min-height: 1000px) {
         grid-template-columns: auto auto;
         grid-template-rows: 1rem;
         justify-content: center;
-        grid-gap: .5rem;
+        gap: .5rem;
     }
 
     .price_component_grid--item-location-icon {
@@ -624,7 +624,7 @@ and (max-height: 700px) {
     .treatments_hero_grid {
         grid-template-columns:  13rem;
         grid-template-rows:  13rem 13rem;
-        grid-gap: 1rem;
+        gap: 1rem;
         margin-top: 0.5rem;
     }
     
@@ -637,7 +637,7 @@ and (max-height: 700px) {
     }
     
     .treatments_hero_grid--item-location {
-        grid-gap: .5rem;
+        gap: .5rem;
     }
 
     .treatments_hero_grid--item-location-icon {
@@ -665,7 +665,7 @@ and (max-height: 700px) {
     .treatments_hero_grid {
         grid-template-columns:  11rem;
         grid-template-rows:  11rem 11rem;
-        grid-gap: 1rem;
+        gap: 1rem;
         margin-top: 0.5rem;
     }
     
@@ -683,7 +683,7 @@ and (max-height: 700px) {
     }
     
     .treatments_hero_grid--item-location {
-        grid-gap: .5rem;
+        gap: .5rem;
     }
 
     .treatments_hero_grid--item-location-icon {

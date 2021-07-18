@@ -24,7 +24,7 @@
 .social_media_grid {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 2rem;
+    gap: 2rem;
     justify-content: center;
     font-size: 2.5rem;
 }

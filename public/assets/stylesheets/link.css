@@ -103,7 +103,7 @@
     
     .links_grid_div {
         grid-template-columns: repeat(3, 18rem);
-        grid-gap: 2rem;
+        gap: 2rem;
     }
     
     /* NEW/EDIT LINK */
@@ -126,7 +126,7 @@
     
     .links_grid_div {
         grid-template-columns: repeat(3, 14rem);
-        grid-gap: 2rem;
+        gap: 2rem;
     }
     
     /* NEW/EDIT LINK */

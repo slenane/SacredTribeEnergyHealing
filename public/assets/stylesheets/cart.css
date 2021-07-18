@@ -182,7 +182,7 @@
     grid-auto-rows: auto;
     font-size: .8rem;
     align-content: center;
-    grid-gap: 0.2rem;
+    gap: 0.2rem;
 }
 
 .line_item--title,

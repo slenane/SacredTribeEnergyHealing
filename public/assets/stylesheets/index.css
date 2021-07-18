@@ -306,7 +306,7 @@ h3 {
     display: grid;
     grid-template-columns: repeat(3, 18rem);
     justify-content: center;
-    grid-gap: 5rem;
+    gap: 5rem;
     padding: 0 3rem;
 }
 
@@ -472,7 +472,7 @@ h4 {
 .footer_contact {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-gap: 1rem;
+    gap: 1rem;
 }
 
 .footer_contact img {
@@ -915,7 +915,7 @@ h4 {
         justify-content: space-around;
         text-align: center;
         padding: 0 2rem;
-        grid-gap: .5rem;
+        gap: .5rem;
         font-size: 1.5rem;
         font-weight: 700;
         text-shadow: var(--main-shadow);
@@ -1040,7 +1040,7 @@ h4 {
         grid-template-columns: repeat(2, 1fr);
         justify-content: space-around;
         padding: 1rem;
-        grid-gap: .5rem;
+        gap: .5rem;
     }
 
     .slide-up {

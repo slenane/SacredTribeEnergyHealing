@@ -1,65 +1,67 @@
 let infobar = document.querySelector(".hero_infobar");
+let infobarContent = document.querySelector(".hero_infobar--content");
 let infobarText = document.querySelector(".hero_infobar--text");
+let buyingGuideBtn = document.querySelector(".buying_guide--open");
+let buyingGuideArrow = document.querySelector(".buying_guide--arrow");
 let buyingGuide = document.querySelector(".hero_infobar--grid");
-let buyingGuideBtn = document.querySelector(".buying_guide-button");
+
+function debounce(func, wait = 250, immediate = true) {
+    let timeout;
+    return () => {
+        let context = this, args = arguments;
+        let later = () => {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
 
 
 let toggleShowDropdown = async (e) => {
     if (buyingGuide.classList.contains("hide")) {
-        // Remove the infobar text and button
-        infobarText.classList.add("hide");
-        buyingGuideBtn.classList.add("hide");
-        // Show the buying guide
-        buyingGuide.classList.remove("hide"); 
-        buyingGuide.classList.remove("fade-out");
-        buyingGuide.classList.add("fade-in");
-        setTimeout(() => {
-            buyingGuide.classList.add("active");  
-        }, 1000);
-
-        // Resize the infobar
-        infobar.classList.remove("dropup"); 
-        infobar.classList.add("dropdown");
-        // Add an active class to set the new div height 
-        setTimeout(() => {
-            infobar.classList.add("active");  
-
-            // Show and change the text content of the button
-            buyingGuideBtn.classList.remove("hide");
-            buyingGuideBtn.textContent = "Read Less";
-        }, 500);
-
-
+        showDropdown(e);
     } else {
-        // Hide the button 
-        buyingGuideBtn.classList.add("hide");
-
-        // Hide the buying guide
-        buyingGuide.classList.remove("fade-in");
-        buyingGuide.classList.add("fade-out");
-        setTimeout(() => {
-            buyingGuide.classList.remove("active");
-            buyingGuide.classList.add("hide");   
-
-            // Display infobar text
-            infobarText.classList.remove("hide");
-        }, 500);
-
-        // Resize the infobar
-        infobar.classList.remove("dropdown"); 
-        infobar.classList.add("dropup"); 
-        // Remove active class to set the div height to initial
-        setTimeout(() => {
-            infobar.classList.remove("active");  
-
-            // Show and change the text content of the button
-            buyingGuideBtn.classList.remove("hide");
-            buyingGuideBtn.textContent = "Read More";
-        }, 500);
+        hideDropdown(e);
     }
 };
 
+let showDropdown = (e) => {
+    buyingGuideArrow.classList.add("down");
+    // Show the buying guide
+    buyingGuide.classList.remove("hide"); 
+    buyingGuide.classList.remove("fade-out");
+    buyingGuide.classList.add("fade-in");
+    buyingGuide.classList.add("active");  
+    // Resize the infobar
+    infobar.classList.remove("dropup"); 
+    infobar.classList.add("dropdown");
+    // Add an active class to set the new div height 
+    infobar.classList.add("active"); 
+}
+
+let hideDropdown = (e) => {
+    buyingGuideArrow.classList.remove("down");
+    // Hide the buying guide
+    buyingGuide.classList.remove("fade-in");
+    buyingGuide.classList.add("fade-out");
+    buyingGuide.classList.remove("active");
+    buyingGuide.classList.add("hide");   
+    // Resize the infobar
+    infobar.classList.remove("dropdown"); 
+    infobar.classList.add("dropup"); 
+    // Remove active class to set the div height to initial
+    setTimeout(() => {
+        infobar.classList.remove("active");  
+    }, 500);
+}
+
 buyingGuideBtn?.addEventListener("click", toggleShowDropdown);
+buyingGuideBtn?.addEventListener("mouseover", debounce(showDropdown));
+infobarContent?.addEventListener("mouseleave", debounce(hideDropdown));
 
 // ###################################
 //             SHOW PAGE
@@ -105,6 +107,7 @@ socket.on("jewllery item added", (checkout, lineItem) => {
 
 // Add item to cart
 let updateCartHTMLAdd = async (checkout, lineItem) => {
+    console.log(checkout);
     // If the empty cart is shown - remove it
     if ((cartBody.children).length === 1  && cartBody.children[0].classList.contains("empty_cart")) {
         cartBody.removeChild(cartBody.children[0]);
